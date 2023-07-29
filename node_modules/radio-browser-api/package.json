@@ -1,0 +1,79 @@
+{
+  "name": "radio-browser-api",
+  "version": "6.0.1",
+  "description": "Wrapper for free and open-source radio browser api: https://api.radio-browser.info/.",
+  "keywords": [
+    "radio",
+    "api",
+    "radio-browser-api",
+    "radio-browser-info"
+  ],
+  "private": false,
+  "author": "Ivan Vlatkovic",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/prod/index.cjs",
+  "module": "./dist/prod/index.modern.js",
+  "umd:main": "./dist/prod/index.umd.js",
+  "exports": {
+    "require": "./dist/prod/index.cjs",
+    "development": "./dist/dev/index.modern.js",
+    "default": "./dist/prod/index.modern.js"
+  },
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivandotv/radio-browser-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ivandotv/radio-browser-api/issues"
+  },
+  "homepage": "https://github.com/ivandotv/radio-browser-api#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-typescript": "^7.16.7",
+    "@changesets/cli": "^2.22.0",
+    "@types/jest": "^27.5.0",
+    "@types/node-fetch": "^2.6.1",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "babel-plugin-dev-expression": "^0.2.3",
+    "babel-plugin-transform-define": "^2.0.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^26.1.5",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-tsdoc": "^0.2.16",
+    "husky": "^7.0.4",
+    "jest": "^28.0.3",
+    "jest-mock-console": "^1.2.3",
+    "jest-watch-typeahead": "^1.1.0",
+    "lint-staged": "^12.4.1",
+    "microbundle": "^0.15.0",
+    "nock": "^13.2.4",
+    "node-fetch": "^2.6.7",
+    "prettier": "^2.6.2",
+    "shx": "^0.3.4",
+    "typedoc": "^0.22.15",
+    "typedoc-plugin-markdown": "^3.12.1"
+  },
+  "scripts": {
+    "lint": "eslint --fix \"src/**/\"",
+    "lint:check": "eslint \"src/**/\"",
+    "lint:ci": "pnpm lint:check",
+    "test": "jest --verbose --coverage",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --runInBand --ci --coverage --coverageDirectory=coverage",
+    "build:prod": "cross-env NODE_ENV=production microbundle --tsconfig ./tsconfig.json  --format modern,cjs,umd  --output dist/prod/index.js",
+    "build:dev": "cross-env NODE_ENV=development microbundle --define process.env.NODE_ENV=development --tsconfig ./tsconfig.json --generateTypes false --format modern --output dist/dev/index.js",
+    "build": "rm -rf ./dist && pnpm build:dev && pnpm build:prod",
+    "gen:docs": "rm -rf ./docs/api && typedoc --options typedoc.cjs",
+    "release": "pnpm run prepublishOnly && pnpm changeset publish"
+  }
+}

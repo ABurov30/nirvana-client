@@ -1,0 +1,11 @@
+.rc-textarea-affix-wrapper {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid #1677ff;
+}
+.rc-textarea-affix-wrapper textarea {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0;
+  border: none;
+}
