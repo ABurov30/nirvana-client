@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import {
 	getAllRadiosThunk,
-	searchRadioThunk,
+	searchRadioThunk
 } from '../redux/slices/radios/radiosThunk'
 import { useAppSelector } from '../redux/hooks'
-import MediaCard from '../ui/MediaCard'
-import InputName from '../ui/inputName'
-import InputGenre from '../ui/InputGenre'
-import InputCountry from '../ui/inputCountry'
+import React, { lazy, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+const MediaCard = lazy(() => import('../ui/MediaCard'))
+const InputName = lazy(() => import('../ui/inputName'))
+const InputGenre = lazy(() => import('../ui/InputGenre'))
+const InputCountry = lazy(() => import('../ui/inputCountry'))
 
 export default function Cards(): JSX.Element {
 	const { radios } = useAppSelector(state => state.radio)

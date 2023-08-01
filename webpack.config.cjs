@@ -1,19 +1,19 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const JsonMinimizerPlugin = require('json-minimizer-webpack-plugin');
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const { DefinePlugin } = require('webpack');
-const dotenv = require('dotenv');
-const path = require('path');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+const JsonMinimizerPlugin = require('json-minimizer-webpack-plugin')
+const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const { DefinePlugin } = require('webpack')
+const dotenv = require('dotenv')
+const path = require('path')
 
-dotenv.config();
+dotenv.config()
 
-const mode = process.env.NODE_ENV;
-const isDev = mode === 'development';
+const mode = process.env.NODE_ENV
+const isDev = mode === 'development'
 
 module.exports = {
 	entry: path.resolve(__dirname, 'src', 'main.tsx'),
@@ -21,20 +21,20 @@ module.exports = {
 	resolve: {
 		extensions: ['.tsx', '.ts', '.js'],
 		alias: {
-			'@': path.resolve(__dirname, 'src/'),
-		},
+			'@': path.resolve(__dirname, 'src/')
+		}
 	},
 	devServer: {
 		port: process.env.PORT || 3000,
 		open: true,
 		hot: true,
 		static: {
-			directory: path.join(__dirname, 'public'),
+			directory: path.join(__dirname, 'public')
 		},
-		historyApiFallback: true,
+		historyApiFallback: true
 	},
 	stats: {
-		children: true,
+		children: true
 	},
 	mode: 'development',
 	devtool: isDev ? 'source-map' : false,
@@ -46,9 +46,9 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-env', '@babel/preset-react'],
-					},
-				},
+						presets: ['@babel/preset-env', '@babel/preset-react']
+					}
+				}
 			},
 			{
 				test: /\.(ts|tsx)$/,
@@ -59,10 +59,10 @@ module.exports = {
 						presets: [
 							'@babel/preset-env',
 							'@babel/preset-react',
-							'@babel/preset-typescript',
-						],
-					},
-				},
+							'@babel/preset-typescript'
+						]
+					}
+				}
 			},
 			{
 				test: /\.s[ac]ss$/i,
@@ -73,17 +73,17 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							modules: {
-								localIdentName: '[local]_[hash:base64:7]',
-							},
-						},
+								localIdentName: '[local]_[hash:base64:7]'
+							}
+						}
 					},
 					{
 						loader: 'sass-loader',
 						options: {
-							sourceMap: true,
-						},
-					},
-				],
+							sourceMap: true
+						}
+					}
+				]
 			},
 			{
 				test: /^((?!\.module).)*s[ac]ss$/i,
@@ -94,63 +94,64 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							modules: {
-								localIdentName: '[local]_[hash:base64:7]',
-							},
-						},
+								localIdentName: '[local]_[hash:base64:7]'
+							}
+						}
 					},
 					{
 						loader: 'sass-loader',
 						options: {
-							sourceMap: true,
-						},
-					},
-				],
+							sourceMap: true
+						}
+					}
+				]
 			},
 			{
 				test: /\.css$/,
 				use: [
 					'style-loader',
-					{ loader: 'css-loader', options: { sourceMap: true } },
-				],
+					{ loader: 'css-loader', options: { sourceMap: true } }
+				]
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/,
-				use: ['file-loader'],
+				use: ['file-loader']
 			},
 			{
 				test: /\.json$/i,
 				exclude: /node_modules/,
-				type: 'asset/resource',
+				type: 'asset/resource'
 			},
 			{
 				test: /\.html$/i,
 				exclude: /node_modules/,
-				loader: 'html-loader',
+				loader: 'html-loader'
 			},
 			{
 				test: /\.(jpe?g|png|gif|svg)$/i,
 				exclude: /node_modules/,
-				type: 'asset',
-			},
-		],
+				type: 'asset'
+			}
+		]
 	},
 	plugins: [
 		new DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-			'process.env.PORT': JSON.stringify(process.env.PORT),
+			'process.env.PORT': JSON.stringify(process.env.PORT)
 		}),
 		new MiniCssExtractPlugin({
 			filename: isDev ? '[name].css' : '[name].[contenthash].css',
-			chunkFilename: isDev ? '[id].css' : '[id].[contenthash].css',
+			chunkFilename: isDev ? '[id].css' : '[id].[contenthash].css'
 		}),
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, './index.html'),
+			favicon: path.resolve(__dirname, './public/img/favicon.png'),
 			minify: {
 				collapseWhitespace: !isDev,
-				removeComments: !isDev,
-			},
+				removeComments: !isDev
+			}
 		}),
-		new CleanWebpackPlugin(),
+		new CleanWebpackPlugin()
 	],
 	optimization: {
 		minimize: !isDev,
@@ -162,9 +163,9 @@ module.exports = {
 				parallel: true,
 				terserOptions: {
 					format: {
-						comments: false,
-					},
-				},
+						comments: false
+					}
+				}
 			}),
 			new ImageMinimizerPlugin({
 				minimizer: {
@@ -188,31 +189,31 @@ module.exports = {
 														params: {
 															attributes: [
 																{
-																	xmlns: 'http://www.w3.org/2000/svg',
-																},
-															],
-														},
-													},
-												},
-											},
-										},
-									],
-								},
-							],
-						],
-					},
-				},
-			}),
-		],
+																	xmlns: 'http://www.w3.org/2000/svg'
+																}
+															]
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				}
+			})
+		]
 	},
 	watchOptions: {
 		ignored: /node_modules/,
-		poll: 1000,
+		poll: 1000
 	},
 	output: {
 		filename: isDev ? '[name].js' : '[name].[contenthash].js',
 		path: path.resolve(__dirname, 'dist'),
 		assetModuleFilename: 'public/[name].[contenthash][ext][query]',
-		clean: true,
-	},
+		clean: true
+	}
 }

@@ -1,8 +1,8 @@
-import * as React from 'react'
-import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
-import axios from 'axios'
+import TextField from '@mui/material/TextField'
 import { Stack } from '@mui/material'
+import * as React from 'react'
+import axios from 'axios'
 
 export default function InputGenre(): JSX.Element {
 	const [tags, setTags] = React.useState([])
@@ -27,8 +27,8 @@ export default function InputGenre(): JSX.Element {
 						name="tags"
 						InputLabelProps={{
 							sx: {
-								color: '#ff6ec7',
-							},
+								color: '#ff6ec7'
+							}
 						}}
 						InputProps={{
 							...params.InputProps,
@@ -36,16 +36,16 @@ export default function InputGenre(): JSX.Element {
 							sx: {
 								color: '#ff6ec7',
 								'& .MuiOutlinedInput-notchedOutline': {
-									borderColor: '#ff6ec7',
+									borderColor: '#ff6ec7'
 								},
 								'&:hover .MuiOutlinedInput-notchedOutline': {
-									borderColor: '#ff6ec7',
+									borderColor: '#ff6ec7'
 								},
 								'&.Mui-focused .MuiOutlinedInput-notchedOutline':
 									{
-										borderColor: '#ff6ec7',
-									},
-							},
+										borderColor: '#ff6ec7'
+									}
+							}
 						}}
 					/>
 				)}

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
 import { RadioType } from '../types/radioTypes';
 import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
 type MediaCardProps = {
   el: RadioType;
@@ -42,7 +42,10 @@ export default function MediaCard({ el }: MediaCardProps) {
           <p className="media-card-subtitle">{el.votes} Подписчиков</p>
           <p className="media-card-subtitle">{el.country}</p>
         </div>
-        <button className="media-card-button" onClick={() => navigateHandler(el.id)}>
+        <button
+          className="media-card-button"
+          onClick={() => navigateHandler(el.id)}
+        >
           Слушать
         </button>
       </div>
