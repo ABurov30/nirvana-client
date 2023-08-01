@@ -89,7 +89,7 @@ export default function Navbar() {
 					<BottomNavigationAction
 						label="Войти"
 						icon={<SensorDoorIcon />}
-						onClick={() => navigate('/login')}
+						onClick={() => navigate('/auth/login')}
 						sx={{
 							'&.Mui-selected': {
 								color: '#4c4cff',

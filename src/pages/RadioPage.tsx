@@ -1,28 +1,26 @@
-import * as React from 'react'
-import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { useAppSelector } from '../redux/hooks'
-import { getRadioById } from '../redux/slices/radios/radiosThunk'
-import { useTheme } from '@mui/material/styles'
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
+import { getRadioById } from './RadiosPage/radiosThunk'
 import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
+import CardMedia from '@mui/material/CardMedia'
+import { useTheme } from '@mui/material/styles'
+import { useAppSelector } from '../redux/hooks'
+import { useParams } from 'react-router-dom'
 import Button from '@mui/material/Button'
+import { useDispatch } from 'react-redux'
+import Card from '@mui/material/Card'
+import Box from '@mui/material/Box'
+import { useEffect } from 'react'
+import * as React from 'react'
 import Chat from '../ui/Chat'
 
 export default function RadioPage() {
 	const { radio } = useAppSelector(state => state.radio)
 	const { id } = useParams()
 	const dispatch = useDispatch()
-	console.log(id)
 	useEffect(() => {
 		dispatch(getRadioById(id))
 	}, [])
 	const theme = useTheme()
-	console.log(radio)
 
 	const [isPlaying, setIsPlaying] = React.useState(false)
 
@@ -51,7 +49,7 @@ export default function RadioPage() {
 							display: 'flex',
 							alignItems: 'center',
 							pl: 1,
-							pb: 1,
+							pb: 1
 						}}
 					>
 						{isPlaying ? (

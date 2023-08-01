@@ -75,7 +75,7 @@ export default function LoginPage(): JSX.Element {
 						fullWidth
 						variant="contained"
 						sx={{ mt: 3, mb: 2 }}
-						onClick={() => navigate('/signUp')}
+						onClick={() => navigate('/auth/signUp')}
 					>
 						Зарегистрироваться
 					</Button>

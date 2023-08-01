@@ -1,43 +1,55 @@
-import axios from 'axios';
-import type { ThunkActionCreater } from '../../store';
-import { logoutUser, setUser } from './userSlice';
-import type { UserFromBackend } from '../../../../types/userType';
-import type { LoginForm, SignUpForm } from '../../../../types/formType';
+import type { LoginForm, SignUpForm } from '../../../../types/formType'
+import type { UserFromBackend } from '../../../../types/userType'
+import { request } from '../../../services/Request/Requets'
+import type { ThunkActionCreater } from '../../store'
+import { logoutUser, setUser } from './userSlice'
+import axios from 'axios'
 
-export const signUpThunk: ThunkActionCreater<SignUpForm> = (formData) => async (dispatch) => {
-  const res = await axios.post<UserFromBackend>('/auth/signup', {
-    nickname: formData.nickname,
-    email: formData.email,
-    password: formData.password,
-  });
-  console.log('res.user', res);
-  if (res.status === 200) {
-    dispatch(setUser({ ...res.data, status: 'logged' }));
-    return true;
-  }
-};
+export const signUpThunk: ThunkActionCreater<SignUpForm> =
+	formData => async dispatch => {
+		const res = await request.sendRequest({
+			method: 'post',
+			url: '/auth/signup',
+			data: {
+				nickname: formData.nickname,
+				email: formData.email,
+				password: formData.password
+			}
+		})
 
-export const loginUserThunk: ThunkActionCreater<LoginForm> = (formData) => async (dispatch) => {
-  const res = await axios.post<UserFromBackend>('/auth/login', formData);
-  if (res.status === 200) {
-    dispatch(setUser({ ...res.data, status: 'logged' }));
-    return true
-  }
-};
+		dispatch(setUser({ ...res, status: 'logged' }))
+		return true
+	}
 
-export const checkUserThunk: ThunkActionCreater = () => (dispatch) => {
-  axios
-    .get<UserFromBackend>('/auth/check')
-    .then(({ data }) => dispatch(setUser({ ...data, status: 'logged' })))
-    .catch((err) => {
-      console.log(err);
-      dispatch(logoutUser());
-    });
-};
+export const loginUserThunk: ThunkActionCreater<LoginForm> =
+	formData => async dispatch => {
+		const res = await request.sendRequest({
+			method: 'post',
+			url: '/auth/login',
+			data: formData
+		})
 
-export const logoutThunk: ThunkActionCreater = () => (dispatch) => {
-  axios
-    .get('/auth/logout')
-    .then(() => dispatch(logoutUser()))
-    .catch(console.log);
-};
+		dispatch(setUser({ ...res, status: 'logged' }))
+		return true
+	}
+
+export const checkUserThunk: ThunkActionCreater = () => dispatch => {
+	request
+		.sendRequest({
+			url: '/auth/check'
+		})
+		.then(( data ) => dispatch(setUser({ ...data, status: 'logged' })))
+		.catch(err => {
+			console.log(err)
+			dispatch(logoutUser())
+		})
+}
+
+export const logoutThunk: ThunkActionCreater = () => dispatch => {
+	request
+		.sendRequest({
+			url: '/auth/logout'
+		})
+		.then(() => dispatch(logoutUser()))
+		.catch(console.log)
+}

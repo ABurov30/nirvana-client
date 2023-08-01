@@ -3,10 +3,10 @@ import SignupPage from '../../pages/SignupPage'
 import LoginPage from '../../pages/LoginPage'
 import React from 'react'
 
-export default function NAZRooter() {
+export default function NAZRouter() {
 	return (
 		<Routes>
-			<Route path="/" element={<LoginPage />} />
+			<Route path="/login" element={<LoginPage />} />
 			<Route path="/signUp" element={<SignupPage />} />
 		</Routes>
 	)

@@ -3,23 +3,18 @@ import TextField from '@mui/material/TextField'
 import { Stack } from '@mui/material'
 import * as React from 'react'
 import axios from 'axios'
+import { request } from '../services/Request/Requets'
+import { useUniqGenre } from '../hooks/useUniqTaqs'
 
 export default function InputGenre(): JSX.Element {
-	const [tags, setTags] = React.useState([])
-
-	React.useEffect(() => {
-		axios('/music/uniqTags')
-			.then(res => setTags(res.data))
-			.catch(e => console.log(e))
-	}, [])
-	console.log(tags)
+	const genres=useUniqGenre()
 	return (
 		<Stack spacing={2} sx={{ width: 300 }}>
 			<Autocomplete
 				freeSolo
 				id="free-solo-2-demo"
 				disableClearable
-				options={tags.map(option => option)}
+				options={genres?.map(option => option)}
 				renderInput={params => (
 					<TextField
 						{...params}

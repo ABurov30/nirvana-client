@@ -1,24 +1,19 @@
 import Autocomplete from '@mui/material/Autocomplete'
+import { useUniqName } from '../hooks/useUniqName'
 import TextField from '@mui/material/TextField'
 import { Stack } from '@mui/material'
 import * as React from 'react'
-import axios from 'axios'
 
 export default function InputName(): JSX.Element {
-	const [names, setNames] = React.useState([])
-	React.useEffect(() => {
-		axios('/music/uniqNames')
-			.then(res => setNames(res.data))
-			.catch(e => console.log(e))
-	}, [])
-	console.log(names)
+	const names = useUniqName()
+	console.log('=========', names)
 	return (
 		<Stack spacing={2} sx={{ width: 300 }}>
 			<Autocomplete
 				freeSolo
 				id="free-solo-2-demo"
 				disableClearable
-				options={names.map(option => option.name)}
+				options={names?.map(option => option.name)}
 				renderInput={params => (
 					<TextField
 						{...params}

@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import React, { Suspense } from 'react';
 
-import { ErrorBoundary } from './HOC/ErrorBoundary';
+import { ErrorBoundary } from './HOC/ErrorBoundary/ErrorBoundary';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -19,8 +19,6 @@ import Loader from './ui/Loader/Loader';
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement!);
 
-axios.defaults.baseURL = 'http://localhost:3001/api';
-axios.defaults.withCredentials = true;
 
 root.render(
 	<ErrorBoundary>

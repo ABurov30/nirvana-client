@@ -1,17 +1,5 @@
 import React from 'react'
-
-interface IProps {
-	children: React.ReactNode
-}
-
-interface IState {
-	hasError: boolean
-	error: Error | null
-}
-
-interface IErrorWithCode extends Error {
-	code: number
-}
+import { IErrorWithCode, IProps, IState } from './types'
 
 export class ErrorBoundary extends React.Component<IProps, IState> {
 	constructor(props: IProps) {

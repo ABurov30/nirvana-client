@@ -10,7 +10,7 @@ const NewInstanse = axios.create({
 })
 
 interface IRequestParams {
-	method: string
+	method?: string
 	url: string
 	data?: any
 	useMock?: boolean
@@ -21,7 +21,7 @@ class Request {
 	private mock = new MockAdapter(axios)
 
 	sendRequest(
-		{ method, url, data, useMock }: IRequestParams,
+		{ method = 'get', url, data, useMock }: IRequestParams,
 		options: AxiosRequestConfig & { mockData?: any } = {}
 	): Promise<any> {
 		if (useMock) {
