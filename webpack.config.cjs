@@ -65,37 +65,15 @@ module.exports = {
 				}
 			},
 			{
-				test: /\.s[ac]ss$/i,
+				test: /\.s(a|c)ss$/i,
 				exclude: /node_modules/,
 				use: [
 					isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
 						options: {
-							modules: {
-								localIdentName: '[local]_[hash:base64:7]'
-							}
-						}
-					},
-					{
-						loader: 'sass-loader',
-						options: {
-							sourceMap: true
-						}
-					}
-				]
-			},
-			{
-				test: /^((?!\.module).)*s[ac]ss$/i,
-				exclude: /node_modules/,
-				use: [
-					isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-					{
-						loader: 'css-loader',
-						options: {
-							modules: {
-								localIdentName: '[local]_[hash:base64:7]'
-							}
+							sourceMap: true,
+							modules: true
 						}
 					},
 					{
@@ -110,7 +88,12 @@ module.exports = {
 				test: /\.css$/,
 				use: [
 					'style-loader',
-					{ loader: 'css-loader', options: { sourceMap: true } }
+					{
+						loader: 'css-loader',
+						options: {
+							sourceMap: true,
+						}
+					}
 				]
 			},
 			{

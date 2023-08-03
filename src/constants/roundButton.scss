@@ -1,0 +1,12 @@
+@use '../constants/bordeRadius.scss' as *;
+@use '../constants/colors.scss' as *;
+
+%roundButton {
+  border-radius: $round;
+  background-color: $primary-grey;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

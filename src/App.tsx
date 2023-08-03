@@ -10,7 +10,8 @@ import AZRouter from './services/AZRouter/AZRouter'
 import { useCheckUser } from './hooks/useCheckUser'
 import { useAZToggle } from './hooks/useAZToggle'
 import LoginPage from './pages/LoginPage'
-import Loader from './ui/Loader/Loader'
+import { Loader } from 'radio-app-uikit'
+
 const Error404 = lazy(() => import('./pages/Error404'))
 
 function App(): JSX.Element {

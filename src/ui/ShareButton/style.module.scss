@@ -1,0 +1,5 @@
+@use '../../constants/roundButton.scss' as *;
+
+.shareButton {
+     @extend %roundButton;
+}
