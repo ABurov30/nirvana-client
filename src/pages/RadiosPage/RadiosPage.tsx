@@ -1,12 +1,13 @@
+import LeftArrowButton from '../../ui/LeftArrowButton/LeftArrowButton'
 import { getAllRadiosThunk, searchRadioThunk } from './radiosThunk'
 import { useGetAllRadios } from '../../hooks/useGetAllRadios'
+import ShareButton from '../../ui/ShareButton/ShareButton'
+import LikeButton from '../../ui/LikeButton/LikeButton'
 import { useAppSelector } from '../../redux/hooks'
 import React, { lazy, useEffect } from 'react'
+import { RoundButton } from 'radio-app-uikit'
 import { useDispatch } from 'react-redux'
 import Form from '../../ui/Form/Form'
-import LeftArrowButton from '../../ui/LeftArrowButton/LeftArrowButton'
-import LikeButton from '../../ui/LikeButton/LikeButton'
-import ShareButton from '../../ui/ShareButton/ShareButton'
 const MediaCard = lazy(() => import('../../ui/MediaCard'))
 
 
@@ -15,9 +16,7 @@ export default function RadiosPage(): JSX.Element {
 
 	return (
 		<>
-			<LeftArrowButton/>
-			<LikeButton/>
-			<ShareButton/>
+			<RoundButton/>
 			<Form />
 			<div className="cards-container">
 				{radios?.map(el => (
