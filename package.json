@@ -19,6 +19,7 @@
     "antd": "^5.4.7",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
+    "radio-app-uikit": "^1.0.26",
     "radio-browser": "^2.2.3",
     "radio-browser-api": "^6.0.1",
     "react": "^18.2.0",
