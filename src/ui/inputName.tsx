@@ -6,7 +6,6 @@ import * as React from 'react'
 
 export default function InputName(): JSX.Element {
 	const names = useUniqName()
-	console.log('=========', names)
 	return (
 		<Stack spacing={2} sx={{ width: 300 }}>
 			<Autocomplete

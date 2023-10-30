@@ -1,10 +1,11 @@
-import { getAllRadiosThunk } from '../pages/RadiosPage/radiosThunk'
+import { getAllRadiosThunk } from '../entities/radiosThunk'
 import { fetchFlags } from '../flags/fetchFlags'
+import { RadioType } from '../types/radioTypes'
 import { useAppSelector } from '../redux/hooks'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 
-export function useGetAllRadios() {
+export function useGetAllRadios(): RadioType[] {
 	let { radios } = useAppSelector(state => state.radio)
 	const dispatch = useDispatch()
 

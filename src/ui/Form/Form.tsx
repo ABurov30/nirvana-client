@@ -1,13 +1,12 @@
-import { useDispatch } from 'react-redux'
+import { searchRadioThunk } from '../../entities/radiosThunk'
 import InputCountry from '../inputCountry'
+import { useDispatch } from 'react-redux'
 import InputGenre from '../InputGenre'
 import InputName from '../inputName'
 import React from 'react'
-import { searchRadioThunk } from '../../pages/RadiosPage/radiosThunk'
 
 export default function Form() {
-
-    const dispatch = useDispatch()
+	const dispatch = useDispatch()
 	const searchHandler = e => {
 		e.preventDefault()
 		const formData = Object.fromEntries(new FormData(e.target))

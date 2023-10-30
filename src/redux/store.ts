@@ -1,5 +1,5 @@
 import { AnyAction, ThunkAction, configureStore } from '@reduxjs/toolkit'
-import radiosReducer from '../pages/RadiosPage/radiosSlice'
+import radiosReducer from '../entities/radiosSlice'
 import userReducer from './slices/users/userSlice'
 
 export const store = configureStore({

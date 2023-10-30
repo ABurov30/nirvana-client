@@ -1,4 +1,4 @@
-import { getRadioById } from './RadiosPage/radiosThunk'
+import { getRadioById } from '../entities/radiosThunk'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import CardMedia from '@mui/material/CardMedia'

@@ -1,16 +1,7 @@
-import {
-	HomeNavbarButton,
-	LikeRoundButton,
-	MixBlockButton,
-	Play,
-	PlayBlockButton,
-	ThemeSlider,
-	UserPanel,
-	VolumeSlider
-} from 'radio-app-uikit'
 import { useGetAllRadios } from '../../hooks/useGetAllRadios'
-import React, { lazy, useEffect } from 'react'
+import Radios from '../../widgets/Radios/Radios'
 import Form from '../../ui/Form/Form'
+import React, { lazy } from 'react'
 const MediaCard = lazy(() => import('../../ui/MediaCard'))
 
 export default function RadiosPage(): JSX.Element {
@@ -18,20 +9,8 @@ export default function RadiosPage(): JSX.Element {
 
 	return (
 		<>
-			<LikeRoundButton />
-			<PlayBlockButton />
-			<ThemeSlider />
-			<UserPanel name={'fdaf'} nickname="fdsa" amountOfMessages={3} />
-			<VolumeSlider />
-			<HomeNavbarButton/>
-			<MixBlockButton />
-			{/* <Play /> */}
 			<Form />
-			<div className="cards-container">
-				{radios?.map(el => (
-					<MediaCard key={el.id} el={el} />
-				))}
-			</div>
+			<Radios />
 		</>
 	)
 }

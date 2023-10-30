@@ -1,7 +1,7 @@
-import { AppThunk, ThunkActionCreater } from '../../redux/store'
-import { request } from '../../services/Request/Requets'
+import { AppThunk, ThunkActionCreater } from '../redux/store'
+import { request } from '../services/Request/Requets'
 import { setOneRadio, setRadio } from './radiosSlice'
-import FormType from '../../types/formTypes'
+import FormType from '../types/formTypes'
 
 export const getAllRadiosThunk: ThunkActionCreater = () => async dispatch => {
 	const res = await request.sendRequest({ url: '/music' })
