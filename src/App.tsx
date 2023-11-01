@@ -1,22 +1,17 @@
 import { Route, Routes } from 'react-router-dom'
 
-import React, { lazy, useLayoutEffect } from 'react'
-
-import { checkUserThunk } from './redux/slices/users/thunkActions'
-import { useAppDispatch, useAppSelector } from './redux/hooks'
+import React, { lazy } from 'react'
 import PrivateRouter from './HOC/PrivateRouter/PrivateRouter'
 import NAZRouter from './services/NAZRouter/NAZRouter'
 import AZRouter from './services/AZRouter/AZRouter'
-import LoginPage from './pages/LoginPage/LoginPage'
 import { useCheckUser } from './hooks/useCheckUser'
-import { useAZToggle } from './hooks/useAZToggle'
 import { Loader } from 'radio-app-uikit'
 
-const Error404 = lazy(() => import('./pages/Error404'))
+const Error404 = lazy(() => import('./pages/Error404/Error404'))
 
 function App(): JSX.Element {
-	useAZToggle()
 	const user = useCheckUser()
+	console.log(user)
 	return (
 		<div className="body">
 			{user.status === 'fetching' ? (

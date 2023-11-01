@@ -1,4 +1,4 @@
-import { searchRadioThunk } from '../../entities/radiosThunk'
+import { searchRadioThunk } from '../../entities/Radios/thunk'
 import InputCountry from '../inputCountry'
 import { useDispatch } from 'react-redux'
 import InputGenre from '../InputGenre'

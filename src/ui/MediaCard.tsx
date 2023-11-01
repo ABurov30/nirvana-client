@@ -1,4 +1,4 @@
-import { RadioType } from '../types/radioTypes'
+import { RadioType } from '../entities/Radios/types'
 import { useNavigate } from 'react-router-dom'
 import React, { useState } from 'react'
 import { Button } from 'reactstrap'

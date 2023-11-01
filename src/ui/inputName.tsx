@@ -16,29 +16,11 @@ export default function InputName(): JSX.Element {
 				renderInput={params => (
 					<TextField
 						{...params}
-						label="Название"
+						label="Station"
 						name="name"
-						InputLabelProps={{
-							sx: {
-								color: '#ff6ec7'
-							}
-						}}
 						InputProps={{
 							...params.InputProps,
-							type: 'search',
-							sx: {
-								color: '#ff6ec7',
-								'& .MuiOutlinedInput-notchedOutline': {
-									borderColor: '#ff6ec7'
-								},
-								'&:hover .MuiOutlinedInput-notchedOutline': {
-									borderColor: '#ff6ec7'
-								},
-								'&.Mui-focused .MuiOutlinedInput-notchedOutline':
-									{
-										borderColor: '#ff6ec7'
-									}
-							}
+							type: 'search'
 						}}
 					/>
 				)}

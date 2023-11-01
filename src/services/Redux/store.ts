@@ -1,6 +1,6 @@
 import { AnyAction, ThunkAction, configureStore } from '@reduxjs/toolkit'
-import radiosReducer from '../entities/radiosSlice'
-import userReducer from './slices/users/userSlice'
+import radiosReducer from '../../entities/Radios/slice'
+import userReducer from '../../entities/User/slice'
 
 export const store = configureStore({
 	reducer: {
@@ -8,8 +8,6 @@ export const store = configureStore({
 		user: userReducer
 	}
 })
-
-let a = 2
 
 export type RootState = ReturnType<typeof store.getState>
 

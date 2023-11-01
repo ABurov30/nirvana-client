@@ -1,14 +1,14 @@
 import { useGetAllRadios } from '../../hooks/useGetAllRadios'
-import { RadioType } from '../../types/radioTypes'
+import { useAppSelector } from '../../services/Redux/hooks'
+import { RadioType } from '../../entities/Radios/types'
 import { Card, Typography } from 'radio-app-uikit'
 import { useTranslation } from 'react-i18next'
 import style from './Radios.module.scss'
 import React from 'react'
 
 export default function Radios(): JSX.Element {
-	const radios = useGetAllRadios()
-	console.log(radios)
-	const { t } = useTranslation()
+	useGetAllRadios()
+	const { radios } = useAppSelector(state => state.radio)
 	return (
 		<>
 			<div>

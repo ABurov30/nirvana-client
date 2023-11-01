@@ -1,14 +1,13 @@
-import { useLayoutEffect } from "react"
-import { useAppDispatch, useAppSelector } from "../redux/hooks"
-import { checkUserThunk } from "../redux/slices/users/thunkActions"
+import { useAppDispatch, useAppSelector } from '../services/Redux/hooks'
+import { checkUserThunk } from '../entities/User/thunk'
+import { useLayoutEffect } from 'react'
 
+export function useCheckUser() {
+	const dispatch = useAppDispatch()
+	useLayoutEffect(() => {
+		dispatch(checkUserThunk())
+	}, [])
 
-export function useCheckUser () {
-const dispatch = useAppDispatch()
-useLayoutEffect(() => {
-	dispatch(checkUserThunk())
-}, [])
-
-const user = useAppSelector(state => state.user)
-return user
+	const user = useAppSelector(state => state.user)
+	return user
 }

@@ -33,10 +33,7 @@ module.exports = {
 		},
 		historyApiFallback: true
 	},
-	stats: {
-		children: true
-	},
-	mode: 'development',
+	mode: 'development',	
 	devtool: isDev ? 'source-map' : false,
 	module: {
 		rules: [
@@ -91,7 +88,7 @@ module.exports = {
 					{
 						loader: 'css-loader',
 						options: {
-							sourceMap: true,
+							sourceMap: true
 						}
 					}
 				]

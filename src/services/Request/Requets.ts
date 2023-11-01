@@ -46,7 +46,7 @@ class Request {
 				if (error.name === 'AbortError') {
 					console.log('Запрос был отменен')
 				} else {
-					console.log(error)
+					console.error(error)
 				}
 			})
 	}
@@ -98,9 +98,3 @@ class Request {
 
 export const request = new Request()
 
-//пример использования
-// request
-// 	.sendRequest({ method: 'get', url: '/users' }, { useMock: true, mockData })
-// 	.then(data => {
-// 		console.log(data)
-// 	})

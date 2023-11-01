@@ -1,9 +1,9 @@
-import { getRadioById } from '../entities/radiosThunk'
+import { useAppSelector } from '../../services/Redux/hooks'
+import { getRadioById } from '../../entities/Radios/thunk'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import CardMedia from '@mui/material/CardMedia'
 import { useTheme } from '@mui/material/styles'
-import { useAppSelector } from '../redux/hooks'
 import { useParams } from 'react-router-dom'
 import Button from '@mui/material/Button'
 import { useDispatch } from 'react-redux'
@@ -11,7 +11,6 @@ import Card from '@mui/material/Card'
 import Box from '@mui/material/Box'
 import { useEffect } from 'react'
 import * as React from 'react'
-import Chat from '../ui/Chat'
 
 export default function RadioPage() {
 	const { radio } = useAppSelector(state => state.radio)

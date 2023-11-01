@@ -1,33 +1,33 @@
-import { AuthForm, LoginForm } from '../../ui/AuthForm/AuthForm'
+import { loginUserThunk, signUpThunk } from '../../entities/User/thunk'
 import { useAppDispatch } from '../../services/Redux/hooks'
-import { loginUserThunk } from '../../entities/User/thunk'
-import { fields } from './config/formFieldsConfiguration'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import ImgSlider from '../../ui/ImgSlider/ImgSlider'
+import { AuthForm } from '../../ui/AuthForm/AuthForm'
 import { useNavigate } from 'react-router-dom'
-import styles from './LoginPage.module.scss'
+import styles from './SignupPage.module.scss'
 import { Typography } from 'radio-app-uikit'
 import React, { useRef } from 'react'
 
-export default function LoginPage(): JSX.Element {
+export default function SignupPage(): JSX.Element {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
-	const ref = useRef({ email: '', password: '' })
+	const ref = useRef({ name: '', email: '', password: '' })
 
 	async function onSubmit(event: React.FormEvent<unknown>) {
 		event.preventDefault()
-
-		const res = await dispatch(loginUserThunk(ref.current))
-
-		console.log(res)
+		console.log(ref.current)
+		const res = await dispatch(signUpThunk(ref.current))
+		ref.current = { name: '', email: '', password: '' }
 		if (res) {
-			ref.current = { email: '', password: '' }
 			console.log(ref.current)
 			navigate('/')
 		}
 	}
 
 	const fields = [
+		{
+			placeholder: 'Name',
+			required: true,
+			onChange: (e: Event) => (ref.current.name = e?.target?.value)
+		},
 		{
 			placeholder: 'E-mail',
 			type: 'email',
@@ -42,18 +42,15 @@ export default function LoginPage(): JSX.Element {
 		}
 	]
 
-	const buttons = [
-		{ text: 'Login', type: 'submit' },
-		{
-			text: 'Sign up',
-			onClick: () => navigate('/auth/signup'),
-			type: 'button'
-		}
-	]
+	const buttons = [{ text: 'Sign up' }]
 	return (
 		<div className={styles.container}>
 			<div className={styles.loginContainer}>
-				<Typography text={'Log in'} fontSize="16px" weight="semibold" />
+				<Typography
+					text={'Sign up'}
+					fontSize="16px"
+					weight="semibold"
+				/>
 				<div className={styles.formContainer}>
 					<AuthForm
 						className={styles.form}

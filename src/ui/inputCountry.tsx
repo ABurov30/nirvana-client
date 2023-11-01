@@ -18,29 +18,11 @@ export default function InputCountry(): JSX.Element {
 				renderInput={params => (
 					<TextField
 						{...params}
-						label="Страна"
+						label="Country"
 						name="country"
-						InputLabelProps={{
-							sx: {
-								color: '#ff6ec7'
-							}
-						}}
 						InputProps={{
 							...params.InputProps,
 							type: 'search',
-							sx: {
-								color: '#ff6ec7',
-								'& .MuiOutlinedInput-notchedOutline': {
-									borderColor: '#ff6ec7'
-								},
-								'&:hover .MuiOutlinedInput-notchedOutline': {
-									borderColor: '#ff6ec7'
-								},
-								'&.Mui-focused .MuiOutlinedInput-notchedOutline':
-									{
-										borderColor: '#ff6ec7'
-									}
-							}
 						}}
 					/>
 				)}

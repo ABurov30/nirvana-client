@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RadioType } from '../types/radioTypes'
+import type { RadioType } from './types'
 
 // Define a type for the slice state
 interface PostsState {

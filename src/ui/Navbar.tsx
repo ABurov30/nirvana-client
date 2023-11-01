@@ -1,14 +1,14 @@
-import * as React from 'react'
-import Box from '@mui/material/Box'
-import BottomNavigation from '@mui/material/BottomNavigation'
 import BottomNavigationAction from '@mui/material/BottomNavigationAction'
+import { useAppDispatch, useAppSelector } from '../services/Redux/hooks'
+import BottomNavigation from '@mui/material/BottomNavigation'
+import SensorDoorIcon from '@mui/icons-material/SensorDoor'
 import MusicNoteIcon from '@mui/icons-material/MusicNote'
 import FavoriteIcon from '@mui/icons-material/Favorite'
+import { logoutThunk } from '../entities/User/thunk'
 import PersonIcon from '@mui/icons-material/Person'
 import { useNavigate } from 'react-router-dom'
-import SensorDoorIcon from '@mui/icons-material/SensorDoor'
-import { useAppDispatch, useAppSelector } from '../redux/hooks'
-import { logoutThunk } from '../redux/slices/users/thunkActions'
+import Box from '@mui/material/Box'
+import * as React from 'react'
 
 export default function Navbar() {
 	const user = useAppSelector(state => state.user)
@@ -26,7 +26,7 @@ export default function Navbar() {
 				width: '100%',
 				marginBottom: '20px',
 				backgroundColor: '#111',
-				color: '#4c4cff',
+				color: '#4c4cff'
 			}}
 		>
 			<BottomNavigation
@@ -37,7 +37,7 @@ export default function Navbar() {
 				}}
 				sx={{
 					justifyContent: 'space-around',
-					width: '100%',
+					width: '100%'
 				}}
 			>
 				<BottomNavigationAction
@@ -47,8 +47,8 @@ export default function Navbar() {
 					sx={{
 						'&.Mui-selected': {
 							color: '#4c4cff',
-							backgroundColor: '#fff',
-						},
+							backgroundColor: '#fff'
+						}
 					}}
 				/>
 				<BottomNavigationAction
@@ -57,8 +57,8 @@ export default function Navbar() {
 					sx={{
 						'&.Mui-selected': {
 							color: '#4c4cff',
-							backgroundColor: '#fff',
-						},
+							backgroundColor: '#fff'
+						}
 					}}
 				/>
 				{user.status === 'logged' ? (
@@ -69,8 +69,8 @@ export default function Navbar() {
 							sx={{
 								'&.Mui-selected': {
 									color: '#4c4cff',
-									backgroundColor: '#fff',
-								},
+									backgroundColor: '#fff'
+								}
 							}}
 						/>
 						<BottomNavigationAction
@@ -80,8 +80,8 @@ export default function Navbar() {
 							sx={{
 								'&.Mui-selected': {
 									color: '#4c4cff',
-									backgroundColor: '#fff',
-								},
+									backgroundColor: '#fff'
+								}
 							}}
 						/>
 					</Box>
@@ -93,8 +93,8 @@ export default function Navbar() {
 						sx={{
 							'&.Mui-selected': {
 								color: '#4c4cff',
-								backgroundColor: '#fff',
-							},
+								backgroundColor: '#fff'
+							}
 						}}
 					/>
 				)}
