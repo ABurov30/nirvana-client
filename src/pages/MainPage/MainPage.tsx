@@ -8,7 +8,6 @@ const MediaCard = lazy(() => import('../../ui/MediaCard'))
 export default function MainPage(): JSX.Element {
 	return (
 		<>
-			<Form />
 			<Radios />
 		</>
 	)

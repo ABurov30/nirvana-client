@@ -10,9 +10,8 @@ export function useUniqGenre() {
 			.sendRequest({
 				url: '/music/uniqGenre'
 			})
-			.then(res => setGenres(res))
+			.then(res => setGenres(res.data))
 			.catch(e => console.error(e))
-
 	}, [])
 
 	return genres

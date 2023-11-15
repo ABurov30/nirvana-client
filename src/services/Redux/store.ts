@@ -1,11 +1,13 @@
 import { AnyAction, ThunkAction, configureStore } from '@reduxjs/toolkit'
+import notificationSlice from '../../entities/Notification/slice'
 import radiosReducer from '../../entities/Radios/slice'
 import userReducer from '../../entities/User/slice'
 
 export const store = configureStore({
 	reducer: {
 		radio: radiosReducer,
-		user: userReducer
+		user: userReducer,
+		notification: notificationSlice
 	}
 })
 

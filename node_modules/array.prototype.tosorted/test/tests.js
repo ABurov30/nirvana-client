@@ -77,7 +77,7 @@ module.exports = function (toSorted, t) {
 			}
 		});
 
-		var up = {};
+		var up = { gross: true };
 		st['throws'](
 			function () {
 				toSorted(arrayLike, function () {

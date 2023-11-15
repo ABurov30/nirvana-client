@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.5.1](https://github.com/es-shims/RegExp.prototype.flags/compare/v1.5.0...v1.5.1) - 2023-09-12
+
+### Commits
+
+- [Refactor] use `set-function-name` [`1384147`](https://github.com/es-shims/RegExp.prototype.flags/commit/13841474baf5700de8e3f65fae3670ad1b233483)
+- [Dev Deps] update `@es-shims/api`, `@ljharb/eslint-config`, `aud`, `available-regexp-flags`, `tape` [`07bf9a2`](https://github.com/es-shims/RegExp.prototype.flags/commit/07bf9a2c354cc41379b01fe5c383233adaaccf0e)
+- [Dev Deps] add missing `npmignore` dep [`8ca9dfe`](https://github.com/es-shims/RegExp.prototype.flags/commit/8ca9dfe4da31ef74ee48a4dcf62692eebb8f8fdd)
+
 ## [v1.5.0](https://github.com/es-shims/RegExp.prototype.flags/compare/v1.4.3...v1.5.0) - 2023-04-18
 
 ### Commits

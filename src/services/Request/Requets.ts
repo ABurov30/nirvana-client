@@ -1,6 +1,9 @@
 import { AxiosProgressEvent, AxiosRequestConfig, AxiosResponse } from 'axios'
-import { config } from 'react-transition-group'
+import { setNotification } from '../../entities/Notification/slice'
+import { useAppDispatch } from '../Redux/hooks'
 import MockAdapter from 'axios-mock-adapter'
+import { IRequestParams } from './types'
+import { store } from '../Redux/store'
 import axios from 'axios'
 
 const NewInstanse = axios.create({
@@ -9,12 +12,7 @@ const NewInstanse = axios.create({
 	withCredentials: true
 })
 
-interface IRequestParams {
-	method?: string
-	url: string
-	data?: any
-	useMock?: boolean
-}
+const { dispatch } = store
 
 class Request {
 	private controller = new AbortController()
@@ -40,12 +38,29 @@ class Request {
 
 		return NewInstanse(requestOptions)
 			.then(function (response: AxiosResponse) {
-				return response.data
+				console.log(response, 'response in Axios')
+				return response
 			})
-			.catch(function (error) {
+			.catch(error => {
 				if (error.name === 'AbortError') {
 					console.log('Запрос был отменен')
 				} else {
+					if (error.response?.data !== 'Unauthorized') {
+						dispatch(
+							setNotification({
+								message: error?.response?.data,
+								severity: 'error'
+							})
+						)
+					} else {
+						dispatch(
+							setNotification({
+								message: error?.response?.data,
+								severity: 'info'
+							})
+						)
+					}
+
 					console.error(error)
 				}
 			})
@@ -97,4 +112,3 @@ class Request {
 }
 
 export const request = new Request()
-

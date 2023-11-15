@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import React, { Suspense, lazy } from 'react'
 
-const Navbar = lazy(() => import('../../ui/Navbar'))
+const Navbar = lazy(() => import('../../ui/OldNavbar'))
 const Cards = lazy(() => import('../../pages/MainPage/MainPage'))
 const RadioPage = lazy(() => import('../../pages/RadioPage/RadioPage'))
 

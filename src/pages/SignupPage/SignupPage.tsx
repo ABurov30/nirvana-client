@@ -13,11 +13,10 @@ export default function SignupPage(): JSX.Element {
 
 	async function onSubmit(event: React.FormEvent<unknown>) {
 		event.preventDefault()
-		console.log(ref.current)
 		const res = await dispatch(signUpThunk(ref.current))
 		ref.current = { name: '', email: '', password: '' }
+		console.log(res, 'res in SignUpPage')
 		if (res) {
-			console.log(ref.current)
 			navigate('/')
 		}
 	}
@@ -42,7 +41,14 @@ export default function SignupPage(): JSX.Element {
 		}
 	]
 
-	const buttons = [{ text: 'Sign up' }]
+	const buttons = [
+		{ text: 'Sign up' },
+		{
+			text: 'Login',
+			onClick: () => navigate('/auth/login'),
+			type: 'button'
+		}
+	]
 	return (
 		<div className={styles.container}>
 			<div className={styles.loginContainer}>
@@ -60,9 +66,6 @@ export default function SignupPage(): JSX.Element {
 					/>
 				</div>
 			</div>
-			{/* <div className={styles.sliderContainer}>
-				<ImgSlider />
-			</div> */}
 		</div>
 	)
 }

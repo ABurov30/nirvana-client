@@ -1,6 +1,5 @@
 import type { LoginForm, SignUpForm } from '../../../../types/formType'
 import type { ThunkActionCreater } from '../../services/Redux/store'
-import type { UserFromBackend } from '../../../../types/userType'
 import { request } from '../../services/Request/Requets'
 import { logoutUser, setUser } from './slice'
 import axios from 'axios'
@@ -17,11 +16,13 @@ export const signUpThunk: ThunkActionCreater<SignUpForm> =
 			}
 		})
 		if (res.status !== 200) {
-			dispatch(setUser({ ...res, status: 'guest' }))
+			dispatch(setUser({ ...res.data, status: 'guest' }))
+			return false
+		} else {
+			console.log(res, 'res in loginUserThunk')
+			dispatch(setUser({ ...res.data, status: 'logged' }))
+			return true
 		}
-
-		dispatch(setUser({ ...res, status: 'logged' }))
-		return true
 	}
 
 export const loginUserThunk: ThunkActionCreater<LoginForm> =
@@ -31,12 +32,14 @@ export const loginUserThunk: ThunkActionCreater<LoginForm> =
 			url: '/auth/login',
 			data: formData
 		})
-		if (res.status !== 200) {
-			dispatch(setUser({ ...res, status: 'guest' }))
+		console.log(res, 'res in loginUserThunk')
+		if (res?.status !== 200) {
+			dispatch(setUser({ ...res.data, status: 'guest' }))
+			return false
+		} else {
+			dispatch(setUser({ ...res.data, status: 'logged' }))
+			return true
 		}
-
-		dispatch(setUser({ ...res, status: 'logged' }))
-		return true
 	}
 
 export const checkUserThunk: ThunkActionCreater = () => dispatch => {
@@ -44,12 +47,12 @@ export const checkUserThunk: ThunkActionCreater = () => dispatch => {
 		.sendRequest({
 			url: '/auth/check'
 		})
-		.then(data => {
-			console.log(data)
-			if (data.status !== 200) {
-				dispatch(setUser({ status: 'quest' }))
+		.then(res => {
+			if (res?.status !== 200) {
+				dispatch(setUser({ status: 'guest' }))
+			} else {
+				dispatch(setUser({ ...res.data, status: 'logged' }))
 			}
-			dispatch(setUser({ ...data, status: 'logged' }))
 		})
 		.catch(err => {
 			console.error(err)
@@ -63,5 +66,5 @@ export const logoutThunk: ThunkActionCreater = () => dispatch => {
 			url: '/auth/logout'
 		})
 		.then(() => dispatch(logoutUser()))
-		.catch(console.log)
+		.catch(e => console.error(e))
 }

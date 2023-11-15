@@ -1,9 +1,9 @@
 'use strict';
 
-var CreateDataProperty = require('es-abstract/2022/CreateDataProperty');
-var IsCallable = require('es-abstract/2022/IsCallable');
-var RequireObjectCoercible = require('es-abstract/2022/RequireObjectCoercible');
-var ToObject = require('es-abstract/2022/ToObject');
+var CreateDataProperty = require('es-abstract/2023/CreateDataProperty');
+var IsCallable = require('es-abstract/2023/IsCallable');
+var RequireObjectCoercible = require('es-abstract/2023/RequireObjectCoercible');
+var ToObject = require('es-abstract/2023/ToObject');
 var safeConcat = require('safe-array-concat');
 var reduce = require('array.prototype.reduce');
 

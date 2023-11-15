@@ -1,128 +1,20 @@
 .body {
-  background-color: #fff;
+	background-color: #fff;
 }
 
-.search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+:root {
+	--primary-grey: #434544;
+	--primary-black: #2a2630;
+	--primary-white: #f3f3f3;
+	--primary-green: #5ee9bf;
+	--primary-blue: #2f69ff;
+	--primary-violet: #6360ff;
+	--primary-pink: #a16ae8;
+
+	--minor-violet: #b19ff9;
+	--minor-pink: #db55d4;
+	--minor-dark-pink: #b537b5;
+	--minor-blue: #2105d0;
+	--minor-red: #bb0310;
 }
 
-.input-container {
-  margin-right: 10px;
-}
-
-.search-button {
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #4c4cff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.search-button:hover {
-  background-color: #3939ff;
-}
-
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.media-card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.media-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 400px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #fff;
-  color: #4c4cff;
-  border: 2px solid #4c4cff;
-  transition: transform 0.3s ease;
-}
-
-.media-card:hover {
-  transform: translateY(-5px);
-}
-
-.media-card-image-container {
-  width: 100%;
-  height: 150%;
-}
-
-.media-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.media-card-content {
-  padding: 16px;
-  text-align: center;
-}
-
-.media-card-title {
-  margin: 0;
-  font-size: 20px;
-  font-weight: bold;
-  color: #4c4cff;
-}
-
-.media-card-subtitle {
-  margin: 8px 0;
-  font-size: 14px;
-  color: #4c4cff;
-}
-
-.media-card-button {
-  margin: 10px;
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #4c4cff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.media-card-button:hover {
-  background-color: #3939ff;
-}
-
-.fade-enter {
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-}
-
-.fade-enter-active {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition: opacity 300ms ease-in, transform 300ms ease-in;
-}
-
-.fade-exit {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.fade-exit-active {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 300ms ease-out, transform 300ms ease-out;
-}

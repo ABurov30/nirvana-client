@@ -1,5 +1,5 @@
 export type IProps = {
-	children: React.ReactElement
+	children?: React.ReactElement
 	redirectPath?: string
 	isAllowed?: boolean
 }

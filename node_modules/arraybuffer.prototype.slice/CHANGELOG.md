@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.2](https://github.com/es-shims/ArrayBuffer.prototype.slice/compare/v1.0.1...v1.0.2) - 2023-09-05
+
+### Commits
+
+- [Deps] update `es-abstract` [`a9ab0d2`](https://github.com/es-shims/ArrayBuffer.prototype.slice/commit/a9ab0d2551bb301b740e333ea3795fad23fcbe40)
+- [Dev Deps] update `tape` [`6b24af5`](https://github.com/es-shims/ArrayBuffer.prototype.slice/commit/6b24af585dc9176c8ac3fd482cb1d5257e550a09)
+- [Fix] move `es-abstract` to runtime deps [`63a8397`](https://github.com/es-shims/ArrayBuffer.prototype.slice/commit/63a8397623d7749856f6392ae93bf87152c3916c)
+
 ## [v1.0.1](https://github.com/es-shims/ArrayBuffer.prototype.slice/compare/v1.0.0...v1.0.1) - 2023-07-11
 
 ### Commits

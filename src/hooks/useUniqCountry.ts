@@ -10,7 +10,7 @@ export function useUniqCountry() {
 			.sendRequest({
 				url: '/music/uniqCountry'
 			})
-			.then(res => setCounties(res))
+			.then(res => setCounties(res.data))
 			.catch(e => console.error(e))
 	}, [])
 

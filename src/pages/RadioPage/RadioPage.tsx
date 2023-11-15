@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux'
 import Card from '@mui/material/Card'
 import Box from '@mui/material/Box'
 import { useEffect } from 'react'
-import * as React from 'react'
+import React from 'react'
 
 export default function RadioPage() {
 	const { radio } = useAppSelector(state => state.radio)
@@ -19,7 +19,6 @@ export default function RadioPage() {
 	useEffect(() => {
 		dispatch(getRadioById(id))
 	}, [])
-	const theme = useTheme()
 
 	const [isPlaying, setIsPlaying] = React.useState(false)
 

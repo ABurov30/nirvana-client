@@ -12,9 +12,6 @@ var hasSymbols = require('has-symbols/shams')();
 var isConcatSpreadable = hasSymbols && Symbol.isConcatSpreadable;
 
 var empty = [];
-if (isConcatSpreadable) {
-	empty[isConcatSpreadable] = true;
-}
 var $concatApply = isConcatSpreadable ? callBind.apply($concat, empty) : null;
 var $concatCall = isConcatSpreadable ? null : callBind($concat, empty);
 
@@ -26,6 +23,9 @@ module.exports = isConcatSpreadable
 		for (var i = 0; i < arguments.length; i += 1) {
 			var arg = arguments[i];
 			if (arg && typeof arg === 'object' && typeof arg[isConcatSpreadable] === 'boolean') {
+				if (!empty[isConcatSpreadable]) {
+					empty[isConcatSpreadable] = true;
+				}
 				var arr = isArray(arg) ? $slice(arg) : [arg];
 				arr[isConcatSpreadable] = true; // shadow the property. TODO: use [[Define]]
 				arguments[i] = arr;

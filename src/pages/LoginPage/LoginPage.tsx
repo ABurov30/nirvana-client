@@ -17,12 +17,10 @@ export default function LoginPage(): JSX.Element {
 	async function onSubmit(event: React.FormEvent<unknown>) {
 		event.preventDefault()
 
-		const res = await dispatch(loginUserThunk(ref.current))
-
-		console.log(res)
-		if (res) {
+		const isLogged = await dispatch(loginUserThunk(ref.current))
+		console.log(isLogged, 'res in LoginPage')
+		if (isLogged) {
 			ref.current = { email: '', password: '' }
-			console.log(ref.current)
 			navigate('/')
 		}
 	}
@@ -63,9 +61,6 @@ export default function LoginPage(): JSX.Element {
 					/>
 				</div>
 			</div>
-			{/* <div className={styles.sliderContainer}>
-				<ImgSlider />
-			</div> */}
 		</div>
 	)
 }

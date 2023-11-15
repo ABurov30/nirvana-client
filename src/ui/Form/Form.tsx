@@ -1,8 +1,8 @@
 import { searchRadioThunk } from '../../entities/Radios/thunk'
-import InputCountry from '../inputCountry'
+import InputCountry from '../Inputs/inputCountry'
+import InputGenre from '../Inputs/InputGenre'
+import InputName from '../Inputs/inputName'
 import { useDispatch } from 'react-redux'
-import InputGenre from '../InputGenre'
-import InputName from '../inputName'
 import React from 'react'
 
 export default function Form() {

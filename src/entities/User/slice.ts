@@ -2,7 +2,6 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import type { UserType } from '../../../../types/userType';
 
-// Define the initial state using that type
 const initialState: UserType = {
   status: 'fetching',
 };

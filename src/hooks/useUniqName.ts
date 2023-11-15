@@ -10,7 +10,7 @@ export function useUniqName() {
 			.sendRequest({
 				url: '/music/uniqNames'
 			})
-			.then(res => setNames(res))
+			.then(res => setNames(res.data))
 			.catch(e => console.log(e))
 	}, [])
 
