@@ -1,4 +1,4 @@
-export type RadioType = {
+export type Radio = {
   id: string;
   name: string;
   url: string;

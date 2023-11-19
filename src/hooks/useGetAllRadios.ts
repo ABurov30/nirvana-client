@@ -1,11 +1,11 @@
 import { getAllRadiosThunk } from '../entities/Radios/thunk'
-import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { useLayoutEffect } from 'react'
 
-export function useGetAllRadios() {
+export async function useGetAllRadios() {
 	const dispatch = useDispatch()
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		dispatch(getAllRadiosThunk())
 	}, [])
 }

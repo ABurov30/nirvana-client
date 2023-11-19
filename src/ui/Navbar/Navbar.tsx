@@ -15,15 +15,11 @@ export default function Navbar() {
 	const [isHovered, setIsHovered] = useState(false)
 	const navigate = useNavigate()
 	const location = useLocation()
-	console.log(location.pathname === '/')
 
 	return (
 		<RadioNavbar isHovered={isHovered} setIsHovered={setIsHovered}>
 			<NavSection>
-				<LogoNavbarButton
-					onClick={() => navigate('/')}
-					isActive={location.pathname === '/'}
-				/>
+				<LogoNavbarButton onClick={() => navigate('/')} />
 			</NavSection>
 			<NavSection>
 				<HomeNavbarButton

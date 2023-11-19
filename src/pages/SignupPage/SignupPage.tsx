@@ -15,7 +15,6 @@ export default function SignupPage(): JSX.Element {
 		event.preventDefault()
 		const res = await dispatch(signUpThunk(ref.current))
 		ref.current = { name: '', email: '', password: '' }
-		console.log(res, 'res in SignUpPage')
 		if (res) {
 			navigate('/')
 		}

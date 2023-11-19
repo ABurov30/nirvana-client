@@ -7,8 +7,6 @@ import {
 import { useAppDispatch, useAppSelector } from '../../services/Redux/hooks'
 import { getAllRadiosThunk } from '../../entities/Radios/thunk'
 import { useGetAllRadios } from '../../hooks/useGetAllRadios'
-import { RadioType } from '../../entities/Radios/types'
-import { useTranslation } from 'react-i18next'
 import style from './Radios.module.scss'
 import React, { useState } from 'react'
 
@@ -41,8 +39,14 @@ export default function Radios(): JSX.Element {
 						weight="medium"
 					/>
 					<div className={style.buttonsContainer}>
-						<LeftArrowRoundButton onClick={loadPreviousRadios} size={40}/>
-						<RightArrowRoundButton onClick={loadNextRadios} size={40}/>
+						<LeftArrowRoundButton
+							onClick={loadPreviousRadios}
+							size={40}
+						/>
+						<RightArrowRoundButton
+							onClick={loadNextRadios}
+							size={40}
+						/>
 					</div>
 				</div>
 				<div className={style.cardsContainer}>
