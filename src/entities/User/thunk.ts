@@ -16,11 +16,10 @@ export const signUpThunk: ThunkActionCreater<SignUpForm> =
 			}
 		})
 		if (res.status !== 200) {
-			dispatch(setUser({ ...res.data, status: 'guest' }))
+			dispatch(setUser({ ...res?.data, status: 'guest' }))
 			return false
 		} else {
-			console.log(res, 'res in loginUserThunk')
-			dispatch(setUser({ ...res.data, status: 'logged' }))
+			dispatch(setUser({ ...res?.data, status: 'logged' }))
 			return true
 		}
 	}
@@ -32,12 +31,11 @@ export const loginUserThunk: ThunkActionCreater<LoginForm> =
 			url: '/auth/login',
 			data: formData
 		})
-		console.log(res, 'res in loginUserThunk')
 		if (res?.status !== 200) {
-			dispatch(setUser({ ...res.data, status: 'guest' }))
+			dispatch(setUser({ ...res?.data, status: 'guest' }))
 			return false
 		} else {
-			dispatch(setUser({ ...res.data, status: 'logged' }))
+			dispatch(setUser({ ...res?.data, status: 'logged' }))
 			return true
 		}
 	}
@@ -51,7 +49,7 @@ export const checkUserThunk: ThunkActionCreater = () => dispatch => {
 			if (res?.status !== 200) {
 				dispatch(setUser({ status: 'guest' }))
 			} else {
-				dispatch(setUser({ ...res.data, status: 'logged' }))
+				dispatch(setUser({ ...res?.data, status: 'logged' }))
 			}
 		})
 		.catch(err => {

@@ -8,7 +8,6 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 })
 
 export default function Toast({ severity, message }: ToastProps) {
-	console.log(severity, message, 'in Toast')
 	const [open, setOpen] = useState(true)
 
 	const handleClose = (event: Event, reason: string) => {

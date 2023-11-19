@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "webpack serve --config ./webpack.config.cjs",
+    "start": "webpack serve --config ./webpack.config.cjs",
     "prod": "webpack --node-env=production",
     "clear": "rd /s /q dist"
   },
@@ -22,7 +22,6 @@
     "i18next": "^23.6.0",
     "i18next-browser-languagedetector": "^7.1.0",
     "i18next-http-backend": "^2.3.1",
-    "radio-app-uikit": "^1.0.38",
     "radio-browser": "^2.2.3",
     "radio-browser-api": "^6.0.1",
     "react": "^18.2.0",

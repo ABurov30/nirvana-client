@@ -1,18 +1,17 @@
+import MainPage from '../../pages/MainPage/MainPage'
 import { Route, Routes } from 'react-router-dom'
 import React, { Suspense, lazy } from 'react'
-
-const Navbar = lazy(() => import('../../ui/OldNavbar'))
-const Cards = lazy(() => import('../../pages/MainPage/MainPage'))
-const RadioPage = lazy(() => import('../../pages/RadioPage/RadioPage'))
+import styles from './AZRouter.module.scss'
+import Navbar from '../../ui/Navbar/Navbar'
+import OldNavbar from '../../ui/OldNavbar'
 
 export default function AZRouter() {
 	return (
-		<>
+		<div className={styles.azContainer}>
 			<Navbar />
 			<Routes>
-				<Route path="/" element={<Cards />} />
-				<Route path="/radio/:id" element={<RadioPage />} />
+				<Route path="/" element={<MainPage />} />
 			</Routes>
-		</>
+		</div>
 	)
 }

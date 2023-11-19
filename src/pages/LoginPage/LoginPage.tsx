@@ -18,7 +18,6 @@ export default function LoginPage(): JSX.Element {
 		event.preventDefault()
 
 		const isLogged = await dispatch(loginUserThunk(ref.current))
-		console.log(isLogged, 'res in LoginPage')
 		if (isLogged) {
 			ref.current = { email: '', password: '' }
 			navigate('/')

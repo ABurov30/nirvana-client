@@ -38,12 +38,10 @@ class Request {
 
 		return NewInstanse(requestOptions)
 			.then(function (response: AxiosResponse) {
-				console.log(response, 'response in Axios')
 				return response
 			})
 			.catch(error => {
 				if (error.name === 'AbortError') {
-					console.log('Запрос был отменен')
 				} else {
 					if (error.response?.data !== 'Unauthorized') {
 						dispatch(

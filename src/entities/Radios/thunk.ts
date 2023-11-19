@@ -5,7 +5,6 @@ import FormType from '../../ui/Form/type'
 
 export const getAllRadiosThunk: ThunkActionCreater<number | undefined> =
 	offset => async dispatch => {
-		console.log(offset, 'offset in thunk')
 		const res = await request.sendRequest({
 			method: 'post',
 			url: '/music',
