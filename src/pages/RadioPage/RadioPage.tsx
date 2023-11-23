@@ -1,17 +1,26 @@
-import { searchRadioThunk } from '../../entities/Radios/thunk'
+import {
+	getAllRadiosThunk,
+	searchRadioThunk
+} from '../../entities/Radios/thunk'
+import { useAppDispatch, useAppSelector } from '../../services/Redux/hooks'
 import SearchForm from '../../ui/Forms/SearchForm/SearchForm'
+import { useGetAllRadios } from '../../hooks/useGetAllRadios'
 import { useUniqCountry } from '../../hooks/useUniqCountry'
 import { useUniqGenre } from '../../hooks/useUniqTaqs'
 import { useUniqName } from '../../hooks/useUniqName'
-import Radios from '../../widgets/Radios/Radios'
+import TracksRow from '../../ui/TracksRow/TracksRow'
 import styles from './RadioPage.module.scss'
 import { useDispatch } from 'react-redux'
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function RadioPage(): JSX.Element {
 	const countries = useUniqCountry()
 	const genres = useUniqGenre()
 	const names = useUniqName()
+	useGetAllRadios()
+	const dispatch = useAppDispatch()
+	const { radios } = useAppSelector(state => state.radio)
+	const [offset, setOffset] = useState(0)
 
 	const fields = [
 		{ label: 'Station', name: 'name', options: names },
@@ -26,13 +35,27 @@ export default function RadioPage(): JSX.Element {
 		}
 	]
 
-	const dispatch = useDispatch()
 	const searchHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		const formData = Object.fromEntries(new FormData(e.target))
 		console.log(formData, 'form data')
 		dispatch(searchRadioThunk(formData))
 	}
+
+	const loadPrevRadios = () => {
+		if (offset >= 5) {
+			setOffset(prev => prev - 5)
+			dispatch(getAllRadiosThunk(offset))
+		} else {
+			dispatch(getAllRadiosThunk(0))
+		}
+	}
+
+	const loadNextRadios = () => {
+		setOffset(prev => prev + 5)
+		dispatch(getAllRadiosThunk(offset))
+	}
+
 
 	console.log()
 	return (
@@ -42,7 +65,11 @@ export default function RadioPage(): JSX.Element {
 				buttons={buttons}
 				onSubmit={searchHandler}
 			/>
-			<Radios />
+			<TracksRow
+				tracks={radios}
+				loadNext={loadNextRadios}
+				loadPrev={loadPrevRadios}
+			/>
 		</div>
 	)
 }

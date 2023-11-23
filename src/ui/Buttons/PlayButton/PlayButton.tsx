@@ -2,7 +2,10 @@ import styles from './PlayButton.module.scss'
 import { PlayButtonProps } from './types'
 import React from 'react'
 
-export default function PlayButton({ isPlaying, onClick }: PlayButtonProps) {
+export default function PlayButton({
+	isPlaying,
+	onClick,
+}: PlayButtonProps) {
 	return (
 		<button className={styles.container} onClick={onClick}>
 			<input checked={isPlaying} type="checkbox" />

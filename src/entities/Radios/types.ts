@@ -11,6 +11,7 @@ export type Radio = {
 	codec: string
 	progress: number
 	length: number
+	isLiked: boolean
 }
 
 export type ApiResponse = {}

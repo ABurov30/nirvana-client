@@ -1,9 +1,10 @@
 import SkipPreviousRoundedIcon from '@mui/icons-material/SkipPreviousRounded'
-import { MixRoundButton, RoundButton, VolumeButton } from 'radio-app-uikit'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
-import React, { useEffect, useRef, useState } from 'react'
+import { MixRoundButton, RoundButton } from 'radio-app-uikit'
 import PlayButton from '../Buttons/PlayButton/PlayButton'
+import LikeButton from '../Buttons/LikeButton/LikeButton'
 //@ts-ignore
 import styles from './Player.module.scss'
 import { PlayerProps } from './types'
@@ -35,26 +36,34 @@ const mock = [
 	}
 ]
 
-export default function Player({ tracks }: PlayerProps) {
-	tracks = mock
-	const [isPlaying, setIsPlaying] = useState(false)
-	const [currentTrack, setCurrentTrack] = useState(tracks[0])
-
-	useEffect(() => {
-		setCurrentTrack(tracks[0])
-	}, [tracks])
+export default function Player({ tracks, position }: PlayerProps) {
+	// tracks = mock
+	const [isPlaying, setIsPlaying] = useState(true)
+	const [currentTrack, setCurrentTrack] = useState(tracks[position])
+	console.log(tracks, 'tracks in player')
 
 	const audioElem = useRef<any>()
 	const clickRef = useRef<any>()
 	const volumeRef = useRef<any>()
 
-	useEffect(() => {
+	useLayoutEffect(() => {
+		setCurrentTrack(tracks[position])
+		setTimeout(() => {
+			audioElem.current.play()
+		}, 200)
+	}, [tracks, position])
+
+	useLayoutEffect(() => {
 		if (isPlaying) {
 			audioElem?.current?.play()
 		} else {
 			audioElem?.current?.pause()
 		}
 	}, [isPlaying])
+
+	useLayoutEffect(() => {
+		setIsPlaying(true)
+	}, [])
 
 	const PlayPause = () => {
 		setIsPlaying(prev => !prev)
@@ -120,10 +129,6 @@ export default function Player({ tracks }: PlayerProps) {
 		if (audioElem?.current?.currentTime === currentTrack?.length) skipNext()
 	}, [audioElem?.current?.currentTime])
 
-	useEffect(() => {
-		PlayPause()
-	}, [])
-
 	return (
 		<>
 			<audio
@@ -144,6 +149,7 @@ export default function Player({ tracks }: PlayerProps) {
 					</div>
 				</div>
 				<div className={styles.controls}>
+					<LikeButton isLiked={currentTrack?.isLiked} />
 					<RoundButton
 						icon={<SkipPreviousRoundedIcon />}
 						onClick={skipPrevious}
