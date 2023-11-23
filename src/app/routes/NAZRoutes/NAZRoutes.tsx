@@ -1,10 +1,10 @@
-import LoginPage from '../../pages/LoginPage/LoginPage'
+import LoginPage from '../../../pages/LoginPage/LoginPage'
 import { Route, Routes } from 'react-router-dom'
 
-import SignupPage from '../../pages/SignupPage/SignupPage'
+import SignupPage from '../../../pages/SignupPage/SignupPage'
 import React from 'react'
 
-export default function NAZRouter() {
+function NAZRoutes() {
 	return (
 		<Routes>
 			<Route path="/login" element={<LoginPage />} />
@@ -12,3 +12,5 @@ export default function NAZRouter() {
 		</Routes>
 	)
 }
+
+export default NAZRoutes

@@ -1,0 +1,14 @@
+.avatarContainer {
+	position: fixed;
+	top: 2vh;
+	right: 2vh;
+	border: none;
+	background-color: transparent;
+	height: 50px;
+	width: 60px;
+	transition: all 0.5s ease-out;
+}
+
+.avatarContainer:hover {
+	transform: scale(1.1);
+}

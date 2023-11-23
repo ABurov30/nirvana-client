@@ -6,6 +6,6 @@ export async function useGetAllRadios() {
 	const dispatch = useDispatch()
 
 	useLayoutEffect(() => {
-		dispatch(getAllRadiosThunk())
+		dispatch(getAllRadiosThunk(0))
 	}, [])
 }

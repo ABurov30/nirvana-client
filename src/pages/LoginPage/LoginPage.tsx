@@ -1,4 +1,4 @@
-import { AuthForm, LoginForm } from '../../ui/AuthForm/AuthForm'
+import { AuthForm, LoginForm } from '../../ui/Forms/AuthForm/AuthForm'
 import { useAppDispatch } from '../../services/Redux/hooks'
 import { loginUserThunk } from '../../entities/User/thunk'
 import { fields } from './config/formFieldsConfiguration'

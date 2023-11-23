@@ -1,6 +1,6 @@
 import { loginUserThunk, signUpThunk } from '../../entities/User/thunk'
+import { AuthForm } from '../../ui/Forms/AuthForm/AuthForm'
 import { useAppDispatch } from '../../services/Redux/hooks'
-import { AuthForm } from '../../ui/AuthForm/AuthForm'
 import { useNavigate } from 'react-router-dom'
 import styles from './SignupPage.module.scss'
 import { Typography } from 'radio-app-uikit'

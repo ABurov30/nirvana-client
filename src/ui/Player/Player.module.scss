@@ -1,4 +1,152 @@
-.seekBar {
-	height: 20px;
-	background-color: red;
+@import '../../constants/colors.scss';
+
+.playerContainer {
+	background-color: $primary-white;
+	padding: 10px;
+	position: fixed;
+	bottom: 0;
+	height: 10vh;
+	width: 100vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 2;
+}
+
+.track {
+	opacity: 1;
+	margin: 10px 0px;
+	margin-left: 30px;
+	display: flex;
+	gap: 10px;
+	height: 100%;
+	align-items: center;
+}
+
+.track img {
+	border-radius: 4px;
+	height: 100%;
+}
+
+.title {
+	display: flex;
+	flex-direction: column;
+}
+
+.controls {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.name {
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.artist {
+	font-size: 12px;
+}
+
+.navigation {
+	width: 40%;
+}
+
+.navigationController {
+	background-color: $primary-white;
+	height: 5px;
+	border-radius: 14px;
+}
+
+.navigationBar {
+	background-color: $primary-green;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: row-reverse;
+}
+
+.pointer {
+	display: none;
+	background-color: $primary-black;
+	height: 5px;
+	width: 5px;
+	border-radius: 20px;
+}
+
+.navigationController:hover .pointer,
+.volumeController:hover .pointer {
+	display: block;
+}
+
+.volumeController:hover,
+.navigationController:hover {
+	overflow: visible;
+}
+
+.volumeController:hover .volumeBar,
+.navigationController:hover .navigationBar {
+	border-radius: 20px;
+}
+
+.duration {
+	float: right;
+}
+
+.navigationController {
+	background-color: $primary-white;
+	height: 5px;
+	border-radius: 14px;
+	overflow: hidden;
+}
+
+.volumeBar {
+	background-color: $minor-violet;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: row-reverse;
+}
+
+.volumeController {
+	background-color: $primary-white;
+	height: 5px;
+	border-radius: 14px;
+	overflow: hidden;
+	width: 100%;
+}
+
+.volume {
+	height: 100%;
+	width: 10%;
+	margin-right: 40px;
+	display: flex;
+	align-items: center;
+}
+
+.controlButton {
+	background-color: transparent;
+	width: 50px;
+	height: 50px;
+	transition: ease-in-out;
+}
+
+.controlButton svg {
+	color: $primary-grey;
+}
+
+.controlButton:hover svg {
+	color: $primary-green;
+}
+
+.volumeButton {
+	background-color: transparent;
+	width: 50px;
+	height: 50px;
+	transition: ease-in-out;
+}
+
+.volumeButton:hover svg {
+	color: $minor-violet;
 }

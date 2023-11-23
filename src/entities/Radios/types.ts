@@ -1,14 +1,16 @@
 export type Radio = {
-  id: string;
-  name: string;
-  url: string;
-  homepage: string;
-  country: string;
-  favicon: string;
-  tags: ['', ''];
-  language: ['', ''];
-  votes: number;
-  codec: string;
-};
+	id: string
+	name: string
+	url: string
+	homepage: string
+	country: string
+	favicon: string
+	tags: ['', '']
+	language: ['', '']
+	votes: number
+	codec: string
+	progress: number
+	length: number
+}
 
-export type ApiResponse = {};
+export type ApiResponse = {}

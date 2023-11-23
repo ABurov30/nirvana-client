@@ -1,0 +1,18 @@
+.form {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	margin-top: 20px;
+	width: 100%;
+	justify-content: center;
+	height: 10%;
+}
+
+.form button {
+	height: 70%;
+	width: 10%;
+}
+
+.form button span {
+	margin: auto;
+}

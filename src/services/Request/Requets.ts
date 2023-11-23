@@ -43,18 +43,18 @@ class Request {
 			.catch(error => {
 				if (error.name === 'AbortError') {
 				} else {
-					if (error.response?.data !== 'Unauthorized') {
+					if (error.response?.data === 'Unauthorized') {
 						dispatch(
 							setNotification({
 								message: error?.response?.data,
-								severity: 'error'
+								severity: 'info'
 							})
 						)
 					} else {
 						dispatch(
 							setNotification({
 								message: error?.response?.data,
-								severity: 'info'
+								severity: 'error'
 							})
 						)
 					}

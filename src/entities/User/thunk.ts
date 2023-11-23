@@ -2,7 +2,6 @@ import type { LoginForm, SignUpForm } from '../../../../types/formType'
 import type { ThunkActionCreater } from '../../services/Redux/store'
 import { request } from '../../services/Request/Requets'
 import { logoutUser, setUser } from './slice'
-import axios from 'axios'
 
 export const signUpThunk: ThunkActionCreater<SignUpForm> =
 	formData => async dispatch => {
