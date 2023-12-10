@@ -58,8 +58,6 @@ class Request {
 							})
 						)
 					}
-
-					console.error(error)
 				}
 			})
 	}

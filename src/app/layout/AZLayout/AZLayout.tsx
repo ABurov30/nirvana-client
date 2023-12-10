@@ -7,7 +7,7 @@ import { Outlet } from 'react-router-dom'
 import React from 'react'
 
 export default function AZLayout() {
-	const { user } = useAppSelector(state => state.user)
+	const user = useAppSelector(state => state.user)
 	const { isPlayMode } = useAppSelector(state => state.isPlayMode)
 	const { curTracks } = useAppSelector(state => state.curTracks)
 	const { position } = useAppSelector(state => state.curTracks)

@@ -2,45 +2,19 @@ import SkipPreviousRoundedIcon from '@mui/icons-material/SkipPreviousRounded'
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
+import { setNotification } from '../../entities/Notification/slice'
 import { MixRoundButton, RoundButton } from 'radio-app-uikit'
 import PlayButton from '../Buttons/PlayButton/PlayButton'
 import LikeButton from '../Buttons/LikeButton/LikeButton'
 //@ts-ignore
 import styles from './Player.module.scss'
+import { useDispatch } from 'react-redux'
 import { PlayerProps } from './types'
 
-const mock = [
-	{
-		id: 1,
-		name: "Coco L'Eau",
-		country: 'Егор Крид & The Limba',
-		favicon:
-			'https://muz-tv.ru/storage/images/chart-tracks/thumb/LeFR0oR7uk9vQp8AC2jxign2JUpL5icwPG1TMDNh.jpeg',
-		url: 'https://muz-tv.ru/storage/files/chart-tracks/1601977001.mp3'
-	},
-	{
-		id: 2,
-		name: 'Rolls Royce',
-		country: 'ДЖИГАН, ТИМАТИ & ЕГОР КРИД',
-		favicon:
-			'https://muz-tv.ru/storage/images/chart-tracks/thumb/00EpH2POBipGR7muvw386TLQJB7nBSAhMq8YyQg1.jpeg',
-		url: 'https://muz-tv.ru/storage/files/chart-tracks/1604307771.mp3'
-	},
-	{
-		id: 3,
-		name: 'Краш',
-		country: 'Клава Кока & NILETTO',
-		favicon:
-			'https://muz-tv.ru/storage/images/chart-tracks/thumb/9IJHVTADNYAK4NNbhDFBbwGtGw8Pd62UFiTbGQnE.jpeg',
-		url: 'https://muz-tv.ru/storage/files/chart-tracks/1593435067.mp3'
-	}
-]
-
 export default function Player({ tracks, position }: PlayerProps) {
-	// tracks = mock
+	const dispatch = useDispatch()
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [currentTrack, setCurrentTrack] = useState(tracks[position])
-	console.log(tracks, 'tracks in player')
 
 	const audioElem = useRef<any>()
 	const clickRef = useRef<any>()
@@ -70,59 +44,93 @@ export default function Player({ tracks, position }: PlayerProps) {
 	}
 
 	const onPlaying = () => {
-		const duration = audioElem?.current?.duration
-		const currentTime = audioElem?.current?.currentTime
-		setCurrentTrack({
-			...currentTrack,
-			progress: (currentTime / duration) * 100,
-			length: duration
-		})
+		try {
+			const duration = audioElem?.current?.duration
+			const currentTime = audioElem?.current?.currentTime
+			setCurrentTrack({
+				...currentTrack,
+				progress: (currentTime / duration) * 100,
+				length: duration
+			})
+		} catch (e) {
+			dispatch(
+				setNotification({ severity: 'error', message: `${e.message}` })
+			)
+		}
 	}
 
 	async function checkWidth(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-		await audioElem.current.play()
-		if (!audioElem.current.paused) audioElem.current.pause()
+		try {
+			await audioElem.current.play()
+			if (!audioElem.current.paused) audioElem.current.pause()
 
-		console.log(audioElem.current.paused)
-		let width = clickRef?.current?.clientWidth
-			? clickRef?.current?.clientWidth
-			: 0
-		const offset = e.nativeEvent?.offsetX
-		const divProgress = (offset / width) * 100
-		const newCurrentTime = (divProgress / 100) * currentTrack.length
-		audioElem.current.currentTime = isFinite(newCurrentTime)
-			? newCurrentTime
-			: 100
+			console.log(audioElem.current.paused)
+			let width = clickRef?.current?.clientWidth
+				? clickRef?.current?.clientWidth
+				: 0
+			const offset = e.nativeEvent?.offsetX
+			const divProgress = (offset / width) * 100
+			const newCurrentTime = (divProgress / 100) * currentTrack.length
+			audioElem.current.currentTime = isFinite(newCurrentTime)
+				? newCurrentTime
+				: 100
 
-		if (audioElem.current.paused) await audioElem.current.play()
+			if (audioElem.current.paused) await audioElem.current.play()
+		} catch (e) {
+			dispatch(
+				setNotification({ severity: 'error', message: `${e.message}` })
+			)
+		}
 	}
 
 	const checkVolume = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-		let width = volumeRef?.current?.clientWidth
-		const offset = e.nativeEvent?.offsetX
-		const divProgress = (offset / width) * 100
-		const newVolume = divProgress / 100
-		audioElem.current.volume = newVolume
+		try {
+			let width = volumeRef?.current?.clientWidth
+			const offset = e.nativeEvent?.offsetX
+			const divProgress = (offset / width) * 100
+			const newVolume = divProgress / 100
+			audioElem.current.volume = newVolume
+		} catch (e) {
+			dispatch(
+				setNotification({ severity: 'error', message: `${e.message}` })
+			)
+		}
 	}
 
 	async function skipPrevious() {
-		const index = tracks.findIndex(track => track.id === currentTrack.id)
-		index === 0
-			? setCurrentTrack(tracks[tracks.length - 1])
-			: setCurrentTrack(tracks[index - 1])
-		audioElem.current.currentTime = 0
-		await audioElem?.current?.load()
-		audioElem?.current?.play()
+		try {
+			const index = tracks.findIndex(
+				track => track.id === currentTrack.id
+			)
+			index === 0
+				? setCurrentTrack(tracks[tracks.length - 1])
+				: setCurrentTrack(tracks[index - 1])
+			audioElem.current.currentTime = 0
+			await audioElem?.current?.load()
+			audioElem?.current?.play()
+		} catch (e) {
+			dispatch(
+				setNotification({ severity: 'error', message: `${e.message}` })
+			)
+		}
 	}
 
 	async function skipNext() {
-		const index = tracks.findIndex(track => track.id === currentTrack.id)
-		index === tracks.length - 1
-			? setCurrentTrack(tracks[0])
-			: setCurrentTrack(tracks[index + 1])
-		audioElem.current.currentTime = 0
-		await audioElem?.current?.load()
-		audioElem?.current?.play()
+		try {
+			const index = tracks.findIndex(
+				track => track.id === currentTrack.id
+			)
+			index === tracks.length - 1
+				? setCurrentTrack(tracks[0])
+				: setCurrentTrack(tracks[index + 1])
+			audioElem.current.currentTime = 0
+			await audioElem?.current?.load()
+			audioElem?.current?.play()
+		} catch (e) {
+			dispatch(
+				setNotification({ severity: 'error', message: `${e.message}` })
+			)
+		}
 	}
 
 	useEffect(() => {

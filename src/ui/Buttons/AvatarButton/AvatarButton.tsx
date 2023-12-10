@@ -8,6 +8,7 @@ import * as React from 'react'
 
 function AvatarButton({ nickname }: AvatarProps) {
 	const dispatch = useAppDispatch()
+	console.log(nickname)
 	return (
 		<button
 			className={styles.avatarContainer}

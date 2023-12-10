@@ -9,7 +9,10 @@ import { useUniqCountry } from '../../hooks/useUniqCountry'
 import { useUniqGenre } from '../../hooks/useUniqTaqs'
 import { useUniqName } from '../../hooks/useUniqName'
 import TracksRow from '../../ui/TracksRow/TracksRow'
+import ImgSlider from '../../ui/Carousel/Carousel'
+//@ts-ignore
 import styles from './RadioPage.module.scss'
+import { buttons } from './configs/buttons'
 import { useDispatch } from 'react-redux'
 import React, { useState } from 'react'
 
@@ -26,13 +29,6 @@ export default function RadioPage(): JSX.Element {
 		{ label: 'Station', name: 'name', options: names },
 		{ label: 'Genre', name: 'tags', options: genres },
 		{ label: 'Country', name: 'country', options: countries }
-	]
-
-	const buttons = [
-		{
-			text: 'Search',
-			type: 'submit'
-		}
 	]
 
 	const searchHandler = (e: React.FormEvent<HTMLFormElement>) => {
@@ -56,10 +52,10 @@ export default function RadioPage(): JSX.Element {
 		dispatch(getAllRadiosThunk(offset))
 	}
 
-
 	console.log()
 	return (
 		<div className={styles.radioPage}>
+			<ImgSlider promos={radios} />
 			<SearchForm
 				fields={fields}
 				buttons={buttons}

@@ -4,8 +4,7 @@ import {
 	RightArrowRoundButton,
 	Typography
 } from 'radio-app-uikit'
-import { setCurTracks, setPosition } from '../../entities/CurTracks/slice'
-import { setIsPlayMode } from '../../entities/IsPlayMode/slice'
+import { turnOnPlayMode } from '../../utils/turnOnPlayMode/turnOnPlayMode'
 import { useAppDispatch } from '../../services/Redux/hooks'
 import style from './TracksRow.module.scss'
 import { TracksRowProps } from './types'
@@ -17,13 +16,6 @@ export default function TracksRow({
 	loadNext
 }: TracksRowProps): JSX.Element {
 	const dispatch = useAppDispatch()
-
-	const turnOnPlayMode = (i: number) => {
-		dispatch(setPosition(i))
-		dispatch(setCurTracks(tracks))
-		dispatch(setIsPlayMode(true))
-	}
-
 	return (
 		<>
 			<div className={style.cardsFlowContainer}>
@@ -41,7 +33,7 @@ export default function TracksRow({
 				<div className={style.cardsContainer}>
 					{tracks?.map((track, i) => (
 						<Card
-							onClick={() => turnOnPlayMode(i)}
+							onClick={() => turnOnPlayMode(i, tracks, dispatch)}
 							key={track.id}
 							srcImg={
 								!track?.favicon
@@ -53,7 +45,7 @@ export default function TracksRow({
 									? `${track.name.slice(0, 10)}...`
 									: track.name
 							}
-							imgSize={200}
+							imgSize={300}
 							artist={track.country}
 						/>
 					))}

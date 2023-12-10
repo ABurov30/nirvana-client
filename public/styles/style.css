@@ -18,3 +18,10 @@
 	--minor-red: #bb0310;
 }
 
+.carousel-control-next {
+	display: none;
+}
+
+.carousel-control-prev {
+	display: none;
+}
