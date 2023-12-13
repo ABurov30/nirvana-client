@@ -1,14 +1,8 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-import PrivateRouter from '../HOC/PrivateRouter/PrivateRouter'
-import { useAppSelector } from '../services/Redux/hooks'
+import { ErrorBoundary } from '../HOC/ErrorBoundary/ErrorBoundary'
 import MainRoutes from './routes/MainRoutes/MainRoutes'
-import ErrorBoundary from 'antd/es/alert/ErrorBoundary'
-import NAZRouter from './routes/NAZRoutes/NAZRoutes'
-import { useCheckUser } from '../hooks/useCheckUser'
-import AZRouter from './routes/AZroutes/AZRoutes'
+import React, { Suspense } from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import { store } from '../services/Redux/store'
-import React, { Suspense, lazy } from 'react'
 import { Loader } from 'radio-app-uikit'
 import { Provider } from 'react-redux'
 

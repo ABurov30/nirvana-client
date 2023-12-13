@@ -3,11 +3,13 @@ import notificationReducer from '../../entities/Notification/slice'
 import isPlayModeReducer from '../../entities/IsPlayMode/slice'
 import curTracksReducer from '../../entities/CurTracks/slice'
 import radiosReducer from '../../entities/Radios/slice'
+import imagesReducer from '../../entities/Images/slice'
 import userReducer from '../../entities/User/slice'
 
 export const store = configureStore({
 	reducer: {
 		radio: radiosReducer,
+		images: imagesReducer,
 		user: userReducer,
 		notification: notificationReducer,
 		curTracks: curTracksReducer,

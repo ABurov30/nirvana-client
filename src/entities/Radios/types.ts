@@ -1,4 +1,4 @@
-export type Radio = {
+export interface Radio {
 	id: string
 	name: string
 	url: string
@@ -14,4 +14,7 @@ export type Radio = {
 	isLiked: boolean
 }
 
-export type ApiResponse = {}
+export interface RadiosState {
+	radios: Radio[]
+	radio: Radio | null
+}

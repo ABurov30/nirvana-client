@@ -36,6 +36,8 @@
     "react-transition-group": "^4.4.5",
     "reactstrap": "^9.1.9",
     "styled-components": "^5.3.10",
+    "three": "^0.159.0",
+    "threejs-toys": "^0.0.8",
     "use-sound": "^4.0.1"
   },
   "devDependencies": {

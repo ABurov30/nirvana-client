@@ -1,5 +1,5 @@
 .body {
-	background-color: #fff;
+	background-color: #f3f3f3;
 }
 
 :root {
@@ -24,4 +24,8 @@
 
 .carousel-control-prev {
 	display: none;
+}
+
+.carousel-inner {
+	height: 100%;
 }

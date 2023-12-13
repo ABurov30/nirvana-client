@@ -8,14 +8,13 @@ import * as React from 'react'
 
 function AvatarButton({ nickname }: AvatarProps) {
 	const dispatch = useAppDispatch()
-	console.log(nickname)
 	return (
 		<button
 			className={styles.avatarContainer}
 			onClick={() => dispatch(logoutThunk())}
 		>
 			<Avatar sx={{ bgcolor: '#6360FF', width: '100%', height: '100%' }}>
-				{nickname}
+				{nickname[0]}
 			</Avatar>
 		</button>
 	)

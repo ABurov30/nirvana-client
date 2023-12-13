@@ -124,7 +124,7 @@ module.exports = {
 			chunkFilename: isDev ? '[id].css' : '[id].[contenthash].css'
 		}),
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, './index.html'),
+			template: path.resolve(__dirname, './public/index.html'),
 			favicon: path.resolve(__dirname, './public/img/favicon.ico'),
 			minify: {
 				collapseWhitespace: !isDev,

@@ -45,7 +45,9 @@ export default function TracksRow({
 									? `${track.name.slice(0, 10)}...`
 									: track.name
 							}
-							imgSize={300}
+							imgSize={Math.floor(
+								(document.documentElement.clientWidth * 0.7) / 5
+							)}
 							artist={track.country}
 						/>
 					))}

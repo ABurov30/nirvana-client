@@ -1,22 +1,24 @@
-$input-color: #2A2630;
-$input-button-color: #F3F3F3;
-$button-background-color: #6360FF;
-$button-background-color-box: #6360FF;
-$button-hover-color: #6360FF;
-$li-colors: (#F3F3F3);
-$li-colors-box: (#5EE9BF);
+$input-color: #2a2630;
+$input-button-color: #f3f3f3;
+$button-background-color: #6360ff;
+$button-background-color-box: #6360ff;
+$button-hover-color: #6360ff;
+$li-colors: (#f3f3f3);
+$li-colors-box: (#5ee9bf);
 $input-width: 100%;
-$input-height: 40px;
-$input-border: 0.1px solid #5EE9BF;
+$input-height: 80px;
+$input-border: 0.1px solid #5ee9bf;
 $input-padding: 10px;
 $button-border: none;
-$button-width: 200px;
+$button-width: 100%;
 $b: 1.5em;
 
 .form {
+	width: 100%;
 	.wrapper {
 		position: relative;
 		transform: skewY(-14deg);
+		width: 100%;
 
 		li,
 		button,
@@ -28,7 +30,7 @@ $b: 1.5em;
 			z-index: var(--i);
 			transition: 0.3s;
 			border-radius: 4px;
-			color: #F3F3F3;
+			color: #f3f3f3;
 		}
 
 		li::before,

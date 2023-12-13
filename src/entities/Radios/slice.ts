@@ -1,14 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { Radio } from './types'
+import type { Radio, RadiosState } from './types'
 
-// Define a type for the slice state
-interface PostsState {
-	radios: Radio[]
-	radio: Radio | null
-}
-
-// Define the initial state using that type
-const initialState: PostsState = {
+const initialState: RadiosState = {
 	radios: [],
 	radio: null
 }

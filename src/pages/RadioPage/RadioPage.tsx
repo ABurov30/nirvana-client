@@ -9,7 +9,7 @@ import { useUniqCountry } from '../../hooks/useUniqCountry'
 import { useUniqGenre } from '../../hooks/useUniqTaqs'
 import { useUniqName } from '../../hooks/useUniqName'
 import TracksRow from '../../ui/TracksRow/TracksRow'
-import ImgSlider from '../../ui/Carousel/Carousel'
+import ImgSlider from '../../ui/ImgSlider/ImgSlider'
 //@ts-ignore
 import styles from './RadioPage.module.scss'
 import { buttons } from './configs/buttons'

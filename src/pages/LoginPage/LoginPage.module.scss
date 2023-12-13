@@ -1,27 +1,35 @@
+@import '../../constants/colors.scss';
+
 .container {
 	height: 100vh;
 	width: 100vw;
 	display: flex;
 	align-items: center;
-	justify-content: center;
-}
-
-.sliderContainer {
-	height: 100vh;
-	width: 50vw;
 }
 
 .loginContainer {
-	width: 30vw;
+	width: 40vw;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-    gap: 70px;
+	gap: 70px;
+}
+
+.imgSliderContainer {
+	width: 60vw;
+	height: 100vh;
+	border: 0px transparent solid;
+	border-top-right-radius: 100px;
+	border-bottom-right-radius: 100px;
+	overflow: hidden;
 }
 
 .formContainer {
+	margin-top: 20px;
 	margin-left: 20px;
+	width: 40%;
 }
 
 .form {
