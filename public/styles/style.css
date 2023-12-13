@@ -2,6 +2,10 @@
 	background-color: #f3f3f3;
 }
 
+* {
+	cursor: none !important;
+}
+
 :root {
 	--primary-grey: #434544;
 	--primary-black: #2a2630;

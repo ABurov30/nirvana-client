@@ -26,6 +26,7 @@
     "radio-browser": "^2.2.3",
     "radio-browser-api": "^6.0.1",
     "react": "^18.2.0",
+    "react-animated-cursor": "^2.11.2",
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.47.0",
