@@ -3,7 +3,7 @@ import { FormType } from '../../ui/Forms/SearchForm/type'
 import { request } from '../../services/Request/Requets'
 import { setOneRadio, setRadio } from './slice'
 
-const URL = '/music'
+const URL = '/radio'
 
 export const getAllRadiosThunk: ThunkActionCreater<number> =
 	offset => async dispatch => {
@@ -15,13 +15,6 @@ export const getAllRadiosThunk: ThunkActionCreater<number> =
 		dispatch(setRadio(res?.data))
 	}
 
-export const getRadioById: ThunkActionCreater<number> =
-	id => async dispatch => {
-		const res = await request.sendRequest({
-			url: `${URL}/${id}`
-		})
-		dispatch(setOneRadio(res?.data))
-	}
 
 export const searchRadioThunk: ThunkActionCreater<FormType> =
 	formData => async dispatch => {

@@ -5,7 +5,8 @@
 	"tabWidth": 4,
 	"semi": false,
 	"trailingComma": "none",
-	"importOrder": [],
+	"eslintIntegration": true,
+	"importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
 	"importOrderSeparation": true,
 	"importOrderSortSpecifiers": true
 }

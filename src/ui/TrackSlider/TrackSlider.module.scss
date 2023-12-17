@@ -1,0 +1,51 @@
+.carousel {
+	width: 100%;
+	height: 50vh;
+	overflow: hidden;
+}
+
+.carouselItem {
+	position: relative;
+	height: 100%;
+}
+
+.textContainer {
+	position: absolute;
+	top: 50%;
+	left: 5%;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	gap: 10px;
+}
+
+.buttonContainer {
+	position: absolute;
+	top: 65%;
+	left: 5%;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	margin: 30px;
+	z-index: 3;
+}
+
+.blockButtons {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.roundButtons {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	margin-right: 15%;
+}
+
+.img {
+	width: 100%;
+	height: 100%;
+}

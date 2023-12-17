@@ -16,5 +16,4 @@ export interface Radio {
 
 export interface RadiosState {
 	radios: Radio[]
-	radio: Radio | null
 }

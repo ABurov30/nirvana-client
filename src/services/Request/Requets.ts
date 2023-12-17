@@ -7,7 +7,7 @@ import { store } from '../Redux/store'
 import axios from 'axios'
 
 const NewInstanse = axios.create({
-	baseURL: 'http://localhost:3001/api',
+	baseURL: 'http://localhost:3003/api',
 	timeout: 1000,
 	withCredentials: true
 })

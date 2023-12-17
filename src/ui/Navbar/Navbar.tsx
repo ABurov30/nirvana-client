@@ -32,9 +32,13 @@ export default function Navbar() {
 					onClick={() => navigate('/favorites')}
 					isActive={location.pathname === '/favorites'}
 				/>
-				<RadioNavbarButton
+				<NavbarButton />
 					onClick={() => navigate('/')}
 					isActive={location.pathname === '/'}
+				/>
+				<RadioNavbarButton
+					onClick={() => navigate('/radio')}
+					isActive={location.pathname === '/radio'}
 				/>
 			</NavSection>
 			<NavSection>

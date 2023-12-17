@@ -6,15 +6,15 @@ import { useAppDispatch, useAppSelector } from '../../services/Redux/hooks'
 import SearchForm from '../../ui/Forms/SearchForm/SearchForm'
 import { useGetAllRadios } from '../../hooks/useGetAllRadios'
 import { useUniqCountry } from '../../hooks/useUniqCountry'
+import ImgSlider from '../../ui/TrackSlider/TrackSlider'
 import { useUniqGenre } from '../../hooks/useUniqTaqs'
 import { useUniqName } from '../../hooks/useUniqName'
 import TracksRow from '../../ui/TracksRow/TracksRow'
-import ImgSlider from '../../ui/ImgSlider/ImgSlider'
 //@ts-ignore
 import styles from './RadioPage.module.scss'
 import { buttons } from './configs/buttons'
-import { useDispatch } from 'react-redux'
 import React, { useState } from 'react'
+import TrackSlider from '../../ui/TrackSlider/TrackSlider'
 
 export default function RadioPage(): JSX.Element {
 	const countries = useUniqCountry()
@@ -55,7 +55,7 @@ export default function RadioPage(): JSX.Element {
 	console.log()
 	return (
 		<div className={styles.radioPage}>
-			<ImgSlider promos={radios} />
+			<TrackSlider tracks={radios}/>
 			<SearchForm
 				fields={fields}
 				buttons={buttons}

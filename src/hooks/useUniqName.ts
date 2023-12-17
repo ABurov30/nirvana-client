@@ -8,7 +8,7 @@ export function useUniqName() {
 	useEffect(() => {
 		request
 			.sendRequest({
-				url: '/music/uniqNames'
+				url: '/radio/uniqNames'
 			})
 			.then(res => setNames(res.data))
 			.catch(e => console.log(e))

@@ -8,7 +8,7 @@ export function useUniqGenre() {
 	useEffect(() => {
 		request
 			.sendRequest({
-				url: '/music/uniqGenre'
+				url: '/radio/uniqGenre'
 			})
 			.then(res => setGenres(res.data))
 			.catch(e => console.error(e))

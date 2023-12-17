@@ -8,7 +8,7 @@ export function useUniqCountry() {
 	useEffect(() => {
 		request
 			.sendRequest({
-				url: '/music/uniqCountry'
+				url: '/radio/uniqCountry'
 			})
 			.then(res => setCounties(res.data))
 			.catch(e => console.error(e))
