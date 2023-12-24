@@ -1,4 +1,4 @@
-import { useAppDispatch } from '../../../services/Redux/hooks'
+import { useAppDispatch } from '../../../shared/Redux/hooks'
 import { logoutThunk } from '../../../entities/User/thunk'
 import styles from './AvatarButton.module.scss'
 import Avatar from '@mui/material/Avatar'

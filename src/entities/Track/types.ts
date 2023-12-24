@@ -1,10 +1,11 @@
 export interface Track {
 	id: string
-	name: string
+	title: string
 	url: string
-	country: string
-	favicon: string
+	subTitle: string
+	img: string
 	isLiked: boolean
+	type: 'radio' | 'track'
 }
 
 export interface TracksState {

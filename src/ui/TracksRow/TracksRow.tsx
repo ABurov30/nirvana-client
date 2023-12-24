@@ -4,8 +4,8 @@ import {
 	RightArrowRoundButton,
 	Typography
 } from 'radio-app-uikit'
-import { turnOnPlayMode } from '../../utils/turnOnPlayMode/turnOnPlayMode'
-import { useAppDispatch } from '../../services/Redux/hooks'
+import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode/turnOnPlayMode'
+import { useAppDispatch } from '../../shared/Redux/hooks'
 import style from './TracksRow.module.scss'
 import { TracksRowProps } from './types'
 import React from 'react'
@@ -36,19 +36,19 @@ export default function TracksRow({
 							onClick={() => turnOnPlayMode(i, tracks, dispatch)}
 							key={track.id}
 							srcImg={
-								!track?.favicon
+								!track?.img
 									? '/img/cover.svg'
-									: track?.favicon
+									: track?.img
 							}
 							title={
-								track.name.length > 10
-									? `${track.name.slice(0, 10)}...`
-									: track.name
+								track.title.length > 10
+									? `${track.title.slice(0, 10)}...`
+									: track.title
 							}
 							imgSize={Math.floor(
 								(document.documentElement.clientWidth * 0.7) / 5
 							)}
-							artist={track.country}
+							subTitle={track.subTitle}
 						/>
 					))}
 				</div>

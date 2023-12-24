@@ -1,5 +1,5 @@
-import { useAppDispatch } from '../../../services/Redux/hooks'
 import { loginUserThunk } from '../../../entities/User/thunk'
+import { useAppDispatch } from '../../../shared/Redux/hooks'
 import { useNavigate } from 'react-router-dom'
 import styles from './LoginForm.module.scss'
 import { IFormProps } from './types'

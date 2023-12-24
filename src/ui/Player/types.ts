@@ -1,7 +1,6 @@
-import { Radio } from '../../entities/Radios/types'
-import { Dispatch, SetStateAction } from 'react'
+import { Track } from '../../entities/Track/types'
 
 export interface PlayerProps {
-	tracks: Radio[]
+	tracks: Track[]
 	position: number
 }

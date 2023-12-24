@@ -1,7 +1,7 @@
 import type { LoginForm, SignUpForm } from '../../../../types/formType'
-import type { ThunkActionCreater } from '../../services/Redux/store'
-import { request } from '../../services/Request/Requets'
+import type { ThunkActionCreater } from '../../shared/Redux/store'
 import { setNotification } from '../Notification/slice'
+import { request } from '../../shared/Request/Requets'
 import { logoutUser, setUser } from './slice'
 
 export const signUpThunk: ThunkActionCreater<SignUpForm> =

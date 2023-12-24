@@ -2,13 +2,14 @@ import styles from './LikeButton.module.scss'
 import { LikeButtonProps } from './types'
 import React from 'react'
 
-export default function LikeButton({ isLiked }: LikeButtonProps) {
+export default function LikeButton({ isLiked, onClick }: LikeButtonProps) {
 	return (
-		<div className={styles.heartContainer} title="Like">
+		<div className={styles.heartContainer} title="Like" onClick={onClick}>
 			<input
 				type="checkbox"
 				checked={isLiked}
 				className={styles.checkbox}
+				onChange={onClick}
 				id="Give-It-An-Id"
 			/>
 			<div className={styles.svgContainer}>

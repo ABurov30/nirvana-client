@@ -1,0 +1,116 @@
+.buttons {
+	position: relative;
+	display: grid;
+	place-items: center;
+	height: fit-content;
+	width: fit-content;
+	transition: 0.3s;
+	border-radius: 50%;
+
+	&:hover {
+		padding: 60px;
+	}
+
+	&:hover .button {
+		box-shadow: 5px 5px 12px #cacaca, -5px -5px 12px #ffffff;
+	}
+}
+
+.mainButton {
+	@extend .button;
+	padding: 10px;
+	transition: 0.2s;
+	z-index: 100;
+}
+
+.button {
+	position: absolute;
+	display: grid;
+	place-items: center;
+	padding: 10px;
+	border: none;
+	background: #e8e8e8;
+	box-shadow: 5px 5px 12px rgba(202, 202, 202, 0),
+		-5px -5px 12px rgba(255, 255, 255, 0);
+	transition: 0.3s;
+	border-radius: 50%;
+}
+
+.discordButton {
+	&:hover {
+		background: #5865f2;
+		transform: translate(70px, 0px);
+		box-shadow: 5px 5px 12px #cacaca, -5px -5px 12px #ffffff;
+	}
+}
+
+.twitterButton {
+	&:hover {
+		background: #1ca1f1;
+		transform: translate(47px, -47px);
+		box-shadow: 5px 5px 12px #cacaca, -5px -5px 12px #ffffff;
+	}
+}
+
+.twitterButton {
+	&:hover {
+		background: #1ca1f1;
+		transform: translate(47px, -47px);
+		transition: 0.3s;
+		box-shadow: 5px 5px 12px #cacaca, -5px -5px 12px #ffffff;
+	}
+}
+
+.redditButton {
+	&:hover {
+		background: #ff4500;
+		transform: translate(0, -70px);
+		transition: 0.3s;
+		box-shadow: 5px 5px 12px #cacaca, -5px -5px 12px #ffffff;
+	}
+}
+
+.messengerButton {
+	&:hover {
+		background: #0093ff;
+		transform: translate(-47px, -47px);
+		transition: 0.3s;
+		box-shadow: 5px 5px 12px #cacaca, -5px -5px 12px #ffffff;
+	}
+}
+
+.pinterestButton {
+	&:hover {
+		background: #f0002a;
+		transform: translate(-70px, 0);
+		transition: 0.3s;
+		box-shadow: 5px 5px 12px #cacaca, -5px -5px 12px #ffffff;
+	}
+}
+
+.instagramButton {
+	&:hover {
+		background: #f914af;
+		transform: translate(-47px, 47px);
+		transition: 0.3s;
+		box-shadow: 5px 5px 12px #cacaca, -5px -5px 12px #ffffff;
+	}
+}
+
+.snapchatButton {
+	&:hover {
+		background: #fffc00;
+		transform: translate(0, 70px);
+		transition: 0.3s;
+		box-shadow: 5px 5px 12px #cacaca, -5px -5px 12px #ffffff;
+	}
+}
+
+.whatsappButton {
+	&:hover {
+		background: #25d366;
+		transform: translate(47px, 47px);
+		transition: 0.3s;
+		box-shadow: 5px 5px 12px #cacaca, -5px -5px 12px #ffffff;
+	}
+}

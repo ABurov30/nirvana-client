@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '../../services/Redux/hooks'
+import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
 import { AuthForm } from '../../ui/Forms/AuthForm/AuthForm'
 import LoginForm from '../../ui/Forms/LoginForm/LoginForm'
 import PromoSlider from '../../ui/PromoSlider/PromoSlider'

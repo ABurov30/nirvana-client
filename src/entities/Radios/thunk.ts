@@ -1,7 +1,7 @@
-import { AppThunk, ThunkActionCreater } from '../../services/Redux/store'
+import { ThunkActionCreater } from '../../shared/Redux/store'
 import { FormType } from '../../ui/Forms/SearchForm/type'
-import { request } from '../../services/Request/Requets'
-import { setOneRadio, setRadio } from './slice'
+import { request } from '../../shared/Request/Requets'
+import { setRadio } from './slice'
 
 const URL = '/radio'
 
@@ -14,7 +14,6 @@ export const getAllRadiosThunk: ThunkActionCreater<number> =
 		})
 		dispatch(setRadio(res?.data))
 	}
-
 
 export const searchRadioThunk: ThunkActionCreater<FormType> =
 	formData => async dispatch => {

@@ -1,5 +1,5 @@
 import { loginUserThunk, signUpThunk } from '../../../entities/User/thunk'
-import { useAppDispatch } from '../../../services/Redux/hooks'
+import { useAppDispatch } from '../../../shared/Redux/hooks'
 import { useNavigate } from 'react-router-dom'
 import styles from './SignUpForm.module.scss'
 import React from 'react'

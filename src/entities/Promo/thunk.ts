@@ -1,5 +1,5 @@
-import { ThunkActionCreater } from '../../services/Redux/store'
-import { request } from '../../services/Request/Requets'
+import { ThunkActionCreater } from '../../shared/Redux/store'
+import { request } from '../../shared/Request/Requets'
 import { setPromo } from './slice'
 
 const URL = '/promo'

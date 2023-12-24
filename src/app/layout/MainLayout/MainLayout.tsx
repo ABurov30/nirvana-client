@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../../services/Redux/hooks'
+import { useAppSelector } from '../../../shared/Redux/hooks'
 import Toast from '../../../ui/Toast/Toast'
 import { Outlet } from 'react-router-dom'
 import { MainLayoutProps } from './types'

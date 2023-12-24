@@ -1,7 +1,7 @@
 import { loginUserThunk, signUpThunk } from '../../entities/User/thunk'
 import SignUpForm from '../../ui/Forms/SigUpForm/SignUpForm'
 import { AuthForm } from '../../ui/Forms/AuthForm/AuthForm'
-import { useAppDispatch } from '../../services/Redux/hooks'
+import { useAppDispatch } from '../../shared/Redux/hooks'
 import PromoTitle from '../../ui/PromoTitle/PromoTitle'
 import { useNavigate } from 'react-router-dom'
 import styles from './SignupPage.module.scss'

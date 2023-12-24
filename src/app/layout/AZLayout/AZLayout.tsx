@@ -1,5 +1,5 @@
 import AvatarButton from '../../../ui/Buttons/AvatarButton/AvatarButton'
-import { useAppSelector } from '../../../services/Redux/hooks'
+import { useAppSelector } from '../../../shared/Redux/hooks'
 import Navbar from '../../../ui/Navbar/Navbar'
 import Player from '../../../ui/Player/Player'
 import styles from './AZLayout.module.scss'

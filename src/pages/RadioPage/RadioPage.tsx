@@ -2,15 +2,15 @@ import {
 	getAllRadiosThunk,
 	searchRadioThunk
 } from '../../entities/Radios/thunk'
-import { useAppDispatch, useAppSelector } from '../../services/Redux/hooks'
+import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
+import { useGetAllRadios } from '../../shared/hooks/useGetAllRadios'
+import { useUniqCountry } from '../../shared/hooks/useUniqCountry'
 import SearchForm from '../../ui/Forms/SearchForm/SearchForm'
-import { useGetAllRadios } from '../../hooks/useGetAllRadios'
-import { useUniqCountry } from '../../hooks/useUniqCountry'
+import { useUniqGenre } from '../../shared/hooks/useUniqTaqs'
+import { useUniqName } from '../../shared/hooks/useUniqName'
 import TrackSlider from '../../ui/TrackSlider/TrackSlider'
 import ImgSlider from '../../ui/TrackSlider/TrackSlider'
 import React, { useLayoutEffect, useState } from 'react'
-import { useUniqGenre } from '../../hooks/useUniqTaqs'
-import { useUniqName } from '../../hooks/useUniqName'
 import TracksRow from '../../ui/TracksRow/TracksRow'
 //@ts-ignore
 import styles from './RadioPage.module.scss'

@@ -1,3 +1,4 @@
 export interface LikeButtonProps {
-    isLiked: boolean;
+	isLiked: boolean
+	onClick: () => void
 }

@@ -1,11 +1,14 @@
+import { addLikeThunk, removeLikeThunk } from '../../entities/CurTracks/thunk'
 import SkipPreviousRoundedIcon from '@mui/icons-material/SkipPreviousRounded'
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
 import { setNotification } from '../../entities/Notification/slice'
 import { MixRoundButton, RoundButton } from 'radio-app-uikit'
+import ShareButton from '../Buttons/ShareButton/ShareButton'
 import PlayButton from '../Buttons/PlayButton/PlayButton'
 import LikeButton from '../Buttons/LikeButton/LikeButton'
+import { useAppSelector } from '../../shared/Redux/hooks'
 //@ts-ignore
 import styles from './Player.module.scss'
 import { useDispatch } from 'react-redux'
@@ -15,7 +18,8 @@ export default function Player({ tracks, position }: PlayerProps) {
 	const dispatch = useDispatch()
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [currentTrack, setCurrentTrack] = useState(tracks[position])
-
+	const [isLiked, setIsLiked] = useState(currentTrack.isLiked)
+	const user = useAppSelector(state => state.user)
 	const audioElem = useRef<any>()
 	const clickRef = useRef<any>()
 	const volumeRef = useRef<any>()
@@ -131,6 +135,30 @@ export default function Player({ tracks, position }: PlayerProps) {
 		}
 	}
 
+	async function likeHandler() {
+		console.log(isLiked, 'like')
+		if (isLiked) {
+			await dispatch(
+				removeLikeThunk(currentTrack.id, user.id, currentTrack.type)
+			)
+			setIsLiked(false)
+		} else {
+			await dispatch(
+				addLikeThunk(currentTrack.id, user.id, currentTrack.type)
+			)
+			setIsLiked(true)
+		}
+	}
+
+	function toggleVolumeControl() {
+		console.log(audioElem.current.volume, 'volume')
+		if (audioElem.current.volume >= 0.1) {
+			audioElem.current.volume = 0
+		} else if (audioElem.current.volume < 0.1) {
+			audioElem.current.volume = 0.5
+		}
+	}
+
 	useEffect(() => {
 		if (audioElem?.current?.currentTime === currentTrack?.length) skipNext()
 	}, [audioElem?.current?.currentTime])
@@ -144,18 +172,17 @@ export default function Player({ tracks, position }: PlayerProps) {
 			/>
 			<div className={styles.playerContainer}>
 				<div className={styles.track}>
-					<img src={currentTrack?.favicon} />
+					<img src={currentTrack?.img} />
 					<div className={styles.title}>
 						<span className={styles.name}>
-							{currentTrack?.name}
+							{currentTrack?.title}
 						</span>
 						<span className={styles.artist}>
-							{currentTrack?.country}
+							{currentTrack?.subTitle}
 						</span>
 					</div>
 				</div>
 				<div className={styles.controls}>
-					<LikeButton isLiked={currentTrack?.isLiked} />
 					<RoundButton
 						icon={<SkipPreviousRoundedIcon />}
 						onClick={skipPrevious}
@@ -167,7 +194,8 @@ export default function Player({ tracks, position }: PlayerProps) {
 						onClick={skipNext}
 						className={styles.controlButton}
 					/>
-					<MixRoundButton className={styles.controlButton} />
+					<ShareButton />
+					<LikeButton isLiked={isLiked} onClick={likeHandler} />
 				</div>
 				{isFinite(audioElem?.current?.duration) ? (
 					<div
@@ -194,10 +222,7 @@ export default function Player({ tracks, position }: PlayerProps) {
 					onClick={checkVolume}
 					ref={volumeRef}
 				>
-					<RoundButton
-						icon={<VolumeUpRoundedIcon />}
-						className={styles.volumeButton}
-					/>
+					<VolumeUpRoundedIcon />
 					<div className={styles.volumeController}>
 						<div
 							className={styles.volumeBar}

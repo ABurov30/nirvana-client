@@ -5,8 +5,8 @@ import {
 	ShareRoundButton,
 	Typography
 } from 'radio-app-uikit'
-import { turnOnPlayMode } from '../../utils/turnOnPlayMode/turnOnPlayMode'
-import { useAppDispatch } from '../../services/Redux/hooks'
+import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode/turnOnPlayMode'
+import { useAppDispatch } from '../../shared/Redux/hooks'
 import Carousel from 'react-bootstrap/Carousel'
 //@ts-ignore
 import styles from './TrackSlider.module.scss'
@@ -20,17 +20,17 @@ function TrackSlider({ tracks }: TrackSliderProps) {
 		<Carousel fade className={styles.carousel}>
 			{tracks?.map((track, i) => (
 				<Carousel.Item key={track.id} className={styles.carouselItem}>
-					{track?.name && (
+					{track?.title && (
 						<>
 							<div className={styles.textContainer}>
 								<Typography
-									text={track.name}
+									text={track.title}
 									fontSize="32"
 									weight="semibold"
 									color="#F3F3F3"
 								/>
 								<Typography
-									text={track.country}
+									text={track.subTitle}
 									fontSize="20"
 									weight="medium"
 									color="#BDBEBE"
@@ -55,7 +55,7 @@ function TrackSlider({ tracks }: TrackSliderProps) {
 						</>
 					)}
 					<img
-						src={track.favicon ? track.favicon : '/img/cover.jpeg'}
+						src={track.img ? track.img : '/img/cover.jpeg'}
 						className={styles.img}
 					/>
 				</Carousel.Item>
