@@ -2,6 +2,7 @@
 	width: 100%;
 	height: 50vh;
 	overflow: hidden;
+	position: relative;
 }
 
 .carouselItem {
@@ -47,5 +48,6 @@
 
 .img {
 	width: 100%;
-	height: 100%;
+	position: absolute;
+	bottom: 50;
 }

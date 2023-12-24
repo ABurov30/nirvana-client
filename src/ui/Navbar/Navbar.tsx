@@ -6,10 +6,11 @@ import {
 	Navbar as RadioNavbar,
 	RadioNavbarButton,
 	SettingsNavbarButton,
-	LogoNavbarButton
+	LogoNavbarButton,
+	TrackNavbarButton
 } from 'radio-app-uikit'
 import { useLocation, useNavigate } from 'react-router-dom'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 export default function Navbar() {
 	const [isHovered, setIsHovered] = useState(false)
@@ -32,7 +33,7 @@ export default function Navbar() {
 					onClick={() => navigate('/favorites')}
 					isActive={location.pathname === '/favorites'}
 				/>
-				<NavbarButton />
+				<TrackNavbarButton
 					onClick={() => navigate('/')}
 					isActive={location.pathname === '/'}
 				/>

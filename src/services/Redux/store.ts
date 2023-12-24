@@ -4,12 +4,14 @@ import isPlayModeReducer from '../../entities/IsPlayMode/slice'
 import curTracksReducer from '../../entities/CurTracks/slice'
 import radiosReducer from '../../entities/Radios/slice'
 import promoReducer from '../../entities/Promo/slice'
+import trackReducer from '../../entities/Track/slice'
 import userReducer from '../../entities/User/slice'
 
 export const store = configureStore({
 	reducer: {
 		radio: radiosReducer,
 		promo: promoReducer,
+		track: trackReducer,
 		user: userReducer,
 		notification: notificationReducer,
 		curTracks: curTracksReducer,

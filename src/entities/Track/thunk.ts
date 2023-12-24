@@ -1,6 +1,6 @@
-import { ThunkActionCreater } from "../../services/Redux/store"
-import { request } from "../../services/Request/Requets"
-import { setTracks } from "./slice"
+import { ThunkActionCreater } from '../../services/Redux/store'
+import { request } from '../../services/Request/Requets'
+import { setTracks } from './slice'
 
 const URL = '/track'
 

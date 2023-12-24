@@ -6,21 +6,24 @@ import { useAppDispatch, useAppSelector } from '../../services/Redux/hooks'
 import SearchForm from '../../ui/Forms/SearchForm/SearchForm'
 import { useGetAllRadios } from '../../hooks/useGetAllRadios'
 import { useUniqCountry } from '../../hooks/useUniqCountry'
+import TrackSlider from '../../ui/TrackSlider/TrackSlider'
 import ImgSlider from '../../ui/TrackSlider/TrackSlider'
+import React, { useLayoutEffect, useState } from 'react'
 import { useUniqGenre } from '../../hooks/useUniqTaqs'
 import { useUniqName } from '../../hooks/useUniqName'
 import TracksRow from '../../ui/TracksRow/TracksRow'
 //@ts-ignore
 import styles from './RadioPage.module.scss'
 import { buttons } from './configs/buttons'
-import React, { useState } from 'react'
-import TrackSlider from '../../ui/TrackSlider/TrackSlider'
 
 export default function RadioPage(): JSX.Element {
-	const countries = useUniqCountry()
-	const genres = useUniqGenre()
-	const names = useUniqName()
-	useGetAllRadios()
+	const countries = useUniqCountry('/radio')
+	const genres = useUniqGenre('/radio')
+	const names = useUniqName('/radio')
+
+	useLayoutEffect(() => {
+		dispatch(getAllRadiosThunk(0))
+	}, [])
 	const dispatch = useAppDispatch()
 	const { radios } = useAppSelector(state => state.radio)
 	const [offset, setOffset] = useState(0)
@@ -55,7 +58,7 @@ export default function RadioPage(): JSX.Element {
 	console.log()
 	return (
 		<div className={styles.radioPage}>
-			<TrackSlider tracks={radios}/>
+			<TrackSlider tracks={radios} />
 			<SearchForm
 				fields={fields}
 				buttons={buttons}

@@ -37,7 +37,7 @@ export default function TracksRow({
 							key={track.id}
 							srcImg={
 								!track?.favicon
-									? '/img/cover.jpeg'
+									? '/img/cover.svg'
 									: track?.favicon
 							}
 							title={
