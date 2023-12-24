@@ -63,8 +63,6 @@ export default function Player({ tracks, position }: PlayerProps) {
 		try {
 			await audioElem.current.play()
 			if (!audioElem.current.paused) audioElem.current.pause()
-
-			console.log(audioElem.current.paused)
 			let width = clickRef?.current?.clientWidth
 				? clickRef?.current?.clientWidth
 				: 0

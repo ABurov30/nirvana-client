@@ -1,4 +1,5 @@
 import { loginUserThunk, signUpThunk } from '../../entities/User/thunk'
+import SignUpForm from '../../ui/Forms/SigUpForm/SignUpForm'
 import { AuthForm } from '../../ui/Forms/AuthForm/AuthForm'
 import { useAppDispatch } from '../../services/Redux/hooks'
 import PromoTitle from '../../ui/PromoTitle/PromoTitle'
@@ -89,12 +90,7 @@ export default function SignupPage(): JSX.Element {
 					/>
 				</div>
 				<div className={styles.formContainer}>
-					<AuthForm
-						className={styles.form}
-						fields={fields}
-						buttons={buttons}
-						onSubmit={onSubmit}
-					/>
+					<SignUpForm />
 				</div>
 			</div>
 		</div>

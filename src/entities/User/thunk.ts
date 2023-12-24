@@ -1,6 +1,7 @@
 import type { LoginForm, SignUpForm } from '../../../../types/formType'
 import type { ThunkActionCreater } from '../../services/Redux/store'
 import { request } from '../../services/Request/Requets'
+import { setNotification } from '../Notification/slice'
 import { logoutUser, setUser } from './slice'
 
 export const signUpThunk: ThunkActionCreater<SignUpForm> =
@@ -30,8 +31,15 @@ export const loginUserThunk: ThunkActionCreater<LoginForm> =
 			url: '/auth/login',
 			data: formData
 		})
+		console.log(res)
 		if (res?.status !== 200) {
 			dispatch(setUser({ ...res?.data, status: 'guest' }))
+			dispatch(
+				setNotification({
+					message: res?.data,
+					severity: 'error'
+				})
+			)
 			return false
 		} else {
 			dispatch(setUser({ ...res?.data, status: 'logged' }))
@@ -47,6 +55,12 @@ export const checkUserThunk: ThunkActionCreater = () => dispatch => {
 		.then(res => {
 			if (res?.status !== 200) {
 				dispatch(setUser({ status: 'guest' }))
+				dispatch(
+					setNotification({
+						message: res?.data,
+						severity: 'info'
+					})
+				)
 			} else {
 				dispatch(setUser({ ...res?.data, status: 'logged' }))
 			}

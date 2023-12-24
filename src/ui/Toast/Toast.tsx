@@ -22,7 +22,6 @@ export default function Toast({ notification }: ToastProps) {
 		}
 		clearNotification()
 		setOpen(false)
-		console.log(notification, 'notification in toast')
 	}
 
 	let timeoutId: NodeJS.Timeout

@@ -1,4 +1,5 @@
 export interface Promo {
+	id: string
 	favicon: string
 }
 

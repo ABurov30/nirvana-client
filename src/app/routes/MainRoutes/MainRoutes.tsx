@@ -14,14 +14,10 @@ import React from 'react'
 
 export default function MainRoutes() {
 	const user = useCheckUser()
-	const notification = useAppSelector(state => state.notification)
-	console.log('MainRoutes')
+
 	return (
 		<Routes>
-			<Route
-				path="/"
-				element={<MainLayout user={user} notification={notification} />}
-			>
+			<Route path="/" element={<MainLayout user={user} />}>
 				<Route
 					element={
 						<PrivateRouter isAllowed={user?.status === 'logged'} />

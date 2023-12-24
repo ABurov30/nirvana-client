@@ -12,8 +12,6 @@ const NewInstanse = axios.create({
 	withCredentials: true
 })
 
-const { dispatch } = store
-
 class Request {
 	private controller = new AbortController()
 	private mock = new MockAdapter(axios)
@@ -43,21 +41,7 @@ class Request {
 			.catch(error => {
 				if (error.name === 'AbortError') {
 				} else {
-					if (error.response?.data === 'Unauthorized') {
-						dispatch(
-							setNotification({
-								message: error?.response?.data,
-								severity: 'info'
-							})
-						)
-					} else {
-						dispatch(
-							setNotification({
-								message: error?.response?.data,
-								severity: 'error'
-							})
-						)
-					}
+					return error.response
 				}
 			})
 	}

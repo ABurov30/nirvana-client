@@ -37,7 +37,6 @@ export default function RadioPage(): JSX.Element {
 	const searchHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		const formData = Object.fromEntries(new FormData(e.target))
-		console.log(formData, 'form data')
 		dispatch(searchRadioThunk(formData))
 	}
 
