@@ -24,8 +24,9 @@ export default function Toast({ notification }: ToastProps) {
 		setOpen(false)
 	}
 
-	let timeoutId: NodeJS.Timeout
-
+	useEffect(() => {
+		setOpen(true)
+	}, [notification.message, notification.severity])
 
 	return (
 		<>
