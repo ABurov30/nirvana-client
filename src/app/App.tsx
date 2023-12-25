@@ -9,16 +9,18 @@ import { Provider } from 'react-redux'
 
 function App(): JSX.Element {
 	return (
-		<ErrorBoundary>
-			<Suspense fallback={<Loader />}>
-				<Provider store={store}>
-					<BrowserRouter>
-						<Cursor />
-						<MainRoutes />
-					</BrowserRouter>
-				</Provider>
-			</Suspense>
-		</ErrorBoundary>
+		<>
+			<Cursor />
+			<ErrorBoundary>
+				<Suspense fallback={<Loader />}>
+					<Provider store={store}>
+						<BrowserRouter>
+							<MainRoutes />
+						</BrowserRouter>
+					</Provider>
+				</Suspense>
+			</ErrorBoundary>
+		</>
 	)
 }
 

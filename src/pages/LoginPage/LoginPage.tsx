@@ -24,7 +24,6 @@ export default function LoginPage(): JSX.Element {
 
 	async function onSubmit(event: React.FormEvent<unknown>) {
 		event.preventDefault()
-		console.log(Object.fromEntries(new FormData(event.target)))
 		const isLogged = await dispatch(loginUserThunk(ref.current))
 		if (isLogged) {
 			ref.current = { email: '', password: '' }

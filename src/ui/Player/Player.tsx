@@ -4,7 +4,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
 import { setNotification } from '../../entities/Notification/slice'
-import { MixRoundButton, RoundButton } from 'radio-app-uikit'
+import { MixRoundButton, RoundButton, Typography } from 'radio-app-uikit'
 import ShareButton from '../Buttons/ShareButton/ShareButton'
 import PlayButton from '../Buttons/PlayButton/PlayButton'
 import LikeButton from '../Buttons/LikeButton/LikeButton'
@@ -136,7 +136,6 @@ export default function Player({ tracks, position }: PlayerProps) {
 	}
 
 	async function likeHandler() {
-		console.log(isLiked, 'like')
 		if (isLiked) {
 			await dispatch(
 				removeLikeThunk(currentTrack.id, user.id, currentTrack.type)
@@ -151,7 +150,6 @@ export default function Player({ tracks, position }: PlayerProps) {
 	}
 
 	function toggleVolumeControl() {
-		console.log(audioElem.current.volume, 'volume')
 		if (audioElem.current.volume >= 0.1) {
 			audioElem.current.volume = 0
 		} else if (audioElem.current.volume < 0.1) {
@@ -174,12 +172,15 @@ export default function Player({ tracks, position }: PlayerProps) {
 				<div className={styles.track}>
 					<img src={currentTrack?.img} />
 					<div className={styles.title}>
-						<span className={styles.name}>
-							{currentTrack?.title}
-						</span>
-						<span className={styles.artist}>
-							{currentTrack?.subTitle}
-						</span>
+						<Typography
+							text={currentTrack?.title}
+							fontSize="20"
+							weight="semibold"
+						/>
+						<Typography
+							text={currentTrack?.subTitle}
+							fontSize="12"
+						/>
 					</div>
 				</div>
 				<div className={styles.controls}>

@@ -31,7 +31,6 @@ export const loginUserThunk: ThunkActionCreater<LoginForm> =
 			url: '/auth/login',
 			data: formData
 		})
-		console.log(res)
 		if (res?.status !== 200) {
 			dispatch(setUser({ ...res?.data, status: 'guest' }))
 			dispatch(

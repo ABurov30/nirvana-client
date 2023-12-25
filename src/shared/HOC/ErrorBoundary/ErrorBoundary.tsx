@@ -1,5 +1,6 @@
 import React from 'react'
 import { IErrorWithCode, IProps, IState } from './types'
+import ErrorPage from '../../../pages/ErrorPage/ErrorPage'
 
 export class ErrorBoundary extends React.Component<IProps, IState> {
 	constructor(props: IProps) {
@@ -17,14 +18,7 @@ export class ErrorBoundary extends React.Component<IProps, IState> {
 
 	render(): React.ReactNode {
 		if (this.state.hasError) {
-			const error = this.state.error as IErrorWithCode
-			if (this.state.error instanceof TypeError) {
-				return <h1>Something went wrong with type.</h1>
-			} else if (this.state.error instanceof ReferenceError) {
-				return <h1>Something went wrong with reference.</h1>
-			} else {
-				return <h1>Something went wrong.</h1>
-			}
+			return <ErrorPage />
 		}
 		return this.props.children
 	}

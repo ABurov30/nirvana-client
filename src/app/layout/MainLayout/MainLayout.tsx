@@ -1,26 +1,24 @@
 import { useAppSelector } from '../../../shared/Redux/hooks'
 import Toast from '../../../ui/Toast/Toast'
 import { Outlet } from 'react-router-dom'
-import { MainLayoutProps } from './types'
+import { type MainLayoutProps } from './types'
 import { Loader } from 'radio-app-uikit'
 import React from 'react'
+import styles from './MainLayout.module.scss'
 
 function MainLayout({ user }: MainLayoutProps) {
 	const notification = useAppSelector(state => state.notification)
-	console.log(notification)
 	return (
-		<>
+		<div className={styles.mainLayout}>
 			{user?.status === 'fetching' ? (
 				<Loader />
 			) : (
 				<>
-					{notification.message && (
-						<Toast notification={notification} />
-					)}
+					{notification.message && <Toast notification={notification} />}
 					<Outlet />
 				</>
 			)}
-		</>
+		</div>
 	)
 }
 

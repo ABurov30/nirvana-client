@@ -8,14 +8,12 @@ import {
 import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode/turnOnPlayMode'
 import { useAppDispatch } from '../../shared/Redux/hooks'
 import Carousel from 'react-bootstrap/Carousel'
-//@ts-ignore
 import styles from './TrackSlider.module.scss'
-import { TrackSliderProps } from './types'
+import { type TrackSliderProps } from './types'
 import React from 'react'
 
 function TrackSlider({ tracks }: TrackSliderProps) {
 	const dispatch = useAppDispatch()
-	console.log(tracks)
 	return (
 		<Carousel fade className={styles.carousel}>
 			{tracks?.map((track, i) => (
@@ -39,12 +37,9 @@ function TrackSlider({ tracks }: TrackSliderProps) {
 							<div className={styles.buttonContainer}>
 								<div className={styles.blockButtons}>
 									<PlayBlockButton
-										onClick={() =>
+										onClick={() => {
 											turnOnPlayMode(i, tracks, dispatch)
-										}
-									/>
-									<MixBlockButton
-										onClick={() => console.log('mix')}
+										}}
 									/>
 								</div>
 								<div className={styles.roundButtons}>

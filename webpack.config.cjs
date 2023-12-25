@@ -9,6 +9,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 const { DefinePlugin } = require('webpack')
 const dotenv = require('dotenv')
 const path = require('path')
+const fs = require('fs')
 
 dotenv.config()
 
@@ -31,9 +32,14 @@ module.exports = {
 		static: {
 			directory: path.join(__dirname, 'public')
 		},
+		// https: {
+		// 	key: fs.readFileSync('./device.key'),
+		// 	cert: fs.readFileSync('./localhost.csr'),
+		// 	ca: fs.readFileSync('./rootCA.pem')
+		// },
 		historyApiFallback: true
 	},
-	mode: 'development',	
+	mode: 'development',
 	devtool: isDev ? 'source-map' : false,
 	module: {
 		rules: [

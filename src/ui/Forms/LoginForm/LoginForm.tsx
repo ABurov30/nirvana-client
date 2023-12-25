@@ -12,7 +12,6 @@ function LoginForm() {
 		e.preventDefault()
 		const formData = Object.fromEntries(new FormData(e.target))
 		const isLogged = await dispatch(loginUserThunk(formData))
-		console.log(isLogged)
 		if (isLogged) {
 			navigate('/')
 		}

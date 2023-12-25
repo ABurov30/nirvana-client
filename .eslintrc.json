@@ -13,8 +13,6 @@
 		"ecmaVersion": "latest",
 		"sourceType": "module"
 	},
-	"plugins": ["react", "prettier", "unused-imports"],
-	"rules": {
-		"unused-imports/no-unused-imports": "error"
-	}
+	"plugins": ["react", "prettier"],
+	"rules": {}
 }

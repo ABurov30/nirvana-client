@@ -6,7 +6,6 @@ const URL = '/track'
 
 export const getTracksThunk: ThunkActionCreater<number> =
 	(offset: number, userId: number) => async dispatch => {
-		console.log(userId, 'userId')
 		const res = await request.sendRequest({
 			method: 'post',
 			url: `${URL}`,
