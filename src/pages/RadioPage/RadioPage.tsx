@@ -3,20 +3,26 @@ import {
 	searchRadioThunk
 } from '../../entities/Radios/thunk'
 import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
-import SearchForm from '../../ui/Forms/SearchForm/SearchForm'
-import TrackSlider from '../../ui/TrackSlider/TrackSlider'
-import React, { useLayoutEffect, useState } from 'react'
-import TracksRow from '../../ui/TracksRow/TracksRow'
+import React, { useCallback, useLayoutEffect, useState } from 'react'
 //@ts-ignore
 import styles from './RadioPage.module.scss'
 import { buttons } from './configs/buttons'
 import { useAutocomplete } from '../../shared/hooks/useAutocomlete'
+import { SearchForm } from '../../ui/Forms/SearchForm/SearchForm'
+import { TracksRow } from '../../ui/TracksRow/TracksRow'
+import { TrackSlider } from '../../ui/TrackSlider/TrackSlider'
 
 export default function RadioPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
-	const countries = useAutocomplete(`/radio/uniqCountry`)
-	const genres = useAutocomplete(`/radio/uniqGenre`)
-	const stations = useAutocomplete(`/radio/uniqNames`)
+	const { options: countries, setOptions: setCountries } =
+		useAutocomplete(`/radio/uniqCountry`)
+	const [countryInput, setCountryInput] = useState('')
+	const { options: genres, setOptions: setGenres } =
+		useAutocomplete(`/radio/uniqGenre`)
+	const [genreInput, setGenreInput] = useState('')
+	const { options: stations, setOptions: setStations } =
+		useAutocomplete(`/radio/uniqNames`)
+	const [stationInput, setStationsInput] = useState('')
 
 	useLayoutEffect(() => {
 		dispatch(getAllRadiosThunk(0))
@@ -24,20 +30,44 @@ export default function RadioPage(): JSX.Element {
 	const dispatch = useAppDispatch()
 	const { radios } = useAppSelector(state => state.radio)
 	const [offset, setOffset] = useState(0)
-
+	const URL = '/radio'
 	const fields = [
-		{ label: 'Station', name: 'name', options: stations },
-		{ label: 'Genre', name: 'tags', options: genres },
-		{ label: 'Country', name: 'country', options: countries }
+		{
+			label: 'Station',
+			name: 'name',
+			value: stationInput,
+			onChange: setStationsInput,
+			path: `${URL}/intualSearchName`,
+			options: stations,
+			setOptions: setStations
+		},
+		{
+			label: 'Genre',
+			name: 'tags',
+			value: genreInput,
+			onChange: setGenreInput,
+			path: `${URL}/intualSearchGenres`,
+			options: genres,
+			setOptions: setGenres
+		},
+		{
+			label: 'Country',
+			name: 'country',
+			value: countryInput,
+			onChange: setCountryInput,
+			path: `${URL}/intualSearchCountry`,
+			options: countries,
+			setOptions: setCountries
+		}
 	]
 
 	const searchHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		const formData = Object.fromEntries(new FormData(e.target))
 		if (!formData.name && !formData.tags && !formData.country) {
-			dispatch(getAllRadiosThunk(0, user.id))
+			dispatch(getAllRadiosThunk(0, used.id))
 		} else {
-			dispatch(searchRadioThunk(formData, user.id))
+			dispatch(searchRadioThunk(formData, used.id))
 		}
 	}
 
@@ -54,6 +84,7 @@ export default function RadioPage(): JSX.Element {
 		setOffset(prev => prev + 5)
 		dispatch(getAllRadiosThunk(offset))
 	}
+
 	return (
 		<div className={styles.radioPage}>
 			<TrackSlider tracks={radios} />

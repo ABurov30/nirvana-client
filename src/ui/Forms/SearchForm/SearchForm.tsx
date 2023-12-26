@@ -1,10 +1,14 @@
-import AutoComplete from '../../Inputs/AutoComplete/AutoComplete'
-import { IFormProps } from '../AuthForm/types'
 import styles from './SearchForm.module.scss'
 import { BlockButton } from 'radio-app-uikit'
-import React from 'react'
+import React, { memo } from 'react'
+import { FormProps } from './type'
+import { AutoComplete } from '../../Inputs/AutoComplete/AutoComplete'
 
-export default function SearchForm({ fields, buttons, onSubmit }: IFormProps) {
+export const SearchForm = memo(function SearchForm({
+	fields,
+	buttons,
+	onSubmit
+}: FormProps) {
 	let i = fields.length + buttons.length + 1
 	let j = buttons.length + 1
 	return (
@@ -12,7 +16,12 @@ export default function SearchForm({ fields, buttons, onSubmit }: IFormProps) {
 			{fields.map(field => {
 				if (i > buttons.length) {
 					i--
-					return <AutoComplete key={field.label} field={field} />
+					return (
+						<AutoComplete
+							key={`${field.label}${field.name}`}
+							field={field}
+						/>
+					)
 				}
 			})}
 			{buttons.map(button => {
@@ -29,4 +38,4 @@ export default function SearchForm({ fields, buttons, onSubmit }: IFormProps) {
 			})}
 		</form>
 	)
-}
+})

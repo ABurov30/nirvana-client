@@ -4,11 +4,13 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
 import { setNotification } from '../../entities/Notification/slice'
-import { MixRoundButton, RoundButton, Typography } from 'radio-app-uikit'
+import VolumeOffIcon from '@mui/icons-material/VolumeOff'
+import { RoundButton, Typography } from 'radio-app-uikit'
 import ShareButton from '../Buttons/ShareButton/ShareButton'
 import PlayButton from '../Buttons/PlayButton/PlayButton'
 import LikeButton from '../Buttons/LikeButton/LikeButton'
 import { useAppSelector } from '../../shared/Redux/hooks'
+import debounce from 'lodash.debounce'
 //@ts-ignore
 import styles from './Player.module.scss'
 import { useDispatch } from 'react-redux'
@@ -19,6 +21,9 @@ export default function Player({ tracks, position }: PlayerProps) {
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [currentTrack, setCurrentTrack] = useState(tracks[position])
 	const [isLiked, setIsLiked] = useState(currentTrack.isLiked)
+	const [isDragingProgress, setIsDragingProgress] = useState(false)
+	const [isDragingVolume, setIsDragingVolume] = useState(false)
+	const [volume, setVolume] = useState(0)
 	const user = useAppSelector(state => state.user)
 	const audioElem = useRef<any>()
 	const clickRef = useRef<any>()
@@ -65,8 +70,8 @@ export default function Player({ tracks, position }: PlayerProps) {
 
 	async function checkWidth(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
 		try {
-			await audioElem.current.play()
-			if (!audioElem.current.paused) audioElem.current.pause()
+			if (!isDragingProgress) return
+			await audioElem?.current?.pause()
 			let width = clickRef?.current?.clientWidth
 				? clickRef?.current?.clientWidth
 				: 0
@@ -76,8 +81,6 @@ export default function Player({ tracks, position }: PlayerProps) {
 			audioElem.current.currentTime = isFinite(newCurrentTime)
 				? newCurrentTime
 				: 100
-
-			if (audioElem.current.paused) await audioElem.current.play()
 		} catch (e) {
 			dispatch(
 				setNotification({ severity: 'error', message: `${e.message}` })
@@ -85,13 +88,22 @@ export default function Player({ tracks, position }: PlayerProps) {
 		}
 	}
 
+	function stopDragingProgress() {
+		setIsDragingProgress(false)
+		audioElem?.current?.play()
+	}
+
 	const checkVolume = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		try {
+			if (!isDragingVolume) return
 			let width = volumeRef?.current?.clientWidth
+				? volumeRef?.current?.clientWidth
+				: 0
 			const offset = e.nativeEvent?.offsetX
 			const divProgress = (offset / width) * 100
 			const newVolume = divProgress / 100
 			audioElem.current.volume = newVolume
+			setVolume(newVolume)
 		} catch (e) {
 			dispatch(
 				setNotification({ severity: 'error', message: `${e.message}` })
@@ -119,6 +131,7 @@ export default function Player({ tracks, position }: PlayerProps) {
 
 	async function skipNext() {
 		try {
+			console.log('skipNext')
 			const index = tracks.findIndex(
 				track => track.id === currentTrack.id
 			)
@@ -150,10 +163,13 @@ export default function Player({ tracks, position }: PlayerProps) {
 	}
 
 	function toggleVolumeControl() {
-		if (audioElem.current.volume >= 0.1) {
+		console.log(audioElem.current.volume, 'volume')
+		if (audioElem.current.volume > 0) {
 			audioElem.current.volume = 0
-		} else if (audioElem.current.volume < 0.1) {
-			audioElem.current.volume = 0.5
+			setVolume(0)
+		} else {
+			audioElem.current.volume = 1
+			setVolume(1)
 		}
 	}
 
@@ -168,6 +184,13 @@ export default function Player({ tracks, position }: PlayerProps) {
 				ref={audioElem}
 				onTimeUpdate={onPlaying}
 			/>
+			<div
+				className={styles.playerBg}
+				style={{
+					backgroundImage:
+						currentTrack.img && `url(${currentTrack.img})`
+				}}
+			></div>
 			<div className={styles.playerContainer}>
 				<div className={styles.track}>
 					<img
@@ -206,41 +229,53 @@ export default function Player({ tracks, position }: PlayerProps) {
 				{isFinite(audioElem?.current?.duration) ? (
 					<div
 						className={styles.navigation}
-						onClick={checkWidth}
+						onMouseDown={() => setIsDragingProgress(true)}
+						onMouseMove={checkWidth}
+						onMouseUp={stopDragingProgress}
 						ref={clickRef}
 					>
-						<div>
-							<div className={styles.navigationController}>
-								<div
-									className={styles.navigationBar}
-									style={{
-										width: `${currentTrack?.progress || 0}%`
-									}}
-								>
-									<div className={styles.pointer}></div>
-								</div>
+						<div className={styles.navigationController}>
+							<div
+								className={styles.navigationBar}
+								style={{
+									width: `${currentTrack?.progress || 0}%`
+								}}
+							>
+								<div className={styles.pointer}></div>
 							</div>
 						</div>
 					</div>
 				) : null}
+
 				<div
 					className={styles.volume}
-					onClick={checkVolume}
+					onMouseDown={() => setIsDragingVolume(true)}
+					onMouseMove={checkVolume}
+					onMouseUp={() => setIsDragingVolume(false)}
 					ref={volumeRef}
 				>
-					<VolumeUpRoundedIcon />
-					<div className={styles.volumeController}>
-						<div
-							className={styles.volumeBar}
-							style={{
-								width: `${
-									audioElem.current?.volume * 100 || 0
-								}%`
-							}}
-						>
-							<div className={styles.pointer}></div>
-						</div>
+					<div
+						onClick={toggleVolumeControl}
+						className={styles.volumeButton}
+					>
+						{audioElem.current?.volume ? (
+							<VolumeUpRoundedIcon />
+						) : (
+							<VolumeOffIcon />
+						)}
 					</div>
+					{audioElem.current?.volume ? (
+						<div className={styles.volumeController}>
+							<div
+								className={styles.volumeBar}
+								style={{
+									width: `${volume * 100 || 0}%`
+								}}
+							>
+								<div className={styles.pointer}></div>
+							</div>
+						</div>
+					) : null}
 				</div>
 			</div>
 		</>

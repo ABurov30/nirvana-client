@@ -5,13 +5,11 @@ $button-background-color-box: #6360ff;
 $button-hover-color: #6360ff;
 $li-colors: (#f3f3f3);
 $li-colors-box: (#5ee9bf);
-$input-width: 100%;
+$input-width: 95%;
 $input-height: 80px;
-$input-border: 0.1px solid #5ee9bf;
 $input-padding: 10px;
 $button-border: none;
-$button-width: 100%;
-$b: 1.5em;
+
 
 .form {
 	width: 100%;
@@ -26,11 +24,14 @@ $b: 1.5em;
 			position: relative;
 			list-style: none;
 			margin-bottom: 4px;
-			width: $button-width;
 			z-index: var(--i);
 			transition: 0.3s;
 			border-radius: 4px;
 			color: #f3f3f3;
+		}
+
+		.blurred {
+			width: $input-width;
 		}
 
 		li::before,
@@ -53,7 +54,7 @@ $b: 1.5em;
 			position: absolute;
 			content: '';
 			background: $button-background-color-box;
-			width: $button-width;
+			width: $input-width;
 			height: 40px;
 			top: -40px;
 			left: 0;
@@ -129,5 +130,11 @@ $b: 1.5em;
 		&::placeholder {
 			color: $input-color;
 		}
+	}
+
+	.visibilityButton {
+		position: absolute;
+		top: 40%;
+		right: 10%;
 	}
 }

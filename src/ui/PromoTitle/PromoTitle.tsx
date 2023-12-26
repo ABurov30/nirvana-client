@@ -14,7 +14,7 @@ export default function PromoTitle({
 
 					<ul className={styles.contentContainerList}>
 						{rotatedPhrases.map(phrase => (
-							<li className={styles.contentContainerListItem}>
+							<li className={styles.contentContainerListItem} key={phrase}>
 								{phrase}
 							</li>
 						))}

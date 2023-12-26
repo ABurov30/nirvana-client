@@ -1,22 +1,19 @@
-import { loginUserThunk, signUpThunk } from '../../../entities/User/thunk'
-import { useAppDispatch } from '../../../shared/Redux/hooks'
 import { useNavigate } from 'react-router-dom'
 import styles from './SignUpForm.module.scss'
-import React from 'react'
+import React, { useState } from 'react'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import { onSubmit } from './utils/onSubmit'
+import { useAppDispatch } from '../../../shared/Redux/hooks'
 
 function SignUpForm() {
-	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
-	async function onSubmit(e: React.FormEvent<unknown>) {
-		e.preventDefault()
-		const formData = Object.fromEntries(new FormData(e.target))
-		const isLogged = await dispatch(signUpThunk(formData))
-		if (isLogged) {
-			navigate('/')
-		}
-	}
+	const dispatch = useAppDispatch()
+	const [isVisible, setIsVisible] = useState(false)
 	return (
-		<form className={styles.form} onSubmit={onSubmit}>
+		<form
+			className={styles.form}
+			onSubmit={e => onSubmit(e, dispatch, navigate)}
+		>
 			<ul className={styles.wrapper}>
 				<div
 					style={{ '--i': 6 } as React.CSSProperties}
@@ -26,9 +23,9 @@ function SignUpForm() {
 						<input
 							className={styles.input}
 							placeholder={'Name'}
-							required={true}
 							type={'name'}
 							name={'name'}
+							autoFocus
 						/>
 					</li>
 				</div>
@@ -40,8 +37,6 @@ function SignUpForm() {
 						<input
 							className={styles.input}
 							placeholder={'E-mail'}
-							required={true}
-							type={'email'}
 							name={'email'}
 						/>
 					</li>
@@ -54,10 +49,15 @@ function SignUpForm() {
 						<input
 							className={styles.input}
 							placeholder={'Password'}
-							required={true}
 							name={'password'}
-							type={'password'}
+							type={isVisible ? 'text' : 'password'}
 						/>
+						<div
+							className={styles.visibilityButton}
+							onClick={() => setIsVisible(!isVisible)}
+						>
+							<VisibilityIcon style={{ color: '#5EE9BF' }} />
+						</div>
 					</li>
 				</div>
 				<div
@@ -68,10 +68,15 @@ function SignUpForm() {
 						<input
 							className={styles.input}
 							placeholder={'Repeat password'}
-							required={true}
 							name={'repeatPassword'}
-							type={'password'}
+							type={isVisible ? 'text' : 'password'}
 						/>
+						<div
+							className={styles.visibilityButton}
+							onClick={() => setIsVisible(!isVisible)}
+						>
+							<VisibilityIcon style={{ color: '#5EE9BF' }} />
+						</div>
 					</li>
 				</div>
 				<div

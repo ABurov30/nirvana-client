@@ -5,9 +5,13 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import App from './app/App'
-import React from 'react'
+import React, { StrictMode } from 'react'
 
 const rootElement = document.getElementById('root')
 const root = createRoot(rootElement!)
 
-root.render(<App />)
+root.render(
+	<StrictMode>
+		<App />
+	</StrictMode>
+)

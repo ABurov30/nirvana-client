@@ -10,9 +10,11 @@ import { useAppDispatch } from '../../shared/Redux/hooks'
 import Carousel from 'react-bootstrap/Carousel'
 import styles from './TrackSlider.module.scss'
 import { type TrackSliderProps } from './types'
-import React from 'react'
+import React, { memo } from 'react'
 
-function TrackSlider({ tracks }: TrackSliderProps) {
+export const TrackSlider = memo(function TrackSlider({
+	tracks
+}: TrackSliderProps) {
 	const dispatch = useAppDispatch()
 	return (
 		<Carousel fade className={styles.carousel}>
@@ -60,6 +62,4 @@ function TrackSlider({ tracks }: TrackSliderProps) {
 			))}
 		</Carousel>
 	)
-}
-
-export default TrackSlider
+})

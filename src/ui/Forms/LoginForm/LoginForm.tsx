@@ -1,23 +1,19 @@
-import { loginUserThunk } from '../../../entities/User/thunk'
-import { useAppDispatch } from '../../../shared/Redux/hooks'
 import { useNavigate } from 'react-router-dom'
 import styles from './LoginForm.module.scss'
-import { IFormProps } from './types'
-import React from 'react'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import React, { useState } from 'react'
+import { onSubmit } from './utils/onSubmit'
+import { useAppDispatch } from '../../../shared/Redux/hooks'
 
 function LoginForm() {
-	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
-	async function onSubmit(e: React.FormEvent<unknown>) {
-		e.preventDefault()
-		const formData = Object.fromEntries(new FormData(e.target))
-		const isLogged = await dispatch(loginUserThunk(formData))
-		if (isLogged) {
-			navigate('/')
-		}
-	}
+	const dispatch = useAppDispatch()
+	const [isVisible, setIsVisible] = useState(false)
 	return (
-		<form className={styles.form} onSubmit={onSubmit}>
+		<form
+			className={styles.form}
+			onSubmit={e => onSubmit(e, dispatch, navigate)}
+		>
 			<ul className={styles.wrapper}>
 				<div
 					style={{ '--i': 4 } as React.CSSProperties}
@@ -27,9 +23,8 @@ function LoginForm() {
 						<input
 							className={styles.input}
 							placeholder={'E-mail'}
-							required={true}
-							type={'email'}
 							name={'email'}
+							autoFocus
 						/>
 					</li>
 				</div>
@@ -41,10 +36,15 @@ function LoginForm() {
 						<input
 							className={styles.input}
 							placeholder={'Password'}
-							required={true}
 							name={'password'}
-							type={'password'}
+							type={isVisible ? 'text' : 'password'}
 						/>
+						<div
+							className={styles.visibilityButton}
+							onClick={() => setIsVisible(!isVisible)}
+						>
+							<VisibilityIcon style={{ color: '#5EE9BF' }} />
+						</div>
 					</li>
 				</div>
 				<div

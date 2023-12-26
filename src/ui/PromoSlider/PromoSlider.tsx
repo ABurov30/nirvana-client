@@ -14,7 +14,6 @@ import { PromoSliderProps } from './types'
 import React from 'react'
 
 function PromoSlider({ promos }: PromoSliderProps) {
-	console.log(promos)
 	return (
 		<Carousel fade className={styles.carousel}>
 			{promos?.map((promo, i) => (

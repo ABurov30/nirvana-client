@@ -4,7 +4,8 @@ import { NotificationType } from './types'
 
 const initialState: NotificationType = {
 	severity: '',
-	message: ''
+	message: '',
+	isOpen: false
 }
 
 export const notificationSlice = createSlice({
@@ -13,10 +14,16 @@ export const notificationSlice = createSlice({
 	reducers: {
 		setNotification: (state, action: PayloadAction<NotificationType>) =>
 			action.payload,
-		clearNotification: state => ({ message: '', severity: '' })
+		clearNotification: state => ({ message: '', severity: '' , isOpen: false }),
+		setIsOpen: (state, action: PayloadAction<boolean>) => {
+			const newState = { ...state }
+			newState.isOpen = action.payload
+			return newState
+		}
 	}
 })
 
-export const { setNotification, clearNotification } = notificationSlice.actions
+export const { setNotification, clearNotification, setIsOpen } =
+	notificationSlice.actions
 
 export default notificationSlice.reducer

@@ -1,18 +1,17 @@
-import { fetchFlags } from '../flags/fetchFlags'
 import { request } from '../Request/Requets'
 import { useEffect, useState } from 'react'
 
-export function useAutocomplete(path:string) {
-	const [values, setValues] = useState([])
+export function useAutocomplete(path: string) {
+	const [options, setOptions] = useState([])
 
 	useEffect(() => {
 		request
 			.sendRequest({
 				url: path
 			})
-			.then(res => setValues(res.data))
+			.then(res => setOptions(res.data))
 			.catch(e => console.error(e))
 	}, [])
 
-	return values
+	return { options, setOptions }
 }

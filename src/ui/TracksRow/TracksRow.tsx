@@ -8,9 +8,9 @@ import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode/turnOnPlayMode
 import { useAppDispatch } from '../../shared/Redux/hooks'
 import style from './TracksRow.module.scss'
 import { type TracksRowProps } from './types'
-import React from 'react'
+import React, { memo } from 'react'
 
-export default function TracksRow({
+export const TracksRow = memo(function TracksRow({
 	tracks,
 	loadPrev,
 	loadNext
@@ -50,4 +50,4 @@ export default function TracksRow({
 			</div>
 		</>
 	)
-}
+})

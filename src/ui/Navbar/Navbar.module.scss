@@ -1,6 +1,13 @@
+@import '../../shared/constants/colors.scss';
+
 .themeSwitcherContainer {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 5px;
+}
+
+.navbar {
+	box-shadow: 0 0 5px $minor-grey;
+	background: white;
 }

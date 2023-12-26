@@ -21,7 +21,7 @@ export default function Navbar() {
 	const location = useLocation()
 
 	return (
-		<RadioNavbar isHovered={isHovered} setIsHovered={setIsHovered}>
+		<RadioNavbar isHovered={isHovered} setIsHovered={setIsHovered} className={styles.navbar}>
 			<NavSection>
 				<LogoNavbarButton onClick={() => navigate('/')} />
 			</NavSection>

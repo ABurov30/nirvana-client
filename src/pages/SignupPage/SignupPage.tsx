@@ -9,68 +9,9 @@ import { Typography } from 'radio-app-uikit'
 import React, { useRef } from 'react'
 
 export default function SignupPage(): JSX.Element {
-	const dispatch = useAppDispatch()
-	const navigate = useNavigate()
-	const ref = useRef({
-		name: '',
-		email: '',
-		password: '',
-		repeatPassword: ''
-	})
-
-	async function onSubmit(event: React.FormEvent<unknown>) {
-		event.preventDefault()
-		const res = await dispatch(signUpThunk(ref.current))
-		ref.current = { name: '', email: '', password: '', repeatPassword: '' }
-		if (res) {
-			navigate('/')
-		}
-	}
-
-	const fields = [
-		{
-			placeholder: 'Name',
-			required: true,
-			onChange: (e: Event) => (ref.current.name = e?.target?.value)
-		},
-		{
-			placeholder: 'E-mail',
-			type: 'email',
-			required: true,
-			onChange: (e: Event) => (ref.current.email = e?.target?.value)
-		},
-		{
-			placeholder: 'Password',
-			type: 'password',
-			required: true,
-			onChange: (e: Event) => (ref.current.password = e?.target?.value)
-		},
-		{
-			placeholder: 'Repeat password',
-			type: 'password',
-			required: true,
-			onChange: (e: Event) =>
-				(ref.current.repeatPassword = e?.target?.value)
-		}
-	]
-
-	const buttons = [
-		{ text: 'Sign up' },
-		{
-			text: 'Login',
-			onClick: () => navigate('/auth/login'),
-			type: 'button'
-		}
-	]
 	return (
 		<div className={styles.container}>
 			<div className={styles.promoContainer}>
-				{/* <Typography
-					text="Dive into Nirvana"
-					fontSize="70"
-					weight="semibold"
-					color="#F3F3F3"
-				/> */}
 				<PromoTitle
 					prePhrase="Dive into"
 					rotatedPhrases={[

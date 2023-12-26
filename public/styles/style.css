@@ -5,7 +5,7 @@ body {
 }
 
 * {
-	cursor: none !important;
+	cursor: none;
 }
 
 :root {

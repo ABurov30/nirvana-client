@@ -1,28 +1,49 @@
 import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
-import React, { useEffect, useLayoutEffect, useState } from 'react'
-import SearchForm from '../../ui/Forms/SearchForm/SearchForm'
+import React, { useEffect, useState } from 'react'
 import { getTracksThunk, searchTracksThunk } from '../../entities/Track/thunk'
-import TrackSlider from '../../ui/TrackSlider/TrackSlider'
-import TracksRow from '../../ui/TracksRow/TracksRow'
 //@ts-ignore
 import styles from './TrackPage.module.scss'
 import { buttons } from './configs/buttons'
 import { useAutocomplete } from '../../shared/hooks/useAutocomlete'
+import { SearchForm } from '../../ui/Forms/SearchForm/SearchForm'
+import { TracksRow } from '../../ui/TracksRow/TracksRow'
+import { TrackSlider } from '../../ui/TrackSlider/TrackSlider'
 
 export default function TrackPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
-	useLayoutEffect(() => {
+	useEffect(() => {
 		dispatch(getTracksThunk(0, user.id))
 	}, [])
 	const dispatch = useAppDispatch()
 	const { tracks } = useAppSelector(state => state.track)
 	const [offset, setOffset] = useState(0)
-	const tracksTitles = useAutocomplete('/track/uniqTracks')
-	const artists = useAutocomplete('/track/uniqArtists')
+	const { options: tracksTitles, setOptions: setTracksTitles } =
+		useAutocomplete('/track/uniqTracks')
+	const [tracksTitlesInput, setTracksTitlesInput] = useState('')
+	const { options: artists, setOptions: setArtists } =
+		useAutocomplete('/track/uniqArtists')
+	const [artistsInput, setArtistsInput] = useState('')
 
+	const URL = '/track'
 	const fields = [
-		{ label: 'Track', name: 'trackTitle', options: tracksTitles },
-		{ label: 'Artist', name: 'artist', options: artists }
+		{
+			label: 'Track',
+			name: 'trackTitle',
+			value: tracksTitlesInput,
+			onChange: setTracksTitlesInput,
+			path: `${URL}/intualSearchTrackTitle`,
+			options: tracksTitles,
+			setOptions: setTracksTitles
+		},
+		{
+			label: 'Artist',
+			name: 'artist',
+			value: artistsInput,
+			onChange: setArtistsInput,
+			path: `${URL}/intualSearchArtist`,
+			options: artists,
+			setOptions: setArtists
+		}
 	]
 
 	const loadPrevTracks = () => {
