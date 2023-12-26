@@ -7,7 +7,11 @@ export default function PlayButton({
 	onClick,
 }: PlayButtonProps) {
 	return (
-		<button className={styles.container} onClick={onClick}>
+		<button
+			className={styles.container}
+			onClick={onClick}
+			aria-label="Play"
+		>
 			<input checked={isPlaying} type="checkbox" />
 			<svg
 				viewBox="0 0 384 512"

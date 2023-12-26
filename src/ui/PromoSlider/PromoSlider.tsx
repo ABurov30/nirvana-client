@@ -14,6 +14,7 @@ import { PromoSliderProps } from './types'
 import React from 'react'
 
 function PromoSlider({ promos }: PromoSliderProps) {
+	console.log(promos)
 	return (
 		<Carousel fade className={styles.carousel}>
 			{promos?.map((promo, i) => (
@@ -21,6 +22,9 @@ function PromoSlider({ promos }: PromoSliderProps) {
 					<img
 						src={promo.favicon ? promo.favicon : '/img/cover.jpeg'}
 						className={styles.img}
+						loading="lazy"
+						decoding="async"
+						alt="promo"
 					/>
 				</Carousel.Item>
 			))}

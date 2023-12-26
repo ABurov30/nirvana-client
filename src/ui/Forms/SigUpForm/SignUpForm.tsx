@@ -81,6 +81,7 @@ function SignUpForm() {
 					<button
 						style={{ '--i': 2 } as React.CSSProperties}
 						type={'submit'}
+						aria-label="Submit"
 					>
 						{'Sign up'}
 					</button>
@@ -88,6 +89,7 @@ function SignUpForm() {
 						style={{ '--i': 1 } as React.CSSProperties}
 						type={'button'}
 						onClick={() => navigate('/auth/login')}
+						aria-label="Navigate to login"
 					>
 						{'Login'}
 					</button>

@@ -121,10 +121,6 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-			'process.env.PORT': JSON.stringify(process.env.PORT)
-		}),
 		new MiniCssExtractPlugin({
 			filename: isDev ? '[name].css' : '[name].[contenthash].css',
 			chunkFilename: isDev ? '[id].css' : '[id].[contenthash].css'
@@ -201,5 +197,8 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		assetModuleFilename: 'public/[name].[contenthash][ext][query]',
 		clean: true
+	},
+	stats: {
+		errorDetails: true,
 	}
 }

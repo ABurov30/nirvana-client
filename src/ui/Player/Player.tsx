@@ -170,7 +170,12 @@ export default function Player({ tracks, position }: PlayerProps) {
 			/>
 			<div className={styles.playerContainer}>
 				<div className={styles.track}>
-					<img src={currentTrack?.img} />
+					<img
+						src={currentTrack?.img}
+						alt={currentTrack.title}
+						loading="lazy"
+						decoding="async"
+					/>
 					<div className={styles.title}>
 						<Typography
 							text={currentTrack?.title}

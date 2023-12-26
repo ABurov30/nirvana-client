@@ -2,17 +2,17 @@ import { fetchFlags } from '../flags/fetchFlags'
 import { request } from '../Request/Requets'
 import { useEffect, useState } from 'react'
 
-export function useUniqGenre() {
-	const [genres, setGenres] = useState([])
+export function useAutocomplete(path:string) {
+	const [values, setValues] = useState([])
 
 	useEffect(() => {
 		request
 			.sendRequest({
-				url: `/radio/uniqGenre`
+				url: path
 			})
-			.then(res => setGenres(res.data))
+			.then(res => setValues(res.data))
 			.catch(e => console.error(e))
 	}, [])
 
-	return genres
+	return values
 }

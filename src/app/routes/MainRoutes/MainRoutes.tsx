@@ -1,16 +1,16 @@
+import React, { lazy } from 'react'
 import PrivateRouter from '../../../shared/HOC/PrivateRouter/PrivateRouter'
-import FavoritesPage from '../../../pages/FavoritesPage/FavoritesPage'
 import { useCheckUser } from '../../../shared/hooks/useCheckUser'
-import { useAppSelector } from '../../../shared/Redux/hooks'
 import MainLayout from '../../layout/MainLayout/MainLayout'
-import RadioPage from '../../../pages/RadioPage/RadioPage'
-import TrackPage from '../../../pages/TrackPage/TrackPage'
-import Error404 from '../../../pages/Error404/Error404'
+const RadioPage = lazy(() => import('../../../pages/RadioPage/RadioPage'))
+const TrackPage = lazy(() => import('../../../pages/TrackPage/TrackPage'))
+const Error404 = lazy(() => import('../../../pages/Error404/Error404'))
+const FavoritesPage = lazy(
+	() => import('../../../pages/FavoritesPage/FavoritesPage')
+)
+const NAZRouter = lazy(() => import('../NAZRoutes/NAZRoutes'))
 import AZLayout from '../../layout/AZLayout/AZLayout'
 import { Route, Routes } from 'react-router-dom'
-import NAZRouter from '../NAZRoutes/NAZRoutes'
-import AZRoutes from '../AZroutes/AZRoutes'
-import React from 'react'
 
 export default function MainRoutes() {
 	const user = useCheckUser()

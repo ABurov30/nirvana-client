@@ -6,21 +6,21 @@ import { setRadio } from './slice'
 const URL = '/radio'
 
 export const getAllRadiosThunk: ThunkActionCreater<number> =
-	offset => async dispatch => {
+	(offset: number, userId: string) => async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
 			url: `${URL}`,
-			data: { offset: offset }
+			data: { offset, userId }
 		})
 		dispatch(setRadio(res?.data))
 	}
 
 export const searchRadioThunk: ThunkActionCreater<FormType> =
-	formData => async dispatch => {
+	(formData: FormType, userId: string) => async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
 			url: `${URL}/search`,
-			data: formData
+			data: { ...formData, userId }
 		})
 		dispatch(setRadio(res?.data))
 	}

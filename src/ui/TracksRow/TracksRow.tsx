@@ -14,7 +14,7 @@ export default function TracksRow({
 	tracks,
 	loadPrev,
 	loadNext
-}: TracksRowProps): JSX.Element {
+}: TracksRowProps): JSX.Element | null {
 	const dispatch = useAppDispatch()
 	return (
 		<>
@@ -36,14 +36,14 @@ export default function TracksRow({
 							onClick={() => {
 								turnOnPlayMode(i, tracks, dispatch)
 							}}
-							key={track.id}
+							key={track?.id}
 							srcImg={!track?.img ? '/img/cover.svg' : track?.img}
 							title={
-								track.title.length > 10
-									? `${track.title.slice(0, 10)}...`
-									: track.title
+								track?.title?.length > 10
+									? `${track?.title?.slice(0, 10)}...`
+									: track?.title
 							}
-							subTitle={track.subTitle}
+							subTitle={track?.subTitle}
 						/>
 					))}
 				</div>

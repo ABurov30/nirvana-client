@@ -52,6 +52,9 @@ function TrackSlider({ tracks }: TrackSliderProps) {
 					<img
 						src={track.img ? track.img : '/img/cover.jpeg'}
 						className={styles.img}
+						loading="lazy"
+						decoding="async"
+						alt={track.title}
 					/>
 				</Carousel.Item>
 			))}

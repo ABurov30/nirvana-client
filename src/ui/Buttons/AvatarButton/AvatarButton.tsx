@@ -10,6 +10,7 @@ function AvatarButton({ nickname }: AvatarProps) {
 	const dispatch = useAppDispatch()
 	return (
 		<button
+			aria-label='Avatar'
 			className={styles.avatarContainer}
 			onClick={() => dispatch(logoutThunk())}
 		>

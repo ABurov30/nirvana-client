@@ -15,6 +15,7 @@ function AutoComplete({ field }: AutoCompleteProps) {
 					{...params}
 					label={field.label}
 					name={field.name}
+					variant="standard"
 					InputProps={{
 						...params.InputProps,
 						type: 'search'

@@ -7,10 +7,13 @@ import {
 	RadioNavbarButton,
 	SettingsNavbarButton,
 	LogoNavbarButton,
-	TrackNavbarButton
+	TrackNavbarButton,
+	Typography
 } from 'radio-app-uikit'
 import { useLocation, useNavigate } from 'react-router-dom'
 import React, { useState } from 'react'
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher'
+import styles from './Navbar.module.scss'
 
 export default function Navbar() {
 	const [isHovered, setIsHovered] = useState(false)
@@ -51,6 +54,12 @@ export default function Navbar() {
 					onClick={() => navigate('/settings')}
 					isActive={location.pathname === '/settings'}
 				/>
+			</NavSection>
+			<NavSection>
+				<div className={styles.themeSwitcherContainer}>
+					{isHovered && <Typography text="Mode" fontSize="16" />}
+					<ThemeSwitcher />
+				</div>
 			</NavSection>
 		</RadioNavbar>
 	)
