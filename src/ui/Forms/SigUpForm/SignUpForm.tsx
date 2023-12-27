@@ -4,11 +4,12 @@ import React, { useState } from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import { onSubmit } from './utils/onSubmit'
 import { useAppDispatch } from '../../../shared/Redux/hooks'
+import { SignUpFormProps } from './types'
 
-function SignUpForm() {
+function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
-	const [isVisible, setIsVisible] = useState(false)
+
 	return (
 		<form
 			className={styles.form}

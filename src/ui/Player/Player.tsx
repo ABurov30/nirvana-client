@@ -15,6 +15,7 @@ import debounce from 'lodash.debounce'
 import styles from './Player.module.scss'
 import { useDispatch } from 'react-redux'
 import { PlayerProps } from './types'
+import { formatTime } from '../../shared/utils/turnOnPlayMode/formatTime'
 
 export default function Player({ tracks, position }: PlayerProps) {
 	const dispatch = useDispatch()
@@ -52,10 +53,11 @@ export default function Player({ tracks, position }: PlayerProps) {
 		setIsPlaying(prev => !prev)
 	}
 
-	const onPlaying = () => {
+	function onPlaying() {
 		try {
 			const duration = audioElem?.current?.duration
 			const currentTime = audioElem?.current?.currentTime
+			console.log('onPlaying', duration, currentTime)
 			setCurrentTrack({
 				...currentTrack,
 				progress: (currentTime / duration) * 100,
@@ -138,6 +140,8 @@ export default function Player({ tracks, position }: PlayerProps) {
 			index === tracks.length - 1
 				? setCurrentTrack(tracks[0])
 				: setCurrentTrack(tracks[index + 1])
+			console.log('Next track', tracks[index + 1])
+			console.log(currentTrack, 'current track')
 			audioElem.current.currentTime = 0
 			await audioElem?.current?.load()
 			audioElem?.current?.play()
@@ -194,7 +198,7 @@ export default function Player({ tracks, position }: PlayerProps) {
 			<div className={styles.playerContainer}>
 				<div className={styles.track}>
 					<img
-						src={currentTrack?.img}
+						src={currentTrack?.img ? currentTrack.img : './img/cover.svg'}
 						alt={currentTrack.title}
 						loading="lazy"
 						decoding="async"
@@ -243,6 +247,16 @@ export default function Player({ tracks, position }: PlayerProps) {
 							>
 								<div className={styles.pointer}></div>
 							</div>
+						</div>
+						<div className={styles.timeContainer}>
+							<Typography
+								text={formatTime(
+									audioElem?.current?.currentTime
+								)}
+							/>
+							<Typography
+								text={formatTime(audioElem?.current?.duration)}
+							/>
 						</div>
 					</div>
 				) : null}

@@ -4,7 +4,7 @@
 	z-index: 0;
 	height: 20%;
 	width: 120vw;
-	opacity: 0.5;
+	opacity: 0.85;
 	position: fixed;
 	bottom: -5%;
 	left: -5vw;
@@ -17,8 +17,21 @@
 		rgba(161, 106, 232, 1) 100%
 	);
 	filter: blur(30px);
-	background-repeat: repeat;
-	background-size: 100%;
+	background-repeat: no-repeat;
+	background-size: 300% 300%;
+	animation: AnimateBG 100s ease-in-out infinite;
+}
+
+@keyframes AnimateBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .playerContainer {
@@ -41,6 +54,14 @@
 	display: flex;
 	gap: 10px;
 	height: 100%;
+	align-items: center;
+}
+
+.timeContainer {
+	margin-top: 5px;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
 	align-items: center;
 }
 
@@ -177,3 +198,4 @@
 .volumeButton:hover svg {
 	color: $primary-violet;
 }
+

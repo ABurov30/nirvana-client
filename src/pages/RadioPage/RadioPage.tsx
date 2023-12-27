@@ -65,9 +65,9 @@ export default function RadioPage(): JSX.Element {
 		e.preventDefault()
 		const formData = Object.fromEntries(new FormData(e.target))
 		if (!formData.name && !formData.tags && !formData.country) {
-			dispatch(getAllRadiosThunk(0, used.id))
+			dispatch(getAllRadiosThunk(0, user.id))
 		} else {
-			dispatch(searchRadioThunk(formData, used.id))
+			dispatch(searchRadioThunk(formData, user.id))
 		}
 	}
 
