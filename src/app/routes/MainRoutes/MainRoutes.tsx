@@ -11,6 +11,7 @@ const FavoritesPage = lazy(
 const NAZRouter = lazy(() => import('../NAZRoutes/NAZRoutes'))
 import AZLayout from '../../layout/AZLayout/AZLayout'
 import { Route, Routes } from 'react-router-dom'
+import ResetPasswordPage from '../../../pages/ResetPasswordPage/ResetPasswordPage'
 
 export default function MainRoutes() {
 	const user = useCheckUser()
@@ -20,7 +21,7 @@ export default function MainRoutes() {
 			<Route path="/" element={<MainLayout user={user} />}>
 				<Route
 					element={
-						<PrivateRouter isAllowed={user?.status === 'logged'} />
+						<PrivateRouter isAllowed={user?.status === 'active'} />
 					}
 				>
 					<Route path="/" element={<AZLayout user={user} />}>
@@ -29,7 +30,7 @@ export default function MainRoutes() {
 						<Route path="/" element={<TrackPage />} />
 					</Route>
 				</Route>
-				<Route path="/auth/*" element={<NAZRouter />} />
+				<Route path="*" element={<NAZRouter />} />
 				<Route path="*" element={<Error404 />} />
 			</Route>
 		</Routes>

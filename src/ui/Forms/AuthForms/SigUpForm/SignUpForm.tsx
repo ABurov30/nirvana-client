@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom'
 import styles from './SignUpForm.module.scss'
 import React, { useState } from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-import { onSubmit } from './utils/onSubmit'
-import { useAppDispatch } from '../../../shared/Redux/hooks'
+import { onSubmit } from './onSubmit'
+import { useAppDispatch } from '../../../../shared/Redux/hooks'
 import { SignUpFormProps } from './types'
 
 function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
@@ -26,7 +26,7 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 							placeholder={'Name'}
 							type={'name'}
 							name={'name'}
-							autoFocus
+					
 						/>
 					</li>
 				</div>
@@ -94,7 +94,7 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 					<button
 						style={{ '--i': 1 } as React.CSSProperties}
 						type={'button'}
-						onClick={() => navigate('/auth/login')}
+						onClick={() => navigate('/login')}
 						aria-label="Navigate to login"
 					>
 						{'Login'}

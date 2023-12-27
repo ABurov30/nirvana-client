@@ -1,12 +1,8 @@
-import { loginUserThunk, signUpThunk } from '../../entities/User/thunk'
-import SignUpForm from '../../ui/Forms/SigUpForm/SignUpForm'
-import { AuthForm } from '../../ui/Forms/AuthForm/AuthForm'
-import { useAppDispatch } from '../../shared/Redux/hooks'
-import PromoTitle from '../../ui/PromoTitle/PromoTitle'
-import { useNavigate } from 'react-router-dom'
+import SignUpForm from '../../UI/Forms/AuthForms/SigUpForm/SignUpForm'
+import PromoTitle from '../../UI/PromoTitle/PromoTitle'
 import styles from './SignupPage.module.scss'
 import { Typography } from 'radio-app-uikit'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 export default function SignupPage(): JSX.Element {
 	const [isVisible, setIsVisible] = useState(false)
@@ -28,7 +24,7 @@ export default function SignupPage(): JSX.Element {
 					]}
 				/>
 			</div>
-			<div className={styles.loginContainer}>
+			<div className={styles.signUpContainer}>
 				<div className={styles.titleContainer}>
 					<Typography
 						text="Sign up"

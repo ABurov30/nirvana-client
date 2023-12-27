@@ -1,5 +1,5 @@
 import { ThunkActionCreater } from '../../shared/Redux/store'
-import { FormType } from '../../ui/Forms/SearchForm/type'
+import { FormType } from '../../UI/Forms/SearchForm/type'
 import { request } from '../../shared/Request/Requets'
 import { setRadio } from './slice'
 

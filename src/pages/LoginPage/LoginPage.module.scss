@@ -28,11 +28,26 @@
 
 .formContainer {
 	margin-top: 20px;
-	margin-left: 20px;
 	width: 40%;
 }
 
 .form {
 	width: 30%;
 	align-self: center;
+}
+
+.forgetPassword {
+	margin-top: 60px;
+	display: flex;
+	justify-content: center;
+	opacity: 0.7;
+}
+
+.forgetPassword span {
+	color: $primary-grey;
+}
+
+.forgetPassword:hover span {
+	color: $primary-violet;
+	opacity: 1;
 }

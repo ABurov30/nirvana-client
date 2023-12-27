@@ -8,9 +8,9 @@ import React, { useCallback, useLayoutEffect, useState } from 'react'
 import styles from './RadioPage.module.scss'
 import { buttons } from './configs/buttons'
 import { useAutocomplete } from '../../shared/hooks/useAutocomlete'
-import { SearchForm } from '../../ui/Forms/SearchForm/SearchForm'
-import { TracksRow } from '../../ui/TracksRow/TracksRow'
-import { TrackSlider } from '../../ui/TrackSlider/TrackSlider'
+import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
+import { TracksRow } from '../../UI/TracksRow/TracksRow'
+import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
 
 export default function RadioPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
@@ -94,6 +94,7 @@ export default function RadioPage(): JSX.Element {
 				onSubmit={searchHandler}
 			/>
 			<TracksRow
+				title={'Your weekly top stations'}
 				tracks={radios}
 				loadNext={loadNextRadios}
 				loadPrev={loadPrevRadios}

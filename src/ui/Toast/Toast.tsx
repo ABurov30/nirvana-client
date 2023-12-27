@@ -22,17 +22,12 @@ export default function Toast({ notification }: ToastProps) {
 		dispatch(setIsOpen(true))
 	}, [notification.message, notification.severity])
 
-	useEffect(() => {
-		return () => {
-			dispatch(clearNotification())
-		}
-	}, [])
 
 	return (
 		<>
 			<Snackbar
 				open={isOpen}
-				autoHideDuration={5000}
+				autoHideDuration={3000}
 				TransitionComponent={Fade}
 				onClose={handleClose}
 			>

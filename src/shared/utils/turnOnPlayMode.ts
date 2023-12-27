@@ -1,7 +1,7 @@
-import { setCurTracks, setPosition } from '../../../entities/CurTracks/slice'
-import { setIsPlayMode } from '../../../entities/IsPlayMode/slice'
+import { setCurTracks, setPosition } from '../../entities/CurTracks/slice'
+import { setIsPlayMode } from '../../entities/IsPlayMode/slice'
 import { Radio } from '../../../entities/Radios/types'
-import { useAppDispatch } from '../../Redux/hooks'
+import { useAppDispatch } from '../Redux/hooks'
 import React from 'react'
 
 export const turnOnPlayMode = (

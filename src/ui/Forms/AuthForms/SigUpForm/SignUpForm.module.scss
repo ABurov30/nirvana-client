@@ -1,0 +1,141 @@
+$input-color: #2a2630;
+$input-button-color: #f3f3f3;
+$button-background-color: #6360ff;
+$button-background-color-box: #6360ff;
+$button-hover-color: #6360ff;
+$li-colors: (#f3f3f3);
+$li-colors-box: (#5ee9bf);
+$input-width: 100%;
+$input-height: 80px;
+$input-border: 0.1px solid #5ee9bf;
+$input-padding: 10px;
+$button-border: none;
+$button-width: 100%;
+$b: 1.5em;
+
+.form {
+
+
+	width: 100%;
+	.wrapper {
+		position: relative;
+		transform: skewY(-14deg);
+		width: 100%;
+
+		li,
+		button,
+		.blurred {
+			position: relative;
+			list-style: none;
+			margin-bottom: 4px;
+			width: $button-width;
+			z-index: var(--i);
+			transition: 0.3s;
+			border-radius: 4px;
+			color: #f3f3f3;
+		}
+
+		li::before,
+		button::before {
+			position: absolute;
+			content: '';
+			background: $button-background-color-box;
+			top: 0;
+			left: -40px;
+			width: 40px;
+			height: 40px;
+			transform-origin: right;
+			transform: skewY(45deg);
+			transition: 0.3s;
+			filter: blur(15px);
+		}
+
+		li::after,
+		button::after {
+			position: absolute;
+			content: '';
+			background: $button-background-color-box;
+			width: $button-width;
+			height: 40px;
+			top: -40px;
+			left: 0;
+			transform-origin: bottom;
+			transform: skewX(45deg);
+			transition: 0.3s;
+			filter: blur(15px);
+		}
+
+		@for $i from 1 through length($li-colors) {
+			$color: nth($li-colors, $i);
+
+			li:nth-child(#{$i})::after,
+			li:nth-child(#{$i})::before,
+			.blurred:nth-child(#{$i})::after,
+			.blurred:nth-child(#{$i})::before {
+				background-color: $li-colors-box;
+			}
+
+			li:nth-child(#{$i}) .input {
+				background: $color;
+			}
+
+			li:nth-child(#{$i}) .input:focus {
+				outline: none;
+				border: 3.5px solid $li-colors-box;
+			}
+		}
+
+		li:hover,
+		button:hover,
+		.blurred:hover {
+			transform: translateX(-20px);
+		}
+
+		button:hover,
+		button:hover::before,
+		button:hover::after,
+		.blurred:hover,
+		.blurred:hover::before,
+		.blurred:hover::after {
+			background: $button-hover-color;
+		}
+
+		button:active,
+		.blurred:active {
+			transform: translateX(0px);
+		}
+	}
+
+	.input,
+	button,
+	.blurred {
+		width: $input-width;
+		height: $input-height;
+		position: relative;
+		padding: $input-padding;
+		border: none;
+	}
+
+	button,
+	.blurred {
+		background: $button-background-color;
+		border: $button-border;
+	}
+
+	li .input,
+	.blurred {
+		outline: none;
+		border: none;
+		color: $input-color;
+		border-radius: 4px;
+		&::placeholder {
+			color: $input-color;
+		}
+	}
+
+	.visibilityButton {
+		position: absolute;
+		top: 40%;
+		right: 10%;
+	}
+}

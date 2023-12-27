@@ -1,4 +1,4 @@
-import TracksRow from '../../ui/TracksRow/TracksRow'
+import TracksRow from '../../UI/TracksRow/TracksRow'
 import React from 'react'
 
 function FavoritesPage() {

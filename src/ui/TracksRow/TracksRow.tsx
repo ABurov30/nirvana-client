@@ -4,13 +4,14 @@ import {
 	RightArrowRoundButton,
 	Typography
 } from 'radio-app-uikit'
-import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode/turnOnPlayMode'
+import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
 import { useAppDispatch } from '../../shared/Redux/hooks'
 import style from './TracksRow.module.scss'
 import { type TracksRowProps } from './types'
 import React, { memo } from 'react'
 
 export const TracksRow = memo(function TracksRow({
+	title,
 	tracks,
 	loadPrev,
 	loadNext
@@ -20,11 +21,7 @@ export const TracksRow = memo(function TracksRow({
 		<>
 			<div className={style.cardsFlowContainer}>
 				<div className={style.header}>
-					<Typography
-						text={'Your weekly top stations'}
-						fontSize="18"
-						weight="medium"
-					/>
+					<Typography text={title} fontSize="18" weight="medium" />
 					<div className={style.buttonsContainer}>
 						<LeftArrowRoundButton onClick={loadPrev} size={40} />
 						<RightArrowRoundButton onClick={loadNext} size={40} />

@@ -1,6 +1,12 @@
 import { addLikeThunk, removeLikeThunk } from '../../entities/CurTracks/thunk'
 import SkipPreviousRoundedIcon from '@mui/icons-material/SkipPreviousRounded'
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, {
+	ErrorInfo,
+	useEffect,
+	useLayoutEffect,
+	useRef,
+	useState
+} from 'react'
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
 import { setNotification } from '../../entities/Notification/slice'
@@ -15,7 +21,7 @@ import debounce from 'lodash.debounce'
 import styles from './Player.module.scss'
 import { useDispatch } from 'react-redux'
 import { PlayerProps } from './types'
-import { formatTime } from '../../shared/utils/turnOnPlayMode/formatTime'
+import { formatTime } from '../../shared/utils/formatTime'
 
 export default function Player({ tracks, position }: PlayerProps) {
 	const dispatch = useDispatch()
@@ -32,62 +38,63 @@ export default function Player({ tracks, position }: PlayerProps) {
 
 	useLayoutEffect(() => {
 		setCurrentTrack(tracks[position])
-		setTimeout(() => {
-			audioElem.current.play()
-		}, 200)
 	}, [tracks, position])
 
-	useLayoutEffect(() => {
-		if (isPlaying) {
-			audioElem?.current?.play()
-		} else {
-			audioElem?.current?.pause()
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			if (isPlaying) {
+				audioElem?.current?.play()
+			} else {
+				audioElem?.current?.pause()
+			}
+		}, 500)
+		return () => {
+			clearTimeout(timeoutId)
 		}
 	}, [isPlaying])
 
-	useLayoutEffect(() => {
-		setIsPlaying(true)
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			audioElem.current.play()
+			setIsPlaying(true)
+			setVolume(audioElem.current.volume)
+		}, 500)
+
+		return () => {
+			clearTimeout(timeoutId)
+		}
 	}, [])
+
+	useEffect(() => {
+		if (audioElem?.current?.currentTime === currentTrack?.length) skipNext()
+	}, [audioElem?.current?.currentTime])
 
 	const PlayPause = () => {
 		setIsPlaying(prev => !prev)
 	}
 
 	function onPlaying() {
-		try {
-			const duration = audioElem?.current?.duration
-			const currentTime = audioElem?.current?.currentTime
-			console.log('onPlaying', duration, currentTime)
-			setCurrentTrack({
-				...currentTrack,
-				progress: (currentTime / duration) * 100,
-				length: duration
-			})
-		} catch (e) {
-			dispatch(
-				setNotification({ severity: 'error', message: `${e.message}` })
-			)
-		}
+		const duration = audioElem?.current?.duration
+		const currentTime = audioElem?.current?.currentTime
+		setCurrentTrack({
+			...currentTrack,
+			progress: (currentTime / duration) * 100,
+			length: duration
+		})
 	}
 
 	async function checkWidth(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-		try {
-			if (!isDragingProgress) return
-			await audioElem?.current?.pause()
-			let width = clickRef?.current?.clientWidth
-				? clickRef?.current?.clientWidth
-				: 0
-			const offset = e.nativeEvent?.offsetX
-			const divProgress = (offset / width) * 100
-			const newCurrentTime = (divProgress / 100) * currentTrack.length
-			audioElem.current.currentTime = isFinite(newCurrentTime)
-				? newCurrentTime
-				: 100
-		} catch (e) {
-			dispatch(
-				setNotification({ severity: 'error', message: `${e.message}` })
-			)
-		}
+		if (!isDragingProgress) return
+		await audioElem?.current?.pause()
+		let width = clickRef?.current?.clientWidth
+			? clickRef?.current?.clientWidth
+			: 0
+		const offset = e.nativeEvent?.offsetX
+		const divProgress = (offset / width) * 100
+		const newCurrentTime = (divProgress / 100) * currentTrack.length
+		audioElem.current.currentTime = isFinite(newCurrentTime)
+			? newCurrentTime
+			: 100
 	}
 
 	function stopDragingProgress() {
@@ -107,6 +114,7 @@ export default function Player({ tracks, position }: PlayerProps) {
 			audioElem.current.volume = newVolume
 			setVolume(newVolume)
 		} catch (e) {
+			console.error(e)
 			dispatch(
 				setNotification({ severity: 'error', message: `${e.message}` })
 			)
@@ -114,60 +122,45 @@ export default function Player({ tracks, position }: PlayerProps) {
 	}
 
 	async function skipPrevious() {
-		try {
-			const index = tracks.findIndex(
-				track => track.id === currentTrack.id
-			)
-			index === 0
-				? setCurrentTrack(tracks[tracks.length - 1])
-				: setCurrentTrack(tracks[index - 1])
-			audioElem.current.currentTime = 0
-			await audioElem?.current?.load()
-			audioElem?.current?.play()
-		} catch (e) {
-			dispatch(
-				setNotification({ severity: 'error', message: `${e.message}` })
-			)
-		}
+		const index = tracks.findIndex(track => track.id === currentTrack.id)
+		index === 0
+			? setCurrentTrack(tracks[tracks.length - 1])
+			: setCurrentTrack(tracks[index - 1])
+		audioElem.current.currentTime = 0
+		await audioElem?.current?.load()
+		audioElem?.current?.play()
 	}
 
 	async function skipNext() {
-		try {
-			console.log('skipNext')
-			const index = tracks.findIndex(
-				track => track.id === currentTrack.id
-			)
-			index === tracks.length - 1
-				? setCurrentTrack(tracks[0])
-				: setCurrentTrack(tracks[index + 1])
-			console.log('Next track', tracks[index + 1])
-			console.log(currentTrack, 'current track')
-			audioElem.current.currentTime = 0
-			await audioElem?.current?.load()
-			audioElem?.current?.play()
-		} catch (e) {
-			dispatch(
-				setNotification({ severity: 'error', message: `${e.message}` })
-			)
-		}
+		const index = tracks.findIndex(track => track.id === currentTrack.id)
+		index === tracks.length - 1
+			? setCurrentTrack(tracks[0])
+			: setCurrentTrack(tracks[index + 1])
+		audioElem.current.currentTime = 0
+		await audioElem?.current?.load()
+		audioElem?.current?.play()
 	}
 
 	async function likeHandler() {
-		if (isLiked) {
-			await dispatch(
-				removeLikeThunk(currentTrack.id, user.id, currentTrack.type)
-			)
-			setIsLiked(false)
-		} else {
-			await dispatch(
-				addLikeThunk(currentTrack.id, user.id, currentTrack.type)
-			)
-			setIsLiked(true)
+		try {
+			if (isLiked) {
+				await dispatch(
+					removeLikeThunk(currentTrack.id, user.id, currentTrack.type)
+				)
+				setIsLiked(false)
+			} else {
+				await dispatch(
+					addLikeThunk(currentTrack.id, user.id, currentTrack.type)
+				)
+				setIsLiked(true)
+			}
+		} catch (e) {
+			console.error(e)
+			dispatch(setNotification({ message: e.message, severity: 'error' }))
 		}
 	}
 
 	function toggleVolumeControl() {
-		console.log(audioElem.current.volume, 'volume')
 		if (audioElem.current.volume > 0) {
 			audioElem.current.volume = 0
 			setVolume(0)
@@ -176,10 +169,6 @@ export default function Player({ tracks, position }: PlayerProps) {
 			setVolume(1)
 		}
 	}
-
-	useEffect(() => {
-		if (audioElem?.current?.currentTime === currentTrack?.length) skipNext()
-	}, [audioElem?.current?.currentTime])
 
 	return (
 		<>
@@ -198,7 +187,11 @@ export default function Player({ tracks, position }: PlayerProps) {
 			<div className={styles.playerContainer}>
 				<div className={styles.track}>
 					<img
-						src={currentTrack?.img ? currentTrack.img : './img/cover.svg'}
+						src={
+							currentTrack?.img
+								? currentTrack.img
+								: './img/cover.svg'
+						}
 						alt={currentTrack.title}
 						loading="lazy"
 						decoding="async"
@@ -218,13 +211,13 @@ export default function Player({ tracks, position }: PlayerProps) {
 				<div className={styles.controls}>
 					<RoundButton
 						icon={<SkipPreviousRoundedIcon />}
-						onClick={skipPrevious}
+						onClick={debounce(skipPrevious, 1000, { leading: true })}
 						className={styles.controlButton}
 					/>
 					<PlayButton isPlaying={isPlaying} onClick={PlayPause} />
 					<RoundButton
 						icon={<SkipNextRoundedIcon />}
-						onClick={skipNext}
+						onClick={debounce(skipNext, 1000, { leading: true })}
 						className={styles.controlButton}
 					/>
 					<ShareButton />

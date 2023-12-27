@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../../shared/Redux/hooks'
-import Toast from '../../../ui/Toast/Toast'
+import Toast from '../../../UI/Toast/Toast'
 import { Outlet } from 'react-router-dom'
 import { type MainLayoutProps } from './types'
 import { Loader } from 'radio-app-uikit'
@@ -14,7 +14,9 @@ function MainLayout({ user }: MainLayoutProps) {
 				<Loader />
 			) : (
 				<>
-					{notification.message && <Toast notification={notification} />}
+					{notification.message && (
+						<Toast notification={notification} />
+					)}
 					<Outlet />
 				</>
 			)}

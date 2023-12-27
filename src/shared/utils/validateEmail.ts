@@ -1,8 +1,5 @@
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
-import {
-	setIsOpen,
-	setNotification
-} from '../../../../entities/Notification/slice'
+import { setIsOpen, setNotification } from '../../entities/Notification/slice'
 
 export function validateEmail(
 	email: string,

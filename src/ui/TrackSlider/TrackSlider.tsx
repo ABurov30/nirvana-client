@@ -5,7 +5,7 @@ import {
 	ShareRoundButton,
 	Typography
 } from 'radio-app-uikit'
-import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode/turnOnPlayMode'
+import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
 import { useAppDispatch } from '../../shared/Redux/hooks'
 import Carousel from 'react-bootstrap/Carousel'
 import styles from './TrackSlider.module.scss'

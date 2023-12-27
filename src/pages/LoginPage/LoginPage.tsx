@@ -1,15 +1,13 @@
 import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
-import { AuthForm } from '../../ui/Forms/AuthForm/AuthForm'
-import LoginForm from '../../ui/Forms/LoginForm/LoginForm'
-import PromoSlider from '../../ui/PromoSlider/PromoSlider'
+import LoginForm from '../../UI/Forms/AuthForms/LoginForm/LoginForm'
+import PromoSlider from '../../UI/PromoSlider/PromoSlider'
 import { getPromoThunk } from '../../entities/Promo/thunk'
 import { loginUserThunk } from '../../entities/User/thunk'
-import ImgSlider from '../../ui/TrackSlider/TrackSlider'
 import React, { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './LoginPage.module.scss'
 import { Typography } from 'radio-app-uikit'
-import Toast from '../../ui/Toast/Toast'
+import Toast from '../../UI/Toast/Toast'
 
 export default function LoginPage(): JSX.Element {
 	const dispatch = useAppDispatch()
@@ -40,6 +38,12 @@ export default function LoginPage(): JSX.Element {
 				<Typography text={'Log in'} fontSize="32" weight="semibold" />
 				<div className={styles.formContainer}>
 					<LoginForm />
+					<div
+						className={styles.forgetPassword}
+						onClick={() => navigate('/findEmail')}
+					>
+						<Typography text="Forget password?" />
+					</div>
 				</div>
 			</div>
 		</div>

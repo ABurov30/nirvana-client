@@ -1,6 +1,6 @@
 import { ThunkActionCreater } from '../../shared/Redux/store'
 import { request } from '../../shared/Request/Requets'
-import { FormType } from '../../ui/Forms/SearchForm/type'
+import { FormType } from '../../UI/Forms/SearchForm/type'
 import { setTracks } from './slice'
 
 const URL = '/track'

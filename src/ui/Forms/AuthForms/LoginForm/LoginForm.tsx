@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom'
 import styles from './LoginForm.module.scss'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import React, { useState } from 'react'
-import { onSubmit } from './utils/onSubmit'
-import { useAppDispatch } from '../../../shared/Redux/hooks'
+import { onSubmit } from './onSubmit'
+import { useAppDispatch } from '../../../../shared/Redux/hooks'
 
 function LoginForm() {
 	const navigate = useNavigate()
@@ -24,7 +24,7 @@ function LoginForm() {
 							className={styles.input}
 							placeholder={'E-mail'}
 							name={'email'}
-							autoFocus
+				
 						/>
 					</li>
 				</div>
@@ -61,7 +61,7 @@ function LoginForm() {
 					<button
 						style={{ '--i': 1 } as React.CSSProperties}
 						type={'button'}
-						onClick={() => navigate('/auth/signup')}
+						onClick={() => navigate('/signup')}
 						aria-label="Navigate to sign up"
 					>
 						{'Sign up'}
