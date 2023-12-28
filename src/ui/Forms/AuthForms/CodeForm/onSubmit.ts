@@ -2,7 +2,11 @@ import {
 	setIsOpen,
 	setNotification
 } from '../../../../entities/Notification/slice'
-import { findEmailThunk, signUpThunk } from '../../../../entities/User/thunk'
+import {
+	findEmailThunk,
+	sendCodeThunk,
+	signUpThunk
+} from '../../../../entities/User/thunk'
 import { validatePassword } from '../../../../shared/utils/validatePassword'
 import { validateEmail } from '../../../../shared/utils/validateEmail'
 import { NavigateFunction } from 'react-router-dom'
@@ -10,28 +14,31 @@ import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 import { FormEvent } from 'react'
 
 export async function onSubmit(
-	e: FormEvent<HTMLFormElement>,
+	confirmationCode: string,
 	dispatch: ThunkDispatch<{}, undefined, UnknownAction>,
 	navigate: NavigateFunction
 ) {
-	e.preventDefault()
-	const formData = Object.fromEntries(new FormData(e.target))
-
-	if (!formData.email) {
+	console.log(confirmationCode, 'submit')
+	if (!confirmationCode) {
 		dispatch(
 			setNotification({
-				message: 'Enter your email',
+				message: 'Enter code',
 				severity: 'info'
 			})
 		)
 		dispatch(setIsOpen(true))
 		return
 	}
-	if (!validateEmail(formData.email, dispatch)) {
-		return
-	}
-	const isSent = dispatch(findEmailThunk(formData))
-	if (isSent as unknown as boolean) {
-		navigate('/auth/codePage')
+	const userId = await dispatch(sendCodeThunk(confirmationCode))
+	console.log(userId, 'befor conditional')
+	if (userId) {
+		console.log(userId, 'after conditional')
+		navigate(`/auth/resetPassword/${userId}`)
+		dispatch(
+			setNotification({
+				message: 'Enter new password',
+				severity: 'info'
+			})
+		)
 	}
 }

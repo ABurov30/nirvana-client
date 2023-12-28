@@ -6,6 +6,7 @@ import { EmailForm } from '../../UI/Forms/AuthForms/EmailForm/types'
 import { LoginForm } from '../../UI/Forms/AuthForms/LoginForm/types'
 import { SignUpForm } from '../../UI/Forms/AuthForms/SigUpForm/types'
 import { ResetPasswordForm } from '../../UI/Forms/AuthForms/ResetPasswordForm/types'
+import { CodeForm } from '../../UI/Forms/AuthForms/CodeForm/types'
 
 export const signUpThunk: ThunkActionCreater<SignUpForm> =
 	formData => async dispatch => {
@@ -70,7 +71,7 @@ export const checkUserThunk: ThunkActionCreater = () => dispatch => {
 				dispatch(
 					setNotification({
 						message: res?.data,
-						severity: 'error'
+						severity: 'info'
 					})
 				)
 			} else {
@@ -168,5 +169,26 @@ export const newPasswordThunk: ThunkActionCreater<ResetPasswordForm> =
 				})
 			)
 			return true
+		}
+	}
+
+export const sendCodeThunk: ThunkActionCreater<CodeForm> =
+	confirmationCode => async dispatch => {
+		const res = await request.sendRequest({
+			method: 'get',
+			url: `/auth/reset/${confirmationCode}`
+		})
+
+		if (res?.status !== 200) {
+			dispatch(
+				setNotification({
+					message: res.data,
+					severity: 'error'
+				})
+			)
+			return false
+		} else {
+			console.log(res.data.userId)
+			return res.data.userId
 		}
 	}

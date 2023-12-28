@@ -40,7 +40,7 @@ export default function LoginPage(): JSX.Element {
 					<LoginForm />
 					<div
 						className={styles.forgetPassword}
-						onClick={() => navigate('/findEmail')}
+						onClick={() => navigate('/auth/findEmail')}
 					>
 						<Typography text="Forget password?" />
 					</div>

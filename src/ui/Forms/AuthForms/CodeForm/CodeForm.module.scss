@@ -1,0 +1,20 @@
+$input-color: #2a2630;
+$input-button-color: #f3f3f3;
+$button-background-color: #6360ff;
+$button-background-color-box: #6360ff;
+$button-hover-color: #6360ff;
+$li-colors: (#f3f3f3);
+$li-colors-box: (#5ee9bf);
+$input-width: 95%;
+$input-height: 80px;
+$input-padding: 10px;
+$button-border: none;
+
+.form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 80%;
+	gap: 20px;
+}

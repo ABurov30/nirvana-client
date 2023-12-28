@@ -5,7 +5,7 @@
 	height: 100vh;
 	display: flex;
 	align-items: center;
-    justify-content: center;
+	justify-content: center;
 	background-size: 300% 300%;
 	background-image: linear-gradient(
 		90deg,
@@ -18,30 +18,18 @@
 	animation: AnimateBG 20s ease infinite;
 }
 
-.emailContainer {
-	width: 30vw;
-	height: 40vh;
+.codeContainer {
+	width: 25vw;
+	height: 30vh;
 	border: 0px transparent solid;
 	border-radius: 14px;
 	display: flex;
-	gap: 30px;
+	gap: 20px;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	background-color: $primary-white;
 	box-shadow: 0px 5px 50px $primary-grey;
-}
-
-.titleContainer {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	align-items: center;
-}
-
-.formContainer {
-	margin-top: 20px;
-	width: 50%;
 }
 
 @keyframes AnimateBG {

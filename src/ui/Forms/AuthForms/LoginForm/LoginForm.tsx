@@ -61,7 +61,7 @@ function LoginForm() {
 					<button
 						style={{ '--i': 1 } as React.CSSProperties}
 						type={'button'}
-						onClick={() => navigate('/signup')}
+						onClick={() => navigate('/auth/signup')}
 						aria-label="Navigate to sign up"
 					>
 						{'Sign up'}

@@ -94,7 +94,7 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 					<button
 						style={{ '--i': 1 } as React.CSSProperties}
 						type={'button'}
-						onClick={() => navigate('/login')}
+						onClick={() => navigate('/auth/login')}
 						aria-label="Navigate to login"
 					>
 						{'Login'}

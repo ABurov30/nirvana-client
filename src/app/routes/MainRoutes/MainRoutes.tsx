@@ -30,7 +30,7 @@ export default function MainRoutes() {
 						<Route path="/" element={<TrackPage />} />
 					</Route>
 				</Route>
-				<Route path="*" element={<NAZRouter />} />
+				<Route path="/auth/*" element={<NAZRouter />} />
 				<Route path="*" element={<Error404 />} />
 			</Route>
 		</Routes>
