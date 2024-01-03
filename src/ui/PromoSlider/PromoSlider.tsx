@@ -1,13 +1,4 @@
-import {
-	LikeRoundButton,
-	MixBlockButton,
-	PlayBlockButton,
-	ShareRoundButton,
-	Typography
-} from 'radio-app-uikit'
-import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
-import { useAppDispatch } from '../../shared/Redux/hooks'
-import Carousel from 'react-bootstrap/Carousel'
+import { Carousel } from 'antd'
 //@ts-ignore
 import styles from './PromoSlider.module.scss'
 import { PromoSliderProps } from './types'
@@ -15,17 +6,15 @@ import React from 'react'
 
 function PromoSlider({ promos }: PromoSliderProps) {
 	return (
-		<Carousel fade className={styles.carousel}>
+		<Carousel autoplay autoplaySpeed={3000} fade={true}>
 			{promos?.map((promo, i) => (
-				<Carousel.Item key={promo.id} className={styles.carouselItem}>
-					<img
-						src={promo.favicon ? promo.favicon : '/img/cover.jpeg'}
-						className={styles.img}
-						loading="lazy"
-						decoding="async"
-						alt="promo"
-					/>
-				</Carousel.Item>
+				<img
+					src={promo.favicon ? promo.favicon : '/img/cover.jpeg'}
+					className={styles.img}
+					loading="lazy"
+					decoding="async"
+					alt="promo"
+				/>
 			))}
 		</Carousel>
 	)

@@ -18,7 +18,6 @@ export async function onSubmit(
 	dispatch: ThunkDispatch<{}, undefined, UnknownAction>,
 	navigate: NavigateFunction
 ) {
-	console.log(confirmationCode, 'submit')
 	if (!confirmationCode) {
 		dispatch(
 			setNotification({
@@ -30,9 +29,8 @@ export async function onSubmit(
 		return
 	}
 	const userId = await dispatch(sendCodeThunk(confirmationCode))
-	console.log(userId, 'befor conditional')
+
 	if (userId) {
-		console.log(userId, 'after conditional')
 		navigate(`/auth/resetPassword/${userId}`)
 		dispatch(
 			setNotification({

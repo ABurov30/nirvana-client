@@ -1,18 +1,28 @@
 import React, { useState } from 'react'
 //@ts-ignore
 import styles from './ThemeSwitcher.module.scss'
+import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
+import { changeTheme, setIsDarkMode } from '../../entities/Theme/slice'
 
 export default function ThemeSwitcher() {
-	const [isLightTheme, setIsLightTheme] = useState(false)
+	const { theme } = useAppSelector(state => state.theme)
+
+	const dispatch = useAppDispatch()
 	return (
-		<label className={styles.switch}>
-			<input
-				className={styles.input}
-				type={'checkbox'}
-				checked={isLightTheme}
-				onChange={() => setIsLightTheme(prev => !prev)}
-			></input>
-			<span className={styles.slider}></span>
-		</label>
+		<div>
+			<label className={styles.switch}>
+				<input
+					className={styles.input}
+					type={'checkbox'}
+					checked={theme === 'dark'}
+					onChange={() =>
+						dispatch(
+							changeTheme(theme === 'light' ? 'dark' : 'light')
+						)
+					}
+				></input>
+				<span className={styles.slider}></span>
+			</label>
+		</div>
 	)
 }

@@ -11,6 +11,7 @@ import { useAutocomplete } from '../../shared/hooks/useAutocomlete'
 import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
 import { TracksRow } from '../../UI/TracksRow/TracksRow'
 import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
+import { changeTheme } from '../../entities/Theme/slice'
 
 export default function RadioPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)

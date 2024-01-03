@@ -51,3 +51,13 @@
 	color: $primary-violet;
 	opacity: 1;
 }
+
+.dark {
+	background-color: $primary-black;
+	color: $primary-white;
+}
+
+.light {
+	background-color: $primary-white;
+	color: $primary-black;
+}

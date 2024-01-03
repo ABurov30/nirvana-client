@@ -38,6 +38,14 @@ export default function Player({ tracks, position }: PlayerProps) {
 
 	useLayoutEffect(() => {
 		setCurrentTrack(tracks[position])
+
+		const timeoutId = setTimeout(() => {
+			audioElem?.current?.play()
+			setIsPlaying(true)
+		}, 500)
+		return () => {
+			clearTimeout(timeoutId)
+		}
 	}, [tracks, position])
 
 	useEffect(() => {
@@ -211,7 +219,9 @@ export default function Player({ tracks, position }: PlayerProps) {
 				<div className={styles.controls}>
 					<RoundButton
 						icon={<SkipPreviousRoundedIcon />}
-						onClick={debounce(skipPrevious, 1000, { leading: true })}
+						onClick={debounce(skipPrevious, 1000, {
+							leading: true
+						})}
 						className={styles.controlButton}
 					/>
 					<PlayButton isPlaying={isPlaying} onClick={PlayPause} />

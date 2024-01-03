@@ -11,7 +11,6 @@ function CodeForm() {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 	const [values, setValues] = useState(['', '', '', '', '', ''])
-	console.log(values, console.log(values))
 	return (
 		<div className={styles.form}>
 			<CodeInput values={values} setValues={setValues} />

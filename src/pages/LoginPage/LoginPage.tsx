@@ -20,6 +20,8 @@ export default function LoginPage(): JSX.Element {
 		dispatch(getPromoThunk())
 	}, [])
 
+	const { theme } = useAppSelector(state => state.theme)
+
 	async function onSubmit(event: React.FormEvent<unknown>) {
 		event.preventDefault()
 		const isLogged = await dispatch(loginUserThunk(ref.current))
@@ -39,7 +41,9 @@ export default function LoginPage(): JSX.Element {
 				<div className={styles.formContainer}>
 					<LoginForm />
 					<div
-						className={styles.forgetPassword}
+						className={`${styles.forgetPassword} ${
+							theme === 'light' ? styles.light : styles.dark
+						}`}
 						onClick={() => navigate('/auth/findEmail')}
 					>
 						<Typography text="Forget password?" />

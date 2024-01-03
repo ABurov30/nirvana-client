@@ -14,22 +14,20 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import React, { useState } from 'react'
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher'
 import styles from './Navbar.module.scss'
+import { useAppSelector } from '../../shared/Redux/hooks'
 
 export default function Navbar() {
 	const [isHovered, setIsHovered] = useState(false)
 	const navigate = useNavigate()
 	const location = useLocation()
-
+	const { theme } = useAppSelector(state => state.theme)
 	return (
-		<RadioNavbar isHovered={isHovered} setIsHovered={setIsHovered} className={styles.navbar}>
+		<RadioNavbar
+			isHovered={isHovered}
+			setIsHovered={setIsHovered}
+		>
 			<NavSection>
 				<LogoNavbarButton onClick={() => navigate('/')} />
-			</NavSection>
-			<NavSection>
-				<HomeNavbarButton
-					onClick={() => navigate('/')}
-					isActive={location.pathname === '/'}
-				/>
 			</NavSection>
 			<NavSection>
 				<FavoritesNavbarButton
@@ -46,10 +44,6 @@ export default function Navbar() {
 				/>
 			</NavSection>
 			<NavSection>
-				<AccountNavbarButton
-					onClick={() => navigate('/account')}
-					isActive={location.pathname === '/account'}
-				/>
 				<SettingsNavbarButton
 					onClick={() => navigate('/settings')}
 					isActive={location.pathname === '/settings'}

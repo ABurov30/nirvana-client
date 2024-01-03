@@ -1,65 +1,61 @@
 import {
 	LikeRoundButton,
-	MixBlockButton,
 	PlayBlockButton,
 	ShareRoundButton,
 	Typography
 } from 'radio-app-uikit'
+import { Carousel } from 'antd'
 import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
 import { useAppDispatch } from '../../shared/Redux/hooks'
-import Carousel from 'react-bootstrap/Carousel'
 import styles from './TrackSlider.module.scss'
-import { type TrackSliderProps } from './types'
 import React, { memo } from 'react'
+import { TrackSliderProps } from './types'
 
 export const TrackSlider = memo(function TrackSlider({
 	tracks
 }: TrackSliderProps) {
-	const dispatch = useAppDispatch()
 	return (
-		<Carousel fade className={styles.carousel}>
-			{tracks?.map((track, i) => (
-				<Carousel.Item key={track.id} className={styles.carouselItem}>
-					{track?.title && (
-						<>
-							<div className={styles.textContainer}>
-								<Typography
-									text={track.title}
-									fontSize="32"
-									weight="semibold"
-									color="#F3F3F3"
-								/>
-								<Typography
-									text={track.subTitle}
-									fontSize="20"
-									weight="medium"
-									color="#BDBEBE"
+		<div className={styles.carousel}>
+			<Carousel fade={true} autoplay autoplaySpeed={3000}>
+				{tracks?.map((track, i) => (
+					<div key={track.id} className={styles.carouselItem}>
+						<div className={styles.textContainer}>
+							<Typography
+								text={track.title}
+								fontSize="32"
+								weight="semibold"
+								color="#F3F3F3"
+							/>
+							<Typography
+								text={track.subTitle}
+								fontSize="20"
+								weight="medium"
+								color="#F3F3F3"
+							/>
+						</div>
+						<div className={styles.buttonContainer}>
+							<div className={styles.blockButtons}>
+								<PlayBlockButton
+									onClick={() => {
+										turnOnPlayMode(i, tracks, dispatch)
+									}}
 								/>
 							</div>
-							<div className={styles.buttonContainer}>
-								<div className={styles.blockButtons}>
-									<PlayBlockButton
-										onClick={() => {
-											turnOnPlayMode(i, tracks, dispatch)
-										}}
-									/>
-								</div>
-								<div className={styles.roundButtons}>
-									<LikeRoundButton />
-									<ShareRoundButton />
-								</div>
+							<div className={styles.roundButtons}>
+								<LikeRoundButton />
+								<ShareRoundButton />
 							</div>
-						</>
-					)}
-					<img
-						src={track.img ? track.img : '/img/cover.jpeg'}
-						className={styles.img}
-						loading="lazy"
-						decoding="async"
-						alt={track.title}
-					/>
-				</Carousel.Item>
-			))}
-		</Carousel>
+						</div>
+						<img
+							src={track.img ? track.img : '/img/cover.jpeg'}
+							className={styles.img}
+							loading="lazy"
+							decoding="async"
+							alt={track.title}
+						/>
+					</div>
+				))}
+			</Carousel>
+		</div>
 	)
 })

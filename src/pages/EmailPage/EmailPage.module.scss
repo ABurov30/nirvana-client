@@ -18,6 +18,7 @@
 	animation: AnimateBG 20s ease infinite;
 }
 
+
 .emailContainer {
 	width: 30vw;
 	height: 40vh;
@@ -30,6 +31,17 @@
 	justify-content: center;
 	background-color: $primary-white;
 	box-shadow: 0px 5px 50px $primary-grey;
+}
+
+
+.dark {
+	background-color: $primary-black;
+	color: $primary-white;
+}
+
+.light {
+	background-color: $primary-white;
+	color: $primary-black;
 }
 
 .titleContainer {

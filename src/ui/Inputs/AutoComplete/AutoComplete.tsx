@@ -1,10 +1,9 @@
 import { Autocomplete, Stack } from '@mui/material'
 import TextField from '@mui/material/TextField'
 import { AutoCompleteProps } from './types'
-import React, { memo, useEffect } from 'react'
+import React, { memo } from 'react'
 import { request } from '../../../shared/Request/Requets'
-import { useAppDispatch } from '../../../shared/Redux/hooks'
-import { setNotification } from '../../../entities/Notification/slice'
+import { useAppDispatch, } from '../../../shared/Redux/hooks'
 import { useDebounce } from './hooks/useDebounce'
 
 export const AutoComplete = memo(function AutoComplete({
@@ -12,15 +11,17 @@ export const AutoComplete = memo(function AutoComplete({
 }: AutoCompleteProps) {
 	const dispatch = useAppDispatch()
 	useDebounce(field, dispatch)
-
 	return (
 		<Autocomplete
 			freeSolo
 			disableClearable
-			sx={{ width: '25%' }}
+			sx={{
+				width: '25%'
+			}}
 			options={field?.options?.map(option => option)}
 			renderInput={params => (
 				<TextField
+					sx={{ color: 'red' }}
 					{...params}
 					label={field?.label}
 					name={field?.name}

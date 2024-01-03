@@ -12,6 +12,8 @@ const NAZRouter = lazy(() => import('../NAZRoutes/NAZRoutes'))
 import AZLayout from '../../layout/AZLayout/AZLayout'
 import { Route, Routes } from 'react-router-dom'
 import ResetPasswordPage from '../../../pages/ResetPasswordPage/ResetPasswordPage'
+import SettingsPage from '../../../pages/SettingsPage/SettingsPage'
+import { changeTheme } from '../../../entities/Theme/slice'
 
 export default function MainRoutes() {
 	const user = useCheckUser()
@@ -27,6 +29,7 @@ export default function MainRoutes() {
 					<Route path="/" element={<AZLayout user={user} />}>
 						<Route path="/radio" element={<RadioPage />} />
 						<Route path="/favorites" element={<FavoritesPage />} />
+						<Route path="/settings" element={<SettingsPage />} />
 						<Route path="/" element={<TrackPage />} />
 					</Route>
 				</Route>

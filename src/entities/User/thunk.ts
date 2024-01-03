@@ -188,7 +188,6 @@ export const sendCodeThunk: ThunkActionCreater<CodeForm> =
 			)
 			return false
 		} else {
-			console.log(res.data.userId)
 			return res.data.userId
 		}
 	}

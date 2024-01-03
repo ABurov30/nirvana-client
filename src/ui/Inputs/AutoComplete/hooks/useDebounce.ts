@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
 import { useAppDispatch } from '../../../../shared/Redux/hooks'
 import { request } from '../../../../shared/Request/Requets'
 import { setNotification } from '../../../../entities/Notification/slice'
@@ -10,7 +10,7 @@ export function useDebounce(
 	dispatch: ThunkDispatch<{}, undefined, UnknownAction>
 ) {
 	if (!field.value) return
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const timeoutId = setTimeout(() => {
 			request
 				.sendRequest({

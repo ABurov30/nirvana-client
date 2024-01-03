@@ -6,6 +6,7 @@ import radiosReducer from '../../entities/Radios/slice'
 import promoReducer from '../../entities/Promo/slice'
 import trackReducer from '../../entities/Track/slice'
 import userReducer from '../../entities/User/slice'
+import themeReducer from '../../entities/Theme/slice'
 
 export const store = configureStore({
 	reducer: {
@@ -15,7 +16,8 @@ export const store = configureStore({
 		user: userReducer,
 		notification: notificationReducer,
 		curTracks: curTracksReducer,
-		isPlayMode: isPlayModeReducer
+		isPlayMode: isPlayModeReducer,
+		theme: themeReducer
 	}
 })
 

@@ -5,7 +5,7 @@ import { setTracks } from './slice'
 
 const URL = '/track'
 
-export const getTracksThunk: ThunkActionCreater<number> =
+export const getTracksThunk: ThunkActionCreater<number, string> =
 	(offset: number, userId: number) => async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
