@@ -1,4 +1,3 @@
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const JsonMinimizerPlugin = require('json-minimizer-webpack-plugin')
 const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
@@ -6,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const { DefinePlugin } = require('webpack')
 const dotenv = require('dotenv')
 const path = require('path')
 const fs = require('fs')
@@ -148,43 +146,6 @@ module.exports = {
 						comments: false
 					}
 				}
-			}),
-			new ImageMinimizerPlugin({
-				minimizer: {
-					implementation: ImageMinimizerPlugin.imageminMinify,
-					options: {
-						plugins: [
-							['gifsicle', { interlaced: true }],
-							['jpegtran', { progressive: true }],
-							['optipng', { optimizationLevel: 5 }],
-
-							[
-								'svgo',
-								{
-									plugins: [
-										{
-											name: 'preset-default',
-											params: {
-												overrides: {
-													removeViewBox: false,
-													addAttributesToSVGElement: {
-														params: {
-															attributes: [
-																{
-																	xmlns: 'http://www.w3.org/2000/svg'
-																}
-															]
-														}
-													}
-												}
-											}
-										}
-									]
-								}
-							]
-						]
-					}
-				}
 			})
 		]
 	},
@@ -199,6 +160,6 @@ module.exports = {
 		clean: true
 	},
 	stats: {
-		errorDetails: true,
+		errorDetails: true
 	}
 }

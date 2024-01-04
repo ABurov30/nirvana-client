@@ -47,6 +47,14 @@
 	z-index: 2;
 }
 
+.playerContainer svg {
+	fill: $primary-black;
+}
+
+.playerContainer svg:hover {
+	fill: $primary-green;
+}
+
 .track {
 	opacity: 1;
 	margin: 10px 0px;
@@ -74,6 +82,10 @@
 .title {
 	display: flex;
 	flex-direction: column;
+}
+
+.title span {
+	color: $primary-black;
 }
 
 .controls {
@@ -180,22 +192,10 @@
 	background-color: transparent;
 	width: 50px;
 	height: 50px;
+	border: none;
 	transition: ease-in-out;
-}
-
-.controlButton svg {
-	color: $primary-grey;
-}
-
-.controlButton:hover svg {
-	color: $primary-violet;
-}
-.controlButton:hover {
-	box-shadow: none;
-	background-color: transparent;
 }
 
 .volumeButton:hover svg {
 	color: $primary-violet;
 }
-

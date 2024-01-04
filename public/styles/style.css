@@ -20,6 +20,7 @@
 }
 
 body {
+	background-color: var(--primary-white);
 	overflow: hidden;
 	margin: 0;
 }
@@ -41,21 +42,6 @@ body {
 .dark span,
 .dark label {
 	color: var(--primary-white) !important;
-}
-
-.light {
-	background-color: var(--primary-white);
-	color: var(--primary-black);
-}
-
-
-.light input::placeholder {
-	color: var(--primary-black) !important;
-}
-
-.light span,
-.light label {
-	color: var(--primary-black) !important;
 }
 
 .dark svg path {

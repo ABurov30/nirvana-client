@@ -217,19 +217,21 @@ export default function Player({ tracks, position }: PlayerProps) {
 					</div>
 				</div>
 				<div className={styles.controls}>
-					<RoundButton
-						icon={<SkipPreviousRoundedIcon />}
+					<button
 						onClick={debounce(skipPrevious, 1000, {
 							leading: true
 						})}
 						className={styles.controlButton}
-					/>
+					>
+						<SkipPreviousRoundedIcon />
+					</button>
 					<PlayButton isPlaying={isPlaying} onClick={PlayPause} />
-					<RoundButton
-						icon={<SkipNextRoundedIcon />}
+					<button
 						onClick={debounce(skipNext, 1000, { leading: true })}
 						className={styles.controlButton}
-					/>
+					>
+						<SkipNextRoundedIcon />
+					</button>
 					<ShareButton />
 					<LikeButton isLiked={isLiked} onClick={likeHandler} />
 				</div>
@@ -276,9 +278,9 @@ export default function Player({ tracks, position }: PlayerProps) {
 						className={styles.volumeButton}
 					>
 						{audioElem.current?.volume ? (
-							<VolumeUpRoundedIcon />
+							<VolumeUpRoundedIcon style={{ fill: '#2A2630' }} />
 						) : (
-							<VolumeOffIcon />
+							<VolumeOffIcon style={{ fill: '#2A2630' }} />
 						)}
 					</div>
 					{audioElem.current?.volume ? (

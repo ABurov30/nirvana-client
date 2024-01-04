@@ -12,12 +12,12 @@
 	width: fit-content;
 	transition: 0.3s;
 	border-radius: 50%;
-	opacity: 0.7;
 
 	&:hover {
 		padding: 60px;
 	}
 }
+
 
 .mainButton {
 	position: relative;
@@ -47,27 +47,27 @@
 	visibility: visible;
 }
 
-.discordButton:hover svg {
-	fill: #5865f2;
+.vkButton:hover svg {
+	fill: #0093ff;
 }
 
-.buttons:hover .discordButton {
+.buttons:hover .vkButton {
 	translate: 50px 0px;
 }
 
 .twitterButton:hover svg {
-	fill: #1ca1f1;
+	fill: #0093ff;
 }
 
 .buttons:hover .twitterButton {
 	translate: 37px -37px;
 }
 
-.instagramButton:hover svg {
-	fill: #f914af;
+.facebookButton:hover svg {
+	fill: #0093ff;
 }
 
-.buttons:hover .instagramButton {
+.buttons:hover .facebookButton {
 	translate: 0px -50px;
 }
 

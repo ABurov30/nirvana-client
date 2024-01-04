@@ -1,11 +1,13 @@
 import SignUpForm from '../../UI/Forms/AuthForms/SigUpForm/SignUpForm'
 import PromoTitle from '../../UI/PromoTitle/PromoTitle'
+import { useAppSelector } from '../../shared/Redux/hooks'
 import styles from './SignupPage.module.scss'
 import { Typography } from 'radio-app-uikit'
 import React, { useState } from 'react'
 
 export default function SignupPage(): JSX.Element {
 	const [isVisible, setIsVisible] = useState(false)
+	const { theme } = useAppSelector(state => state.theme)
 	return (
 		<div className={styles.container}>
 			<div className={styles.promoContainer}>
@@ -24,7 +26,11 @@ export default function SignupPage(): JSX.Element {
 					]}
 				/>
 			</div>
-			<div className={styles.signUpContainer}>
+			<div
+				className={`${styles.signUpContainer} ${
+					theme === 'light' ? '' : styles.dark
+				}`}
+			>
 				<div className={styles.titleContainer}>
 					<Typography
 						text="Sign up"
