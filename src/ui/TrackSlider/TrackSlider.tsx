@@ -10,10 +10,25 @@ import { useAppDispatch } from '../../shared/Redux/hooks'
 import styles from './TrackSlider.module.scss'
 import React, { memo } from 'react'
 import { TrackSliderProps } from './types'
+import { debounce } from 'lodash'
+import { setNotification } from '../../entities/Notification/slice'
+import { Severity } from '../../entities/Notification/types'
 
 export const TrackSlider = memo(function TrackSlider({
 	tracks
 }: TrackSliderProps) {
+	const URL = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
+	const title = 'Check out best free music streaming app. Dive in Nirvana'
+	const dispatch = useAppDispatch()
+	function shareHandler() {
+		navigator.clipboard.writeText(title + ' ' + URL)
+		dispatch(
+			setNotification({
+				message: 'Link copied',
+				severity: Severity.success
+			})
+		)
+	}
 	return (
 		<div className={styles.carousel}>
 			<Carousel fade={true} autoplay autoplaySpeed={3000}>
@@ -43,7 +58,11 @@ export const TrackSlider = memo(function TrackSlider({
 							</div>
 							<div className={styles.roundButtons}>
 								<LikeRoundButton />
-								<ShareRoundButton />
+								<ShareRoundButton
+									onClick={debounce(shareHandler, 1000, {
+										leading: true
+									})}
+								/>
 							</div>
 						</div>
 						<img

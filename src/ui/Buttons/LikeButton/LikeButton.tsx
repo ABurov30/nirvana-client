@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function LikeButton({ isLiked, onClick }: LikeButtonProps) {
 	return (
-		<div className={styles.heartContainer} title="Like" onClick={onClick}>
+		<div className={styles.heartContainer} title="Like">
 			<input
 				type="checkbox"
 				checked={isLiked}

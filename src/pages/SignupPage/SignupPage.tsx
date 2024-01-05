@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 
 export default function SignupPage(): JSX.Element {
 	const [isVisible, setIsVisible] = useState(false)
-	const { theme } = useAppSelector(state => state.theme)
+	const { theme } = useAppSelector(state => state.app)
 	return (
 		<div className={styles.container}>
 			<div className={styles.promoContainer}>

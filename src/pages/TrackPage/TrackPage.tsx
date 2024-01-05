@@ -11,6 +11,7 @@ import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
 
 export default function TrackPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
+	console.log(user, '------------------')
 	useEffect(() => {
 		dispatch(getTracksThunk(0, user.id))
 	}, [])

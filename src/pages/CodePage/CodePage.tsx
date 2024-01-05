@@ -5,7 +5,7 @@ import CodeForm from '../../UI/Forms/AuthForms/CodeForm/CodeForm'
 import { useAppSelector } from '../../shared/Redux/hooks'
 
 export default function CodePage(): JSX.Element {
-	const { theme } = useAppSelector(state => state.theme)
+	const { theme } = useAppSelector(state => state.app)
 	return (
 		<div className={styles.container}>
 			<div

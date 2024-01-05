@@ -1,8 +1,8 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
-import { NotificationType } from './types'
+import { Notification } from './types'
 
-const initialState: NotificationType = {
+const initialState: Notification = {
 	severity: '',
 	message: '',
 	isOpen: false
@@ -12,9 +12,13 @@ export const notificationSlice = createSlice({
 	name: 'notification',
 	initialState,
 	reducers: {
-		setNotification: (state, action: PayloadAction<NotificationType>) =>
+		setNotification: (state, action: PayloadAction<Notification>) =>
 			action.payload,
-		clearNotification: state => ({ message: '', severity: '' , isOpen: false }),
+		clearNotification: state => ({
+			message: '',
+			severity: '',
+			isOpen: false
+		}),
 		setIsOpen: (state, action: PayloadAction<boolean>) => {
 			const newState = { ...state }
 			newState.isOpen = action.payload

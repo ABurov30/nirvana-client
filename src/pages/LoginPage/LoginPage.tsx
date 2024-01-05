@@ -20,7 +20,7 @@ export default function LoginPage(): JSX.Element {
 		dispatch(getPromoThunk())
 	}, [])
 
-	const { theme } = useAppSelector(state => state.theme)
+	const { theme } = useAppSelector(state => state.app)
 
 	async function onSubmit(event: React.FormEvent<unknown>) {
 		event.preventDefault()

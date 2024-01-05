@@ -8,19 +8,23 @@ import {
 import styles from './ShareButton.module.scss'
 import debounce from 'lodash.debounce'
 import React from 'react'
+
 import { useAppDispatch } from '../../../shared/Redux/hooks'
+import { Severity } from '../../../entities/Notification/types'
 import { setNotification } from '../../../entities/Notification/slice'
 
 function ShareButton() {
-	const dispatch = useAppDispatch()
 	const URL = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
 	const title = 'Check out best free music streaming app. Dive in Nirvana'
 	const hashtags = ['music', 'streaming', 'free', 'tracks', 'songs', 'radio']
-
+	const dispatch = useAppDispatch()
 	function shareHandler() {
 		navigator.clipboard.writeText(title + ' ' + URL)
 		dispatch(
-			setNotification({ message: 'Link copied', severity: 'success' })
+			setNotification({
+				message: 'Link copied',
+				severity: Severity.success
+			})
 		)
 	}
 	return (

@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import { Theme } from '../../entities/Theme/types'
+import { Theme } from '../../entities/App/types'
 import { useAppSelector } from '../Redux/hooks'
 import { theme } from 'antd'
 
 function useTheme() {
-	const { theme } = useAppSelector(state => state.theme)
+	const { theme } = useAppSelector(state => state.app)
 
 	useEffect(() => {
 		recolor(theme)

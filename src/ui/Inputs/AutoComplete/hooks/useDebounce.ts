@@ -25,7 +25,7 @@ export function useDebounce(
 					console.error(e)
 					dispatch(
 						setNotification({
-							severity: 'error',
+							severity: Severity.error,
 							message: e.message
 						})
 					)

@@ -2,7 +2,10 @@ import { useNavigate, useParams } from 'react-router-dom'
 import styles from './ResetPasswordForm.module.scss'
 import React from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-import { onSubmit } from './onSubmit'
+import {
+	onSubmit,
+	onSubmitNewPassword
+} from '../../../../shared/utils/onSubmitNewPassword'
 import { useAppDispatch } from '../../../../shared/Redux/hooks'
 import { ResetPasswordFormProps } from './types'
 
@@ -17,7 +20,7 @@ function ResetPasswordForm({
 	return (
 		<form
 			className={styles.form}
-			onSubmit={e => onSubmit(e, dispatch, navigate, userId)}
+			onSubmit={e => onSubmitNewPassword(e, dispatch, userId, navigate)}
 		>
 			<ul className={styles.wrapper}>
 				<div

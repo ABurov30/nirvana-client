@@ -7,6 +7,8 @@ import { LoginForm } from '../../UI/Forms/AuthForms/LoginForm/types'
 import { SignUpForm } from '../../UI/Forms/AuthForms/SigUpForm/types'
 import { ResetPasswordForm } from '../../UI/Forms/AuthForms/ResetPasswordForm/types'
 import { CodeForm } from '../../UI/Forms/AuthForms/CodeForm/types'
+import { Severity } from '../Notification/types'
+import { UserInfoForm } from '../../pages/SettingsPage/types'
 
 export const signUpThunk: ThunkActionCreater<SignUpForm> =
 	formData => async dispatch => {
@@ -21,12 +23,20 @@ export const signUpThunk: ThunkActionCreater<SignUpForm> =
 		})
 		if (res.status !== 200) {
 			dispatch(setUser({ ...res?.data, status: 'guest' }))
-			dispatch(setNotification({ message: res.data, severity: 'error' }))
+			dispatch(
+				setNotification({
+					message: res.data,
+					severity: Severity.error
+				})
+			)
 			return false
 		} else {
 			dispatch(setUser({ status: 'non-active' }))
 			dispatch(
-				setNotification({ message: res.data, severity: 'success' })
+				setNotification({
+					message: res.data,
+					severity: Severity.success
+				})
 			)
 			return true
 		}
@@ -44,7 +54,7 @@ export const loginUserThunk: ThunkActionCreater<LoginForm> =
 			dispatch(
 				setNotification({
 					message: res?.data,
-					severity: 'error'
+					severity: Severity.error
 				})
 			)
 			return false
@@ -53,7 +63,7 @@ export const loginUserThunk: ThunkActionCreater<LoginForm> =
 			dispatch(
 				setNotification({
 					message: 'It` nice to e-meet u',
-					severity: 'success'
+					severity: Severity.success
 				})
 			)
 			return true
@@ -71,15 +81,15 @@ export const checkUserThunk: ThunkActionCreater = () => dispatch => {
 				dispatch(
 					setNotification({
 						message: res?.data,
-						severity: 'info'
+						severity: Severity.info
 					})
 				)
 			} else {
 				dispatch(setUser({ ...res?.data, status: 'active' }))
 				dispatch(
 					setNotification({
-						message: 'Glad u still here',
-						severity: 'success'
+						message: 'Glad that u still here',
+						severity: Severity.success
 					})
 				)
 			}
@@ -100,13 +110,35 @@ export const logoutThunk: ThunkActionCreater = () => dispatch => {
 			dispatch(
 				setNotification({
 					message: 'Let`hang out at next time',
-					severity: 'success'
+					severity: Severity.success
 				})
 			)
 		})
 		.catch(e => {
 			console.error(e)
-			setNotification({ message: e.message, severity: 'error' })
+			setNotification({ message: e.message, severity: Severity.error })
+		})
+}
+
+export const deleteUserThunk: ThunkActionCreater = userId => dispatch => {
+	request
+		.sendRequest({
+			url: '/auth',
+			method: 'DELETE',
+			data: { userId }
+		})
+		.then(() => {
+			dispatch(logoutUser())
+			dispatch(
+				setNotification({
+					message: 'I was nice time with u',
+					severity: Severity.success
+				})
+			)
+		})
+		.catch(e => {
+			console.error(e)
+			setNotification({ message: e.message, severity: Severity.error })
 		})
 }
 
@@ -123,7 +155,7 @@ export const findEmailThunk: ThunkActionCreater<EmailForm> =
 					dispatch(
 						setNotification({
 							message: res.data,
-							severity: 'error'
+							severity: Severity.error
 						})
 					)
 					return false
@@ -131,7 +163,7 @@ export const findEmailThunk: ThunkActionCreater<EmailForm> =
 					dispatch(
 						setNotification({
 							message: res.data,
-							severity: 'success'
+							severity: Severity.success
 						})
 					)
 					return true
@@ -139,7 +171,10 @@ export const findEmailThunk: ThunkActionCreater<EmailForm> =
 			})
 			.catch(e => {
 				console.error(e)
-				setNotification({ message: e.message, severity: 'error' })
+				setNotification({
+					message: e.message,
+					severity: Severity.error
+				})
 			})
 	}
 
@@ -156,7 +191,7 @@ export const newPasswordThunk: ThunkActionCreater<ResetPasswordForm> =
 			dispatch(
 				setNotification({
 					message: res?.data,
-					severity: 'error'
+					severity: Severity.error
 				})
 			)
 			return false
@@ -165,7 +200,7 @@ export const newPasswordThunk: ThunkActionCreater<ResetPasswordForm> =
 			dispatch(
 				setNotification({
 					message: 'Password changed successfully',
-					severity: 'success'
+					severity: Severity.success
 				})
 			)
 			return true
@@ -183,11 +218,34 @@ export const sendCodeThunk: ThunkActionCreater<CodeForm> =
 			dispatch(
 				setNotification({
 					message: res.data,
-					severity: 'error'
+					severity: Severity.error
 				})
 			)
 			return false
 		} else {
 			return res.data.userId
+		}
+	}
+
+export const changeUserInfoThunk: ThunkActionCreater<UserInfoForm> =
+	formData => async dispatch => {
+		const res = await request.sendRequest({
+			method: 'put',
+			url: `/auth/userInfo`,
+			data: formData
+		})
+
+		if (res?.status !== 200) {
+			dispatch(
+				setNotification({
+					message: res.data,
+					severity: Severity.error
+				})
+			)
+			return false
+		} else {
+			console.log(res.data)
+			dispatch(setUser({ ...res?.data, status: 'active' }))
+			return true
 		}
 	}

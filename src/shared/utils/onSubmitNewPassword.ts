@@ -1,19 +1,16 @@
-import {
-	setIsOpen,
-	setNotification
-} from '../../../../entities/Notification/slice'
-import { newPasswordThunk, signUpThunk } from '../../../../entities/User/thunk'
-import { validatePassword } from '../../../../shared/utils/validatePassword'
-import { validateEmail } from '../../../../shared/utils/validateEmail'
+import { setIsOpen, setNotification } from '../../entities/Notification/slice'
+import { newPasswordThunk, signUpThunk } from '../../entities/User/thunk'
+import { validatePassword } from './validatePassword'
+import { validateEmail } from './validateEmail'
 import { NavigateFunction } from 'react-router-dom'
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 import { FormEvent } from 'react'
 
-export async function onSubmit(
+export async function onSubmitNewPassword(
 	e: FormEvent<HTMLFormElement>,
 	dispatch: ThunkDispatch<{}, undefined, UnknownAction>,
-	navigate: NavigateFunction,
-	userId: string
+	userId: string,
+	navigate?: NavigateFunction
 ) {
 	e.preventDefault()
 	const formData = Object.fromEntries(new FormData(e.target))
@@ -22,7 +19,7 @@ export async function onSubmit(
 		dispatch(
 			setNotification({
 				message: 'Enter password',
-				severity: 'info'
+				severity: Severity.info
 			})
 		)
 		dispatch(setIsOpen(true))
@@ -32,7 +29,7 @@ export async function onSubmit(
 		dispatch(
 			setNotification({
 				message: 'Repeat password',
-				severity: 'info'
+				severity: Severity.info
 			})
 		)
 		dispatch(setIsOpen(true))
@@ -44,7 +41,7 @@ export async function onSubmit(
 		return
 	}
 	const isChanged = await dispatch(newPasswordThunk(formData))
-	if (isChanged as unknown as boolean) {
+	if ((isChanged as unknown as boolean) && navigate) {
 		navigate('/')
 	}
 }

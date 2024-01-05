@@ -13,7 +13,7 @@ import AZLayout from '../../layout/AZLayout/AZLayout'
 import { Route, Routes } from 'react-router-dom'
 import ResetPasswordPage from '../../../pages/ResetPasswordPage/ResetPasswordPage'
 import SettingsPage from '../../../pages/SettingsPage/SettingsPage'
-import { changeTheme } from '../../../entities/Theme/slice'
+import { changeTheme } from '../../../entities/App/slice'
 
 export default function MainRoutes() {
 	const user = useCheckUser()

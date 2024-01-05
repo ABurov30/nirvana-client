@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 //@ts-ignore
 import styles from './ThemeSwitcher.module.scss'
 import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
-import { changeTheme, setIsDarkMode } from '../../entities/Theme/slice'
+import { changeTheme, setIsDarkMode } from '../../entities/App/slice'
+import { Theme } from '../../entities/App/types'
 
 export default function ThemeSwitcher() {
-	const { theme } = useAppSelector(state => state.theme)
+	const { theme } = useAppSelector(state => state.app)
 
 	const dispatch = useAppDispatch()
 	return (
@@ -14,10 +15,12 @@ export default function ThemeSwitcher() {
 				<input
 					className={styles.input}
 					type={'checkbox'}
-					checked={theme === 'dark'}
+					checked={theme === Theme.dark}
 					onChange={() =>
 						dispatch(
-							changeTheme(theme === 'light' ? 'dark' : 'light')
+							changeTheme(
+								theme === Theme.light ? Theme.dark : Theme.light
+							)
 						)
 					}
 				></input>

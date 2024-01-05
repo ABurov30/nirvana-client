@@ -1,7 +1,8 @@
 import { addLikeThunk, removeLikeThunk } from '../../entities/CurTracks/thunk'
 import SkipPreviousRoundedIcon from '@mui/icons-material/SkipPreviousRounded'
+
 import React, {
-	ErrorInfo,
+	memo,
 	useEffect,
 	useLayoutEffect,
 	useRef,
@@ -11,7 +12,7 @@ import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
 import { setNotification } from '../../entities/Notification/slice'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
-import { RoundButton, Typography } from 'radio-app-uikit'
+import { Typography } from 'radio-app-uikit'
 import ShareButton from '../Buttons/ShareButton/ShareButton'
 import PlayButton from '../Buttons/PlayButton/PlayButton'
 import LikeButton from '../Buttons/LikeButton/LikeButton'
@@ -22,9 +23,12 @@ import styles from './Player.module.scss'
 import { useDispatch } from 'react-redux'
 import { PlayerProps } from './types'
 import { formatTime } from '../../shared/utils/formatTime'
+import { setPosition } from '../../entities/CurTracks/slice'
+import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
 
-export default function Player({ tracks, position }: PlayerProps) {
+export const Player = memo(function Player({ tracks, position }: PlayerProps) {
 	const dispatch = useDispatch()
+	console.log(tracks, '-----')
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [currentTrack, setCurrentTrack] = useState(tracks[position])
 	const [isLiked, setIsLiked] = useState(currentTrack.isLiked)
@@ -38,7 +42,7 @@ export default function Player({ tracks, position }: PlayerProps) {
 
 	useLayoutEffect(() => {
 		setCurrentTrack(tracks[position])
-
+		setIsLiked(currentTrack.isLiked)
 		const timeoutId = setTimeout(() => {
 			audioElem?.current?.play()
 			setIsPlaying(true)
@@ -124,7 +128,10 @@ export default function Player({ tracks, position }: PlayerProps) {
 		} catch (e) {
 			console.error(e)
 			dispatch(
-				setNotification({ severity: 'error', message: `${e.message}` })
+				setNotification({
+					severity: Severity.error,
+					message: `${e.message}`
+				})
 			)
 		}
 	}
@@ -132,8 +139,8 @@ export default function Player({ tracks, position }: PlayerProps) {
 	async function skipPrevious() {
 		const index = tracks.findIndex(track => track.id === currentTrack.id)
 		index === 0
-			? setCurrentTrack(tracks[tracks.length - 1])
-			: setCurrentTrack(tracks[index - 1])
+			? dispatch(setPosition(tracks.length - 1))
+			: dispatch(setPosition(index - 1))
 		audioElem.current.currentTime = 0
 		await audioElem?.current?.load()
 		audioElem?.current?.play()
@@ -142,8 +149,8 @@ export default function Player({ tracks, position }: PlayerProps) {
 	async function skipNext() {
 		const index = tracks.findIndex(track => track.id === currentTrack.id)
 		index === tracks.length - 1
-			? setCurrentTrack(tracks[0])
-			: setCurrentTrack(tracks[index + 1])
+			? dispatch(setPosition(0))
+			: dispatch(setPosition(index + 1))
 		audioElem.current.currentTime = 0
 		await audioElem?.current?.load()
 		audioElem?.current?.play()
@@ -151,6 +158,7 @@ export default function Player({ tracks, position }: PlayerProps) {
 
 	async function likeHandler() {
 		try {
+			console.log('like handler')
 			if (isLiked) {
 				await dispatch(
 					removeLikeThunk(currentTrack.id, user.id, currentTrack.type)
@@ -164,7 +172,12 @@ export default function Player({ tracks, position }: PlayerProps) {
 			}
 		} catch (e) {
 			console.error(e)
-			dispatch(setNotification({ message: e.message, severity: 'error' }))
+			dispatch(
+				setNotification({
+					message: e.message,
+					severity: Severity.error
+				})
+			)
 		}
 	}
 
@@ -299,4 +312,4 @@ export default function Player({ tracks, position }: PlayerProps) {
 			</div>
 		</>
 	)
-}
+})

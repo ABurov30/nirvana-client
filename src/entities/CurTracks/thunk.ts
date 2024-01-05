@@ -1,21 +1,22 @@
 import { ThunkActionCreater } from '../../shared/Redux/store'
 import { setNotification } from '../Notification/slice'
 import { request } from '../../shared/Request/Requets'
+import { Severity } from '../Notification/types'
 
 const URL = '/favorite'
 
 export const removeLikeThunk: ThunkActionCreater<any> =
 	(trackId: string, userId: string, type: string) => async dispatch => {
 		const res = await request.sendRequest({
-			method: 'post',
-			url: `${URL}/remove`,
+			method: 'delete',
+			url: `${URL}`,
 			data: { id: trackId, userId, type }
 		})
 		if (res !== 200)
 			dispatch(
 				setNotification({
 					message: res?.data,
-					severity: 'error'
+					severity: Severity.error
 				})
 			)
 	}
@@ -24,14 +25,14 @@ export const addLikeThunk: ThunkActionCreater<any> =
 	(trackId: string, userId: string, type: string) => async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
-			url: `${URL}/add`,
+			url: `${URL}`,
 			data: { id: trackId, userId, type }
 		})
-        if (res !== 200)
+		if (res !== 200)
 			dispatch(
 				setNotification({
 					message: res?.data,
-					severity: 'error'
+					severity: Severity.error
 				})
 			)
 	}

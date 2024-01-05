@@ -1,5 +1,6 @@
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 import { setIsOpen, setNotification } from '../../entities/Notification/slice'
+import { Severity } from '../../entities/Notification/types'
 
 export function validateEmail(
 	email: string,
@@ -11,7 +12,7 @@ export function validateEmail(
 		dispatch(
 			setNotification({
 				message: 'It`s not a valid email address',
-				severity: 'error'
+				severity: Severity.error
 			})
 		)
 		dispatch(setIsOpen(true))

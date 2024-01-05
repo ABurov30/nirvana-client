@@ -21,7 +21,7 @@ export async function onSubmit(
 		dispatch(
 			setNotification({
 				message: 'Enter your name',
-				severity: 'info'
+				severity: Severity.info
 			})
 		)
 		dispatch(setIsOpen(true))
@@ -31,7 +31,7 @@ export async function onSubmit(
 		dispatch(
 			setNotification({
 				message: 'Enter your email',
-				severity: 'info'
+				severity: Severity.info
 			})
 		)
 		dispatch(setIsOpen(true))
@@ -44,7 +44,7 @@ export async function onSubmit(
 		dispatch(
 			setNotification({
 				message: 'Enter password',
-				severity: 'info'
+				severity: Severity.info
 			})
 		)
 		dispatch(setIsOpen(true))
@@ -54,7 +54,7 @@ export async function onSubmit(
 		dispatch(
 			setNotification({
 				message: 'Repeat password',
-				severity: 'info'
+				severity: Severity.info
 			})
 		)
 		dispatch(setIsOpen(true))

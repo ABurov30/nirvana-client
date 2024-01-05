@@ -22,7 +22,7 @@ export async function onSubmit(
 		dispatch(
 			setNotification({
 				message: 'Enter code',
-				severity: 'info'
+				severity: Severity.info
 			})
 		)
 		dispatch(setIsOpen(true))
@@ -35,7 +35,7 @@ export async function onSubmit(
 		dispatch(
 			setNotification({
 				message: 'Enter new password',
-				severity: 'info'
+				severity: Severity.info
 			})
 		)
 	}
