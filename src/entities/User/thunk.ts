@@ -244,7 +244,6 @@ export const changeUserInfoThunk: ThunkActionCreater<UserInfoForm> =
 			)
 			return false
 		} else {
-			console.log(res.data)
 			dispatch(setUser({ ...res?.data, status: 'active' }))
 			return true
 		}

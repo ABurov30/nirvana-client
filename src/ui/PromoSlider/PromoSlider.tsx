@@ -12,7 +12,7 @@ function PromoSlider({ promos }: PromoSliderProps) {
 					src={promo.favicon ? promo.favicon : '/img/cover.jpeg'}
 					className={styles.img}
 					loading="lazy"
-					decoding="async"
+					decoding="sync"
 					alt="promo"
 				/>
 			))}

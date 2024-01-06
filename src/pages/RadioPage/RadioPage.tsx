@@ -11,7 +11,6 @@ import { useAutocomplete } from '../../shared/hooks/useAutocomlete'
 import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
 import { TracksRow } from '../../UI/TracksRow/TracksRow'
 import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
-import { changeTheme } from '../../entities/App/slice'
 
 export default function RadioPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
@@ -26,7 +25,7 @@ export default function RadioPage(): JSX.Element {
 	const [stationInput, setStationsInput] = useState('')
 
 	useLayoutEffect(() => {
-		dispatch(getAllRadiosThunk(0))
+		dispatch(getAllRadiosThunk(0, user.id))
 	}, [])
 	const dispatch = useAppDispatch()
 	const { radios } = useAppSelector(state => state.radio)
@@ -75,7 +74,7 @@ export default function RadioPage(): JSX.Element {
 	const loadPrevRadios = () => {
 		if (offset >= 5) {
 			setOffset(prev => prev - 5)
-			dispatch(getAllRadiosThunk(offset))
+			dispatch(getAllRadiosThunk(offset, user.id))
 		} else {
 			dispatch(getAllRadiosThunk(0))
 		}
@@ -83,7 +82,7 @@ export default function RadioPage(): JSX.Element {
 
 	const loadNextRadios = () => {
 		setOffset(prev => prev + 5)
-		dispatch(getAllRadiosThunk(offset))
+		dispatch(getAllRadiosThunk(offset, user.id))
 	}
 
 	return (

@@ -16,6 +16,7 @@ import { Typography } from 'radio-app-uikit'
 import ShareButton from '../Buttons/ShareButton/ShareButton'
 import PlayButton from '../Buttons/PlayButton/PlayButton'
 import LikeButton from '../Buttons/LikeButton/LikeButton'
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
 import { useAppSelector } from '../../shared/Redux/hooks'
 import debounce from 'lodash.debounce'
 //@ts-ignore
@@ -25,13 +26,17 @@ import { PlayerProps } from './types'
 import { formatTime } from '../../shared/utils/formatTime'
 import { setPosition } from '../../entities/CurTracks/slice'
 import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
+import { Severity } from '../../entities/Notification/types'
+import { downloadResource } from '../../shared/utils/downloadResource'
 
-export const Player = memo(function Player({ tracks, position }: PlayerProps) {
+export const Player = memo(function Player({
+	tracks,
+	position,
+	setTracks
+}: PlayerProps) {
 	const dispatch = useDispatch()
-	console.log(tracks, '-----')
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [currentTrack, setCurrentTrack] = useState(tracks[position])
-	const [isLiked, setIsLiked] = useState(currentTrack.isLiked)
 	const [isDragingProgress, setIsDragingProgress] = useState(false)
 	const [isDragingVolume, setIsDragingVolume] = useState(false)
 	const [volume, setVolume] = useState(0)
@@ -42,7 +47,6 @@ export const Player = memo(function Player({ tracks, position }: PlayerProps) {
 
 	useLayoutEffect(() => {
 		setCurrentTrack(tracks[position])
-		setIsLiked(currentTrack.isLiked)
 		const timeoutId = setTimeout(() => {
 			audioElem?.current?.play()
 			setIsPlaying(true)
@@ -139,8 +143,8 @@ export const Player = memo(function Player({ tracks, position }: PlayerProps) {
 	async function skipPrevious() {
 		const index = tracks.findIndex(track => track.id === currentTrack.id)
 		index === 0
-			? dispatch(setPosition(tracks.length - 1))
-			: dispatch(setPosition(index - 1))
+			? setCurrentTrack(tracks[tracks.length - 1])
+			: setCurrentTrack(tracks[index - 1])
 		audioElem.current.currentTime = 0
 		await audioElem?.current?.load()
 		audioElem?.current?.play()
@@ -149,8 +153,8 @@ export const Player = memo(function Player({ tracks, position }: PlayerProps) {
 	async function skipNext() {
 		const index = tracks.findIndex(track => track.id === currentTrack.id)
 		index === tracks.length - 1
-			? dispatch(setPosition(0))
-			: dispatch(setPosition(index + 1))
+			? setCurrentTrack(tracks[0])
+			: setCurrentTrack(tracks[index + 1])
 		audioElem.current.currentTime = 0
 		await audioElem?.current?.load()
 		audioElem?.current?.play()
@@ -158,17 +162,34 @@ export const Player = memo(function Player({ tracks, position }: PlayerProps) {
 
 	async function likeHandler() {
 		try {
-			console.log('like handler')
-			if (isLiked) {
+			if (currentTrack.isLiked) {
 				await dispatch(
 					removeLikeThunk(currentTrack.id, user.id, currentTrack.type)
 				)
-				setIsLiked(false)
+				const updatedTracks = tracks.map(track => {
+					if (currentTrack.id === track.id) {
+						const unlikedTrack = { ...track, isLiked: false }
+						return unlikedTrack
+					} else {
+						return track
+					}
+				})
+				dispatch(setTracks(updatedTracks))
+				currentTrack.isLiked = false
 			} else {
 				await dispatch(
 					addLikeThunk(currentTrack.id, user.id, currentTrack.type)
 				)
-				setIsLiked(true)
+				const updatedTracks = tracks.map(track => {
+					if (currentTrack.id === track.id) {
+						const likedTrack = { ...track, isLiked: true }
+						return likedTrack
+					} else {
+						return track
+					}
+				})
+				dispatch(setTracks(updatedTracks))
+				currentTrack.isLiked = true
 			}
 		} catch (e) {
 			console.error(e)
@@ -191,6 +212,13 @@ export const Player = memo(function Player({ tracks, position }: PlayerProps) {
 		}
 	}
 
+	function downloadHandler() {
+		downloadResource(
+			currentTrack.url,
+			`${currentTrack.title} ${currentTrack.subTitle}.mp3`
+		)
+	}
+
 	return (
 		<>
 			<audio
@@ -205,7 +233,7 @@ export const Player = memo(function Player({ tracks, position }: PlayerProps) {
 						currentTrack.img && `url(${currentTrack.img})`
 				}}
 			></div>
-			<div className={styles.playerContainer}>
+			<div className={`${styles.playerContainer + ' ' + 'player'}`}>
 				<div className={styles.track}>
 					<img
 						src={
@@ -246,7 +274,16 @@ export const Player = memo(function Player({ tracks, position }: PlayerProps) {
 						<SkipNextRoundedIcon />
 					</button>
 					<ShareButton />
-					<LikeButton isLiked={isLiked} onClick={likeHandler} />
+					<LikeButton
+						isLiked={currentTrack.isLiked}
+						onClick={likeHandler}
+					/>
+					<button
+						onClick={debounce(downloadHandler, 1000)}
+						className={styles.controlButton}
+					>
+						<FileDownloadOutlinedIcon />
+					</button>
 				</div>
 				{isFinite(audioElem?.current?.duration) ? (
 					<div

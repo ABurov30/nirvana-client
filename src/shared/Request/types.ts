@@ -5,6 +5,7 @@ export interface IRequestParams {
 	url: string
 	data?: AxiosRequestConfig['data']
     useMock?: boolean
+	responseType?: string
 }
 
 

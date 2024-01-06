@@ -20,6 +20,7 @@ logs/
 
 # Mac files
 .DS_Store
+public/.DS_Store
 
 # Compiled output
 *.min.js

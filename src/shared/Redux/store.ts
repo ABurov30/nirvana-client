@@ -6,6 +6,7 @@ import promoReducer from '../../entities/Promo/slice'
 import trackReducer from '../../entities/Track/slice'
 import userReducer from '../../entities/User/slice'
 import appReducer from '../../entities/App/slice'
+import favoriteReducer from '../../entities/Favorite/slice'
 
 export const store = configureStore({
 	reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
 		user: userReducer,
 		notification: notificationReducer,
 		curTracks: curTracksReducer,
+		favorite: favoriteReducer,
 		app: appReducer
 	}
 })

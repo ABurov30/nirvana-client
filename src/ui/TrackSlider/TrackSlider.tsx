@@ -66,10 +66,10 @@ export const TrackSlider = memo(function TrackSlider({
 							</div>
 						</div>
 						<img
-							src={track.img ? track.img : '/img/cover.jpeg'}
+							src={track.img ? track.img : '/img/gradient.png'}
 							className={styles.img}
 							loading="lazy"
-							decoding="async"
+							decoding="sync"
 							alt={track.title}
 						/>
 					</div>

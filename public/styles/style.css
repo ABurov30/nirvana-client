@@ -39,6 +39,15 @@ body {
 	color: var(--primary-white) !important;
 }
 
+.dark #Flat,
+.dark #radio {
+	fill: var(--primary-white);
+}
+
+.dark .MuiInput-input {
+	color: var(--primary-white) !important;
+}
+
 .dark span,
 .dark label {
 	color: var(--primary-white) !important;
@@ -46,4 +55,9 @@ body {
 
 .dark svg path {
 	stroke: var(--primary-white) !important;
+}
+
+.dark .player svg path,
+.dark #radio {
+	stroke: transparent !important;
 }

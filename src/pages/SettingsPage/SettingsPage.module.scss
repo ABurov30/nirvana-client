@@ -59,6 +59,10 @@
 .redButton:hover {
 	background-color: $minor-red;
 	color: $primary-white;
+	box-shadow:
+		0 0 5px $minor-red,
+		0 0 25px $minor-red,
+		0 0 50px $minor-red;
 }
 
 .inputContainer {

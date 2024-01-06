@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField'
 import { AutoCompleteProps } from './types'
 import React, { memo } from 'react'
 import { request } from '../../../shared/Request/Requets'
-import { useAppDispatch, } from '../../../shared/Redux/hooks'
+import { useAppDispatch } from '../../../shared/Redux/hooks'
 import { useDebounce } from './hooks/useDebounce'
 
 export const AutoComplete = memo(function AutoComplete({
@@ -21,7 +21,6 @@ export const AutoComplete = memo(function AutoComplete({
 			options={field?.options?.map(option => option)}
 			renderInput={params => (
 				<TextField
-					sx={{ color: 'red' }}
 					{...params}
 					label={field?.label}
 					name={field?.name}

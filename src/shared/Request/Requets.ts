@@ -1,9 +1,6 @@
 import { AxiosProgressEvent, AxiosRequestConfig, AxiosResponse } from 'axios'
-import { setNotification } from '../../entities/Notification/slice'
-import { useAppDispatch } from '../Redux/hooks'
 import MockAdapter from 'axios-mock-adapter'
 import { IRequestParams } from './types'
-import { store } from '../Redux/store'
 import axios from 'axios'
 
 const NewInstanse = axios.create({
@@ -17,7 +14,13 @@ class Request {
 	private mock = new MockAdapter(axios)
 
 	sendRequest(
-		{ method = 'get', url, data, useMock }: IRequestParams,
+		{
+			method = 'get',
+			url,
+			data,
+			useMock,
+			responseType = 'json'
+		}: IRequestParams,
 		options: AxiosRequestConfig & { mockData?: any } = {}
 	): Promise<any> {
 		if (useMock) {
@@ -28,6 +31,7 @@ class Request {
 			method,
 			url,
 			data,
+			responseType,
 			signal: this.controller.signal,
 			onUploadProgress: this.getUploadProgress,
 			onDownloadProgress: this.getDowloadProgress,

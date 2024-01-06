@@ -12,13 +12,21 @@ export const removeLikeThunk: ThunkActionCreater<any> =
 			url: `${URL}`,
 			data: { id: trackId, userId, type }
 		})
-		if (res !== 200)
+		if (res !== 200) {
 			dispatch(
 				setNotification({
 					message: res?.data,
 					severity: Severity.error
 				})
 			)
+		} else {
+			dispatch(
+				setNotification({
+					message: 'Like removed',
+					severity: Severity.success
+				})
+			)
+		}
 	}
 
 export const addLikeThunk: ThunkActionCreater<any> =
@@ -28,11 +36,19 @@ export const addLikeThunk: ThunkActionCreater<any> =
 			url: `${URL}`,
 			data: { id: trackId, userId, type }
 		})
-		if (res !== 200)
+		if (res !== 200) {
 			dispatch(
 				setNotification({
 					message: res?.data,
 					severity: Severity.error
 				})
 			)
+		} else {
+			dispatch(
+				setNotification({
+					message: 'Liked',
+					severity: Severity.success
+				})
+			)
+		}
 	}

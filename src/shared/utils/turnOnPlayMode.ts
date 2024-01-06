@@ -9,7 +9,6 @@ export const turnOnPlayMode = (
 	tracks: Track[],
 	dispatch: (action: any) => void
 ) => {
-	console.log('Turning on Play Mode', i, tracks)
 	dispatch(setPosition(i))
 	dispatch(setCurTracks(tracks))
 	dispatch(setIsPlayMode(true))
