@@ -8,6 +8,7 @@ import { useAutocomplete } from '../../shared/hooks/useAutocomlete'
 import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
 import { TracksRow } from '../../UI/TracksRow/TracksRow'
 import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
+import { useTranslation } from 'react-i18next'
 
 export default function TrackPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
@@ -23,11 +24,12 @@ export default function TrackPage(): JSX.Element {
 	const { options: artists, setOptions: setArtists } =
 		useAutocomplete('/track/uniqArtists')
 	const [artistsInput, setArtistsInput] = useState('')
+	const { t } = useTranslation()
 
 	const URL = '/track'
 	const fields = [
 		{
-			label: 'Track',
+			label: t('TrackPage.track'),
 			name: 'trackTitle',
 			value: tracksTitlesInput,
 			onChange: setTracksTitlesInput,
@@ -36,13 +38,20 @@ export default function TrackPage(): JSX.Element {
 			setOptions: setTracksTitles
 		},
 		{
-			label: 'Artist',
+			label: t('TrackPage.artist'),
 			name: 'artist',
 			value: artistsInput,
 			onChange: setArtistsInput,
 			path: `${URL}/intualSearchArtist`,
 			options: artists,
 			setOptions: setArtists
+		}
+	]
+
+	const buttons = [
+		{
+			text: t('Shared.search'),
+			type: 'submit'
 		}
 	]
 
@@ -79,7 +88,7 @@ export default function TrackPage(): JSX.Element {
 				onSubmit={searchHandler}
 			/>
 			<TracksRow
-				title={'Your weekly top tracks'}
+				title={t('TrackPage.yourWeeklyTopTracks')}
 				tracks={tracks}
 				loadNext={loadNextTracks}
 				loadPrev={loadPrevTracks}

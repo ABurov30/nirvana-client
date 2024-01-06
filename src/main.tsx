@@ -5,7 +5,8 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import App from './app/App'
-import React, { StrictMode } from 'react'
+import React from 'react'
+import './i18n'
 
 const rootElement = document.getElementById('root')
 const root = createRoot(rootElement!)

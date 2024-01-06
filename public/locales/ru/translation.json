@@ -1,0 +1,74 @@
+{
+	"Shared": {
+		"save": "Сохранить",
+		"nirvana": "Нирвану",
+		"search": "Поиск",
+		"theme": "Тема"
+	},
+	"SettingsPage": {
+		"accountInfo": "Информация об аккаунте",
+		"nickname": "Никнейм",
+		"email": "Электронная почта",
+		"changePassword": "Изменить пароль",
+		"password": "Пароль",
+		"repeatPassword": "Повторите пароль",
+		"settings": "Настройки",
+		"language": "Язык",
+		"english": "Английский",
+		"russian": "Русский",
+		"dark": "Тёмная",
+		"light": "Светлая",
+		"logOut": "Выйти",
+		"deleteAccount": "Удалить аккаунт"
+	},
+	"CodePage": {
+		"enterCode": "Введите код"
+	},
+	"EmailPage": {
+		"enterEmail": "Введите адрес электронной почты"
+	},
+	"Error404": {
+		"errorMessage": "Упс! Похоже вы зашли не туда. Но не волнуйтесь, мы здесь, чтобы провести вас обратно.",
+		"home": "Домой"
+	},
+	"ErrorPage": {
+		"errorMessage": "Упс! Что-то пошло не так.",
+		"reload": "Перезагрузить"
+	},
+	"FavoritesPage": {
+		"yourFavoriteTracks": "Ваши любимые треки",
+		"yourFavoriteRadios": "Ваши любимые радиостанции",
+		"nothingHere": "Здесь пока ничего нет, лайкайте треки и станции, чтобы добавить в избранное"
+	},
+	"LoginPage": {
+		"logIn": "Войти",
+		"forgetPassword": "Забыли пароль?"
+	},
+	"RadioPage": {
+		"station": "Станция",
+		"genre": "Жанр",
+		"country": "Страна",
+		"yourWeeklyTopStations": "Самые популярные радиостанции на этой неделе"
+	},
+	"ResetPasswordPage": {
+		"resetPassword": "Сбросить пароль"
+	},
+	"SignupPage": {
+		"prePhrase": "Погрузись в",
+		"emotions": "эмоции",
+		"feelings": "чувства",
+		"pleasure": "удовольствие",
+		"signup": "Зарегистрироваться"
+	},
+	"TrackPage": {
+		"track": "Трек",
+		"artist": "Исполнитель",
+		"yourWeeklyTopTracks": "Самые популярные треки на этой неделе"
+	},
+	"Navbar": {
+		"favorites": "Избранное",
+		"tracks": "Треки",
+		"radios": "Радио",
+		"settings": "Настройки"
+	}
+}

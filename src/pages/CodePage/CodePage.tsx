@@ -3,9 +3,11 @@ import { Typography } from 'radio-app-uikit'
 import React from 'react'
 import CodeForm from '../../UI/Forms/AuthForms/CodeForm/CodeForm'
 import { useAppSelector } from '../../shared/Redux/hooks'
+import { useTranslation } from 'react-i18next'
 
 export default function CodePage(): JSX.Element {
 	const { theme } = useAppSelector(state => state.app)
+	const { t } = useTranslation()
 	return (
 		<div className={styles.container}>
 			<div
@@ -13,7 +15,11 @@ export default function CodePage(): JSX.Element {
 					theme === 'light' ? styles.light : styles.dark
 				}`}
 			>
-				<Typography text="Enter code" fontSize="20" weight="semibold" />
+				<Typography
+					text={t('CodePage.enterCode')}
+					fontSize="20"
+					weight="semibold"
+				/>
 				<CodeForm />
 			</div>
 		</div>

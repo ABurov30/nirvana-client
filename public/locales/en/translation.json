@@ -1,0 +1,74 @@
+{
+	"Shared": {
+		"save": "Save",
+		"nirvana": "Nirvana",
+		"search": "Search",
+		"theme": "Theme"
+	},
+	"SettingsPage": {
+		"accountInfo": "Account Information",
+		"nickname": "Nickname",
+		"email": "E-mail",
+		"changePassword": "Change password",
+		"password": "Password",
+		"repeatPassword": "Repeat password",
+		"settings": "Settings",
+		"language": "Language",
+		"english": "English",
+		"russian": "Russian",
+		"dark": "Dark",
+		"light": "Light",
+		"logOut": "Log out",
+		"deleteAccount": "Delete Account"
+	},
+	"CodePage": {
+		"enterCode": "Enter code"
+	},
+	"EmailPage": {
+		"enterEmail": "Enter e-mail"
+	},
+	"Error404": {
+		"errorMessage": "Ooops! It`s looks like you`re out of space. But don`t worry, we`re here to guide you back.",
+		"home": "Home"
+	},
+	"ErrorPage": {
+		"errorMessage": "Ooops! Something went wrong.",
+		"reload": "Reload"
+	},
+	"FavoritesPage": {
+		"yourFavoriteTracks": "Your favorite tracks",
+		"yourFavoriteRadios": "Your favorite radios",
+		"nothingHere": "Nothing here yet, like tracks and radios to add to your favorites"
+	},
+	"LoginPage": {
+		"logIn": "Log in",
+		"forgetPassword": "Forget password?"
+	},
+	"RadioPage": {
+		"station": "Station",
+		"genre": "Genre",
+		"country": "Country",
+		"yourWeeklyTopStations": "Your weekly top stations"
+	},
+	"ResetPasswordPage": {
+		"resetPassword": "Reset password"
+	},
+	"SignupPage": {
+		"prePhrase": "Dive into",
+		"emotions": "emotions",
+		"feelings": "feelings",
+		"pleasure": "pleasure",
+		"signup": "Sign up"
+	},
+	"TrackPage": {
+		"track": "Track",
+		"artist": "Artist",
+		"yourWeeklyTopTracks": "Your weekly top tracks"
+	},
+	"Navbar": {
+		"favorites": "Favorites",
+		"tracks": "Tracks",
+		"radios": "Radios",
+		"settings": "Settings"
+	}
+}

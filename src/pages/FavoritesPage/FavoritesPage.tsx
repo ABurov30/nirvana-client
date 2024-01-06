@@ -6,12 +6,15 @@ import {
 } from '../../entities/Favorite/thunk'
 import styles from './FavoritesPage.module.scss'
 import { TracksRow } from '../../UI/TracksRow/TracksRow'
+import { useTranslation } from 'react-i18next'
+import { Typography } from 'radio-app-uikit'
 
 function FavoritesPage() {
 	const user = useAppSelector(state => state.user)
 	const { favoriteTracks, favoriteRadios } = useAppSelector(
 		state => state.favorite
 	)
+	const { t } = useTranslation()
 	useEffect(() => {
 		dispatch(getFavoriteTracksThunk(0, user.id))
 		dispatch(getFavoriteRadiosThunk(0, user.id))
@@ -48,21 +51,27 @@ function FavoritesPage() {
 	}
 	return (
 		<div className={styles.favoritesPage}>
-			{favoriteTracks.length && (
-				<TracksRow
-					title={'Your favorite tracks'}
-					tracks={favoriteTracks}
-					loadNext={loadNextFavoriteTracks}
-					loadPrev={loadPrevFavoriteTracks}
-				/>
-			)}
-			{favoriteRadios.length && (
-				<TracksRow
-					title={'Your favorite radios'}
-					tracks={favoriteRadios}
-					loadNext={loadNextFavoriteRadios}
-					loadPrev={loadPrevFavoriteRadios}
-				/>
+			{!favoriteRadios.length && !favoriteTracks.length ? (
+				<Typography text={t('FavoritesPage.nothingHere')} />
+			) : (
+				<>
+					{favoriteTracks.length && (
+						<TracksRow
+							title={t('FavoritesPage.yourFavoriteTracks')}
+							tracks={favoriteTracks}
+							loadNext={loadNextFavoriteTracks}
+							loadPrev={loadPrevFavoriteTracks}
+						/>
+					)}
+					{favoriteRadios.length && (
+						<TracksRow
+							title={t('FavoritesPage.yourFavoriteRadios')}
+							tracks={favoriteRadios}
+							loadNext={loadNextFavoriteRadios}
+							loadPrev={loadPrevFavoriteRadios}
+						/>
+					)}
+				</>
 			)}
 		</div>
 	)

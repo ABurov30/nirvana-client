@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import SignUpForm from '../../UI/Forms/AuthForms/SigUpForm/SignUpForm'
 import PromoTitle from '../../UI/PromoTitle/PromoTitle'
 import { useAppSelector } from '../../shared/Redux/hooks'
@@ -8,6 +9,7 @@ import React, { useState } from 'react'
 export default function SignupPage(): JSX.Element {
 	const [isVisible, setIsVisible] = useState(false)
 	const { theme } = useAppSelector(state => state.app)
+	const { t } = useTranslation()
 	return (
 		<div className={styles.container}>
 			<div className={styles.promoContainer}>
@@ -17,12 +19,12 @@ export default function SignupPage(): JSX.Element {
 					<Typography text="🙈" fontSize="200" />
 				)}
 				<PromoTitle
-					prePhrase="Dive into"
+					prePhrase={t('SignupPage.prePhrase')}
 					rotatedPhrases={[
-						'emotions',
-						'feelings',
-						'pleasure',
-						'Nirvana!'
+						t('SignupPage.emotions'),
+						t('SignupPage.feelings'),
+						t('SignupPage.pleasure'),
+						t('Shared.nirvana')
 					]}
 				/>
 			</div>
@@ -33,7 +35,7 @@ export default function SignupPage(): JSX.Element {
 			>
 				<div className={styles.titleContainer}>
 					<Typography
-						text="Sign up"
+						text={t('SignupPage.signup')}
 						fontSize="32"
 						weight="semibold"
 					/>

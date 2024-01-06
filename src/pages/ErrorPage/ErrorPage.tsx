@@ -3,9 +3,11 @@ import styles from './ErrorPage.module.scss'
 import { CSSTransition } from 'react-transition-group'
 import { useNavigate } from 'react-router-dom'
 import { BlockButton, Typography } from 'radio-app-uikit'
+import { useTranslation } from 'react-i18next'
 
 function ErrorPage() {
 	const [isHover, setIsHover] = useState(false)
+	const { t } = useTranslation()
 	return (
 		<div className={styles.errorPage}>
 			<div className={styles.textContainer}>
@@ -15,14 +17,14 @@ function ErrorPage() {
 					<Typography text="🙊" fontSize="200" />
 				)}
 				<Typography
-					text="Ooops! Something went wrong."
+					text={t('ErrorPage.errorMessage')}
 					color="#f3f3f3"
 					weight="regular"
 					fontSize="20"
 					textAlign="center"
 				/>
 				<BlockButton
-					text="Reload"
+					text={t('ErrorPage.reload')}
 					onClick={() => location.reload()}
 					onMouseOver={() => setIsHover(true)}
 					onMouseLeave={() => setIsHover(false)}

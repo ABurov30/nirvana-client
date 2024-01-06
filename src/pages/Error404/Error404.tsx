@@ -2,9 +2,11 @@ import React from 'react'
 import styles from './Error404.module.scss'
 import { BlockButton, Typography } from 'radio-app-uikit'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function Error404() {
 	const navigate = useNavigate()
+	const { t } = useTranslation()
 	return (
 		<div className={styles.error404}>
 			<div className={styles.textContainer}>
@@ -16,13 +18,16 @@ export default function Error404() {
 					textAlign="center"
 				/>
 				<Typography
-					text="Ooops! It`s looks like you`re out of space. But don`t worry, we`re here to guide you back."
+					text={t('Error404.errorMessage')}
 					color="#f3f3f3"
 					weight="regular"
 					fontSize="20"
 					textAlign="center"
 				/>
-				<BlockButton text="Home" onClick={() => navigate('/')} />
+				<BlockButton
+					text={t('Error404.home')}
+					onClick={() => navigate('/')}
+				/>
 			</div>
 		</div>
 	)

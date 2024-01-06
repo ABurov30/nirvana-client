@@ -1,6 +1,5 @@
 export type AppState = {
 	theme: Theme
-	language: Language
 	isPlayMode: boolean
 }
 
@@ -11,5 +10,5 @@ export enum Theme {
 
 export enum Language {
 	ru = 'ru',
-	eng = 'eng'
+	en = 'en'
 }

@@ -278,12 +278,14 @@ export const Player = memo(function Player({
 						isLiked={currentTrack.isLiked}
 						onClick={likeHandler}
 					/>
-					<button
-						onClick={debounce(downloadHandler, 1000)}
-						className={styles.controlButton}
-					>
-						<FileDownloadOutlinedIcon />
-					</button>
+					{isFinite(audioElem?.current?.duration) && (
+						<button
+							onClick={debounce(downloadHandler, 1000)}
+							className={styles.controlButton}
+						>
+							<FileDownloadOutlinedIcon />
+						</button>
+					)}
 				</div>
 				{isFinite(audioElem?.current?.duration) ? (
 					<div

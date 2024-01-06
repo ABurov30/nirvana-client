@@ -11,6 +11,7 @@ import { useAutocomplete } from '../../shared/hooks/useAutocomlete'
 import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
 import { TracksRow } from '../../UI/TracksRow/TracksRow'
 import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
+import { useTranslation } from 'react-i18next'
 
 export default function RadioPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
@@ -23,6 +24,7 @@ export default function RadioPage(): JSX.Element {
 	const { options: stations, setOptions: setStations } =
 		useAutocomplete(`/radio/uniqNames`)
 	const [stationInput, setStationsInput] = useState('')
+	const { t } = useTranslation()
 
 	useLayoutEffect(() => {
 		dispatch(getAllRadiosThunk(0, user.id))
@@ -33,7 +35,7 @@ export default function RadioPage(): JSX.Element {
 	const URL = '/radio'
 	const fields = [
 		{
-			label: 'Station',
+			label: t('RadioPage.station'),
 			name: 'name',
 			value: stationInput,
 			onChange: setStationsInput,
@@ -42,7 +44,7 @@ export default function RadioPage(): JSX.Element {
 			setOptions: setStations
 		},
 		{
-			label: 'Genre',
+			label: t('RadioPage.genre'),
 			name: 'tags',
 			value: genreInput,
 			onChange: setGenreInput,
@@ -51,13 +53,20 @@ export default function RadioPage(): JSX.Element {
 			setOptions: setGenres
 		},
 		{
-			label: 'Country',
+			label: t('RadioPage.country'),
 			name: 'country',
 			value: countryInput,
 			onChange: setCountryInput,
 			path: `${URL}/intualSearchCountry`,
 			options: countries,
 			setOptions: setCountries
+		}
+	]
+
+	const buttons = [
+		{
+			text: t('Shared.search'),
+			type: 'submit'
 		}
 	]
 
@@ -94,7 +103,7 @@ export default function RadioPage(): JSX.Element {
 				onSubmit={searchHandler}
 			/>
 			<TracksRow
-				title={'Your weekly top stations'}
+				title={t('RadioPage.yourWeeklyTopStations')}
 				tracks={radios}
 				loadNext={loadNextRadios}
 				loadPrev={loadPrevRadios}

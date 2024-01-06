@@ -7,13 +7,16 @@ import { Loader } from 'radio-app-uikit'
 import React, { Suspense } from 'react'
 import { Provider } from 'react-redux'
 
+
 function App(): JSX.Element {
+	
 	return (
 		<>
 			<Cursor />
 			<ErrorBoundary>
 				<Suspense fallback={<Loader />}>
 					<Provider store={store}>
+				
 						<BrowserRouter>
 							<MainRoutes />
 						</BrowserRouter>

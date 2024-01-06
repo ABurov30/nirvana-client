@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import styles from './LoginPage.module.scss'
 import { Typography } from 'radio-app-uikit'
 import Toast from '../../UI/Toast/Toast'
+import { useTranslation } from 'react-i18next'
 
 export default function LoginPage(): JSX.Element {
 	const dispatch = useAppDispatch()
@@ -15,6 +16,7 @@ export default function LoginPage(): JSX.Element {
 	const navigate = useNavigate()
 	const notification = useAppSelector(state => state.notification)
 	const ref = useRef({ email: '', password: '' })
+	const { t } = useTranslation()
 
 	useEffect(() => {
 		dispatch(getPromoThunk())
@@ -37,7 +39,11 @@ export default function LoginPage(): JSX.Element {
 				<PromoSlider promos={promo} />
 			</div>
 			<div className={styles.loginContainer}>
-				<Typography text={'Log in'} fontSize="32" weight="semibold" />
+				<Typography
+					text={t('LoginPage.logIn')}
+					fontSize="32"
+					weight="semibold"
+				/>
 				<div className={styles.formContainer}>
 					<LoginForm />
 					<div
@@ -46,7 +52,7 @@ export default function LoginPage(): JSX.Element {
 						}`}
 						onClick={() => navigate('/auth/findEmail')}
 					>
-						<Typography text="Forget password?" />
+						<Typography text={t('LoginPage.forgetPassword')} />
 					</div>
 				</div>
 			</div>

@@ -3,9 +3,11 @@ import { Typography } from 'radio-app-uikit'
 import React from 'react'
 import EmailForm from '../../UI/Forms/AuthForms/EmailForm/EmailForm'
 import { useAppSelector } from '../../shared/Redux/hooks'
+import { useTranslation } from 'react-i18next'
 
 export default function EmailPage(): JSX.Element {
 	const { theme } = useAppSelector(state => state.theme)
+	const { t } = useTranslation()
 	return (
 		<div className={styles.container}>
 			<div
@@ -15,7 +17,7 @@ export default function EmailPage(): JSX.Element {
 			>
 				<div className={styles.titleContainer}>
 					<Typography
-						text="Enter e-mail"
+						text={t('EmailPage.enterEmail')}
 						fontSize="20"
 						weight="semibold"
 					/>

@@ -5,7 +5,7 @@ export interface SelectProps {
 	options: Option[]
 	value: string
 	onChange: (value: string) => void
-	dispatch: ThunkDispatch<{}, undefined, UnknownAction>
+	dispatch?: ThunkDispatch<{}, undefined, UnknownAction>
 }
 
 interface Option {

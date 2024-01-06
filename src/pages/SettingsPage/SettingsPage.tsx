@@ -10,17 +10,27 @@ import { changeTheme, setLanguage } from '../../entities/App/slice'
 import { deleteUserThunk, logoutThunk } from '../../entities/User/thunk'
 import { onSubmitNewPassword } from '../../shared/utils/onSubmitNewPassword'
 import { onSubmit } from './onSubmit'
+import { useTranslation } from 'react-i18next'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 
 function SettingsPage() {
 	const user = useAppSelector(state => state.user)
-	const { language, theme } = useAppSelector(state => state.app)
+	const { theme } = useAppSelector(state => state.app)
 	const dispatch = useAppDispatch()
+	const { t, i18n } = useTranslation()
+	const [lang, setLang] = useState(i18n.language)
 	const [isVisible, setIsVisible] = useState(false)
+	function changeLanguage(lang: string) {
+		i18n.changeLanguage(lang)
+		setLang(i18n.language)
+	}
 	return (
 		<div className={styles.container}>
 			<div className={styles.formContainer}>
-				<Typography text="Account" weight="medium" />
+				<Typography
+					text={t('SettingsPage.accountInfo')}
+					weight="medium"
+				/>
 				<form onSubmit={e => onSubmit(e, dispatch, user)}>
 					<Avatar
 						sx={{
@@ -33,15 +43,14 @@ function SettingsPage() {
 					</Avatar>
 
 					<TextField
-						label="Name"
+						label={t('SettingsPage.nickname')}
 						variant="standard"
 						name="nickname"
 						defaultValue={user.nickname}
 						sx={{ minWidth: 100, width: '40%' }}
 					/>
-
 					<TextField
-						label="E-mail"
+						label={t('SettingsPage.email')}
 						variant="standard"
 						name="email"
 						defaultValue={user.email}
@@ -52,11 +61,14 @@ function SettingsPage() {
 				</form>
 			</div>
 			<div className={styles.formContainer}>
-				<Typography text="Change password" weight="medium" />
+				<Typography
+					text={t('SettingsPage.changePassword')}
+					weight="medium"
+				/>
 				<form onSubmit={e => onSubmitNewPassword(e, dispatch, user.id)}>
 					<div className={styles.inputContainer}>
 						<TextField
-							label="Password"
+							label={t('SettingsPage.password')}
 							variant="standard"
 							type={isVisible ? 'text' : 'password'}
 							name="password"
@@ -71,7 +83,7 @@ function SettingsPage() {
 					</div>
 					<div className={styles.inputContainer}>
 						<TextField
-							label="Repeat password"
+							label={t('SettingsPage.repeatPassword')}
 							type={isVisible ? 'text' : 'password'}
 							variant="standard"
 							name="repeatPassword"
@@ -88,23 +100,32 @@ function SettingsPage() {
 				</form>
 			</div>
 			<div className={styles.formContainer}>
-				<Typography text="Settings" weight="medium" />
+				<Typography text={t('SettingsPage.settings')} weight="medium" />
 				<form>
 					<SelectInput
-						label="Language"
+						label={t('SettingsPage.language')}
 						options={[
-							{ label: 'English', value: Language.eng },
-							{ label: 'Russian', value: Language.ru }
+							{
+								label: t('SettingsPage.english'),
+								value: Language.en
+							},
+							{
+								label: t('SettingsPage.russian'),
+								value: Language.ru
+							}
 						]}
-						value={language}
-						onChange={setLanguage}
-						dispatch={dispatch}
+						value={lang}
+						onChange={changeLanguage}
 					/>
+
 					<SelectInput
-						label="Theme"
+						label={t('Shared.theme')}
 						options={[
-							{ label: 'Light', value: Theme.light },
-							{ label: 'Dark', value: Theme.dark }
+							{
+								label: t('SettingsPage.light'),
+								value: Theme.light
+							},
+							{ label: t('SettingsPage.dark'), value: Theme.dark }
 						]}
 						value={theme}
 						onChange={changeTheme}
@@ -116,13 +137,13 @@ function SettingsPage() {
 				className={styles.redButton}
 				onClick={() => dispatch(logoutThunk())}
 			>
-				Log out
+				{t('SettingsPage.logOut')}
 			</button>
 			<button
 				className={styles.redButton}
 				onClick={() => dispatch(deleteUserThunk(user.id))}
 			>
-				Delete account
+				{t('SettingsPage.deleteAccount')}
 			</button>
 		</div>
 	)
