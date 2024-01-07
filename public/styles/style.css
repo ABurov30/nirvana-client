@@ -61,3 +61,11 @@ body {
 .dark #radio {
 	stroke: transparent !important;
 }
+
+.dark .burgerItems span {
+	background-color: var(--primary-white);
+}
+
+.dark .burgerItems {
+	background-color: var(--primary-black);
+}

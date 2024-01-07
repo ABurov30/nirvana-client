@@ -20,10 +20,10 @@ export const TracksRow = memo(function TracksRow({
 	return (
 		<div className={style.cardsFlowContainer}>
 			<div className={style.header}>
-				<Typography text={title} fontSize="18" weight="medium" />
+				<Typography text={title} fontSize="1em" weight="medium" />
 				<div className={style.buttonsContainer}>
-					<LeftArrowRoundButton onClick={loadPrev} size={40} />
-					<RightArrowRoundButton onClick={loadNext} size={40} />
+					<LeftArrowRoundButton onClick={loadPrev} size={'2.5em'} />
+					<RightArrowRoundButton onClick={loadNext} size={'2.5em'} />
 				</div>
 			</div>
 			<div className={style.cardsContainer}>

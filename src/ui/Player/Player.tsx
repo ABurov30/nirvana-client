@@ -248,13 +248,9 @@ export const Player = memo(function Player({
 					<div className={styles.title}>
 						<Typography
 							text={currentTrack?.title}
-							fontSize="20"
 							weight="semibold"
 						/>
-						<Typography
-							text={currentTrack?.subTitle}
-							fontSize="12"
-						/>
+						<Typography text={currentTrack?.subTitle} />
 					</div>
 				</div>
 				<div className={styles.controls}>

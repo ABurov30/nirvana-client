@@ -15,11 +15,7 @@ export default function CodePage(): JSX.Element {
 					theme === 'light' ? styles.light : styles.dark
 				}`}
 			>
-				<Typography
-					text={t('CodePage.enterCode')}
-					fontSize="20"
-					weight="semibold"
-				/>
+				<Typography text={t('CodePage.enterCode')} weight="semibold" />
 				<CodeForm />
 			</div>
 		</div>

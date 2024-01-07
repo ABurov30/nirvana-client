@@ -14,14 +14,13 @@ export default function Error404() {
 					text={'404'}
 					color="#f3f3f3"
 					weight="semibold"
-					fontSize="400"
+					fontSize="10em"
 					textAlign="center"
 				/>
 				<Typography
 					text={t('Error404.errorMessage')}
 					color="#f3f3f3"
 					weight="regular"
-					fontSize="20"
 					textAlign="center"
 				/>
 				<BlockButton

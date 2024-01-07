@@ -1,7 +1,5 @@
 import {
-	AccountNavbarButton,
 	FavoritesNavbarButton,
-	HomeNavbarButton,
 	NavSection,
 	Navbar as RadioNavbar,
 	RadioNavbarButton,
@@ -14,7 +12,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import React, { useState } from 'react'
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher'
 import styles from './Navbar.module.scss'
-import { useAppSelector } from '../../shared/Redux/hooks'
 import { useTranslation } from 'react-i18next'
 
 export default function Navbar() {
@@ -23,7 +20,7 @@ export default function Navbar() {
 	const navigate = useNavigate()
 	const location = useLocation()
 	return (
-		<div className={'navbar'}>
+		<div className={`${styles.navbar} 'navbar'`}>
 			<RadioNavbar isHovered={isHovered} setIsHovered={setIsHovered}>
 				<NavSection>
 					<LogoNavbarButton onClick={() => navigate('/')} />
@@ -54,12 +51,7 @@ export default function Navbar() {
 				</NavSection>
 				<NavSection>
 					<div className={styles.themeSwitcherContainer}>
-						{isHovered && (
-							<Typography
-								text={t('Shared.theme')}
-								fontSize="16"
-							/>
-						)}
+						{isHovered && <Typography text={t('Shared.theme')} />}
 						<ThemeSwitcher />
 					</div>
 				</NavSection>

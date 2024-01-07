@@ -14,9 +14,9 @@ export default function SignupPage(): JSX.Element {
 		<div className={styles.container}>
 			<div className={styles.promoContainer}>
 				{isVisible ? (
-					<Typography text="🙉" fontSize="200" />
+					<Typography text="🙉" fontSize="10em" />
 				) : (
-					<Typography text="🙈" fontSize="200" />
+					<Typography text="🙈" fontSize="10em" />
 				)}
 				<PromoTitle
 					prePhrase={t('SignupPage.prePhrase')}
@@ -36,7 +36,7 @@ export default function SignupPage(): JSX.Element {
 				<div className={styles.titleContainer}>
 					<Typography
 						text={t('SignupPage.signup')}
-						fontSize="32"
+						fontSize="2em"
 						weight="semibold"
 					/>
 				</div>

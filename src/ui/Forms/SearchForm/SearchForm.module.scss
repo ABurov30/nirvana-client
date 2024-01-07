@@ -14,3 +14,10 @@
 	width: 10%;
 	height: 100%;
 }
+
+@media screen and (max-width: 479px) {
+	.form button {
+		width: 20%;
+		height: 3em;
+	}
+}

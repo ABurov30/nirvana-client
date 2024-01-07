@@ -6,7 +6,7 @@ import { useAppSelector } from '../../shared/Redux/hooks'
 import { useTranslation } from 'react-i18next'
 
 export default function EmailPage(): JSX.Element {
-	const { theme } = useAppSelector(state => state.theme)
+	const { theme } = useAppSelector(state => state.app)
 	const { t } = useTranslation()
 	return (
 		<div className={styles.container}>
@@ -18,7 +18,6 @@ export default function EmailPage(): JSX.Element {
 				<div className={styles.titleContainer}>
 					<Typography
 						text={t('EmailPage.enterEmail')}
-						fontSize="20"
 						weight="semibold"
 					/>
 				</div>

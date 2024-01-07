@@ -12,13 +12,13 @@ export default function ResetPasswordPage(): JSX.Element {
 			<div className={styles.resetPasswordContainer}>
 				<div className={styles.titleContainer}>
 					{isVisible ? (
-						<Typography text="🙉" fontSize="100" />
+						<Typography text="🙉" fontSize="5em" />
 					) : (
-						<Typography text="🙈" fontSize="100" />
+						<Typography text="🙈" fontSize="5em" />
 					)}
 					<Typography
 						text={t('ResetPasswordPage.resetPassword')}
-						fontSize="32"
+						fontSize="2em"
 						weight="semibold"
 					/>
 				</div>

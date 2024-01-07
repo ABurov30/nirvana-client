@@ -52,7 +52,9 @@ function FavoritesPage() {
 	return (
 		<div className={styles.favoritesPage}>
 			{!favoriteRadios.length && !favoriteTracks.length ? (
-				<Typography text={t('FavoritesPage.nothingHere')} />
+				<div className={styles.nothingHereContainer}>
+					<Typography text={t('FavoritesPage.nothingHere')} />
+				</div>
 			) : (
 				<>
 					{favoriteTracks.length && (

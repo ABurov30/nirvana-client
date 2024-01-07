@@ -35,7 +35,7 @@
 	justify-content: space-around;
 	gap: 20px;
 	border: solid 1px $primary-grey;
-	padding: 15px;
+	padding: 1em;
 	border-radius: 4px;
 }
 
@@ -46,7 +46,7 @@
 
 .redButton {
 	width: 20%;
-	min-height: 50px;
+	min-height: 3em;
 	border: none;
 	background-color: transparent;
 	color: $minor-red;
@@ -68,10 +68,19 @@
 .inputContainer {
 	display: flex;
 	align-items: center;
-	width: 40%;
+	width: 30%;
 }
 
 .visibilityButton {
-	width: 25px;
+	width: 2%;
 	height: 100%;
+}
+
+@media screen and (max-width: 479px) {
+	.formContainer {
+		width: 95%;
+	}
+	.container {
+		margin-top: 5em;
+	}
 }

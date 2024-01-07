@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom'
 import React from 'react'
 import { Player } from '../../../UI/Player/Player'
 import { setCurTracks } from '../../../entities/CurTracks/slice'
+import Burger from '../../../UI/Burger/Burger'
 
 export default function AZLayout() {
 	const user = useAppSelector(state => state.user)
@@ -15,6 +16,7 @@ export default function AZLayout() {
 		<div className={styles.AZLayout}>
 			<Navbar />
 			<AvatarButton nickname={user?.nickname} />
+			<Burger />
 			<Outlet />
 			{isPlayMode && (
 				<Player

@@ -12,15 +12,15 @@ function ErrorPage() {
 		<div className={styles.errorPage}>
 			<div className={styles.textContainer}>
 				{isHover ? (
-					<Typography text="🐵" fontSize="200" />
+					<Typography text="🐵" fontSize="10em" />
 				) : (
-					<Typography text="🙊" fontSize="200" />
+					<Typography text="🙊" fontSize="10em" />
 				)}
 				<Typography
 					text={t('ErrorPage.errorMessage')}
 					color="#f3f3f3"
 					weight="regular"
-					fontSize="20"
+					fontSize="1.2em"
 					textAlign="center"
 				/>
 				<BlockButton

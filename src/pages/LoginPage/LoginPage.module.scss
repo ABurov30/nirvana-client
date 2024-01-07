@@ -14,7 +14,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 70px;
+	gap: 3em;
 }
 
 .imgSliderContainer {
@@ -60,4 +60,17 @@
 .light {
 	background-color: $primary-white;
 	color: $primary-black;
+}
+
+@media screen and (max-width: 479px) {
+	.imgSliderContainer {
+		display: none;
+	}
+	.loginContainer {
+		width: 100vw;
+	}
+	.container {
+		justify-content: center;
+		flex-direction: column;
+	}
 }

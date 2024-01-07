@@ -36,7 +36,7 @@
 
 .playerContainer {
 	background-color: transparent;
-	padding: 10px;
+	padding: 0.5em;
 	position: fixed;
 	bottom: 0;
 	height: 10vh;
@@ -57,16 +57,16 @@
 
 .track {
 	opacity: 1;
-	margin: 10px 0px;
-	margin-left: 30px;
+	margin: 0.5em 0px;
+	margin-left: 2em;
 	display: flex;
-	gap: 10px;
+	gap: 0.5em;
 	height: 100%;
 	align-items: center;
 }
 
 .timeContainer {
-	margin-top: 5px;
+	margin-top: 0.25em;
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
@@ -92,16 +92,16 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 10px;
+	gap: 0.5em;
 }
 
 .name {
-	font-size: 20px;
+	font-size: 1em;
 	font-weight: 500;
 }
 
 .artist {
-	font-size: 12px;
+	font-size: 0.7em;
 }
 
 .navigation {
@@ -115,8 +115,8 @@
 
 .navigationController {
 	background-color: $primary-white;
-	height: 5px;
-	border-radius: 14px;
+	height: 0.25em;
+	border-radius: 0.8em;
 	width: 100%;
 }
 
@@ -131,8 +131,8 @@
 .pointer {
 	display: none;
 	background-color: $primary-black;
-	height: 5px;
-	width: 5px;
+	height: 0.25em;
+	width: 0.25em;
 	border-radius: 20px;
 }
 
@@ -157,7 +157,7 @@
 
 .navigationController {
 	background-color: $primary-white;
-	height: 5px;
+	height: 0.25em;
 	border-radius: 14px;
 	overflow: hidden;
 }
@@ -173,7 +173,7 @@
 
 .volumeController {
 	background-color: $primary-white;
-	height: 5px;
+	height: 0.25em;
 	border-radius: 14px;
 	overflow: hidden;
 	width: 100%;
@@ -182,20 +182,50 @@
 .volume {
 	height: 100%;
 	width: 10%;
-	margin-right: 40px;
+	margin-right: 2em;
 	display: flex;
 	align-items: center;
-	gap: 20px;
+	gap: 1.5em;
 }
 
 .controlButton {
 	background-color: transparent;
-	width: 50px;
-	height: 50px;
+	width: 3em;
+	height: 3em;
 	border: none;
 	transition: ease-in-out;
 }
 
 .volumeButton:hover svg {
 	color: $primary-violet;
+}
+
+@media screen and (max-width: 479px) {
+	.playerBg {
+		bottom: 150px;
+		height: 100px;
+	}
+	.playerContainer {
+		bottom: 150px;
+		height: 100px;
+		margin: 0;
+		width: 100%;
+		justify-content: center;
+	}
+	.playerContainer span {
+		font-size: 0.7em;
+	}
+	.playerContainer img {
+		width: 3em;
+		height: 3em;
+	}
+	.navigation {
+		display: none;
+	}
+	.volume {
+		display: none;
+	}
+	.track {
+		margin-left: 0;
+	}
 }

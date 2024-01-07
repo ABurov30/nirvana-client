@@ -34,14 +34,13 @@ export default function LoginPage(): JSX.Element {
 	}
 	return (
 		<div className={styles.container}>
-			{notification.message && <Toast notification={notification} />}
 			<div className={styles.imgSliderContainer}>
 				<PromoSlider promos={promo} />
 			</div>
 			<div className={styles.loginContainer}>
 				<Typography
 					text={t('LoginPage.logIn')}
-					fontSize="32"
+					fontSize="2em"
 					weight="semibold"
 				/>
 				<div className={styles.formContainer}>

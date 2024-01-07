@@ -35,8 +35,8 @@ function SettingsPage() {
 					<Avatar
 						sx={{
 							bgcolor: '#BDBEBE',
-							width: '70px',
-							height: '70px'
+							width: '3em',
+							height: '3em'
 						}}
 					>
 						{user.nickname[0]}
@@ -47,14 +47,14 @@ function SettingsPage() {
 						variant="standard"
 						name="nickname"
 						defaultValue={user.nickname}
-						sx={{ minWidth: 100, width: '40%' }}
+						sx={{ minWidth: '5em', width: '40%', fontSize: '1em' }}
 					/>
 					<TextField
 						label={t('SettingsPage.email')}
 						variant="standard"
 						name="email"
 						defaultValue={user.email}
-						sx={{ minWidth: 100, width: '40%' }}
+						sx={{ minWidth: '5em', width: '40%', fontSize: '1em' }}
 					/>
 
 					<BlockButton text={'Save'} type="submit" />
@@ -72,7 +72,11 @@ function SettingsPage() {
 							variant="standard"
 							type={isVisible ? 'text' : 'password'}
 							name="password"
-							sx={{ minWidth: 100, width: '100%' }}
+							sx={{
+								minWidth: '5em',
+								width: '100%',
+								fontSize: '1em'
+							}}
 						/>
 						<div
 							className={styles.visibilityButton}
@@ -87,7 +91,11 @@ function SettingsPage() {
 							type={isVisible ? 'text' : 'password'}
 							variant="standard"
 							name="repeatPassword"
-							sx={{ minWidth: 100, width: '100%' }}
+							sx={{
+								minWidth: '5em',
+								width: '100%',
+								fontSize: '1em'
+							}}
 						/>
 						<div
 							className={styles.visibilityButton}

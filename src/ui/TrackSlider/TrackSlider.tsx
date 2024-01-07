@@ -37,13 +37,13 @@ export const TrackSlider = memo(function TrackSlider({
 						<div className={styles.textContainer}>
 							<Typography
 								text={track.title}
-								fontSize="32"
+								fontSize="2em"
 								weight="semibold"
 								color="#F3F3F3"
 							/>
 							<Typography
 								text={track.subTitle}
-								fontSize="20"
+								fontSize="1em"
 								weight="medium"
 								color="#F3F3F3"
 							/>
@@ -69,7 +69,7 @@ export const TrackSlider = memo(function TrackSlider({
 							src={track.img ? track.img : '/img/gradient.png'}
 							className={styles.img}
 							loading="lazy"
-							decoding="sync"
+							decoding="async"
 							alt={track.title}
 						/>
 					</div>
