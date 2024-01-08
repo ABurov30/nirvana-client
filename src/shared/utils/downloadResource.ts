@@ -7,7 +7,7 @@ export function downloadResource(url: string, filename: string) {
 			url,
 			responseType: 'blob'
 		})
-		.then(response => response.data)
+		.then(response => response?.data)
 		.then(blob => {
 			const blobUrl = URL.createObjectURL(
 				new Blob([blob], {
