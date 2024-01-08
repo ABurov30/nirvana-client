@@ -1,12 +1,12 @@
 .form {
 	display: flex;
-	gap: 15px;
+	gap: 1em;
 	align-items: center;
-	margin-top: 20px;
-	margin-bottom: 10px;
+	margin-top: 1.5em;
+	margin-bottom: 0.7em;
 	width: 100%;
 	justify-content: center;
-	min-height: 50px;
+	min-height: 3.5em;
 	height: 5%;
 }
 
@@ -19,5 +19,8 @@
 	.form button {
 		width: 20%;
 		height: 3em;
+	}
+	.form {
+		width: 95%;
 	}
 }

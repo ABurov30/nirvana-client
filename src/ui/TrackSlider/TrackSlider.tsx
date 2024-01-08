@@ -37,13 +37,13 @@ export const TrackSlider = memo(function TrackSlider({
 						<div className={styles.textContainer}>
 							<Typography
 								text={track.title}
-								fontSize="2em"
+								fontSize="3em"
 								weight="semibold"
 								color="#F3F3F3"
 							/>
 							<Typography
 								text={track.subTitle}
-								fontSize="1em"
+								fontSize="2em"
 								weight="medium"
 								color="#F3F3F3"
 							/>

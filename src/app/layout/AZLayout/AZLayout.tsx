@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 import React from 'react'
 import { Player } from '../../../UI/Player/Player'
 import { setCurTracks } from '../../../entities/CurTracks/slice'
-import Burger from '../../../UI/Burger/Burger'
+import Burger from '../../../UI/Menu/Burger'
 
 export default function AZLayout() {
 	const user = useAppSelector(state => state.user)
