@@ -33,7 +33,9 @@ export default function SelectInput({
 			>
 				{options.map(option => {
 					return (
-						<MenuItem value={option.value}>{option.label}</MenuItem>
+						<MenuItem value={option.value} key={option.label}>
+							{option.label}
+						</MenuItem>
 					)
 				})}
 			</Select>

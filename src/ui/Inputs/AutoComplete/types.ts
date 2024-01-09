@@ -7,5 +7,6 @@ export interface AutoCompleteProps {
 		path: string
 		options: string[]
 		setOptions: (options: string[]) => void
+		required?: boolean
 	}
 }

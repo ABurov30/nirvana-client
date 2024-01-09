@@ -12,6 +12,7 @@ import { onSubmitNewPassword } from '../../shared/utils/onSubmitNewPassword'
 import { onSubmit } from './onSubmit'
 import { useTranslation } from 'react-i18next'
 import VisibilityIcon from '@mui/icons-material/Visibility'
+import FilesUploadForm from '../../UI/Forms/FilesUploadIForm/FilesUploadIForm'
 
 function SettingsPage() {
 	const user = useAppSelector(state => state.user)
@@ -141,6 +142,7 @@ function SettingsPage() {
 					/>
 				</form>
 			</div>
+			<FilesUploadForm />
 			<button
 				className={styles.redButton}
 				onClick={() => dispatch(logoutThunk())}

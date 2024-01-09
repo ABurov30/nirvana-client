@@ -3,7 +3,10 @@
 		"save": "Сохранить",
 		"nirvana": "Нирвану",
 		"search": "Поиск",
-		"theme": "Тема"
+		"theme": "Тема",
+		"track": "Трек",
+		"artist": "Исполнитель",
+		"cover": "Обложка"
 	},
 	"SettingsPage": {
 		"accountInfo": "Информация об аккаунте",
@@ -19,7 +22,8 @@
 		"dark": "Тёмная",
 		"light": "Светлая",
 		"logOut": "Выйти",
-		"deleteAccount": "Удалить аккаунт"
+		"deleteAccount": "Удалить аккаунт",
+		"uploadTrack": "Загрузить трек"
 	},
 	"CodePage": {
 		"enterCode": "Введите код"
@@ -61,8 +65,6 @@
 		"signup": "Зарегистрироваться"
 	},
 	"TrackPage": {
-		"track": "Трек",
-		"artist": "Исполнитель",
 		"yourWeeklyTopTracks": "Самые популярные треки на этой неделе"
 	},
 	"Navbar": {

@@ -3,7 +3,10 @@
 		"save": "Save",
 		"nirvana": "Nirvana",
 		"search": "Search",
-		"theme": "Theme"
+		"theme": "Theme",
+		"track": "Track",
+		"artist": "Artist",
+		"cover": "Cover"
 	},
 	"SettingsPage": {
 		"accountInfo": "Account Information",
@@ -19,7 +22,8 @@
 		"dark": "Dark",
 		"light": "Light",
 		"logOut": "Log out",
-		"deleteAccount": "Delete Account"
+		"deleteAccount": "Delete Account",
+		"uploadTrack": "Upload track"
 	},
 	"CodePage": {
 		"enterCode": "Enter code"
@@ -61,8 +65,6 @@
 		"signup": "Sign up"
 	},
 	"TrackPage": {
-		"track": "Track",
-		"artist": "Artist",
 		"yourWeeklyTopTracks": "Your weekly top tracks"
 	},
 	"Navbar": {

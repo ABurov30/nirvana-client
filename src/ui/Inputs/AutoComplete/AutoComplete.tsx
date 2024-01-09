@@ -24,6 +24,7 @@ export const AutoComplete = memo(function AutoComplete({
 					{...params}
 					label={field?.label}
 					name={field?.name}
+					required={field?.required}
 					value={field?.value}
 					key={`${field?.label}${field?.name}`}
 					onChange={e => field?.onChange(e.target.value)}

@@ -29,7 +29,7 @@ export default function TrackPage(): JSX.Element {
 	const URL = '/track'
 	const fields = [
 		{
-			label: t('TrackPage.track'),
+			label: t('Shared.track'),
 			name: 'trackTitle',
 			value: tracksTitlesInput,
 			onChange: setTracksTitlesInput,
@@ -38,7 +38,7 @@ export default function TrackPage(): JSX.Element {
 			setOptions: setTracksTitles
 		},
 		{
-			label: t('TrackPage.artist'),
+			label: t('Shared.artist'),
 			name: 'artist',
 			value: artistsInput,
 			onChange: setArtistsInput,

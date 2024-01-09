@@ -1,6 +1,7 @@
 import { ThunkActionCreater } from '../../shared/Redux/store'
 import { request } from '../../shared/Request/Requets'
-import { FormType } from '../../UI/Forms/SearchForm/type'
+import { setNotification } from '../Notification/slice'
+import { Severity } from '../Notification/types'
 import { setTracks } from './slice'
 
 const URL = '/track'
@@ -23,4 +24,39 @@ export const searchTracksThunk: ThunkActionCreater<FormType> =
 			data: { ...formData, userId }
 		})
 		dispatch(setTracks(res?.data))
+	}
+
+export const uploadTrackThunk: ThunkActionCreater<FormType> =
+	(formData: FormType) => async dispatch => {
+		request
+			.sendRequest({
+				method: 'post',
+				url: `${URL}/uploadTrack`,
+				data: formData
+			})
+			.then(res => {
+				if (res?.status !== 200) {
+					dispatch(
+						setNotification({
+							severity: Severity.error,
+							message: res?.data
+						})
+					)
+					console.log(res, 'res')
+				}
+				dispatch(
+					setNotification({
+						severity: Severity.success,
+						message: 'Track uploaded'
+					})
+				)
+			})
+			.catch(err => {
+				dispatch(
+					setNotification({
+						severity: Severity.error,
+						message: err.message
+					})
+				)
+			})
 	}
