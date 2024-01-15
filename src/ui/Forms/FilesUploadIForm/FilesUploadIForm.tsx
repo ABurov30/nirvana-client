@@ -5,9 +5,7 @@ import { useAutocomplete } from '../../../shared/hooks/useAutocomlete'
 import { AutoComplete } from '../../Inputs/AutoComplete/AutoComplete'
 import { useAppDispatch } from '../../../shared/Redux/hooks'
 import { onSubmit } from './onSubmit'
-import { UploadOutlined } from '@ant-design/icons'
-import type { UploadProps } from 'antd'
-import { Button, message, Upload } from 'antd'
+//@ts-ignore
 import styles from './FilesUploadForm.module.scss'
 
 export default function FilesUploadForm() {

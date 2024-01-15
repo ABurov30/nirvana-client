@@ -2,16 +2,10 @@ import {
 	setIsOpen,
 	setNotification
 } from '../../../../entities/Notification/slice'
-import {
-	findEmailThunk,
-	sendCodeThunk,
-	signUpThunk
-} from '../../../../entities/User/thunk'
-import { validatePassword } from '../../../../shared/utils/validatePassword'
-import { validateEmail } from '../../../../shared/utils/validateEmail'
+import { sendCodeThunk } from '../../../../entities/User/thunk'
 import { NavigateFunction } from 'react-router-dom'
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
-import { FormEvent } from 'react'
+import { Severity } from '../../../../entities/Notification/types'
 
 export async function onSubmit(
 	confirmationCode: string,
@@ -30,7 +24,7 @@ export async function onSubmit(
 	}
 	const userId = await dispatch(sendCodeThunk(confirmationCode))
 
-	if (userId) {
+	if (userId as unknown as boolean) {
 		navigate(`/auth/resetPassword/${userId}`)
 		dispatch(
 			setNotification({

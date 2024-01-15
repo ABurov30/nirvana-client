@@ -8,7 +8,7 @@ import { validateEmail } from '../../../../shared/utils/validateEmail'
 import { NavigateFunction } from 'react-router-dom'
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 import { FormEvent } from 'react'
-import { SignUpForm } from './types'
+import { Severity } from '../../../../entities/Notification/types'
 
 export async function onSubmit(
 	e: FormEvent<HTMLFormElement>,

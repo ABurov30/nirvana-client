@@ -1,3 +1,4 @@
+//@ts-ignore
 import styles from './PromoTitle.module.scss'
 import { PromoTitleProps } from './types'
 import React from 'react'
@@ -14,7 +15,10 @@ export default function PromoTitle({
 
 					<ul className={styles.contentContainerList}>
 						{rotatedPhrases.map(phrase => (
-							<li className={styles.contentContainerListItem} key={phrase}>
+							<li
+								className={styles.contentContainerListItem}
+								key={phrase}
+							>
 								{phrase}
 							</li>
 						))}

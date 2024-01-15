@@ -1,3 +1,5 @@
+
+//@ts-ignore
 import styles from './SearchForm.module.scss'
 import { BlockButton } from 'radio-app-uikit'
 import React, { memo } from 'react'

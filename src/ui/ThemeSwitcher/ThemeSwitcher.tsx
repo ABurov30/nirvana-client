@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 //@ts-ignore
 import styles from './ThemeSwitcher.module.scss'
 import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
-import { changeTheme, setIsDarkMode } from '../../entities/App/slice'
+import { changeTheme } from '../../entities/App/slice'
 import { Theme } from '../../entities/App/types'
 
 export default function ThemeSwitcher() {

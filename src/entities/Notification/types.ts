@@ -5,8 +5,8 @@ export interface Notification {
 }
 
 export enum Severity {
-	error = Severity.error,
+	error = 'error',
 	warning = 'warning',
-	info = Severity.info,
-	success = Severity.success
+	info = 'info',
+	success = 'success'
 }

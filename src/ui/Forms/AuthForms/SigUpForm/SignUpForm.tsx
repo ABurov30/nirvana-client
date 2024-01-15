@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
+//@ts-ignore
 import styles from './SignUpForm.module.scss'
-import React, { useState } from 'react'
+import React from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import { onSubmit } from './onSubmit'
 import { useAppDispatch } from '../../../../shared/Redux/hooks'
@@ -26,7 +27,6 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 							placeholder={'Name'}
 							type={'name'}
 							name={'name'}
-					
 						/>
 					</li>
 				</div>

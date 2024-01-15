@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import SignUpForm from '../../UI/Forms/AuthForms/SigUpForm/SignUpForm'
 import PromoTitle from '../../UI/PromoTitle/PromoTitle'
 import { useAppSelector } from '../../shared/Redux/hooks'
+//@ts-ignore
 import styles from './SignupPage.module.scss'
 import { Typography } from 'radio-app-uikit'
 import React, { useState } from 'react'
@@ -14,9 +15,9 @@ export default function SignupPage(): JSX.Element {
 		<div className={styles.container}>
 			<div className={styles.promoContainer}>
 				{isVisible ? (
-					<Typography text="🙉" fontSize="10em" />
+					<Typography text="🙉" fontSize="200px" />
 				) : (
-					<Typography text="🙈" fontSize="10em" />
+					<Typography text="🙈" fontSize="200px" />
 				)}
 				<PromoTitle
 					prePhrase={t('SignupPage.prePhrase')}

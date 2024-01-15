@@ -5,8 +5,9 @@
 	"type": "module",
 	"scripts": {
 		"preview": "vite preview",
-		"build": "vite build",
-		"start": "vite"
+		"build": "tsc && vite build",
+		"start": "vite",
+		"ts": "tsc"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.11.3",
@@ -36,6 +37,7 @@
 		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
 		"@types/lodash.debounce": "^4.0.9",
 		"@types/react": "^18.2.45",
+		"@types/react-dom": "^18.2.18",
 		"@typescript-eslint/eslint-plugin": "^6.15.0",
 		"@typescript-eslint/parser": "^6.15.0",
 		"@vitejs/plugin-react": "^4.2.1",

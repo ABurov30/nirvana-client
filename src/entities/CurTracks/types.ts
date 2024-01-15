@@ -1,6 +1,7 @@
-import { Radio } from '../Radios/types'
+import { Track } from "../Track/types"
+
 
 export type CurTracks = {
-	curTracks: Radio[]
+	curTracks: Track[]
 	position: number
 }

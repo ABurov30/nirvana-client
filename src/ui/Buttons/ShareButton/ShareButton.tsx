@@ -5,6 +5,7 @@ import {
 	VKShareButton,
 	WhatsappShareButton
 } from 'react-share'
+//@ts-ignore
 import styles from './ShareButton.module.scss'
 import debounce from 'lodash.debounce'
 import React from 'react'

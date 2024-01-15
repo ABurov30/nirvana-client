@@ -1,3 +1,4 @@
+//@ts-ignore
 import styles from './CodePage.module.scss'
 import { Typography } from 'radio-app-uikit'
 import React from 'react'

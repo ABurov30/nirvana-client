@@ -1,4 +1,5 @@
 import React from 'react'
+//@ts-ignore
 import styles from './Error404.module.scss'
 import { BlockButton, Typography } from 'radio-app-uikit'
 import { useNavigate } from 'react-router-dom'

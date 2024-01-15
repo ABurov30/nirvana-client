@@ -7,6 +7,7 @@ import {
 import { Carousel } from 'antd'
 import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
 import { useAppDispatch } from '../../shared/Redux/hooks'
+//@ts-ignore
 import styles from './TrackSlider.module.scss'
 import React, { memo } from 'react'
 import { TrackSliderProps } from './types'

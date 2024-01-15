@@ -11,6 +11,7 @@ import {
 import { useLocation, useNavigate } from 'react-router-dom'
 import React, { useState } from 'react'
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher'
+//@ts-ignore
 import styles from './Navbar.module.scss'
 import { useTranslation } from 'react-i18next'
 

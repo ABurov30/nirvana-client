@@ -3,10 +3,9 @@ import {
 	searchRadioThunk
 } from '../../entities/Radios/thunk'
 import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
-import React, { useCallback, useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 //@ts-ignore
 import styles from './RadioPage.module.scss'
-import { buttons } from './configs/buttons'
 import { useAutocomplete } from '../../shared/hooks/useAutocomlete'
 import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
 import { TracksRow } from '../../UI/TracksRow/TracksRow'

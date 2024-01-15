@@ -6,21 +6,26 @@ export type UserFromBackend = {
 }
 
 export type ActiveType = UserFromBackend & {
-	status: 'active'
+	status: UserStatus.active
 }
 
 export type FetchingUserType = {
-	id: null
-	status: 'fetching'
+	status: UserStatus.fetching
 }
 
 export type NonActiveType = UserFromBackend & {
-	status: 'non-active'
+	status: UserStatus.nonActive
 }
 
 export type GuestType = {
-	id: null
-	status: 'guest'
+	status: UserStatus.guest
+}
+
+export enum UserStatus {
+	guest = 'guest',
+	nonActive = 'non-active',
+	fetching = 'fetching',
+	active = 'active'
 }
 
 export type UserType = ActiveType | GuestType | FetchingUserType | NonActiveType

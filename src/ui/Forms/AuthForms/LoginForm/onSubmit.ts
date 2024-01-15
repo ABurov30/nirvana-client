@@ -6,6 +6,7 @@ import {
 import { loginUserThunk } from '../../../../entities/User/thunk'
 import { FormEvent } from 'react'
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
+import { Severity } from '../../../../entities/Notification/types'
 
 export async function onSubmit(
 	e: FormEvent<HTMLFormElement>,

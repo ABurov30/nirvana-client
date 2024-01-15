@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+//@ts-ignore
 import styles from './CodeInput.module.scss'
+import { CodeInputProps } from './types'
 
 const CodeInput = ({ values, setValues }: CodeInputProps) => {
 	const handleChange = (

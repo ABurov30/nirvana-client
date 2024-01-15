@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { Radio, RadiosState } from './types'
+import { createSlice } from '@reduxjs/toolkit'
+import { RadiosState } from './types'
 
 const initialState: RadiosState = {
-	radios: [],
+	radios: []
 }
 
 export const radiosSlice = createSlice({

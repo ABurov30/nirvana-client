@@ -1,11 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom'
+//@ts-ignore
 import styles from './ResetPasswordForm.module.scss'
 import React from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-import {
-	onSubmit,
-	onSubmitNewPassword
-} from '../../../../shared/utils/onSubmitNewPassword'
+import { onSubmitNewPassword } from '../../../../shared/utils/onSubmitNewPassword'
 import { useAppDispatch } from '../../../../shared/Redux/hooks'
 import { ResetPasswordFormProps } from './types'
 

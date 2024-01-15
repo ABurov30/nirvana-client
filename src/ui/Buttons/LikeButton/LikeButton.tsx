@@ -1,3 +1,4 @@
+//@ts-ignore
 import styles from './LikeButton.module.scss'
 import { LikeButtonProps } from './types'
 import React from 'react'

@@ -1,6 +1,5 @@
+import { Notification } from '../../entities/Notification/types'
+
 export interface ToastProps {
-	notification: {
-		severity: 'error' | 'warning' | 'info' | 'success' | ''
-		message: string
-	}
+	notification: Notification
 }

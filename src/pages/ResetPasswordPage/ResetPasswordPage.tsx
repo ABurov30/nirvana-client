@@ -1,3 +1,4 @@
+//@ts-ignore
 import styles from './ResetPasswordPage.module.scss'
 import { Typography } from 'radio-app-uikit'
 import React, { useState } from 'react'

@@ -5,6 +5,7 @@ import { getPromoThunk } from '../../entities/Promo/thunk'
 import { loginUserThunk } from '../../entities/User/thunk'
 import React, { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+//@ts-ignore
 import styles from './LoginPage.module.scss'
 import { Typography } from 'radio-app-uikit'
 import Toast from '../../UI/Toast/Toast'
@@ -14,7 +15,6 @@ export default function LoginPage(): JSX.Element {
 	const dispatch = useAppDispatch()
 	const { promo } = useAppSelector(state => state.promo)
 	const navigate = useNavigate()
-	const notification = useAppSelector(state => state.notification)
 	const ref = useRef({ email: '', password: '' })
 	const { t } = useTranslation()
 
@@ -27,7 +27,7 @@ export default function LoginPage(): JSX.Element {
 	async function onSubmit(event: React.FormEvent<unknown>) {
 		event.preventDefault()
 		const isLogged = await dispatch(loginUserThunk(ref.current))
-		if (isLogged) {
+		if (isLogged as unknown as boolean) {
 			ref.current = { email: '', password: '' }
 			navigate('/')
 		}

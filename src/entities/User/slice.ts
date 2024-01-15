@@ -1,20 +1,24 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
-import type { UserType } from '../../../../types/userType';
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import { UserStatus, UserType } from './types'
 
 const initialState: UserType = {
-  status: 'fetching',
-};
+	status: UserStatus.fetching
+}
 
 export const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {
-    setUser: (state, action: PayloadAction<UserType>) =>action.payload,
-    logoutUser: (state) => ({ status: 'guest', id: null, score: null }),
-  },
-});
+	name: 'user',
+	initialState,
+	reducers: {
+		setUser: (state, action: PayloadAction<UserType>) => action.payload,
+		logoutUser: state => ({
+			status: UserStatus.guest,
+			id: null,
+			score: null
+		})
+	}
+})
 
-export const { setUser, logoutUser } = userSlice.actions;
+export const { setUser, logoutUser } = userSlice.actions
 
-export default userSlice.reducer;
+export default userSlice.reducer

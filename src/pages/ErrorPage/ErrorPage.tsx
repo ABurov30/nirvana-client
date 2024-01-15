@@ -1,7 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
+//@ts-ignore
 import styles from './ErrorPage.module.scss'
-import { CSSTransition } from 'react-transition-group'
-import { useNavigate } from 'react-router-dom'
 import { BlockButton, Typography } from 'radio-app-uikit'
 import { useTranslation } from 'react-i18next'
 

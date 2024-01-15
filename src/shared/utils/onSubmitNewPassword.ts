@@ -1,10 +1,10 @@
 import { setIsOpen, setNotification } from '../../entities/Notification/slice'
-import { newPasswordThunk, signUpThunk } from '../../entities/User/thunk'
+import { newPasswordThunk } from '../../entities/User/thunk'
 import { validatePassword } from './validatePassword'
-import { validateEmail } from './validateEmail'
 import { NavigateFunction } from 'react-router-dom'
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 import { FormEvent } from 'react'
+import { Severity } from '../../entities/Notification/types'
 
 export async function onSubmitNewPassword(
 	e: FormEvent<HTMLFormElement>,

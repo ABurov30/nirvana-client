@@ -1,16 +1,8 @@
-import {
-	FavoritesNavbarButton,
-	NavSection,
-	RadioNavbarButton,
-	SettingsNavbarButton,
-	LogoNavbarButton,
-	TrackNavbarButton,
-	Typography,
-	BlockButton
-} from 'radio-app-uikit'
+import { BlockButton } from 'radio-app-uikit'
 import MenuIcon from '@mui/icons-material/Menu'
 import { useLocation, useNavigate } from 'react-router-dom'
 import React, { useState } from 'react'
+//@ts-ignore
 import styles from './Burger.module.scss'
 import { useTranslation } from 'react-i18next'
 import { useAppSelector } from '../../shared/Redux/hooks'

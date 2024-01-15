@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { Theme } from '../../entities/App/types'
 import { useAppSelector } from '../Redux/hooks'
-import { theme } from 'antd'
 
 function useTheme() {
 	const { theme } = useAppSelector(state => state.app)
@@ -19,7 +18,7 @@ function useTheme() {
 
 export default useTheme
 
-function recolor(theme: Theme['theme']) {
+function recolor(theme: Theme) {
 	const body = document.querySelector('body')
 	if (!body) return
 	if (theme === 'dark') {

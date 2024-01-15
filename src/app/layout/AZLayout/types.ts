@@ -1,5 +1,5 @@
-import { LoggedType } from "../../../entities/User/types";
+import { ActiveType } from '../../../entities/User/types'
 
 export interface AZLayoutProps {
-	user: LoggedType
+	user: ActiveType
 }

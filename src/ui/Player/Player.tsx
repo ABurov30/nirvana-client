@@ -24,10 +24,9 @@ import styles from './Player.module.scss'
 import { useDispatch } from 'react-redux'
 import { PlayerProps } from './types'
 import { formatTime } from '../../shared/utils/formatTime'
-import { setPosition } from '../../entities/CurTracks/slice'
-import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
 import { Severity } from '../../entities/Notification/types'
 import { downloadResource } from '../../shared/utils/downloadResource'
+import { Track } from '../../entities/Track/types'
 
 export const Player = memo(function Player({
 	tracks,

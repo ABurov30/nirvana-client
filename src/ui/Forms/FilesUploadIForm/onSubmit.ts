@@ -1,9 +1,14 @@
-import { setNotification } from '../../../entities/Notification/slice'
-import { Severity } from '../../../entities/Notification/types'
 import { uploadTrackThunk } from '../../../entities/Track/thunk'
-import { validateFileExtension } from '../../../shared/utils/validateFileExtensio'
+import { onSumbitArgs } from './types'
 
-export function onSubmit({ e, dispatch, trackName, track, img, artist }) {
+export function onSubmit({
+	e,
+	dispatch,
+	trackName,
+	track,
+	img,
+	artist
+}: onSumbitArgs) {
 	e.preventDefault()
 
 	const formData = new FormData()
@@ -12,10 +17,7 @@ export function onSubmit({ e, dispatch, trackName, track, img, artist }) {
 
 	formData.append('track', track)
 
-	console.log(track, img, 'track', 'img')
-
 	formData.append('trackName', trackName)
 	formData.append('artist', artist)
-	console.log(formData)
 	dispatch(uploadTrackThunk(formData))
 }

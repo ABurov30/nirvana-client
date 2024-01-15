@@ -1,5 +1,5 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { CurTracks, NotificationType } from './types'
+import { CurTracks } from './types'
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState: CurTracks = {

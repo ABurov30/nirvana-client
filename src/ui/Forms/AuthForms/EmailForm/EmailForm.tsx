@@ -1,3 +1,4 @@
+//@ts-ignore
 import styles from './EmailForm.module.scss'
 import React from 'react'
 

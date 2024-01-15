@@ -6,7 +6,6 @@ import { EmailForm } from '../../UI/Forms/AuthForms/EmailForm/types'
 import { LoginForm } from '../../UI/Forms/AuthForms/LoginForm/types'
 import { SignUpForm } from '../../UI/Forms/AuthForms/SigUpForm/types'
 import { ResetPasswordForm } from '../../UI/Forms/AuthForms/ResetPasswordForm/types'
-import { CodeForm } from '../../UI/Forms/AuthForms/CodeForm/types'
 import { Severity } from '../Notification/types'
 import { UserInfoForm } from '../../pages/SettingsPage/types'
 
@@ -207,7 +206,7 @@ export const newPasswordThunk: ThunkActionCreater<ResetPasswordForm> =
 		}
 	}
 
-export const sendCodeThunk: ThunkActionCreater<CodeForm> =
+export const sendCodeThunk: ThunkActionCreater<string> =
 	confirmationCode => async dispatch => {
 		const res = await request.sendRequest({
 			method: 'get',
