@@ -5,7 +5,14 @@ export interface Track {
 	subTitle: string
 	img: string
 	isLiked: boolean
-	type: 'radio' | 'track'
+	type: TrackType
+	progress: number
+	length: number
+}
+
+export enum TrackType {
+	radio = 'radio',
+	track = 'track'
 }
 
 export interface TracksState {

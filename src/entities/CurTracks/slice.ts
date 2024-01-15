@@ -16,10 +16,31 @@ export const curTracksSlice = createSlice({
 		},
 		setPosition: (state, action) => {
 			state.position = action.payload
+		},
+		addLikeToCurTrack: (state, action) => {
+			state.curTracks = state.curTracks.map(track => {
+				if (action.payload === track.id) {
+					track.isLiked = true
+				}
+				return track
+			})
+		},
+		removeLikeFromCurTrack: (state, action) => {
+			state.curTracks = state.curTracks.map(track => {
+				if (action.payload === track.id) {
+					track.isLiked = false
+				}
+				return track
+			})
 		}
 	}
 })
 
-export const { setCurTracks, setPosition } = curTracksSlice.actions
+export const {
+	setCurTracks,
+	setPosition,
+	removeLikeFromCurTrack,
+	addLikeToCurTrack
+} = curTracksSlice.actions
 
 export default curTracksSlice.reducer

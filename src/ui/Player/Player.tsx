@@ -10,7 +10,6 @@ import React, {
 } from 'react'
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
-import { setNotification } from '../../entities/Notification/slice'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
 import { Typography, PlayButton } from 'nirvana-uikit'
 
@@ -22,10 +21,8 @@ import debounce from 'lodash.debounce'
 import styles from './Player.module.scss'
 import { useDispatch } from 'react-redux'
 import { formatTime } from '../../shared/utils/formatTime'
-import { Severity } from '../../entities/Notification/types'
 import { downloadResource } from '../../shared/utils/downloadResource'
 import LikeButton from '../Buttons/LikeButton/LikeButton'
-import { setCurTracks as setTracks } from '../../entities/CurTracks/slice'
 
 export const Player = memo(function Player() {
 	const { curTracks: tracks, position } = useAppSelector(
@@ -116,25 +113,15 @@ export const Player = memo(function Player() {
 	}
 
 	const checkVolume = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-		try {
-			if (!isDragingVolume) return
-			let width = volumeRef?.current?.clientWidth
-				? volumeRef?.current?.clientWidth
-				: 0
-			const offset = e.nativeEvent?.offsetX
-			const divProgress = (offset / width) * 100
-			const newVolume = divProgress / 100
-			audioElem.current.volume = newVolume
-			setVolume(newVolume)
-		} catch (e) {
-			console.error(e)
-			dispatch(
-				setNotification({
-					severity: Severity.error,
-					message: `${e.message}`
-				})
-			)
-		}
+		if (!isDragingVolume) return
+		let width = volumeRef?.current?.clientWidth
+			? volumeRef?.current?.clientWidth
+			: 0
+		const offset = e.nativeEvent?.offsetX
+		const divProgress = (offset / width) * 100
+		const newVolume = divProgress / 100
+		audioElem.current.volume = newVolume
+		setVolume(newVolume)
 	}
 
 	async function skipPrevious() {
@@ -158,43 +145,13 @@ export const Player = memo(function Player() {
 	}
 
 	async function likeHandler() {
-		try {
-			if (currentTrack.isLiked) {
-				await dispatch(
-					removeLikeThunk(currentTrack.id, user.id, currentTrack.type)
-				)
-				const updatedTracks = tracks.map(track => {
-					if (currentTrack.id === track.id) {
-						const unlikedTrack = { ...track, isLiked: false }
-						return unlikedTrack
-					} else {
-						return track
-					}
-				})
-				dispatch(setTracks(updatedTracks))
-				currentTrack.isLiked = false
-			} else {
-				await dispatch(
-					addLikeThunk(currentTrack.id, user.id, currentTrack.type)
-				)
-				const updatedTracks = tracks.map(track => {
-					if (currentTrack.id === track.id) {
-						const likedTrack = { ...track, isLiked: true }
-						return likedTrack
-					} else {
-						return track
-					}
-				})
-				dispatch(setTracks(updatedTracks))
-				currentTrack.isLiked = true
-			}
-		} catch (e) {
-			console.error(e)
-			dispatch(
-				setNotification({
-					message: e.message,
-					severity: Severity.error
-				})
+		if (currentTrack.isLiked) {
+			await dispatch(
+				removeLikeThunk(currentTrack.id, user.id, currentTrack.type)
+			)
+		} else {
+			await dispatch(
+				addLikeThunk(currentTrack, user.id, currentTrack.type)
 			)
 		}
 	}
@@ -269,7 +226,9 @@ export const Player = memo(function Player() {
 					<ShareButton />
 					<LikeButton
 						isLiked={currentTrack.isLiked}
-						onClick={debounce(likeHandler, 5000, { leading: true })}
+						onClick={debounce(likeHandler, 10000, {
+							leading: true
+						})}
 					/>
 					{isFinite(audioElem?.current?.duration) && (
 						<button

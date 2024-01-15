@@ -12,14 +12,14 @@ import { Typography } from 'nirvana-uikit'
 
 function FavoritesPage() {
 	const user = useAppSelector(state => state.user)
-	const { favoriteTracks, favoriteRadios } = useAppSelector(
-		state => state.favorite
-	)
 	const { t } = useTranslation()
 	useEffect(() => {
 		dispatch(getFavoriteTracksThunk(0, user.id))
 		dispatch(getFavoriteRadiosThunk(0, user.id))
 	}, [])
+	const { favoriteTracks, favoriteRadios } = useAppSelector(
+		state => state.favorite
+	)
 	const [offsetTracks, setOffsetTracks] = useState(0)
 	const [offsetRadios, setOffsetRadios] = useState(0)
 	const dispatch = useAppDispatch()
@@ -52,28 +52,28 @@ function FavoritesPage() {
 	}
 	return (
 		<div className={styles.favoritesPage}>
-			{!favoriteRadios.length && !favoriteTracks.length ? (
+			{!favoriteTracks.length ? (
 				<div className={styles.nothingHereContainer}>
 					<Typography text={t('FavoritesPage.nothingHere')} />
 				</div>
 			) : (
 				<>
-					{favoriteTracks.length && (
+					{favoriteTracks.length ? (
 						<TracksRow
 							title={t('FavoritesPage.yourFavoriteTracks')}
 							tracks={favoriteTracks}
 							loadNext={loadNextFavoriteTracks}
 							loadPrev={loadPrevFavoriteTracks}
 						/>
-					)}
-					{favoriteRadios.length && (
+					) : null}
+					{favoriteRadios.length ? (
 						<TracksRow
 							title={t('FavoritesPage.yourFavoriteRadios')}
 							tracks={favoriteRadios}
 							loadNext={loadNextFavoriteRadios}
 							loadPrev={loadPrevFavoriteRadios}
 						/>
-					)}
+					) : null}
 				</>
 			)}
 		</div>
