@@ -12,7 +12,7 @@ export async function onSubmit(
 	dispatch: ThunkDispatch<{}, undefined, UnknownAction>,
 	navigate: NavigateFunction
 ) {
-	if (!confirmationCode) {
+	if (!confirmationCode || confirmationCode.length !== 6) {
 		dispatch(
 			setNotification({
 				message: 'Enter code',

@@ -6,19 +6,25 @@ import { onSubmit } from './onSubmit'
 import { useAppDispatch } from '../../../../shared/Redux/hooks'
 import { useNavigate } from 'react-router-dom'
 import { BlockButton } from 'nirvana-uikit'
-import CodeInput from '../../../Inputs/CodeInput/CodeInput'
+import ReactCodeInput from 'react-code-input'
 
 function CodeForm() {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
-	const [values, setValues] = useState(['', '', '', '', '', ''])
+	const [value, setValue] = useState('')
 	return (
 		<div className={styles.form}>
-			<CodeInput values={values} setValues={setValues} />
+			<ReactCodeInput
+				fields={6}
+				value={value}
+				onChange={setValue}
+				name="code"
+				inputMode="numeric"
+			/>
 			<BlockButton
 				text="Send code"
 				type="button"
-				onClick={() => onSubmit(values.join(''), dispatch, navigate)}
+				onClick={() => onSubmit(value, dispatch, navigate)}
 			/>
 		</div>
 	)
