@@ -62,7 +62,8 @@
 		"yourWeeklyTopStations": "Your weekly top stations"
 	},
 	"ResetPasswordPage": {
-		"resetPassword": "Reset password"
+		"resetPassword": "Reset password",
+		"newPassword": "New password"
 	},
 	"SignupPage": {
 		"prePhrase": "Dive into",

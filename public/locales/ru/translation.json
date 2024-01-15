@@ -62,7 +62,8 @@
 		"yourWeeklyTopStations": "Самые популярные радиостанции на этой неделе"
 	},
 	"ResetPasswordPage": {
-		"resetPassword": "Сбросить пароль"
+		"resetPassword": "Сбросить пароль",
+		"newPassword": "Новый пароль"
 	},
 	"SignupPage": {
 		"prePhrase": "Погрузись в",

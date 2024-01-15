@@ -6,6 +6,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import { onSubmitNewPassword } from '../../../../shared/utils/onSubmitNewPassword'
 import { useAppDispatch } from '../../../../shared/Redux/hooks'
 import { ResetPasswordFormProps } from './types'
+import { useTranslation } from 'react-i18next'
 
 function ResetPasswordForm({
 	isVisible,
@@ -14,7 +15,7 @@ function ResetPasswordForm({
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const { userId } = useParams()
-
+	const { t } = useTranslation()
 	return (
 		<form
 			className={styles.form}
@@ -28,7 +29,7 @@ function ResetPasswordForm({
 					<li style={{ '--i': 3 } as React.CSSProperties}>
 						<input
 							className={styles.input}
-							placeholder={'New password'}
+							placeholder={t('ResetPasswordPage.newPassword')}
 							name={'password'}
 							type={isVisible ? 'text' : 'password'}
 						/>
@@ -47,7 +48,7 @@ function ResetPasswordForm({
 					<li style={{ '--i': 2 } as React.CSSProperties}>
 						<input
 							className={styles.input}
-							placeholder={'Repeat new password'}
+							placeholder={t('Shared.repeatPassword')}
 							name={'repeatPassword'}
 							type={isVisible ? 'text' : 'password'}
 						/>
@@ -68,7 +69,7 @@ function ResetPasswordForm({
 						type={'submit'}
 						aria-label="Submit"
 					>
-						{'Reset password'}
+						{t('ResetPasswordPage.resetPassword')}
 					</button>
 				</div>
 			</ul>
