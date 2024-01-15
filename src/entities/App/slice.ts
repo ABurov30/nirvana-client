@@ -11,10 +11,13 @@ export const appSlice = createSlice({
 	name: 'app',
 	initialState,
 	reducers: {
-		changeTheme: (state, action: PayloadAction<Theme>) => {
+		changeTheme: (state, action: PayloadAction<AppState['theme']>) => {
 			state.theme = action.payload
 		},
-		setIsPlayMode: (state, action: PayloadAction<boolean>) => {
+		setIsPlayMode: (
+			state,
+			action: PayloadAction<AppState['isPlayMode']>
+		) => {
 			state.isPlayMode = action.payload
 		}
 	}

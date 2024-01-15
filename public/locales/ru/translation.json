@@ -6,7 +6,11 @@
 		"theme": "Тема",
 		"track": "Трек",
 		"artist": "Исполнитель",
-		"cover": "Обложка"
+		"cover": "Обложка",
+		"nickname": "Имя пользователя",
+		"email": "E-mail",
+		"password": "Пароль",
+		"repeatPassword": "Повторите пароль"
 	},
 	"SettingsPage": {
 		"accountInfo": "Информация об аккаунте",
@@ -23,10 +27,13 @@
 		"light": "Светлая",
 		"logOut": "Выйти",
 		"deleteAccount": "Удалить аккаунт",
-		"uploadTrack": "Загрузить трек"
+		"uploadTrack": "Загрузить трек",
+		"upload": "Загрузить",
+		"playAll": "Возпроизвести"
 	},
 	"CodePage": {
-		"enterCode": "Введите код"
+		"enterCode": "Введите код",
+		"sendCode": "Отправить код"
 	},
 	"EmailPage": {
 		"enterEmail": "Введите e-mail"

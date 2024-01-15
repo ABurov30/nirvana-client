@@ -5,10 +5,12 @@ import React from 'react'
 import { onSubmit } from './onSubmit'
 import { useAppDispatch } from '../../../../shared/Redux/hooks'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 function EmailForm() {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
+	const { t } = useTranslation()
 	return (
 		<form
 			className={styles.form}
@@ -22,7 +24,7 @@ function EmailForm() {
 					<li style={{ '--i': 2 } as React.CSSProperties}>
 						<input
 							className={styles.input}
-							placeholder={'E-mail'}
+							placeholder={t('Shared.email')}
 							name={'email'}
 						/>
 					</li>
@@ -36,7 +38,7 @@ function EmailForm() {
 						type={'submit'}
 						aria-label="Submit"
 					>
-						{'Reset password'}
+						{t('ResetPasswordPage.resetPassword')}
 					</button>
 				</div>
 			</ul>

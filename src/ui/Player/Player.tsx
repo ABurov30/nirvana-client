@@ -21,17 +21,16 @@ import debounce from 'lodash.debounce'
 //@ts-ignore
 import styles from './Player.module.scss'
 import { useDispatch } from 'react-redux'
-import { PlayerProps } from './types'
 import { formatTime } from '../../shared/utils/formatTime'
 import { Severity } from '../../entities/Notification/types'
 import { downloadResource } from '../../shared/utils/downloadResource'
 import LikeButton from '../Buttons/LikeButton/LikeButton'
+import { setCurTracks as setTracks } from '../../entities/CurTracks/slice'
 
-export const Player = memo(function Player({
-	tracks,
-	position,
-	setTracks
-}: PlayerProps) {
+export const Player = memo(function Player() {
+	const { curTracks: tracks, position } = useAppSelector(
+		state => state.curTracks
+	)
 	const dispatch = useDispatch()
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [currentTrack, setCurrentTrack] = useState(tracks[position])
@@ -270,7 +269,7 @@ export const Player = memo(function Player({
 					<ShareButton />
 					<LikeButton
 						isLiked={currentTrack.isLiked}
-						onClick={likeHandler}
+						onClick={debounce(likeHandler, 5000, { leading: true })}
 					/>
 					{isFinite(audioElem?.current?.duration) && (
 						<button

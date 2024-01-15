@@ -12,7 +12,7 @@ export const removeLikeThunk: ThunkActionCreater<any> =
 			url: `${URL}`,
 			data: { id: trackId, userId, type }
 		})
-		if (res !== 200) {
+		if (res.status !== 200) {
 			dispatch(
 				setNotification({
 					message: res?.data,
@@ -36,7 +36,7 @@ export const addLikeThunk: ThunkActionCreater<any> =
 			url: `${URL}`,
 			data: { id: trackId, userId, type }
 		})
-		if (res !== 200) {
+		if (res.status !== 200) {
 			dispatch(
 				setNotification({
 					message: res?.data,

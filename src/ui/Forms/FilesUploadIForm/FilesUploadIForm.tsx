@@ -87,7 +87,10 @@ export default function FilesUploadForm() {
 					required
 				/>
 
-				<BlockButton text="Upload" type="submit" />
+				<BlockButton
+					text={t('SettingsPage.upload')}
+					type="submit"
+				/>
 			</form>
 		</div>
 	)

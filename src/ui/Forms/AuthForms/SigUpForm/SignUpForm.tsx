@@ -6,11 +6,12 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import { onSubmit } from './onSubmit'
 import { useAppDispatch } from '../../../../shared/Redux/hooks'
 import { SignUpFormProps } from './types'
+import { useTranslation } from 'react-i18next'
 
 function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
-
+	const { t } = useTranslation()
 	return (
 		<form
 			className={styles.form}
@@ -24,7 +25,7 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 					<li style={{ '--i': 6 } as React.CSSProperties}>
 						<input
 							className={styles.input}
-							placeholder={'Name'}
+							placeholder={t('Shared.nickname')}
 							type={'name'}
 							name={'name'}
 						/>
@@ -37,7 +38,7 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 					<li style={{ '--i': 5 } as React.CSSProperties}>
 						<input
 							className={styles.input}
-							placeholder={'E-mail'}
+							placeholder={t('Shared.email')}
 							name={'email'}
 						/>
 					</li>
@@ -49,7 +50,7 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 					<li style={{ '--i': 4 } as React.CSSProperties}>
 						<input
 							className={styles.input}
-							placeholder={'Password'}
+							placeholder={t('Shared.password')}
 							name={'password'}
 							type={isVisible ? 'text' : 'password'}
 						/>
@@ -68,7 +69,7 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 					<li style={{ '--i': 3 } as React.CSSProperties}>
 						<input
 							className={styles.input}
-							placeholder={'Repeat password'}
+							placeholder={t('Shared.repeatPassword')}
 							name={'repeatPassword'}
 							type={isVisible ? 'text' : 'password'}
 						/>
@@ -89,7 +90,7 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 						type={'submit'}
 						aria-label="Submit"
 					>
-						{'Sign up'}
+						{t('SignupPage.signup')}
 					</button>
 					<button
 						style={{ '--i': 1 } as React.CSSProperties}
@@ -97,7 +98,7 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 						onClick={() => navigate('/auth/login')}
 						aria-label="Navigate to login"
 					>
-						{'Login'}
+						{t('LoginPage.logIn')}
 					</button>
 				</div>
 			</ul>

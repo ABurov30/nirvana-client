@@ -5,10 +5,12 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import React, { useState } from 'react'
 import { onSubmit } from './onSubmit'
 import { useAppDispatch } from '../../../../shared/Redux/hooks'
+import { useTranslation } from 'react-i18next'
 
 function LoginForm() {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
+	const { t } = useTranslation()
 	const [isVisible, setIsVisible] = useState(false)
 	return (
 		<form
@@ -23,9 +25,8 @@ function LoginForm() {
 					<li style={{ '--i': 4 } as React.CSSProperties}>
 						<input
 							className={styles.input}
-							placeholder={'E-mail'}
+							placeholder={t('Shared.email')}
 							name={'email'}
-				
 						/>
 					</li>
 				</div>
@@ -36,7 +37,7 @@ function LoginForm() {
 					<li style={{ '--i': 3 } as React.CSSProperties}>
 						<input
 							className={styles.input}
-							placeholder={'Password'}
+							placeholder={t('Shared.password')}
 							name={'password'}
 							type={isVisible ? 'text' : 'password'}
 						/>
@@ -57,7 +58,7 @@ function LoginForm() {
 						type={'submit'}
 						aria-label="Submit"
 					>
-						{'Login'}
+						{t('LoginPage.logIn')}
 					</button>
 					<button
 						style={{ '--i': 1 } as React.CSSProperties}
@@ -65,7 +66,7 @@ function LoginForm() {
 						onClick={() => navigate('/auth/signup')}
 						aria-label="Navigate to sign up"
 					>
-						{'Sign up'}
+						{t('SignupPage.signup')}
 					</button>
 				</div>
 			</ul>

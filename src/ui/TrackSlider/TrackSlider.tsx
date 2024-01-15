@@ -14,6 +14,7 @@ import { TrackSliderProps } from './types'
 import { debounce } from 'lodash'
 import { setNotification } from '../../entities/Notification/slice'
 import { Severity } from '../../entities/Notification/types'
+import { useTranslation } from 'react-i18next'
 
 export const TrackSlider = memo(function TrackSlider({
 	tracks
@@ -21,6 +22,7 @@ export const TrackSlider = memo(function TrackSlider({
 	const URL = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
 	const title = 'Check out best free music streaming app. Dive in Nirvana'
 	const dispatch = useAppDispatch()
+	const { t } = useTranslation()
 	function shareHandler() {
 		navigator.clipboard.writeText(title + ' ' + URL)
 		dispatch(
@@ -52,6 +54,7 @@ export const TrackSlider = memo(function TrackSlider({
 						<div className={styles.buttonContainer}>
 							<div className={styles.blockButtons}>
 								<PlayBlockButton
+									text={t('Shared.playAll')}
 									onClick={() => {
 										turnOnPlayMode(i, tracks, dispatch)
 									}}

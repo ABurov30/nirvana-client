@@ -6,7 +6,12 @@
 		"theme": "Theme",
 		"track": "Track",
 		"artist": "Artist",
-		"cover": "Cover"
+		"cover": "Cover",
+		"nickname": "Nickname",
+		"email": "E-mail",
+		"password": "Password",
+		"repeatPassword": "Repeat password",
+		"playAll": "Play all"
 	},
 	"SettingsPage": {
 		"accountInfo": "Account Information",
@@ -23,10 +28,12 @@
 		"light": "Light",
 		"logOut": "Log out",
 		"deleteAccount": "Delete Account",
-		"uploadTrack": "Upload track"
+		"uploadTrack": "Upload track",
+		"upload": "Upload"
 	},
 	"CodePage": {
-		"enterCode": "Enter code"
+		"enterCode": "Enter code",
+		"sendCode": "Send code"
 	},
 	"EmailPage": {
 		"enterEmail": "Enter e-mail"
