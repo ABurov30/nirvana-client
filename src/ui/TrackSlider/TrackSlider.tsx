@@ -3,7 +3,7 @@ import {
 	PlayBlockButton,
 	ShareRoundButton,
 	Typography
-} from 'radio-app-uikit'
+} from 'nirvana-uikit'
 import { Carousel } from 'antd'
 import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
 import { useAppDispatch } from '../../shared/Redux/hooks'

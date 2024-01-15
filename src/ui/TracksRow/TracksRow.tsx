@@ -3,7 +3,7 @@ import {
 	LeftArrowRoundButton,
 	RightArrowRoundButton,
 	Typography
-} from 'radio-app-uikit'
+} from 'nirvana-uikit'
 import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
 import { useAppDispatch } from '../../shared/Redux/hooks'
 //@ts-ignore

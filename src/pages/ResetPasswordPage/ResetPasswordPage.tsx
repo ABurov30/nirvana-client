@@ -1,6 +1,6 @@
 //@ts-ignore
 import styles from './ResetPasswordPage.module.scss'
-import { Typography } from 'radio-app-uikit'
+import { Typography } from 'nirvana-uikit'
 import React, { useState } from 'react'
 import ResetPasswordForm from '../../UI/Forms/AuthForms/ResetPasswordForm/ResetPasswordForm'
 import { useTranslation } from 'react-i18next'

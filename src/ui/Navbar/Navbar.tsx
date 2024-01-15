@@ -7,7 +7,7 @@ import {
 	LogoNavbarButton,
 	TrackNavbarButton,
 	Typography
-} from 'radio-app-uikit'
+} from 'nirvana-uikit'
 import { useLocation, useNavigate } from 'react-router-dom'
 import React, { useState } from 'react'
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher'

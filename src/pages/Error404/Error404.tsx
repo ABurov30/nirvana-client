@@ -1,7 +1,7 @@
 import React from 'react'
 //@ts-ignore
 import styles from './Error404.module.scss'
-import { BlockButton, Typography } from 'radio-app-uikit'
+import { BlockButton, Typography } from 'nirvana-uikit'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 

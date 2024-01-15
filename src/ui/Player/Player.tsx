@@ -12,10 +12,9 @@ import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
 import { setNotification } from '../../entities/Notification/slice'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
-import { Typography } from 'radio-app-uikit'
+import { Typography, PlayButton } from 'nirvana-uikit'
+
 import ShareButton from '../Buttons/ShareButton/ShareButton'
-import PlayButton from '../Buttons/PlayButton/PlayButton'
-import LikeButton from '../Buttons/LikeButton/LikeButton'
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
 import { useAppSelector } from '../../shared/Redux/hooks'
 import debounce from 'lodash.debounce'
@@ -26,7 +25,7 @@ import { PlayerProps } from './types'
 import { formatTime } from '../../shared/utils/formatTime'
 import { Severity } from '../../entities/Notification/types'
 import { downloadResource } from '../../shared/utils/downloadResource'
-import { Track } from '../../entities/Track/types'
+import LikeButton from '../Buttons/LikeButton/LikeButton'
 
 export const Player = memo(function Player({
 	tracks,

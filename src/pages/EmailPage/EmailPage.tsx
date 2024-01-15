@@ -1,6 +1,6 @@
 //@ts-ignore
 import styles from './EmailPage.module.scss'
-import { Typography } from 'radio-app-uikit'
+import { Typography } from 'nirvana-uikit'
 import React from 'react'
 import EmailForm from '../../UI/Forms/AuthForms/EmailForm/EmailForm'
 import { useAppSelector } from '../../shared/Redux/hooks'

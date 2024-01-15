@@ -7,7 +7,7 @@ import React, { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 //@ts-ignore
 import styles from './LoginPage.module.scss'
-import { Typography } from 'radio-app-uikit'
+import { Typography } from 'nirvana-uikit'
 import Toast from '../../UI/Toast/Toast'
 import { useTranslation } from 'react-i18next'
 

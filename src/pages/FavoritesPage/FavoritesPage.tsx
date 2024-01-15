@@ -8,7 +8,7 @@ import {
 import styles from './FavoritesPage.module.scss'
 import { TracksRow } from '../../UI/TracksRow/TracksRow'
 import { useTranslation } from 'react-i18next'
-import { Typography } from 'radio-app-uikit'
+import { Typography } from 'nirvana-uikit'
 
 function FavoritesPage() {
 	const user = useAppSelector(state => state.user)

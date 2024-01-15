@@ -1,7 +1,6 @@
-
 //@ts-ignore
 import styles from './SearchForm.module.scss'
-import { BlockButton } from 'radio-app-uikit'
+import { BlockButton } from 'nirvana-uikit'
 import React, { memo } from 'react'
 import { FormProps } from './type'
 import { AutoComplete } from '../../Inputs/AutoComplete/AutoComplete'

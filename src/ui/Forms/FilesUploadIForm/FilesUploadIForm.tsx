@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BlockButton, Typography } from 'radio-app-uikit'
+import { BlockButton, Typography } from 'nirvana-uikit'
 import { useTranslation } from 'react-i18next'
 import { useAutocomplete } from '../../../shared/hooks/useAutocomlete'
 import { AutoComplete } from '../../Inputs/AutoComplete/AutoComplete'

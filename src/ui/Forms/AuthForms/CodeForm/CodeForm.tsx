@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import { onSubmit } from './onSubmit'
 import { useAppDispatch } from '../../../../shared/Redux/hooks'
 import { useNavigate } from 'react-router-dom'
-import { BlockButton } from 'radio-app-uikit'
+import { BlockButton } from 'nirvana-uikit'
 import CodeInput from '../../../Inputs/CodeInput/CodeInput'
 
 function CodeForm() {

@@ -4,7 +4,7 @@ import PromoTitle from '../../UI/PromoTitle/PromoTitle'
 import { useAppSelector } from '../../shared/Redux/hooks'
 //@ts-ignore
 import styles from './SignupPage.module.scss'
-import { Typography } from 'radio-app-uikit'
+import { Typography } from 'nirvana-uikit'
 import React, { useState } from 'react'
 
 export default function SignupPage(): JSX.Element {
