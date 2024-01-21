@@ -1,11 +1,16 @@
-import { ThunkActionCreater } from '../../shared/Redux/store'
+import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
 import { request } from '../../shared/Request/Requets'
 import { setFavoriteRadios, setFavoriteTracks } from './slice'
+import { RootState } from '../../shared/Redux/store'
 
 const URL = '/favorite'
 
-export const getFavoriteTracksThunk: ThunkActionCreater<number, string> =
-	(offset: number, userId: number) => async dispatch => {
+export const getFavoriteTracksThunk =
+	(
+		offset: number,
+		userId: string
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
 			url: `${URL}/all`,
@@ -14,8 +19,12 @@ export const getFavoriteTracksThunk: ThunkActionCreater<number, string> =
 		dispatch(setFavoriteTracks(res?.data))
 	}
 
-export const getFavoriteRadiosThunk: ThunkActionCreater<number, string> =
-	(offset: number, userId: number) => async dispatch => {
+export const getFavoriteRadiosThunk =
+	(
+		offset: number,
+		userId: string
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
 			url: `${URL}/all`,

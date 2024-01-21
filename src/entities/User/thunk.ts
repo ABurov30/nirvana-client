@@ -1,4 +1,3 @@
-import type { ThunkActionCreater } from '../../shared/Redux/store'
 import { setNotification } from '../Notification/slice'
 import { request } from '../../shared/Request/Requets'
 import { logoutUser, setUser } from './slice'
@@ -8,9 +7,15 @@ import { SignUpForm } from '../../UI/Forms/AuthForms/SigUpForm/types'
 import { ResetPasswordForm } from '../../UI/Forms/AuthForms/ResetPasswordForm/types'
 import { Severity } from '../Notification/types'
 import { UserInfoForm } from '../../pages/SettingsPage/types'
+import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
+import { RootState } from '../../shared/Redux/store'
+import { CodeForm } from '../../UI/Forms/AuthForms/CodeForm/types'
 
-export const signUpThunk: ThunkActionCreater<SignUpForm> =
-	formData => async dispatch => {
+export const signUpThunk =
+	(
+		formData: SignUpForm
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
 			url: '/auth/signup',
@@ -41,8 +46,11 @@ export const signUpThunk: ThunkActionCreater<SignUpForm> =
 		}
 	}
 
-export const loginUserThunk: ThunkActionCreater<LoginForm> =
-	formData => async dispatch => {
+export const loginUserThunk =
+	(
+		formData: LoginForm
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
 			url: '/auth/login',
@@ -69,80 +77,93 @@ export const loginUserThunk: ThunkActionCreater<LoginForm> =
 		}
 	}
 
-export const checkUserThunk: ThunkActionCreater = () => dispatch => {
-	request
-		.sendRequest({
-			url: '/auth/check'
-		})
-		.then(res => {
-			if (res?.status !== 200) {
-				dispatch(setUser({ status: 'guest' }))
+export const checkUserThunk =
+	(): ThunkAction<void, RootState, unknown, UnknownAction> => dispatch => {
+		request
+			.sendRequest({
+				url: '/auth/check'
+			})
+			.then(res => {
+				if (res?.status !== 200) {
+					dispatch(setUser({ status: 'guest' }))
+					dispatch(
+						setNotification({
+							message: res?.data,
+							severity: Severity.info
+						})
+					)
+				} else {
+					dispatch(setUser({ ...res?.data, status: 'active' }))
+					dispatch(
+						setNotification({
+							message: 'Glad that u still here',
+							severity: Severity.success
+						})
+					)
+				}
+			})
+			.catch(err => {
+				console.error(err)
+				dispatch(logoutUser())
+			})
+	}
+
+export const logoutThunk =
+	(): ThunkAction<void, RootState, unknown, UnknownAction> => dispatch => {
+		request
+			.sendRequest({
+				url: '/auth/logout'
+			})
+			.then(() => {
+				dispatch(logoutUser())
 				dispatch(
 					setNotification({
-						message: res?.data,
-						severity: Severity.info
-					})
-				)
-			} else {
-				dispatch(setUser({ ...res?.data, status: 'active' }))
-				dispatch(
-					setNotification({
-						message: 'Glad that u still here',
+						message: 'Let`hang out at next time',
 						severity: Severity.success
 					})
 				)
-			}
-		})
-		.catch(err => {
-			console.error(err)
-			dispatch(logoutUser())
-		})
-}
-
-export const logoutThunk: ThunkActionCreater = () => dispatch => {
-	request
-		.sendRequest({
-			url: '/auth/logout'
-		})
-		.then(() => {
-			dispatch(logoutUser())
-			dispatch(
+			})
+			.catch(e => {
+				console.error(e)
 				setNotification({
-					message: 'Let`hang out at next time',
-					severity: Severity.success
+					message: e.message,
+					severity: Severity.error
 				})
-			)
-		})
-		.catch(e => {
-			console.error(e)
-			setNotification({ message: e.message, severity: Severity.error })
-		})
-}
+			})
+	}
 
-export const deleteUserThunk: ThunkActionCreater = userId => dispatch => {
-	request
-		.sendRequest({
-			url: '/auth',
-			method: 'DELETE',
-			data: { userId }
-		})
-		.then(() => {
-			dispatch(logoutUser())
-			dispatch(
+export const deleteUserThunk =
+	(userId: string): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	dispatch => {
+		request
+			.sendRequest({
+				url: '/auth',
+				method: 'DELETE',
+				data: { userId }
+			})
+			.then(() => {
+				dispatch(logoutUser())
+				dispatch(
+					setNotification({
+						message: 'I was nice time with u',
+						severity: Severity.success
+					})
+				)
+			})
+			.catch(e => {
+				console.error(e)
 				setNotification({
-					message: 'I was nice time with u',
-					severity: Severity.success
+					message: e.message,
+					severity: Severity.error
 				})
-			)
-		})
-		.catch(e => {
-			console.error(e)
-			setNotification({ message: e.message, severity: Severity.error })
-		})
-}
+			})
+	}
 
-export const findEmailThunk: ThunkActionCreater<EmailForm> =
-	formData => async dispatch => {
+export const findEmailThunk =
+	(
+		formData: EmailForm
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		request
 			.sendRequest({
 				method: 'post',
@@ -177,8 +198,11 @@ export const findEmailThunk: ThunkActionCreater<EmailForm> =
 			})
 	}
 
-export const newPasswordThunk: ThunkActionCreater<ResetPasswordForm> =
-	formData => async dispatch => {
+export const newPasswordThunk =
+	(
+		formData: ResetPasswordForm
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
 			url: '/auth/newPassword',
@@ -206,8 +230,11 @@ export const newPasswordThunk: ThunkActionCreater<ResetPasswordForm> =
 		}
 	}
 
-export const sendCodeThunk: ThunkActionCreater<string> =
-	confirmationCode => async dispatch => {
+export const sendCodeThunk =
+	(
+		confirmationCode: CodeForm
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'get',
 			url: `/auth/reset/${confirmationCode}`

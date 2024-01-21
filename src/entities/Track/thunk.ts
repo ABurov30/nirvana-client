@@ -1,13 +1,19 @@
-import { ThunkActionCreater } from '../../shared/Redux/store'
+import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
+import { RootState } from '../../shared/Redux/store'
 import { request } from '../../shared/Request/Requets'
 import { setNotification } from '../Notification/slice'
 import { Severity } from '../Notification/types'
 import { setTracks } from './slice'
+import { SearchTrackForm } from './types'
 
 const URL = '/track'
 
-export const getTracksThunk: ThunkActionCreater<number, string> =
-	(offset: number, userId: number) => async dispatch => {
+export const getTracksThunk =
+	(
+		offset: number,
+		userId: string
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
 			url: `${URL}`,
@@ -16,8 +22,12 @@ export const getTracksThunk: ThunkActionCreater<number, string> =
 		dispatch(setTracks(res?.data))
 	}
 
-export const searchTracksThunk: ThunkActionCreater<FormType> =
-	(formData: FormType, userId: string) => async dispatch => {
+export const searchTracksThunk =
+	(
+		formData: SearchTrackForm,
+		userId: string
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
 			url: `${URL}/search`,
@@ -26,8 +36,11 @@ export const searchTracksThunk: ThunkActionCreater<FormType> =
 		dispatch(setTracks(res?.data))
 	}
 
-export const uploadTrackThunk: ThunkActionCreater<FormType> =
-	(formData: FormType) => async dispatch => {
+export const uploadTrackThunk =
+	(
+		formData: SearchTrackForm
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		request
 			.sendRequest({
 				method: 'post',

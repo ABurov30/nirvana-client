@@ -19,7 +19,7 @@ function ResetPasswordForm({
 	return (
 		<form
 			className={styles.form}
-			onSubmit={e => onSubmitNewPassword(e, dispatch, userId, navigate)}
+			onSubmit={e => onSubmitNewPassword(e, dispatch, userId as string, navigate)}
 		>
 			<ul className={styles.wrapper}>
 				<div

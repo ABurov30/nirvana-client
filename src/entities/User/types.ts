@@ -1,5 +1,5 @@
 export type UserFromBackend = {
-	id: number
+	id: string
 	email: string
 	nickname: string
 	confirmed: boolean

@@ -11,6 +11,8 @@ import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
 import { TracksRow } from '../../UI/TracksRow/TracksRow'
 import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
 import { useTranslation } from 'react-i18next'
+import { ActiveType } from '../../entities/User/types'
+import { SearchRadioForm } from '../../entities/Radios/types'
 
 export default function RadioPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
@@ -26,7 +28,7 @@ export default function RadioPage(): JSX.Element {
 	const { t } = useTranslation()
 
 	useLayoutEffect(() => {
-		dispatch(getAllRadiosThunk(0, user.id))
+		dispatch(getAllRadiosThunk(0, (user as unknown as ActiveType).id))
 	}, [])
 	const dispatch = useAppDispatch()
 	const { radios } = useAppSelector(state => state.radio)
@@ -71,26 +73,33 @@ export default function RadioPage(): JSX.Element {
 
 	const searchHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		const formData = Object.fromEntries(new FormData(e.target))
+		const formData = Object.fromEntries((new FormData(e.target)))
 		if (!formData.name && !formData.tags && !formData.country) {
-			dispatch(getAllRadiosThunk(0, user.id))
+			dispatch(getAllRadiosThunk(0, (user as unknown as ActiveType).id))
 		} else {
-			dispatch(searchRadioThunk(formData, user.id))
+			dispatch(
+				searchRadioThunk(
+					formData as SearchRadioForm,
+					(user as unknown as ActiveType).id
+				)
+			)
 		}
 	}
 
 	const loadPrevRadios = () => {
 		if (offset >= 5) {
 			setOffset(prev => prev - 5)
-			dispatch(getAllRadiosThunk(offset, user.id))
+			dispatch(
+				getAllRadiosThunk(offset, (user as unknown as ActiveType).id)
+			)
 		} else {
-			dispatch(getAllRadiosThunk(0))
+			dispatch(getAllRadiosThunk(0, (user as unknown as ActiveType).id))
 		}
 	}
 
 	const loadNextRadios = () => {
 		setOffset(prev => prev + 5)
-		dispatch(getAllRadiosThunk(offset, user.id))
+		dispatch(getAllRadiosThunk(offset, (user as unknown as ActiveType).id))
 	}
 
 	return (

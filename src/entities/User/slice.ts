@@ -10,7 +10,9 @@ export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		setUser: (state, action: PayloadAction<UserType>) => action.payload,
+		setUser: (state, action: PayloadAction<UserType>) => {
+			return action.payload
+		},
 		logoutUser: state => ({
 			status: UserStatus.guest,
 			id: null,

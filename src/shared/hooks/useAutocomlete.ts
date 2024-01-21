@@ -2,7 +2,7 @@ import { request } from '../Request/Requets'
 import { useEffect, useState } from 'react'
 
 export function useAutocomplete(path: string) {
-	const [options, setOptions] = useState([])
+	const [options, setOptions] = useState<string[]>([])
 
 	useEffect(() => {
 		request

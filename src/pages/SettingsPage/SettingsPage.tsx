@@ -14,6 +14,7 @@ import { onSubmit } from './onSubmit'
 import { useTranslation } from 'react-i18next'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import FilesUploadForm from '../../UI/Forms/FilesUploadIForm/FilesUploadIForm'
+import { ActiveType, UserStatus, UserType } from '../../entities/User/types'
 
 function SettingsPage() {
 	const user = useAppSelector(state => state.user)
@@ -33,7 +34,11 @@ function SettingsPage() {
 					text={t('SettingsPage.accountInfo')}
 					weight="medium"
 				/>
-				<form onSubmit={e => onSubmit(e, dispatch, user)}>
+				<form
+					onSubmit={e =>
+						onSubmit(e, dispatch, user as unknown as ActiveType)
+					}
+				>
 					<Avatar
 						sx={{
 							bgcolor: '#BDBEBE',
@@ -41,21 +46,21 @@ function SettingsPage() {
 							height: '3em'
 						}}
 					>
-						{user.nickname[0]}
+						{(user as unknown as ActiveType).nickname[0]}
 					</Avatar>
 
 					<TextField
 						label={t('SettingsPage.nickname')}
 						variant="standard"
 						name="nickname"
-						defaultValue={user.nickname}
+						defaultValue={(user as unknown as ActiveType).nickname}
 						sx={{ minWidth: '5em', width: '40%', fontSize: '1em' }}
 					/>
 					<TextField
 						label={t('SettingsPage.email')}
 						variant="standard"
 						name="email"
-						defaultValue={user.email}
+						defaultValue={(user as unknown as ActiveType).email}
 						sx={{ minWidth: '5em', width: '40%', fontSize: '1em' }}
 					/>
 
@@ -67,7 +72,15 @@ function SettingsPage() {
 					text={t('SettingsPage.changePassword')}
 					weight="medium"
 				/>
-				<form onSubmit={e => onSubmitNewPassword(e, dispatch, user.id)}>
+				<form
+					onSubmit={e =>
+						onSubmitNewPassword(
+							e,
+							dispatch,
+							(user as unknown as ActiveType).id
+						)
+					}
+				>
 					<div className={styles.inputContainer}>
 						<TextField
 							label={t('SettingsPage.password')}
@@ -152,7 +165,11 @@ function SettingsPage() {
 			</button>
 			<button
 				className={styles.redButton}
-				onClick={() => dispatch(deleteUserThunk(user.id))}
+				onClick={() =>
+					dispatch(
+						deleteUserThunk((user as unknown as ActiveType).id)
+					)
+				}
 			>
 				{t('SettingsPage.deleteAccount')}
 			</button>

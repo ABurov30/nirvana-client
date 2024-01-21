@@ -18,3 +18,8 @@ export enum TrackType {
 export interface TracksState {
 	tracks: Track[]
 }
+
+export interface SearchTrackForm {
+	trackTitle: string
+	artist: string
+}

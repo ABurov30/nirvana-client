@@ -9,13 +9,15 @@ import styles from './FavoritesPage.module.scss'
 import { TracksRow } from '../../UI/TracksRow/TracksRow'
 import { useTranslation } from 'react-i18next'
 import { Typography } from 'nirvana-uikit'
+import { ActiveType } from '../../entities/User/types'
 
 function FavoritesPage() {
 	const user = useAppSelector(state => state.user)
+
 	const { t } = useTranslation()
 	useEffect(() => {
-		dispatch(getFavoriteTracksThunk(0, user.id))
-		dispatch(getFavoriteRadiosThunk(0, user.id))
+		dispatch(getFavoriteTracksThunk(0, (user as unknown as ActiveType).id))
+		dispatch(getFavoriteRadiosThunk(0, (user as unknown as ActiveType).id))
 	}, [])
 	const { favoriteTracks, favoriteRadios } = useAppSelector(
 		state => state.favorite
@@ -26,29 +28,53 @@ function FavoritesPage() {
 	const loadPrevFavoriteTracks = () => {
 		if (offsetTracks >= 5) {
 			setOffsetTracks(prev => prev - 5)
-			dispatch(getFavoriteTracksThunk(offsetTracks, user.id))
+			dispatch(
+				getFavoriteTracksThunk(
+					offsetTracks,
+					(user as unknown as ActiveType).id
+				)
+			)
 		} else {
-			dispatch(getFavoriteTracksThunk(0, user.id))
+			dispatch(
+				getFavoriteTracksThunk(0, (user as unknown as ActiveType).id)
+			)
 		}
 	}
 
 	const loadNextFavoriteTracks = () => {
 		setOffsetTracks(prev => prev + 5)
-		dispatch(getFavoriteTracksThunk(offsetTracks, user.id))
+		dispatch(
+			getFavoriteTracksThunk(
+				offsetTracks,
+				(user as unknown as ActiveType).id
+			)
+		)
 	}
 
 	const loadPrevFavoriteRadios = () => {
 		if (offsetRadios >= 5) {
 			setOffsetRadios(prev => prev - 5)
-			dispatch(getFavoriteRadiosThunk(offsetRadios, user.id))
+			dispatch(
+				getFavoriteRadiosThunk(
+					offsetRadios,
+					(user as unknown as ActiveType).id
+				)
+			)
 		} else {
-			dispatch(getFavoriteRadiosThunk(0, user.id))
+			dispatch(
+				getFavoriteRadiosThunk(0, (user as unknown as ActiveType).id)
+			)
 		}
 	}
 
 	const loadNextFavoriteRadios = () => {
 		setOffsetRadios(prev => prev + 5)
-		dispatch(getFavoriteRadiosThunk(offsetRadios, user.id))
+		dispatch(
+			getFavoriteRadiosThunk(
+				offsetRadios,
+				(user as unknown as ActiveType).id
+			)
+		)
 	}
 	return (
 		<div className={styles.favoritesPage}>

@@ -27,6 +27,7 @@ export default function Error404() {
 				<BlockButton
 					text={t('Error404.home')}
 					onClick={() => navigate('/')}
+					type='button'
 				/>
 			</div>
 		</div>

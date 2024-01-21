@@ -1,6 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
-import { AppState, Language, Theme } from './types'
+import { AppState, Theme } from './types'
 
 const initialState: AppState = {
 	theme: (localStorage.getItem('theme') as Theme) || Theme.light,
@@ -11,7 +11,7 @@ export const appSlice = createSlice({
 	name: 'app',
 	initialState,
 	reducers: {
-		changeTheme: (state, action: PayloadAction<AppState['theme']>) => {
+		changeTheme: (state, action: PayloadAction<Theme>) => {
 			state.theme = action.payload
 		},
 		setIsPlayMode: (

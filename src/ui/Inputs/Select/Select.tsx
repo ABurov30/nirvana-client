@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import { SelectProps } from './types'
+import { Theme } from '@mui/material'
 
 export default function SelectInput({
 	label,

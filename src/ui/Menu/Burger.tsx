@@ -1,6 +1,6 @@
 import { BlockButton } from 'nirvana-uikit'
 import MenuIcon from '@mui/icons-material/Menu'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import React, { useState } from 'react'
 //@ts-ignore
 import styles from './Burger.module.scss'
@@ -38,18 +38,22 @@ export default function Burger() {
 						<BlockButton
 							onClick={() => navigate('/favorites')}
 							text={t('Navbar.favorites')}
+							type="button"
 						/>
 						<BlockButton
 							onClick={() => navigate('/')}
 							text={t('Navbar.tracks')}
+							type="button"
 						/>
 						<BlockButton
 							onClick={() => navigate('/radio')}
 							text={t('Navbar.radios')}
+							type="button"
 						/>
 						<BlockButton
 							onClick={() => navigate('/settings')}
 							text={t('Navbar.settings')}
+							type="button"
 						/>
 					</div>
 				)}

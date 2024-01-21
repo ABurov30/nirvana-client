@@ -74,7 +74,7 @@ export default function FilesUploadForm() {
 					type="file"
 					accept="audio/*"
 					className={styles.fileInput}
-					onChange={e => setTrack(e.target.files[0])}
+					onChange={e => setTrack(e?.target?.files[0])}
 					required
 				/>
 
@@ -87,10 +87,7 @@ export default function FilesUploadForm() {
 					required
 				/>
 
-				<BlockButton
-					text={t('SettingsPage.upload')}
-					type="submit"
-				/>
+				<BlockButton text={t('SettingsPage.upload')} type="submit" />
 			</form>
 		</div>
 	)

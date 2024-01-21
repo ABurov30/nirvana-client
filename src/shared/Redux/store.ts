@@ -1,4 +1,9 @@
-import { AnyAction, ThunkAction, configureStore } from '@reduxjs/toolkit'
+import {
+	Action,
+	ThunkDispatch,
+	UnknownAction,
+	configureStore
+} from '@reduxjs/toolkit'
 import notificationReducer from '../../entities/Notification/slice'
 import curTracksReducer from '../../entities/CurTracks/slice'
 import radiosReducer from '../../entities/Radios/slice'
@@ -29,9 +34,12 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 	ReturnType,
 	RootState,
 	unknown,
-	AnyAction
+	UnknownAction
 >
 
-export type ThunkActionCreater<PayloadType = void, ReturnType = void> = (
-	payload: PayloadType
-) => AppThunk<ReturnType>
+export type ThunkAction<
+	R, // Return type of the thunk function
+	S, // state type used by getState
+	E, // any "extra argument" injected into the thunk
+	A extends Action // known types of actions that can be dispatched
+> = (dispatch: ThunkDispatch<S, E, A>, getState: () => S, extraArgument: E) => R

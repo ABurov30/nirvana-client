@@ -1,9 +1,11 @@
+import { Dispatch, SetStateAction } from 'react'
+
 export interface AutoCompleteProps {
 	field: {
-		label?: string
+		label: string
 		name: string
 		value: string
-		onChange: (value: string) => void
+		onChange: Dispatch<SetStateAction<string>>
 		path: string
 		options: string[]
 		setOptions: (options: string[]) => void

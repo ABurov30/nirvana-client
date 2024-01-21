@@ -1,4 +1,4 @@
-import { ThunkActionCreater } from '../../shared/Redux/store'
+import { RootState } from '../../shared/Redux/store'
 import { setNotification } from '../Notification/slice'
 import { request } from '../../shared/Request/Requets'
 import { Severity } from '../Notification/types'
@@ -10,11 +10,17 @@ import {
 	removeFavoritesTrack
 } from '../Favorite/slice'
 import { addLikeToCurTrack, removeLikeFromCurTrack } from './slice'
+import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
 
 const URL = '/favorite'
 
-export const removeLikeThunk: ThunkActionCreater<any> =
-	(trackId: string, userId: string, type: TrackType) => async dispatch => {
+export const removeLikeThunk =
+	(
+		trackId: string,
+		userId: string,
+		type: TrackType
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'delete',
 			url: `${URL}`,
@@ -41,8 +47,13 @@ export const removeLikeThunk: ThunkActionCreater<any> =
 		}
 	}
 
-export const addLikeThunk: ThunkActionCreater<any> =
-	(track: Track, userId: string, type: TrackType) => async dispatch => {
+export const addLikeThunk =
+	(
+		track: Track,
+		userId: string,
+		type: TrackType
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
 			url: `${URL}`,
