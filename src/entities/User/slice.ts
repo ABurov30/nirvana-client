@@ -13,10 +13,11 @@ export const userSlice = createSlice({
 		setUser: (state, action: PayloadAction<UserType>) => {
 			return action.payload
 		},
-		logoutUser: state => ({
+		logoutUser: (state) => ({
 			status: UserStatus.guest,
-			id: null,
-			score: null
+			id: '',
+			email: '',
+			nickname: ''
 		})
 	}
 })

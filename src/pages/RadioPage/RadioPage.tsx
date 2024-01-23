@@ -73,7 +73,13 @@ export default function RadioPage(): JSX.Element {
 
 	const searchHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		const formData = Object.fromEntries((new FormData(e.target)))
+
+		const form = e.currentTarget
+		const formData = {
+			name: form.email.value,
+			tags: form.tags.value,
+			country: form.country.value
+		}
 		if (!formData.name && !formData.tags && !formData.country) {
 			dispatch(getAllRadiosThunk(0, (user as unknown as ActiveType).id))
 		} else {

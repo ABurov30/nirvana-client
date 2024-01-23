@@ -9,8 +9,8 @@ import { onSubmit } from './onSubmit'
 import styles from './FilesUploadForm.module.scss'
 
 export default function FilesUploadForm() {
-	const [track, setTrack] = useState('')
-	const [img, setImg] = useState('')
+	const [track, setTrack] = useState<File>()
+	const [img, setImg] = useState<File>()
 	const dispatch = useAppDispatch()
 
 	const URL = '/track'

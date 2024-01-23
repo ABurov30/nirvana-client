@@ -27,7 +27,7 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 							className={styles.input}
 							placeholder={t('Shared.nickname')}
 							type={'name'}
-							name={'name'}
+							name={'nickname'}
 						/>
 					</li>
 				</div>

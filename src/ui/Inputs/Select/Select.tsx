@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import { SelectProps } from './types'
-import { Theme } from '@mui/material'
+import { Theme } from '../../../entities/App/types'
 
 export default function SelectInput({
 	label,
@@ -27,7 +27,7 @@ export default function SelectInput({
 				onChange={e =>
 					dispatch
 						? dispatch(onChange(e.target.value))
-						: onChange(e.target.value)
+						: onChange(e.target.value as Theme)
 				}
 				label={label}
 				name={label}

@@ -71,7 +71,12 @@ export default function TrackPage(): JSX.Element {
 
 	const searchHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		const formData = Object.fromEntries(new FormData(e.target))
+
+		const form = e.currentTarget
+		const formData = {
+			trackTitle: form.trackTitle.value,
+			artist: form.artist.value
+		}
 		if (!formData.trackTitle && !formData.artist) {
 			dispatch(getTracksThunk(0, (user as unknown as ActiveType).id))
 		} else {

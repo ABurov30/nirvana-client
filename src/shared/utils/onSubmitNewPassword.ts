@@ -13,8 +13,12 @@ export async function onSubmitNewPassword(
 	navigate?: NavigateFunction
 ) {
 	e.preventDefault()
-	const formData = Object.fromEntries(new FormData(e.target))
-	formData.userId = userId
+
+	const form = e.currentTarget
+	const formData = {
+		password: form.password.value,
+		repeatPassword: form.repeatPassword.value
+	}
 	if (!formData.password) {
 		dispatch(
 			setNotification({

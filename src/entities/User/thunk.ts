@@ -77,36 +77,35 @@ export const loginUserThunk =
 		}
 	}
 
-export const checkUserThunk =
-	(): ThunkAction<void, RootState, unknown, UnknownAction> => dispatch => {
-		request
-			.sendRequest({
-				url: '/auth/check'
-			})
-			.then(res => {
-				if (res?.status !== 200) {
-					dispatch(setUser({ status: 'guest' }))
-					dispatch(
-						setNotification({
-							message: res?.data,
-							severity: Severity.info
-						})
-					)
-				} else {
-					dispatch(setUser({ ...res?.data, status: 'active' }))
-					dispatch(
-						setNotification({
-							message: 'Glad that u still here',
-							severity: Severity.success
-						})
-					)
-				}
-			})
-			.catch(err => {
-				console.error(err)
-				dispatch(logoutUser())
-			})
-	}
+export const checkUserThunk = () => dispatch => {
+	request
+		.sendRequest({
+			url: '/auth/check'
+		})
+		.then(res => {
+			if (res?.status !== 200) {
+				dispatch(setUser({ status: 'guest' }))
+				dispatch(
+					setNotification({
+						message: res?.data,
+						severity: Severity.info
+					})
+				)
+			} else {
+				dispatch(setUser({ ...res?.data, status: 'active' }))
+				dispatch(
+					setNotification({
+						message: 'Glad that u still here',
+						severity: Severity.success
+					})
+				)
+			}
+		})
+		.catch(err => {
+			console.error(err)
+			dispatch(logoutUser())
+		})
+}
 
 export const logoutThunk =
 	(): ThunkAction<void, RootState, unknown, UnknownAction> => dispatch => {
@@ -232,7 +231,7 @@ export const newPasswordThunk =
 
 export const sendCodeThunk =
 	(
-		confirmationCode: CodeForm
+		confirmationCode: CodeForm['confirmationCode']
 	): ThunkAction<void, RootState, unknown, UnknownAction> =>
 	async dispatch => {
 		const res = await request.sendRequest({

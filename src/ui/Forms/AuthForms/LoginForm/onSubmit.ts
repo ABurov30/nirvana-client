@@ -15,7 +15,11 @@ export async function onSubmit(
 ) {
 	e.preventDefault()
 
-	const formData = Object.fromEntries(new FormData(e.target))
+	const form = e.currentTarget
+	const formData = {
+		email: form.email.value,
+		password: form.password.value
+	}
 	if (!formData.email) {
 		dispatch(
 			setNotification({
