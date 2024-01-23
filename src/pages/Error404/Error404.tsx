@@ -1,5 +1,4 @@
 import React from 'react'
-//@ts-ignore
 import styles from './Error404.module.scss'
 import { BlockButton, Typography } from 'nirvana-uikit'
 import { useNavigate } from 'react-router-dom'
@@ -27,6 +26,7 @@ export default function Error404() {
 				<BlockButton
 					text={t('Error404.home')}
 					onClick={() => navigate('/')}
+					
 					type='button'
 				/>
 			</div>

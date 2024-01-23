@@ -4,7 +4,7 @@ import { request } from '../../shared/Request/Requets'
 import { setNotification } from '../Notification/slice'
 import { Severity } from '../Notification/types'
 import { setTracks } from './slice'
-import { SearchTrackForm } from './types'
+import { SearchTrackForm, UploadTrackFrom } from './types'
 
 const URL = '/track'
 
@@ -38,7 +38,7 @@ export const searchTracksThunk =
 
 export const uploadTrackThunk =
 	(
-		formData: SearchTrackForm
+		formData: UploadTrackFrom
 	): ThunkAction<void, RootState, unknown, UnknownAction> =>
 	async dispatch => {
 		request

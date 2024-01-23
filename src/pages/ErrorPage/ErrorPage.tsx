@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-//@ts-ignore
 import styles from './ErrorPage.module.scss'
 import { BlockButton, Typography } from 'nirvana-uikit'
 import { useTranslation } from 'react-i18next'

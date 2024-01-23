@@ -17,7 +17,6 @@ import ShareButton from '../Buttons/ShareButton/ShareButton'
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
 import { useAppSelector } from '../../shared/Redux/hooks'
 import debounce from 'lodash.debounce'
-//@ts-ignore
 import styles from './Player.module.scss'
 import { useDispatch } from 'react-redux'
 import { formatTime } from '../../shared/utils/formatTime'

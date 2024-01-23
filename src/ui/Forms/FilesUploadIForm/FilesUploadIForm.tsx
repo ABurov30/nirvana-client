@@ -5,7 +5,6 @@ import { useAutocomplete } from '../../../shared/hooks/useAutocomlete'
 import { AutoComplete } from '../../Inputs/AutoComplete/AutoComplete'
 import { useAppDispatch } from '../../../shared/Redux/hooks'
 import { onSubmit } from './onSubmit'
-//@ts-ignore
 import styles from './FilesUploadForm.module.scss'
 
 export default function FilesUploadForm() {

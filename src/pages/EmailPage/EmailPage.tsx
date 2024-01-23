@@ -1,4 +1,3 @@
-//@ts-ignore
 import styles from './EmailPage.module.scss'
 import { Typography } from 'nirvana-uikit'
 import React from 'react'

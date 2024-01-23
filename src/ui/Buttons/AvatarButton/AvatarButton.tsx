@@ -1,6 +1,5 @@
 import { useAppDispatch } from '../../../shared/Redux/hooks'
 import { logoutThunk } from '../../../entities/User/thunk'
-//@ts-ignore
 import styles from './AvatarButton.module.scss'
 import Avatar from '@mui/material/Avatar'
 import { AvatarProps } from './types'

@@ -19,6 +19,13 @@ export interface TracksState {
 	tracks: Track[]
 }
 
+export interface UploadTrackFrom {
+	trackName: string
+	artist: string
+	cover: File
+	track: File
+}
+
 export interface SearchTrackForm {
 	trackTitle: string
 	artist: string

@@ -1,7 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
 import React, { useEffect, useState } from 'react'
 import { getTracksThunk, searchTracksThunk } from '../../entities/Track/thunk'
-//@ts-ignore
 import styles from './TrackPage.module.scss'
 import { useAutocomplete } from '../../shared/hooks/useAutocomlete'
 import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
@@ -91,6 +90,7 @@ export default function TrackPage(): JSX.Element {
 			<TrackSlider tracks={tracks} />
 			<SearchForm
 				fields={fields}
+				//@ts-ignore
 				buttons={buttons}
 				onSubmit={searchHandler}
 			/>

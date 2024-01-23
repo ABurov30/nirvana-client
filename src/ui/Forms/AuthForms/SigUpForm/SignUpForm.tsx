@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-//@ts-ignore
 import styles from './SignUpForm.module.scss'
 import React from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility'

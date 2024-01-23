@@ -4,7 +4,6 @@ import {
 	getFavoriteRadiosThunk,
 	getFavoriteTracksThunk
 } from '../../entities/Favorite/thunk'
-//@ts-ignore
 import styles from './FavoritesPage.module.scss'
 import { TracksRow } from '../../UI/TracksRow/TracksRow'
 import { useTranslation } from 'react-i18next'

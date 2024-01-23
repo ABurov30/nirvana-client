@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-//@ts-ignore
 import styles from './ThemeSwitcher.module.scss'
 import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
 import { changeTheme } from '../../entities/App/slice'

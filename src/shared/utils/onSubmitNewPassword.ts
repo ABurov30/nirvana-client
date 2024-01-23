@@ -44,7 +44,9 @@ export async function onSubmitNewPassword(
 	) {
 		return
 	}
-	const isChanged = await dispatch(newPasswordThunk(formData))
+	const isChanged = await dispatch(
+		newPasswordThunk(formData) as unknown as UnknownAction
+	)
 	if ((isChanged as unknown as boolean) && navigate) {
 		navigate('/')
 	}

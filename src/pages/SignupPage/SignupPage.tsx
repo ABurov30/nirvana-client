@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next'
 import SignUpForm from '../../UI/Forms/AuthForms/SigUpForm/SignUpForm'
 import PromoTitle from '../../UI/PromoTitle/PromoTitle'
 import { useAppSelector } from '../../shared/Redux/hooks'
-//@ts-ignore
 import styles from './SignupPage.module.scss'
 import { Typography } from 'nirvana-uikit'
 import React, { useState } from 'react'

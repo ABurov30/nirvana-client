@@ -1,5 +1,6 @@
 import {
 	Action,
+	AnyAction,
 	ThunkDispatch,
 	UnknownAction,
 	configureStore
@@ -30,11 +31,12 @@ export type RootState = ReturnType<typeof store.getState>
 
 export type AppDispatch = typeof store.dispatch
 
-export type AppThunk<ReturnType = void> = ThunkAction<
+
+export type TypedThunk<ReturnType = void> = ThunkAction<
 	ReturnType,
 	RootState,
 	unknown,
-	UnknownAction
+	AnyAction
 >
 
 export type ThunkAction<

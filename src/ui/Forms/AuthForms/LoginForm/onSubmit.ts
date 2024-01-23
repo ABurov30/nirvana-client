@@ -40,7 +40,9 @@ export async function onSubmit(
 		dispatch(setIsOpen(true))
 		return
 	}
-	const isLogged = await dispatch(loginUserThunk(formData))
+	const isLogged = await dispatch(
+		loginUserThunk(formData) as unknown as UnknownAction
+	)
 	if (isLogged as unknown as boolean) {
 		navigate('/')
 	}

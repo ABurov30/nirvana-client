@@ -1,4 +1,3 @@
-//@ts-ignore
 import styles from './PromoTitle.module.scss'
 import { PromoTitleProps } from './types'
 import React from 'react'

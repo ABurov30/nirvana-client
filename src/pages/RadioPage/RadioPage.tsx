@@ -4,7 +4,6 @@ import {
 } from '../../entities/Radios/thunk'
 import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
 import React, { useLayoutEffect, useState } from 'react'
-//@ts-ignore
 import styles from './RadioPage.module.scss'
 import { useAutocomplete } from '../../shared/hooks/useAutocomlete'
 import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
@@ -113,6 +112,7 @@ export default function RadioPage(): JSX.Element {
 			<TrackSlider tracks={radios} />
 			<SearchForm
 				fields={fields}
+				//@ts-ignore
 				buttons={buttons}
 				onSubmit={searchHandler}
 			/>

@@ -6,7 +6,6 @@ import {
 } from 'nirvana-uikit'
 import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
 import { useAppDispatch } from '../../shared/Redux/hooks'
-//@ts-ignore
 import style from './TracksRow.module.scss'
 import { type TracksRowProps } from './types'
 import React, { memo } from 'react'

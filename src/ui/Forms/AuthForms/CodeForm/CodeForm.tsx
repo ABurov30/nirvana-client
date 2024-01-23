@@ -1,4 +1,3 @@
-//@ts-ignore
 import styles from './CodeForm.module.scss'
 import React, { useState } from 'react'
 

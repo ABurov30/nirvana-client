@@ -22,7 +22,9 @@ export async function onSubmit(
 		dispatch(setIsOpen(true))
 		return
 	}
-	const userId = await dispatch(sendCodeThunk(confirmationCode))
+	const userId = await dispatch(
+		sendCodeThunk(confirmationCode) as unknown as UnknownAction
+	)
 
 	if (userId as unknown as boolean) {
 		navigate(`/auth/resetPassword/${userId}`)

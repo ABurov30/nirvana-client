@@ -1,4 +1,3 @@
-//@ts-ignore
 import styles from './SearchForm.module.scss'
 import { BlockButton } from 'nirvana-uikit'
 import React, { memo } from 'react'

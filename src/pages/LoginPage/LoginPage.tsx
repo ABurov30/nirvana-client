@@ -5,7 +5,6 @@ import { getPromoThunk } from '../../entities/Promo/thunk'
 import { loginUserThunk } from '../../entities/User/thunk'
 import React, { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-//@ts-ignore
 import styles from './LoginPage.module.scss'
 import { Typography } from 'nirvana-uikit'
 import { useTranslation } from 'react-i18next'

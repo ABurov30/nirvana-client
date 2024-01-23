@@ -4,7 +4,6 @@ import { Outlet } from 'react-router-dom'
 import { type MainLayoutProps } from './types'
 import { Loader } from 'nirvana-uikit'
 import React from 'react'
-//@ts-ignore
 import styles from './MainLayout.module.scss'
 import useTheme from '../../../shared/hooks/useTheme'
 

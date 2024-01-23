@@ -1,4 +1,3 @@
-//@ts-ignore
 import styles from './ResetPasswordPage.module.scss'
 import { Typography } from 'nirvana-uikit'
 import React, { useState } from 'react'

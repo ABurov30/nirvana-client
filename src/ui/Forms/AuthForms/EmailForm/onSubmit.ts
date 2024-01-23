@@ -31,7 +31,9 @@ export async function onSubmit(
 	if (!validateEmail(formData.email, dispatch)) {
 		return
 	}
-	const isSent = dispatch(findEmailThunk(formData))
+	const isSent = dispatch(
+		findEmailThunk(formData) as unknown as UnknownAction
+	)
 	if (isSent as unknown as boolean) {
 		navigate('/auth/codePage')
 	}

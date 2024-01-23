@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-//@ts-ignore
 import styles from './SettingsPage.module.scss'
 import Avatar from '@mui/material/Avatar'
 import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'

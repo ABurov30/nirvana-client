@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from 'react-router-dom'
-//@ts-ignore
 import styles from './ResetPasswordForm.module.scss'
 import React from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility'

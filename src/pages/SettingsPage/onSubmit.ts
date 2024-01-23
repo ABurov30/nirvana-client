@@ -55,7 +55,9 @@ export async function onSubmit(
 		return
 	}
 	formData.userId = user.id
-	const isChanged = await dispatch(changeUserInfoThunk(formData))
+	const isChanged = await dispatch(
+		changeUserInfoThunk(formData) as unknown as UnknownAction
+	)
 	if (isChanged as unknown as boolean) {
 		dispatch(
 			setNotification({

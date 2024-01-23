@@ -1,5 +1,4 @@
 import { Carousel } from 'antd'
-//@ts-ignore
 import styles from './PromoSlider.module.scss'
 import { PromoSliderProps } from './types'
 import React from 'react'
