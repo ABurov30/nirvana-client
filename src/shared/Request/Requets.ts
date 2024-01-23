@@ -22,7 +22,7 @@ class Request {
 			useMock,
 			responseType = 'json'
 		}: IRequestParams,
-		options: AxiosRequestConfig & { mockData?: any } = {}
+		options: AxiosRequestConfig & { mockData?: unknown } = {}
 	): Promise<any> {
 		if (useMock) {
 			this.useMock(options.mockData)
@@ -38,7 +38,7 @@ class Request {
 			onDownloadProgress: this.getDowloadProgress,
 			...options
 		}
-
+		//@ts-ignore
 		return NewInstanse(requestOptions)
 			.then(function (response: AxiosResponse) {
 				return response

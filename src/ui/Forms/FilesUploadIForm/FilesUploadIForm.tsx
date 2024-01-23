@@ -74,7 +74,7 @@ export default function FilesUploadForm() {
 					type="file"
 					accept="audio/*"
 					className={styles.fileInput}
-					onChange={e => setTrack(e?.target?.files[0])}
+					onChange={e => setTrack((e.target.files as FileList)[0])}
 					required
 				/>
 
@@ -83,7 +83,7 @@ export default function FilesUploadForm() {
 					type="file"
 					accept="image/*"
 					className={styles.fileInput}
-					onChange={e => setImg(e.target.files[0])}
+					onChange={e => setImg((e.target.files as FileList)[0])}
 					required
 				/>
 

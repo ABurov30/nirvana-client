@@ -5,7 +5,7 @@ export interface onSumbitArgs {
 	e: FormEvent<HTMLFormElement>
 	dispatch: ThunkDispatch<{}, undefined, UnknownAction>
 	trackName: string
-	track: string
-	img: string
+	track?: File
+	img?: File
 	artist: string
 }

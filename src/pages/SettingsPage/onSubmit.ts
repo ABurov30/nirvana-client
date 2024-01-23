@@ -56,7 +56,7 @@ export async function onSubmit(
 	}
 	formData.userId = user.id
 	const isChanged = await dispatch(changeUserInfoThunk(formData))
-	if (isChanged) {
+	if (isChanged as unknown as boolean) {
 		dispatch(
 			setNotification({
 				message: 'Successfully changed',

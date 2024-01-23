@@ -13,9 +13,9 @@ export function onSubmit({
 
 	const formData = new FormData()
 
-	formData.append('cover', img)
+	formData.append('cover', img as File)
 
-	formData.append('track', track)
+	formData.append('track', track as File)
 
 	formData.append('trackName', trackName)
 	formData.append('artist', artist)

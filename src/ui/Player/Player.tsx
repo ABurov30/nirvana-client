@@ -147,10 +147,12 @@ export const Player = memo(function Player() {
 	async function likeHandler() {
 		if (currentTrack.isLiked) {
 			await dispatch(
+				// @ts-ignore
 				removeLikeThunk(currentTrack.id, user.id, currentTrack.type)
 			)
 		} else {
 			await dispatch(
+				// @ts-ignore
 				addLikeThunk(currentTrack, user.id, currentTrack.type)
 			)
 		}

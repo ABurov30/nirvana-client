@@ -77,35 +77,36 @@ export const loginUserThunk =
 		}
 	}
 
-export const checkUserThunk = () => dispatch => {
-	request
-		.sendRequest({
-			url: '/auth/check'
-		})
-		.then(res => {
-			if (res?.status !== 200) {
-				dispatch(setUser({ status: 'guest' }))
-				dispatch(
-					setNotification({
-						message: res?.data,
-						severity: Severity.info
-					})
-				)
-			} else {
-				dispatch(setUser({ ...res?.data, status: 'active' }))
-				dispatch(
-					setNotification({
-						message: 'Glad that u still here',
-						severity: Severity.success
-					})
-				)
-			}
-		})
-		.catch(err => {
-			console.error(err)
-			dispatch(logoutUser())
-		})
-}
+export const checkUserThunk =
+	(): ThunkAction<void, RootState, unknown, UnknownAction> => dispatch => {
+		request
+			.sendRequest({
+				url: '/auth/check'
+			})
+			.then(res => {
+				if (res?.status !== 200) {
+					dispatch(setUser({ status: 'guest' }))
+					dispatch(
+						setNotification({
+							message: res?.data,
+							severity: Severity.info
+						})
+					)
+				} else {
+					dispatch(setUser({ ...res?.data, status: 'active' }))
+					dispatch(
+						setNotification({
+							message: 'Glad that u still here',
+							severity: Severity.success
+						})
+					)
+				}
+			})
+			.catch(err => {
+				console.error(err)
+				dispatch(logoutUser({}))
+			})
+	}
 
 export const logoutThunk =
 	(): ThunkAction<void, RootState, unknown, UnknownAction> => dispatch => {
@@ -114,7 +115,7 @@ export const logoutThunk =
 				url: '/auth/logout'
 			})
 			.then(() => {
-				dispatch(logoutUser())
+				dispatch(logoutUser({}))
 				dispatch(
 					setNotification({
 						message: 'Let`hang out at next time',
@@ -141,7 +142,7 @@ export const deleteUserThunk =
 				data: { userId }
 			})
 			.then(() => {
-				dispatch(logoutUser())
+				dispatch(logoutUser({}))
 				dispatch(
 					setNotification({
 						message: 'I was nice time with u',
@@ -252,8 +253,11 @@ export const sendCodeThunk =
 		}
 	}
 
-export const changeUserInfoThunk: ThunkActionCreater<UserInfoForm> =
-	formData => async dispatch => {
+export const changeUserInfoThunk =
+	(
+		formData: UserInfoForm
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'put',
 			url: `/auth/userInfo`,

@@ -10,14 +10,13 @@ export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
+		// @ts-ignore
 		setUser: (state, action: PayloadAction<UserType>) => {
 			return action.payload
 		},
-		logoutUser: (state) => ({
-			status: UserStatus.guest,
-			id: '',
-			email: '',
-			nickname: ''
+		// @ts-ignore
+		logoutUser: (state, action: PayloadAction<{}>) => ({
+			status: UserStatus.guest
 		})
 	}
 })

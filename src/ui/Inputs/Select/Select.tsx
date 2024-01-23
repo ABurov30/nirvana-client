@@ -26,6 +26,7 @@ export default function SelectInput({
 				defaultValue={defaultValue}
 				onChange={e =>
 					dispatch
+					//@ts-ignore
 						? dispatch(onChange(e.target.value))
 						: onChange(e.target.value as Theme)
 				}
