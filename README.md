@@ -1,14 +1,9 @@
 
+# Nirvana Client
 
-1. Start project in dev mode -> npm run dev
+Client side of music streaming app by Andrey Burov
 
-2. How to download use custom request base on Axios -> 
+To launch: npm run start
 
-Example:
-    request
-    .sendRequest({ method: 'get', url: '/users' }, { useMock: true, mockData })
- 	  .then(data => {
-		console.log(data)
- 	})
-
+To build: npm run build
 

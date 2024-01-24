@@ -138,7 +138,7 @@ function SettingsPage() {
 					/>
 				</form>
 			</div>
-			<FilesUploadForm />
+			{/* <FilesUploadForm /> */}
 			<button
 				className={styles.redButton}
 				onClick={() => dispatch(logoutThunk())}
