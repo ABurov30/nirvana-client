@@ -1,4 +1,4 @@
-import { request } from '../Request/Requets'
+import { request } from '../../Request/Requets'
 import { useEffect, useState } from 'react'
 
 export function useAutocomplete(path: string) {

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { BlockButton, Typography } from 'nirvana-uikit'
 import { useTranslation } from 'react-i18next'
-import { useAutocomplete } from '../../../shared/hooks/useAutocomlete'
-import { AutoComplete } from '../../Inputs/AutoComplete/AutoComplete'
-import { useAppDispatch } from '../../../shared/Redux/hooks'
 import { onSubmit } from './onSubmit'
 import styles from './FilesUploadForm.module.scss'
+import { useAppDispatch } from 'shared/Redux/hooks'
+import { useAutocomplete } from 'shared/hooks/useAutocomplete/useAutocomlete'
+import { AutoComplete } from 'UI/Inputs/AutoComplete/AutoComplete'
 
 export default function FilesUploadForm() {
 	const [track, setTrack] = useState<File>()

@@ -1,18 +1,21 @@
 import React, { lazy } from 'react'
-import PrivateRouter from '../../../shared/HOC/PrivateRouter/PrivateRouter'
-import { useCheckUser } from '../../../shared/hooks/useCheckUser'
-import MainLayout from '../../layout/MainLayout/MainLayout'
+
 const RadioPage = lazy(() => import('../../../pages/RadioPage/RadioPage'))
 const TrackPage = lazy(() => import('../../../pages/TrackPage/TrackPage'))
 const Error404 = lazy(() => import('../../../pages/Error404/Error404'))
 const FavoritesPage = lazy(
 	() => import('../../../pages/FavoritesPage/FavoritesPage')
 )
+const SettingsPage = lazy(
+	() => import('../../../pages/SettingsPage/SettingsPage')
+)
 const NAZRouter = lazy(() => import('../NAZRoutes/NAZRoutes'))
-import AZLayout from '../../layout/AZLayout/AZLayout'
 import { Route, Routes } from 'react-router-dom'
-import SettingsPage from '../../../pages/SettingsPage/SettingsPage'
-import { UserStatus } from '../../../entities/User/types'
+import PrivateRouter from 'shared/HOC/PrivateRouter/PrivateRouter'
+import MainLayout from 'app/layout/MainLayout/MainLayout'
+import { useCheckUser } from 'shared/hooks/useCheckUser/useCheckUser'
+import { UserStatus } from 'entities/User/types'
+import AZLayout from 'app/layout/AZLayout/AZLayout'
 
 export default function MainRoutes() {
 	const user = useCheckUser()
@@ -23,7 +26,10 @@ export default function MainRoutes() {
 				<Route
 					element={
 						<PrivateRouter
-							isAllowed={user?.status as UserStatus === UserStatus.active}
+							isAllowed={
+								(user?.status as UserStatus) ===
+								UserStatus.active
+							}
 						/>
 					}
 				>

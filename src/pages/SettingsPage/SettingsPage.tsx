@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import styles from './SettingsPage.module.scss'
 import Avatar from '@mui/material/Avatar'
-import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
 import { TextField } from '@mui/material'
-import SelectInput from '../../UI/Inputs/Select/Select'
-import { Language, Theme } from '../../entities/App/types'
 import { BlockButton, Typography } from 'nirvana-uikit'
-import { changeTheme } from '../../entities/App/slice'
-import { deleteUserThunk, logoutThunk } from '../../entities/User/thunk'
-import { onSubmitNewPassword } from '../../shared/utils/onSubmitNewPassword'
 import { onSubmit } from './onSubmit'
 import { useTranslation } from 'react-i18next'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-import FilesUploadForm from '../../UI/Forms/FilesUploadIForm/FilesUploadIForm'
-import { ActiveType, UserStatus, UserType } from '../../entities/User/types'
+import { langsOptions } from './config/langsOptions'
+import { themesOptions } from './config/themesOptions'
+import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
+import { ActiveType } from 'entities/User/types'
+import { onSubmitNewPassword } from 'shared/utils/onSubmitNewPassword'
+import SelectInput from 'UI/Inputs/Select/Select'
+import { changeTheme } from 'entities/App/slice'
+import { deleteUserThunk, logoutThunk } from 'entities/User/thunk'
+import FilesUploadForm from 'UI/Forms/FilesUploadIForm/FilesUploadIForm'
 
 function SettingsPage() {
 	const user = useAppSelector(state => state.user)
@@ -47,7 +48,6 @@ function SettingsPage() {
 					>
 						{(user as unknown as ActiveType).nickname[0]}
 					</Avatar>
-
 					<TextField
 						label={t('SettingsPage.nickname')}
 						variant="standard"
@@ -62,7 +62,6 @@ function SettingsPage() {
 						defaultValue={(user as unknown as ActiveType).email}
 						sx={{ minWidth: '5em', width: '40%', fontSize: '1em' }}
 					/>
-
 					<BlockButton text={'Save'} type="submit" />
 				</form>
 			</div>
@@ -126,29 +125,13 @@ function SettingsPage() {
 				<form>
 					<SelectInput
 						label={t('SettingsPage.language')}
-						options={[
-							{
-								label: t('SettingsPage.english'),
-								value: Language.en
-							},
-							{
-								label: t('SettingsPage.russian'),
-								value: Language.ru
-							}
-						]}
+						options={langsOptions()}
 						value={lang}
 						onChange={changeLanguage}
 					/>
-
 					<SelectInput
 						label={t('Shared.theme')}
-						options={[
-							{
-								label: t('SettingsPage.light'),
-								value: Theme.light
-							},
-							{ label: t('SettingsPage.dark'), value: Theme.dark }
-						]}
+						options={themesOptions()}
 						value={theme}
 						onChange={changeTheme}
 						dispatch={dispatch}

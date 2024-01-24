@@ -5,13 +5,14 @@ import {
 import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
 import React, { useLayoutEffect, useState } from 'react'
 import styles from './RadioPage.module.scss'
-import { useAutocomplete } from '../../shared/hooks/useAutocomlete'
+import { useAutocomplete } from '../../shared/hooks/useAutocomplete/useAutocomlete'
 import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
 import { TracksRow } from '../../UI/TracksRow/TracksRow'
 import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
 import { useTranslation } from 'react-i18next'
 import { ActiveType } from '../../entities/User/types'
 import { SearchRadioForm } from '../../entities/Radios/types'
+import { useGetLoaders } from '../../shared/hooks/useGetLoaders/useGetLoaders'
 
 export default function RadioPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
@@ -91,21 +92,16 @@ export default function RadioPage(): JSX.Element {
 		}
 	}
 
-	const loadPrevRadios = () => {
-		if (offset >= 5) {
-			setOffset(prev => prev - 5)
-			dispatch(
-				getAllRadiosThunk(offset, (user as unknown as ActiveType).id)
-			)
-		} else {
-			dispatch(getAllRadiosThunk(0, (user as unknown as ActiveType).id))
-		}
-	}
+	const { loadNext: loadNextRadios, loadPrev: loadPrevRadios } =
+		useGetLoaders({
+			offset,
+			setOffset,
+			dispatch,
+			thunk: getAllRadiosThunk,
+			user: user as unknown as ActiveType
+		})
 
-	const loadNextRadios = () => {
-		setOffset(prev => prev + 5)
-		dispatch(getAllRadiosThunk(offset, (user as unknown as ActiveType).id))
-	}
+	
 
 	return (
 		<div className={styles.radioPage}>

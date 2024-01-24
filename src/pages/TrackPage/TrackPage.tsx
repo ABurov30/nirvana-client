@@ -2,12 +2,13 @@ import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
 import React, { useEffect, useState } from 'react'
 import { getTracksThunk, searchTracksThunk } from '../../entities/Track/thunk'
 import styles from './TrackPage.module.scss'
-import { useAutocomplete } from '../../shared/hooks/useAutocomlete'
+import { useAutocomplete } from '../../shared/hooks/useAutocomplete/useAutocomlete'
 import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
 import { TracksRow } from '../../UI/TracksRow/TracksRow'
 import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
 import { useTranslation } from 'react-i18next'
 import { ActiveType } from '../../entities/User/types'
+import { useGetLoaders } from '../../shared/hooks/useGetLoaders/useGetLoaders'
 
 export default function TrackPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
@@ -54,19 +55,15 @@ export default function TrackPage(): JSX.Element {
 		}
 	]
 
-	const loadPrevTracks = () => {
-		if (offset >= 5) {
-			setOffset(prev => prev - 5)
-			dispatch(getTracksThunk(offset, (user as unknown as ActiveType).id))
-		} else {
-			dispatch(getTracksThunk(0, (user as unknown as ActiveType).id))
-		}
-	}
+	const { loadNext: loadNextTracks, loadPrev: loadPrevTracks } =
+		useGetLoaders({
+			offset,
+			setOffset,
+			dispatch,
+			thunk: getTracksThunk,
+			user: user as unknown as ActiveType
+		})
 
-	const loadNextTracks = () => {
-		setOffset(prev => prev + 5)
-		dispatch(getTracksThunk(offset, (user as unknown as ActiveType).id))
-	}
 
 	const searchHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()

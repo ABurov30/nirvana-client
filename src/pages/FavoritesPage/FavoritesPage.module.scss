@@ -7,15 +7,6 @@
 	height: 100%;
 }
 
-.nothingHereContainer {
-	width: 100%;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
 @media screen and (max-width: 479px) {
 	.favoritesPage {
 		margin-top: 5em;

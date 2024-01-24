@@ -8,6 +8,8 @@
 		"noEmit": true,
 		"isolatedModules": true,
 		"strict": true,
+		"baseUrl": "./src",
+		"paths": { "@/*": ["./*/main"] },
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { Theme } from '../../entities/App/types'
-import { useAppSelector } from '../Redux/hooks'
+import { Theme } from '../../../entities/App/types'
+import { useAppSelector } from '../../Redux/hooks'
 
 function useTheme() {
 	const { theme } = useAppSelector(state => state.app)

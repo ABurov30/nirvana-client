@@ -5,7 +5,6 @@ import CodeForm from '../../UI/Forms/AuthForms/CodeForm/CodeForm'
 import { useAppSelector } from '../../shared/Redux/hooks'
 import { useTranslation } from 'react-i18next'
 
-
 export default function CodePage(): JSX.Element {
 	const { theme } = useAppSelector(state => state.app)
 	const { t } = useTranslation()

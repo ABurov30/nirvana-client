@@ -1,14 +1,13 @@
-import AvatarButton from '../../../UI/Buttons/AvatarButton/AvatarButton'
-import { useAppSelector } from '../../../shared/Redux/hooks'
-import Navbar from '../../../UI/Navbar/Navbar'
-//@ts-ignore
 import styles from './AZLayout.module.scss'
 import { Outlet } from 'react-router-dom'
 import React from 'react'
-import { Player } from '../../../UI/Player/Player'
+import { useAppSelector } from 'shared/Redux/hooks'
+import Navbar from 'UI/Navbar/Navbar'
+import AvatarButton from 'UI/Buttons/AvatarButton/AvatarButton'
+import { ActiveType } from 'entities/User/types'
+import Burger from 'UI/Menu/Burger'
+import { Player } from 'UI/Player/Player'
 
-import Burger from '../../../UI/Menu/Burger'
-import { ActiveType } from '../../../entities/User/types'
 
 export default function AZLayout() {
 	const user = useAppSelector(state => state.user)
