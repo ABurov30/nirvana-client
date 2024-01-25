@@ -23,7 +23,7 @@ class Request {
 			responseType = 'json'
 		}: IRequestParams,
 		options: AxiosRequestConfig & { mockData?: unknown } = {}
-	): Promise<any> {
+	): Promise<unknown> {
 		if (useMock) {
 			this.useMock(options.mockData)
 		}
@@ -79,7 +79,7 @@ class Request {
 		return percentCompleted
 	}
 
-	useMock(mockData?: any) {
+	useMock(mockData?: unknown) {
 		this.mock.reset()
 		this.mock.onAny().reply((config: AxiosRequestConfig) => {
 			const { method, url } = config
