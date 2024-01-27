@@ -202,12 +202,13 @@
 
 @media screen and (max-width: 479px) {
 	.playerBg {
-		bottom: 150px;
-		height: 100px;
+		bottom: -5%;
+		height: 15%;
+		width: 200%;
 	}
 	.playerContainer {
-		bottom: 150px;
-		height: 100px;
+		bottom: 0%;
+		height: 10%;
 		margin: 0;
 		width: 100%;
 		justify-content: center;
