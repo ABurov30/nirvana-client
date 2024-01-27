@@ -58,12 +58,14 @@ function FavoritesPage() {
 				loadNext={loadNextFavoriteTracks}
 				loadPrev={loadPrevFavoriteTracks}
 			/>
-			<TracksRow
-				title={t('FavoritesPage.yourFavoriteRadios')}
-				tracks={favoriteRadios}
-				loadNext={loadNextFavoriteRadios}
-				loadPrev={loadPrevFavoriteRadios}
-			/>
+			{(user as unknown as ActiveType).isAdmin && (
+				<TracksRow
+					title={t('FavoritesPage.yourFavoriteRadios')}
+					tracks={favoriteRadios}
+					loadNext={loadNextFavoriteRadios}
+					loadPrev={loadPrevFavoriteRadios}
+				/>
+			)}
 		</div>
 	)
 }

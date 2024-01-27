@@ -9,11 +9,16 @@ import {
 	Navbar as RadioNavbar,
 	RadioNavbarButton,
 	SettingsNavbarButton,
+	ThemeSwitcher,
 	TrackNavbarButton,
 	Typography
 } from 'nirvana-uikit'
 
-import ThemeSwitcher from 'shared/UI/ThemeSwitcher/ThemeSwitcher'
+import { changeTheme } from 'entities/App/slice'
+import { Theme } from 'entities/App/types'
+import { ActiveType } from 'entities/User/types'
+
+import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
 
 import styles from './Navbar.module.scss'
 
@@ -22,6 +27,9 @@ export default function Navbar() {
 	const { t } = useTranslation()
 	const navigate = useNavigate()
 	const location = useLocation()
+	const dispatch = useAppDispatch()
+	const user = useAppSelector(state => state.user)
+	const { theme } = useAppSelector(state => state.app)
 	return (
 		<div className={`${styles.navbar} 'navbar'`}>
 			<RadioNavbar isHovered={isHovered} setIsHovered={setIsHovered}>
@@ -39,11 +47,13 @@ export default function Navbar() {
 						isActive={location.pathname === '/'}
 						text={t('Navbar.tracks')}
 					/>
-					<RadioNavbarButton
-						onClick={() => navigate('/radio')}
-						isActive={location.pathname === '/radio'}
-						text={t('Navbar.radios')}
-					/>
+					{(user as unknown as ActiveType).isAdmin && (
+						<RadioNavbarButton
+							onClick={() => navigate('/radio')}
+							isActive={location.pathname === '/radio'}
+							text={t('Navbar.radios')}
+						/>
+					)}
 				</NavSection>
 				<NavSection>
 					<SettingsNavbarButton
@@ -55,7 +65,19 @@ export default function Navbar() {
 				<NavSection>
 					<div className={styles.themeSwitcherContainer}>
 						{isHovered && <Typography text={t('Shared.theme')} />}
-						<ThemeSwitcher />
+						<ThemeSwitcher
+							checked={theme === Theme.dark}
+							theme={theme}
+							changeTheme={() =>
+								dispatch(
+									changeTheme(
+										theme === Theme.light
+											? Theme.dark
+											: Theme.light
+									)
+								)
+							}
+						/>
 					</div>
 				</NavSection>
 			</RadioNavbar>

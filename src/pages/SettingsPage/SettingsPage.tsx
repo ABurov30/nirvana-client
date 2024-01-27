@@ -131,7 +131,8 @@ function SettingsPage() {
 					/>
 				</form>
 			</div>
-			<FilesUploadForm />
+
+			{(user as unknown as ActiveType).isAdmin && <FilesUploadForm />}
 			<button
 				className={styles.redButton}
 				onClick={() => dispatch(logoutThunk())}

@@ -1,5 +1,6 @@
 import { useLayoutEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router'
 
 import { searchHandler } from './handlers/searchHandler'
 
@@ -19,6 +20,9 @@ import styles from './RadioPage.module.scss'
 
 export default function RadioPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
+	const navigate = useNavigate()
+	if (!(user as unknown as ActiveType).isAdmin) navigate('/')
+
 	const { options: countries, setOptions: setCountries } =
 		useAutocomplete(`/radio/uniqCountry`)
 	const [countryInput, setCountryInput] = useState('')

@@ -1,10 +1,11 @@
 import { LegacyRef, MutableRefObject, memo, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { PlayButton, Typography } from 'nirvana-uikit'
+import { LikeButton, PlayButton, ShareButton, Typography } from 'nirvana-uikit'
 
 import { downloadHandler } from './handlers/downloadHandler/downloadHandler'
 import { likeHandler } from './handlers/likeHandler/likeHandler'
+import { shareHandler } from './handlers/shareHandler/shareHandler'
 import { toggleVolumeControl } from './handlers/toggleVolumeControl/toggleVolumeControl'
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
@@ -18,6 +19,8 @@ import { ActiveType } from 'entities/User/types'
 import { useAppSelector } from 'shared/Redux/hooks'
 import { formatTime } from 'shared/utils/formatTime'
 
+import { hashtags, title } from './configs/shareConfig'
+
 import { checkVolume } from './utils/checkVolume/checkVolume'
 import { checkWidth } from './utils/checkWidth/checkWidth'
 import { onPlaying } from './utils/onPlaying/onPlaying'
@@ -29,9 +32,6 @@ import { useDebounceOnMount } from './hooks/useDebounceOnMount/useDebounceOnPlay
 import { useDebounceOnPlayPause } from './hooks/useDebounceOnPlayPause/useDebounceOnPlayPause'
 import { usePlayOnMount } from './hooks/usePlayOnMount/usePlayOnMount'
 import { useSkipNext } from './hooks/useSkipNext/useSkipNext'
-
-import LikeButton from '../Buttons/LikeButton/LikeButton'
-import ShareButton from '../Buttons/ShareButton/ShareButton'
 
 import styles from './Player.module.scss'
 
@@ -159,7 +159,11 @@ export const Player = memo(function Player() {
 					>
 						<SkipNextRoundedIcon />
 					</button>
-					<ShareButton />
+					<ShareButton
+						title={title}
+						hashtags={hashtags}
+						shareHandler={() => shareHandler(dispatch, title)}
+					/>
 					<LikeButton
 						isLiked={currentTrack.isLiked}
 						onClick={debounce(

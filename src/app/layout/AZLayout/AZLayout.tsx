@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { ActiveType } from 'entities/User/types'
 
 import { useAppSelector } from 'shared/Redux/hooks'
-import AvatarButton from 'shared/UI/Buttons/AvatarButton/AvatarButton'
+import AvatarButton from 'shared/UI/AvatarButton/AvatarButton'
 import Burger from 'shared/UI/Menu/Burger'
 import Navbar from 'shared/UI/Navbar/Navbar'
 import { Player } from 'shared/UI/Player/Player'

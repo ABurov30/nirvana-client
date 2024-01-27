@@ -59,7 +59,6 @@ export const uploadTrackThunk =
 							message: res?.data
 						})
 					)
-					console.log(res, 'res')
 				}
 				dispatch(
 					setNotification({

@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Typography } from 'nirvana-uikit'
+import { PromoTitle, Typography } from 'nirvana-uikit'
 
 import { useAppSelector } from 'shared/Redux/hooks'
 import SignUpForm from 'shared/UI/Forms/AuthForms/SigUpForm/SignUpForm'
-import PromoTitle from 'shared/UI/PromoTitle/PromoTitle'
+
 
 import { rotatedPhrases } from './configs/rotatedPhrases'
 

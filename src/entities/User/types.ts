@@ -3,6 +3,7 @@ export type UserFromBackend = {
 	email: string
 	nickname: string
 	confirmed: boolean
+	isAdmin: boolean
 }
 
 export type ActiveType = UserFromBackend & {
