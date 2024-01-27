@@ -13,13 +13,12 @@ import { deleteUserThunk, logoutThunk } from 'entities/User/thunk'
 import { ActiveType } from 'entities/User/types'
 
 import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
+import FilesUploadForm from 'shared/UI/Forms/FilesUploadIForm/FilesUploadIForm'
+import SelectInput from 'shared/UI/Inputs/Select/Select'
 import { onSubmitNewPassword } from 'shared/utils/onSubmitNewPassword'
 
 import { langsOptions } from './config/langsOptions'
 import { themesOptions } from './config/themesOptions'
-
-import FilesUploadForm from 'UI/Forms/FilesUploadIForm/FilesUploadIForm'
-import SelectInput from 'UI/Inputs/Select/Select'
 
 import styles from './SettingsPage.module.scss'
 

@@ -4,9 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { Typography } from 'nirvana-uikit'
 
 import { useAppSelector } from 'shared/Redux/hooks'
-
-import SignUpForm from 'UI/Forms/AuthForms/SigUpForm/SignUpForm'
-import PromoTitle from 'UI/PromoTitle/PromoTitle'
+import SignUpForm from 'shared/UI/Forms/AuthForms/SigUpForm/SignUpForm'
+import PromoTitle from 'shared/UI/PromoTitle/PromoTitle'
 
 import styles from './SignupPage.module.scss'
 

@@ -8,9 +8,8 @@ import { getPromoThunk } from 'entities/Promo/thunk'
 import { loginUserThunk } from 'entities/User/thunk'
 
 import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
-
-import LoginForm from 'UI/Forms/AuthForms/LoginForm/LoginForm'
-import PromoSlider from 'UI/PromoSlider/PromoSlider'
+import LoginForm from 'shared/UI/Forms/AuthForms/LoginForm/LoginForm'
+import PromoSlider from 'shared/UI/PromoSlider/PromoSlider'
 
 import styles from './LoginPage.module.scss'
 

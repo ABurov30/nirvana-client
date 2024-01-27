@@ -5,9 +5,8 @@ import { Loader } from 'nirvana-uikit'
 import { type MainLayoutProps } from './types'
 
 import { useAppSelector } from 'shared/Redux/hooks'
+import Toast from 'shared/UI/Toast/Toast'
 import useTheme from 'shared/hooks/useTheme/useTheme'
-
-import Toast from 'UI/Toast/Toast'
 
 import styles from './MainLayout.module.scss'
 

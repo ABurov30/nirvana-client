@@ -1,0 +1,232 @@
+@import '../../constants/colors.scss';
+
+.playerBg {
+	z-index: 0;
+	height: 20%;
+	width: 120vw;
+	opacity: 0.85;
+	position: fixed;
+	bottom: -5%;
+	left: -5vw;
+	background-image: linear-gradient(
+		90deg,
+		rgba(243, 243, 243, 1) 0%,
+		rgba(94, 233, 191, 1) 19%,
+		rgba(47, 105, 255, 1) 54%,
+		rgba(99, 96, 255, 1) 82%,
+		rgba(161, 106, 232, 1) 100%
+	);
+	filter: blur(30px);
+	background-repeat: no-repeat;
+	background-size: 300% 300%;
+	animation: AnimateBG 100s ease-in-out infinite;
+}
+
+@keyframes AnimateBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.playerContainer {
+	background-color: transparent;
+	padding: 0.5em;
+	position: fixed;
+	bottom: 0;
+	height: 10vh;
+	width: 100vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 2;
+}
+
+.playerContainer svg {
+	fill: $primary-black;
+}
+
+.playerContainer svg:hover {
+	fill: $primary-green;
+}
+
+.track {
+	opacity: 1;
+	margin: 0.5em 0px;
+	margin-left: 2em;
+	display: flex;
+	gap: 0.5em;
+	height: 100%;
+	align-items: center;
+}
+
+.timeContainer {
+	margin-top: 0.25em;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.track img {
+	border-radius: 4px;
+	height: 100%;
+	opacity: 1;
+}
+
+.title {
+	display: flex;
+	flex-direction: column;
+}
+
+.title span {
+	color: $primary-black;
+}
+
+.controls {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5em;
+}
+
+.name {
+	font-size: 1em;
+	font-weight: 500;
+}
+
+.artist {
+	font-size: 0.7em;
+}
+
+.navigation {
+	width: 40%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.navigationController {
+	background-color: $primary-white;
+	height: 0.25em;
+	border-radius: 0.8em;
+	width: 100%;
+}
+
+.navigationBar {
+	background-color: $primary-violet;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: row-reverse;
+}
+
+.pointer {
+	display: none;
+	background-color: $primary-black;
+	height: 0.25em;
+	width: 0.25em;
+	border-radius: 20px;
+}
+
+.navigationController:hover .pointer,
+.volumeController:hover .pointer {
+	display: block;
+}
+
+.volumeController:hover,
+.navigationController:hover {
+	overflow: visible;
+}
+
+.volumeController:hover .volumeBar,
+.navigationController:hover .navigationBar {
+	border-radius: 20px;
+}
+
+.duration {
+	float: right;
+}
+
+.navigationController {
+	background-color: $primary-white;
+	height: 0.25em;
+	border-radius: 14px;
+	overflow: hidden;
+}
+
+.volumeBar {
+	background-color: $primary-violet;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: row-reverse;
+	z-index: 2;
+}
+
+.volumeController {
+	background-color: $primary-white;
+	height: 0.25em;
+	border-radius: 14px;
+	overflow: hidden;
+	width: 100%;
+}
+
+.volume {
+	height: 100%;
+	width: 10%;
+	margin-right: 2em;
+	display: flex;
+	align-items: center;
+	gap: 1.5em;
+}
+
+.controlButton {
+	background-color: transparent;
+	width: 3em;
+	height: 3em;
+	border: none;
+	transition: ease-in-out;
+}
+
+.volumeButton:hover svg {
+	color: $primary-violet;
+}
+
+@media screen and (max-width: 479px) {
+	.playerBg {
+		bottom: -5%;
+		height: 15%;
+		width: 200%;
+	}
+	.playerContainer {
+		bottom: 0%;
+		height: 10%;
+		margin: 0;
+		width: 100%;
+		justify-content: center;
+	}
+	.playerContainer span {
+		font-size: 0.7em;
+	}
+	.playerContainer img {
+		width: 3em;
+		height: 3em;
+	}
+	.navigation {
+		display: none;
+	}
+	.volume {
+		display: none;
+	}
+	.track {
+		margin-left: 0;
+	}
+}

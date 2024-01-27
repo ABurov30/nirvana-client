@@ -1,0 +1,18 @@
+@import '../../constants/colors.scss';
+
+.themeSwitcherContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+}
+
+.navbar {
+	box-shadow: 0 0 5px $primary-grey;
+}
+
+@media screen and (max-width: 479px) {
+	.navbar {
+		display: none;
+	}
+}

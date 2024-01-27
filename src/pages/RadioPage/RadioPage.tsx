@@ -6,12 +6,11 @@ import { SearchRadioForm } from 'entities/Radios/types'
 import { ActiveType } from 'entities/User/types'
 
 import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
+import { SearchForm } from 'shared/UI/Forms/SearchForm/SearchForm'
+import { TrackSlider } from 'shared/UI/TrackSlider/TrackSlider'
+import { TracksRow } from 'shared/UI/TracksRow/TracksRow'
 import { useAutocomplete } from 'shared/hooks/useAutocomplete/useAutocomlete'
 import { useGetLoaders } from 'shared/hooks/useGetLoaders/useGetLoaders'
-
-import { SearchForm } from 'UI/Forms/SearchForm/SearchForm'
-import { TrackSlider } from 'UI/TrackSlider/TrackSlider'
-import { TracksRow } from 'UI/TracksRow/TracksRow'
 
 import styles from './RadioPage.module.scss'
 

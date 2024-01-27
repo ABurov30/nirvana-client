@@ -8,8 +8,7 @@ import MainRoutes from './routes/MainRoutes/MainRoutes'
 
 import { ErrorBoundary } from 'shared/HOC/ErrorBoundary/ErrorBoundary'
 import { store } from 'shared/Redux/store'
-
-import Cursor from 'UI/Cursor/Cursor'
+import Cursor from 'shared/UI/Cursor/Cursor'
 
 function App(): JSX.Element {
 	return (

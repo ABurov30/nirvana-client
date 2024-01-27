@@ -8,9 +8,8 @@ import {
 import { ActiveType } from 'entities/User/types'
 
 import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
+import { TracksRow } from 'shared/UI/TracksRow/TracksRow'
 import { useGetLoaders } from 'shared/hooks/useGetLoaders/useGetLoaders'
-
-import { TracksRow } from 'UI/TracksRow/TracksRow'
 
 import styles from './FavoritesPage.module.scss'
 
