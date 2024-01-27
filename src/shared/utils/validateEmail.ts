@@ -3,9 +3,11 @@ import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 import { setIsOpen, setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 
+import { RootState } from 'shared/Redux/store'
+
 export function validateEmail(
 	email: string,
-	dispatch: ThunkDispatch<{}, undefined, UnknownAction>
+	dispatch: ThunkDispatch<RootState, undefined, UnknownAction>
 ): boolean {
 	const regex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/
 

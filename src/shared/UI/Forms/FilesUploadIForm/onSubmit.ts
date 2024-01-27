@@ -1,6 +1,5 @@
-import { UnknownAction } from '@reduxjs/toolkit'
-
 import { uploadTrackThunk } from 'entities/Track/thunk'
+import { UploadTrackFrom } from 'entities/Track/types'
 
 import { onSumbitArgs } from './types'
 
@@ -22,6 +21,5 @@ export function onSubmit({
 
 	formData.append('trackName', trackName)
 	formData.append('artist', artist)
-	//@ts-ignore
-	dispatch(uploadTrackThunk(formData) as unknown as UnknownAction)
+	dispatch(uploadTrackThunk(formData as unknown as UploadTrackFrom))
 }

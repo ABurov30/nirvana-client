@@ -9,10 +9,11 @@ import { setIsOpen, setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 import { newPasswordThunk } from 'entities/User/thunk'
 
+import { RootState } from 'shared/Redux/store'
+
 export async function onSubmitNewPassword(
 	e: FormEvent<HTMLFormElement>,
-	dispatch: ThunkDispatch<{}, undefined, UnknownAction>,
-	userId: string,
+	dispatch: ThunkDispatch<RootState, undefined, UnknownAction>,
 	navigate?: NavigateFunction
 ) {
 	e.preventDefault()

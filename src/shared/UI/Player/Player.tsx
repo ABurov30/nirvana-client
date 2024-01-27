@@ -1,14 +1,11 @@
-import React, {
-	memo,
-	useEffect,
-	useLayoutEffect,
-	useRef,
-	useState
-} from 'react'
+import { LegacyRef, MutableRefObject, memo, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { PlayButton, Typography } from 'nirvana-uikit'
 
+import { downloadHandler } from './handlers/downloadHandler/downloadHandler'
+import { likeHandler } from './handlers/likeHandler/likeHandler'
+import { toggleVolumeControl } from './handlers/toggleVolumeControl/toggleVolumeControl'
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
 import SkipPreviousRoundedIcon from '@mui/icons-material/SkipPreviousRounded'
@@ -16,15 +13,23 @@ import VolumeOffIcon from '@mui/icons-material/VolumeOff'
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
 import debounce from 'lodash.debounce'
 
-import {
-	addLikeThunk,
-	removeLikeThunk
-} from '../../../entities/CurTracks/thunk'
+import { ActiveType } from 'entities/User/types'
 
-import { downloadResource } from '../../utils/downloadResource'
-import { formatTime } from '../../utils/formatTime'
+import { useAppSelector } from 'shared/Redux/hooks'
+import { formatTime } from 'shared/utils/formatTime'
 
-import { useAppSelector } from '../../Redux/hooks'
+import { checkVolume } from './utils/checkVolume/checkVolume'
+import { checkWidth } from './utils/checkWidth/checkWidth'
+import { onPlaying } from './utils/onPlaying/onPlaying'
+import { skipNext } from './utils/skipNext/skipNext'
+import { skipPrevious } from './utils/skipPrevious/skipPrevious'
+import { stopDragingProgress } from './utils/stopDragingProgress/stopDragingProgress'
+
+import { useDebounceOnMount } from './hooks/useDebounceOnMount/useDebounceOnPlay'
+import { useDebounceOnPlayPause } from './hooks/useDebounceOnPlayPause/useDebounceOnPlayPause'
+import { usePlayOnMount } from './hooks/usePlayOnMount/usePlayOnMount'
+import { useSkipNext } from './hooks/useSkipNext/useSkipNext'
+
 import LikeButton from '../Buttons/LikeButton/LikeButton'
 import ShareButton from '../Buttons/ShareButton/ShareButton'
 
@@ -41,152 +46,50 @@ export const Player = memo(function Player() {
 	const [isDragingVolume, setIsDragingVolume] = useState(false)
 	const [volume, setVolume] = useState(0)
 	const user = useAppSelector(state => state.user)
-	const audioElem = useRef<any>()
-	const clickRef = useRef<any>()
-	const volumeRef = useRef<any>()
+	const audioElem = useRef<HTMLAudioElement>()
+	const clickRef = useRef<HTMLDivElement>()
+	const volumeRef = useRef<HTMLDivElement>()
 
-	useLayoutEffect(() => {
-		setCurrentTrack(tracks[position])
-		const timeoutId = setTimeout(() => {
-			audioElem?.current?.play()
-			setIsPlaying(true)
-		}, 500)
-		return () => {
-			clearTimeout(timeoutId)
-		}
-	}, [tracks, position])
+	usePlayOnMount({
+		tracks,
+		setCurrentTrack,
+		position,
+		audioElem: audioElem as MutableRefObject<HTMLAudioElement>,
+		setIsPlaying
+	})
 
-	useEffect(() => {
-		const timeoutId = setTimeout(() => {
-			if (isPlaying) {
-				audioElem?.current?.play()
-			} else {
-				audioElem?.current?.pause()
-			}
-		}, 500)
-		return () => {
-			clearTimeout(timeoutId)
-		}
-	}, [isPlaying])
+	useDebounceOnPlayPause({
+		audioElem: audioElem as MutableRefObject<HTMLAudioElement>,
+		isPlaying
+	})
 
-	useEffect(() => {
-		const timeoutId = setTimeout(() => {
-			audioElem.current.play()
-			setIsPlaying(true)
-			setVolume(audioElem.current.volume)
-		}, 500)
+	useDebounceOnMount({
+		audioElem: audioElem as MutableRefObject<HTMLAudioElement>,
+		setIsPlaying,
+		setVolume
+	})
 
-		return () => {
-			clearTimeout(timeoutId)
-		}
-	}, [])
-
-	useEffect(() => {
-		if (audioElem?.current?.currentTime === currentTrack?.length) skipNext()
-	}, [audioElem?.current?.currentTime])
-
-	const PlayPause = () => {
-		setIsPlaying(prev => !prev)
-	}
-
-	function onPlaying() {
-		const duration = audioElem?.current?.duration
-		const currentTime = audioElem?.current?.currentTime
-		setCurrentTrack({
-			...currentTrack,
-			progress: (currentTime / duration) * 100,
-			length: duration
-		})
-	}
-
-	async function checkWidth(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-		if (!isDragingProgress) return
-		await audioElem?.current?.pause()
-		let width = clickRef?.current?.clientWidth
-			? clickRef?.current?.clientWidth
-			: 0
-		const offset = e.nativeEvent?.offsetX
-		const divProgress = (offset / width) * 100
-		const newCurrentTime = (divProgress / 100) * currentTrack.length
-		audioElem.current.currentTime = isFinite(newCurrentTime)
-			? newCurrentTime
-			: 100
-	}
-
-	function stopDragingProgress() {
-		setIsDragingProgress(false)
-		audioElem?.current?.play()
-	}
-
-	const checkVolume = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-		if (!isDragingVolume) return
-		let width = volumeRef?.current?.clientWidth
-			? volumeRef?.current?.clientWidth
-			: 0
-		const offset = e.nativeEvent?.offsetX
-		const divProgress = (offset / width) * 100
-		const newVolume = divProgress / 100
-		audioElem.current.volume = newVolume
-		setVolume(newVolume)
-	}
-
-	async function skipPrevious() {
-		const index = tracks.findIndex(track => track.id === currentTrack.id)
-		index === 0
-			? setCurrentTrack(tracks[tracks.length - 1])
-			: setCurrentTrack(tracks[index - 1])
-		audioElem.current.currentTime = 0
-		await audioElem?.current?.load()
-		audioElem?.current?.play()
-	}
-
-	async function skipNext() {
-		const index = tracks.findIndex(track => track.id === currentTrack.id)
-		index === tracks.length - 1
-			? setCurrentTrack(tracks[0])
-			: setCurrentTrack(tracks[index + 1])
-		audioElem.current.currentTime = 0
-		await audioElem?.current?.load()
-		audioElem?.current?.play()
-	}
-
-	async function likeHandler() {
-		if (currentTrack.isLiked) {
-			await dispatch(
-				// @ts-ignore
-				removeLikeThunk(currentTrack.id, user.id, currentTrack.type)
-			)
-		} else {
-			await dispatch(
-				// @ts-ignore
-				addLikeThunk(currentTrack, user.id, currentTrack.type)
-			)
-		}
-	}
-
-	function toggleVolumeControl() {
-		if (audioElem.current.volume > 0) {
-			audioElem.current.volume = 0
-			setVolume(0)
-		} else {
-			audioElem.current.volume = 1
-			setVolume(1)
-		}
-	}
-
-	function downloadHandler() {
-		downloadResource(
-			currentTrack.url,
-			`${currentTrack.title} ${currentTrack.subTitle}.mp3`
-		)
-	}
+	useSkipNext({
+		audioElem: audioElem as MutableRefObject<HTMLAudioElement>,
+		currentTrack,
+		skipNext,
+		setCurrentTrack,
+		tracks
+	})
 
 	return (
 		<>
 			<audio
 				src={currentTrack?.url}
-				ref={audioElem}
-				onTimeUpdate={onPlaying}
+				ref={audioElem as LegacyRef<HTMLAudioElement>}
+				onTimeUpdate={() =>
+					onPlaying({
+						audioElem:
+							audioElem as MutableRefObject<HTMLAudioElement>,
+						setCurrentTrack,
+						currentTrack
+					})
+				}
 			/>
 			<div
 				className={styles.playerBg}
@@ -217,16 +120,41 @@ export const Player = memo(function Player() {
 				</div>
 				<div className={styles.controls}>
 					<button
-						onClick={debounce(skipPrevious, 1000, {
-							leading: true
-						})}
+						onClick={debounce(
+							() =>
+								skipPrevious({
+									tracks,
+									currentTrack,
+									setCurrentTrack,
+									audioElem:
+										audioElem as MutableRefObject<HTMLAudioElement>
+								}),
+							1000,
+							{
+								leading: true
+							}
+						)}
 						className={styles.controlButton}
 					>
 						<SkipPreviousRoundedIcon />
 					</button>
-					<PlayButton isPlaying={isPlaying} onClick={PlayPause} />
+					<PlayButton
+						isPlaying={isPlaying}
+						onClick={() => setIsPlaying(prev => !prev)}
+					/>
 					<button
-						onClick={debounce(skipNext, 1000, { leading: true })}
+						onClick={debounce(
+							() =>
+								skipNext({
+									tracks,
+									currentTrack,
+									setCurrentTrack,
+									audioElem:
+										audioElem as MutableRefObject<HTMLAudioElement>
+								}),
+							1000,
+							{ leading: true }
+						)}
 						className={styles.controlButton}
 					>
 						<SkipNextRoundedIcon />
@@ -234,26 +162,51 @@ export const Player = memo(function Player() {
 					<ShareButton />
 					<LikeButton
 						isLiked={currentTrack.isLiked}
-						onClick={debounce(likeHandler, 10000, {
-							leading: true
-						})}
+						onClick={debounce(
+							() =>
+								likeHandler({
+									currentTrack,
+									dispatch,
+									user: user as unknown as ActiveType
+								}),
+							10000,
+							{
+								leading: true
+							}
+						)}
 					/>
-					{isFinite(audioElem?.current?.duration) && (
+					{isFinite(audioElem?.current?.duration as number) && (
 						<button
-							onClick={debounce(downloadHandler, 1000)}
+							onClick={debounce(
+								() => downloadHandler(currentTrack),
+								1000
+							)}
 							className={styles.controlButton}
 						>
 							<FileDownloadOutlinedIcon />
 						</button>
 					)}
 				</div>
-				{isFinite(audioElem?.current?.duration) ? (
+				{isFinite(audioElem?.current?.duration as number) ? (
 					<div
 						className={styles.navigation}
 						onMouseDown={() => setIsDragingProgress(true)}
-						onMouseMove={checkWidth}
-						onMouseUp={stopDragingProgress}
-						ref={clickRef}
+						onMouseMove={e =>
+							checkWidth(
+								e,
+								isDragingProgress,
+								audioElem as MutableRefObject<HTMLAudioElement>,
+								clickRef as MutableRefObject<HTMLDivElement>,
+								currentTrack
+							)
+						}
+						onMouseUp={() =>
+							stopDragingProgress(
+								setIsDragingProgress,
+								audioElem as MutableRefObject<HTMLAudioElement>
+							)
+						}
+						ref={clickRef as LegacyRef<HTMLDivElement>}
 					>
 						<div className={styles.navigationController}>
 							<div
@@ -268,11 +221,13 @@ export const Player = memo(function Player() {
 						<div className={styles.timeContainer}>
 							<Typography
 								text={formatTime(
-									audioElem?.current?.currentTime
+									audioElem?.current?.currentTime as number
 								)}
 							/>
 							<Typography
-								text={formatTime(audioElem?.current?.duration)}
+								text={formatTime(
+									audioElem?.current?.duration as number
+								)}
 							/>
 						</div>
 					</div>
@@ -281,12 +236,22 @@ export const Player = memo(function Player() {
 				<div
 					className={styles.volume}
 					onMouseDown={() => setIsDragingVolume(true)}
-					onMouseMove={checkVolume}
+					onMouseMove={e =>
+						checkVolume(
+							e,
+							isDragingVolume,
+							volumeRef as MutableRefObject<HTMLDivElement>,
+							audioElem as MutableRefObject<HTMLAudioElement>,
+							setVolume
+						)
+					}
 					onMouseUp={() => setIsDragingVolume(false)}
-					ref={volumeRef}
+					ref={volumeRef as LegacyRef<HTMLDivElement>}
 				>
 					<div
-						onClick={toggleVolumeControl}
+						onClick={() =>
+							toggleVolumeControl(audioElem, setVolume)
+						}
 						className={styles.volumeButton}
 					>
 						{audioElem.current?.volume ? (

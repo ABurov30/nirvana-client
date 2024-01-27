@@ -7,6 +7,8 @@ import { useAppSelector } from 'shared/Redux/hooks'
 import SignUpForm from 'shared/UI/Forms/AuthForms/SigUpForm/SignUpForm'
 import PromoTitle from 'shared/UI/PromoTitle/PromoTitle'
 
+import { rotatedPhrases } from './configs/rotatedPhrases'
+
 import styles from './SignupPage.module.scss'
 
 export default function SignupPage(): JSX.Element {
@@ -23,12 +25,7 @@ export default function SignupPage(): JSX.Element {
 				)}
 				<PromoTitle
 					prePhrase={t('SignupPage.prePhrase')}
-					rotatedPhrases={[
-						t('SignupPage.emotions'),
-						t('SignupPage.feelings'),
-						t('SignupPage.pleasure'),
-						t('Shared.nirvana')
-					]}
+					rotatedPhrases={rotatedPhrases}
 				/>
 			</div>
 			<div

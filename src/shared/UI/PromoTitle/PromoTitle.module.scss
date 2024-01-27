@@ -1,25 +1,17 @@
 @import '../../constants/colors.scss';
 
+
+
+
 .container {
-	width: 400px;
-	height: 50px;
-}
-
-.content {
-	display: block;
-	position: sticky;
-	overflow: hidden;
-	font-family: 'Roboto', sans-serif;
-	font-size: 2em;
-	line-height: 40px;
-	color: $primary-white;
-}
-
-.contentContainer {
 	font-weight: 600;
 	overflow: hidden;
 	height: 40px;
 	padding: 0 40px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 2em;
+	line-height: 40px;
+	color: $primary-white;
 }
 
 .contentContainerText {

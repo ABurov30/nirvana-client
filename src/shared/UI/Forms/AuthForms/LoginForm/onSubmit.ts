@@ -7,9 +7,11 @@ import { setIsOpen, setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 import { loginUserThunk } from 'entities/User/thunk'
 
+import { RootState } from 'shared/Redux/store'
+
 export async function onSubmit(
 	e: FormEvent<HTMLFormElement>,
-	dispatch: ThunkDispatch<{}, undefined, UnknownAction>,
+	dispatch: ThunkDispatch<RootState, undefined, UnknownAction>,
 	navigate: NavigateFunction
 ) {
 	e.preventDefault()

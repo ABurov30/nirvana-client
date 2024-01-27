@@ -1,8 +1,9 @@
-import React, { useLayoutEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { getAllRadiosThunk, searchRadioThunk } from 'entities/Radios/thunk'
-import { SearchRadioForm } from 'entities/Radios/types'
+import { searchHandler } from './handlers/searchHandler'
+
+import { getAllRadiosThunk } from 'entities/Radios/thunk'
 import { ActiveType } from 'entities/User/types'
 
 import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
@@ -11,6 +12,8 @@ import { TrackSlider } from 'shared/UI/TrackSlider/TrackSlider'
 import { TracksRow } from 'shared/UI/TracksRow/TracksRow'
 import { useAutocomplete } from 'shared/hooks/useAutocomplete/useAutocomlete'
 import { useGetLoaders } from 'shared/hooks/useGetLoaders/useGetLoaders'
+
+import { buttons } from './configs/buttons'
 
 import styles from './RadioPage.module.scss'
 
@@ -64,34 +67,6 @@ export default function RadioPage(): JSX.Element {
 		}
 	]
 
-	const buttons = [
-		{
-			text: t('Shared.search'),
-			type: 'submit'
-		}
-	]
-
-	const searchHandler = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
-
-		const form = e.currentTarget
-		const formData = {
-			name: form.radio.value,
-			tags: form.tags.value,
-			country: form.country.value
-		}
-		if (!formData.name && !formData.tags && !formData.country) {
-			dispatch(getAllRadiosThunk(0, (user as unknown as ActiveType).id))
-		} else {
-			dispatch(
-				searchRadioThunk(
-					formData as SearchRadioForm,
-					(user as unknown as ActiveType).id
-				)
-			)
-		}
-	}
-
 	const { loadNext: loadNextRadios, loadPrev: loadPrevRadios } =
 		useGetLoaders({
 			offset,
@@ -106,9 +81,10 @@ export default function RadioPage(): JSX.Element {
 			<TrackSlider tracks={radios} />
 			<SearchForm
 				fields={fields}
-				//@ts-ignore
-				buttons={buttons}
-				onSubmit={searchHandler}
+				buttons={buttons()}
+				onSubmit={e =>
+					searchHandler(e, dispatch, user as unknown as ActiveType)
+				}
 			/>
 			<TracksRow
 				title={t('RadioPage.yourWeeklyTopStations')}

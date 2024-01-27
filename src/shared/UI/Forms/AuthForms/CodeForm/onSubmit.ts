@@ -5,10 +5,11 @@ import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 import { setIsOpen, setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 import { sendCodeThunk } from 'entities/User/thunk'
+import { RootState } from 'shared/Redux/store'
 
 export async function onSubmit(
 	confirmationCode: string,
-	dispatch: ThunkDispatch<{}, undefined, UnknownAction>,
+	dispatch: ThunkDispatch<RootState, undefined, UnknownAction>,
 	navigate: NavigateFunction
 ) {
 	if (!confirmationCode || confirmationCode.length !== 6) {

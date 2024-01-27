@@ -8,22 +8,18 @@ export default function PromoTitle({
 }: PromoTitleProps) {
 	return (
 		<div className={styles.container}>
-			<div className={styles.content}>
-				<div className={styles.contentContainer}>
-					<p className={styles.contentContainerText}>{prePhrase}</p>
+			<p className={styles.contentContainerText}>{prePhrase}</p>
 
-					<ul className={styles.contentContainerList}>
-						{rotatedPhrases.map(phrase => (
-							<li
-								className={styles.contentContainerListItem}
-								key={phrase}
-							>
-								{phrase}
-							</li>
-						))}
-					</ul>
-				</div>
-			</div>
+			<ul className={styles.contentContainerList}>
+				{rotatedPhrases.map(phrase => (
+					<li
+						className={styles.contentContainerListItem}
+						key={phrase}
+					>
+						{phrase}
+					</li>
+				))}
+			</ul>
 		</div>
 	)
 }

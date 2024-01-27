@@ -10,22 +10,20 @@ export default function ThemeSwitcher() {
 
 	const dispatch = useAppDispatch()
 	return (
-		<div>
-			<label className={styles.switch}>
-				<input
-					className={styles.input}
-					type={'checkbox'}
-					checked={theme === Theme.dark}
-					onChange={() =>
-						dispatch(
-							changeTheme(
-								theme === Theme.light ? Theme.dark : Theme.light
-							)
+		<label className={styles.switch}>
+			<input
+				className={styles.input}
+				type={'checkbox'}
+				checked={theme === Theme.dark}
+				onChange={() =>
+					dispatch(
+						changeTheme(
+							theme === Theme.light ? Theme.dark : Theme.light
 						)
-					}
-				></input>
-				<span className={styles.slider}></span>
-			</label>
-		</div>
+					)
+				}
+			></input>
+			<span className={styles.slider}></span>
+		</label>
 	)
 }

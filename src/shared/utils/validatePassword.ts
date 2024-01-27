@@ -3,10 +3,12 @@ import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 import { setIsOpen, setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 
+import { RootState } from 'shared/Redux/store'
+
 export function validatePassword(
 	password: string,
 	repeatPassword: string,
-	dispatch: ThunkDispatch<{}, undefined, UnknownAction>
+	dispatch: ThunkDispatch<RootState, undefined, UnknownAction>
 ): boolean {
 	const regex =
 		/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/

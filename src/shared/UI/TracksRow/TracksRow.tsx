@@ -37,7 +37,7 @@ export const TracksRow = memo(function TracksRow({
 							turnOnPlayMode(i, tracks, dispatch)
 						}}
 						key={track?.id}
-						srcImg={!track?.img ? '/img/cover.svg' : track?.img}
+						srcImg={!track?.img ? '/icons/cover.svg' : track?.img}
 						title={
 							track?.title?.length > 10
 								? `${track?.title?.slice(0, 10)}...`

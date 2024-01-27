@@ -4,7 +4,6 @@ import { setRadio } from './slice'
 
 import { SearchRadioForm } from './types'
 
-import { RootState } from 'shared/Redux/store'
 import { request } from 'shared/Request/Requets'
 
 const URL = '/radio'
@@ -13,7 +12,7 @@ export const getAllRadiosThunk =
 	(
 		offset: number,
 		userId: string
-	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	): ThunkAction<void, {}, unknown, UnknownAction> =>
 	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',
@@ -27,7 +26,7 @@ export const searchRadioThunk =
 	(
 		formData: SearchRadioForm,
 		userId: string
-	): ThunkAction<void, RootState, unknown, UnknownAction> =>
+	): ThunkAction<void, {}, unknown, UnknownAction> =>
 	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',

@@ -7,11 +7,12 @@ import { Severity } from 'entities/Notification/types'
 
 import { AutoCompleteProps } from '../types'
 
+import { RootState } from 'shared/Redux/store'
 import { request } from 'shared/Request/Requets'
 
 export function useDebounce(
 	field: AutoCompleteProps['field'],
-	dispatch: ThunkDispatch<{}, undefined, UnknownAction>
+	dispatch: ThunkDispatch<RootState, undefined, UnknownAction>
 ) {
 	if (!field.value) return
 	useLayoutEffect(() => {

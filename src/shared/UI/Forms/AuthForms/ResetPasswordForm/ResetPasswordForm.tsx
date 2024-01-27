@@ -22,9 +22,7 @@ function ResetPasswordForm({
 	return (
 		<form
 			className={styles.form}
-			onSubmit={e =>
-				onSubmitNewPassword(e, dispatch, userId as string, navigate)
-			}
+			onSubmit={e => onSubmitNewPassword(e, dispatch, navigate)}
 		>
 			<ul className={styles.wrapper}>
 				<div

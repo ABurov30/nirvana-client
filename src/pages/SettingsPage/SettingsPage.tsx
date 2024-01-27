@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { BlockButton, Typography } from 'nirvana-uikit'
 
-import { onSubmit } from './onSubmit'
+import { onSubmit } from './handlers/onSubmit'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import { TextField } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
@@ -17,6 +17,7 @@ import FilesUploadForm from 'shared/UI/Forms/FilesUploadIForm/FilesUploadIForm'
 import SelectInput from 'shared/UI/Inputs/Select/Select'
 import { onSubmitNewPassword } from 'shared/utils/onSubmitNewPassword'
 
+import { avatarStyles } from './config/avatarStyles'
 import { langsOptions } from './config/langsOptions'
 import { themesOptions } from './config/themesOptions'
 
@@ -45,13 +46,7 @@ function SettingsPage() {
 						onSubmit(e, dispatch, user as unknown as ActiveType)
 					}
 				>
-					<Avatar
-						sx={{
-							bgcolor: '#BDBEBE',
-							width: '3em',
-							height: '3em'
-						}}
-					>
+					<Avatar sx={avatarStyles}>
 						{(user as unknown as ActiveType).nickname[0]}
 					</Avatar>
 					<TextField
@@ -76,15 +71,7 @@ function SettingsPage() {
 					text={t('SettingsPage.changePassword')}
 					weight="medium"
 				/>
-				<form
-					onSubmit={e =>
-						onSubmitNewPassword(
-							e,
-							dispatch,
-							(user as unknown as ActiveType).id
-						)
-					}
-				>
+				<form onSubmit={e => onSubmitNewPassword(e, dispatch)}>
 					<div className={styles.inputContainer}>
 						<TextField
 							label={t('SettingsPage.password')}

@@ -8,10 +8,11 @@ import { changeUserInfoThunk } from 'entities/User/thunk'
 import { ActiveType } from 'entities/User/types'
 
 import { validateEmail } from 'shared/utils/validateEmail'
+import { RootState } from 'shared/Redux/store'
 
 export async function onSubmit(
 	e: FormEvent<HTMLFormElement>,
-	dispatch: ThunkDispatch<{}, undefined, UnknownAction>,
+	dispatch: ThunkDispatch<RootState, undefined, UnknownAction>,
 	user: ActiveType
 ) {
 	e.preventDefault()

@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { getTracksThunk, searchTracksThunk } from 'entities/Track/thunk'
+import { searchHandler } from './handlers/searchHandler'
+
+import { getTracksThunk } from 'entities/Track/thunk'
 import { ActiveType } from 'entities/User/types'
 
 import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
@@ -10,6 +12,8 @@ import { TrackSlider } from 'shared/UI/TrackSlider/TrackSlider'
 import { TracksRow } from 'shared/UI/TracksRow/TracksRow'
 import { useAutocomplete } from 'shared/hooks/useAutocomplete/useAutocomlete'
 import { useGetLoaders } from 'shared/hooks/useGetLoaders/useGetLoaders'
+
+import { buttons } from './configs/buttons'
 
 import styles from './TrackPage.module.scss'
 
@@ -51,13 +55,6 @@ export default function TrackPage(): JSX.Element {
 		}
 	]
 
-	const buttons = [
-		{
-			text: t('Shared.search'),
-			type: 'submit'
-		}
-	]
-
 	const { loadNext: loadNextTracks, loadPrev: loadPrevTracks } =
 		useGetLoaders({
 			offset,
@@ -67,31 +64,15 @@ export default function TrackPage(): JSX.Element {
 			user: user as unknown as ActiveType
 		})
 
-	const searchHandler = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
-
-		const form = e.currentTarget
-		const formData = {
-			trackTitle: form.trackTitle.value,
-			artist: form.artist.value
-		}
-		if (!formData.trackTitle && !formData.artist) {
-			dispatch(getTracksThunk(0, (user as unknown as ActiveType).id))
-		} else {
-			dispatch(
-				searchTracksThunk(formData, (user as unknown as ActiveType).id)
-			)
-		}
-	}
-
 	return (
 		<div className={styles.trackPage}>
 			<TrackSlider tracks={tracks} />
 			<SearchForm
 				fields={fields}
-				//@ts-ignore
-				buttons={buttons}
-				onSubmit={searchHandler}
+				buttons={buttons()}
+				onSubmit={e =>
+					searchHandler(e, dispatch, user as unknown as ActiveType)
+				}
 			/>
 			<TracksRow
 				title={t('TrackPage.yourWeeklyTopTracks')}

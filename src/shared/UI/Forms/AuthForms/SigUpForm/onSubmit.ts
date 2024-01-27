@@ -10,12 +10,14 @@ import {
 import { Severity } from '../../../../../entities/Notification/types'
 import { signUpThunk } from '../../../../../entities/User/thunk'
 
+import { RootState } from 'shared/Redux/store'
+
 import { validateEmail } from '../../../../utils/validateEmail'
 import { validatePassword } from '../../../../utils/validatePassword'
 
 export async function onSubmit(
 	e: FormEvent<HTMLFormElement>,
-	dispatch: ThunkDispatch<{}, undefined, UnknownAction>,
+	dispatch: ThunkDispatch<RootState, undefined, UnknownAction>,
 	navigate: NavigateFunction
 ) {
 	e.preventDefault()
