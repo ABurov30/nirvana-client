@@ -1,10 +1,15 @@
-import { useAppDispatch } from '../../../shared/Redux/hooks'
-import { logoutThunk } from '../../../entities/User/thunk'
-import styles from './AvatarButton.module.scss'
-import Avatar from '@mui/material/Avatar'
-import { AvatarProps } from './types'
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined'
 import React, { useState } from 'react'
+
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined'
+import Avatar from '@mui/material/Avatar'
+
+import { logoutThunk } from '../../../entities/User/thunk'
+
+import { AvatarProps } from './types'
+
+import { useAppDispatch } from '../../../shared/Redux/hooks'
+
+import styles from './AvatarButton.module.scss'
 
 function AvatarButton({ nickname }: AvatarProps) {
 	const dispatch = useAppDispatch()

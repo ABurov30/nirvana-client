@@ -1,10 +1,12 @@
-import styles from './EmailForm.module.scss'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 import { onSubmit } from './onSubmit'
+
 import { useAppDispatch } from '../../../../shared/Redux/hooks'
-import { useNavigate } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
+
+import styles from './EmailForm.module.scss'
 
 function EmailForm() {
 	const dispatch = useAppDispatch()

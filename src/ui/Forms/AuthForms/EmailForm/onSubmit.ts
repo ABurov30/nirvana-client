@@ -1,13 +1,16 @@
+import { FormEvent } from 'react'
+import { NavigateFunction } from 'react-router-dom'
+
+import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
+
 import {
 	setIsOpen,
 	setNotification
 } from '../../../../entities/Notification/slice'
-import { findEmailThunk } from '../../../../entities/User/thunk'
-import { validateEmail } from '../../../../shared/utils/validateEmail'
-import { NavigateFunction } from 'react-router-dom'
-import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
-import { FormEvent } from 'react'
 import { Severity } from '../../../../entities/Notification/types'
+import { findEmailThunk } from '../../../../entities/User/thunk'
+
+import { validateEmail } from '../../../../shared/utils/validateEmail'
 
 export async function onSubmit(
 	e: FormEvent<HTMLFormElement>,

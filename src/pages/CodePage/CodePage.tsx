@@ -1,9 +1,13 @@
-import styles from './CodePage.module.scss'
-import { Typography } from 'nirvana-uikit'
 import React from 'react'
-import CodeForm from '../../UI/Forms/AuthForms/CodeForm/CodeForm'
-import { useAppSelector } from '../../shared/Redux/hooks'
 import { useTranslation } from 'react-i18next'
+
+import { Typography } from 'nirvana-uikit'
+
+import { useAppSelector } from '../../shared/Redux/hooks'
+
+import CodeForm from '../../UI/Forms/AuthForms/CodeForm/CodeForm'
+
+import styles from './CodePage.module.scss'
 
 export default function CodePage(): JSX.Element {
 	const { theme } = useAppSelector(state => state.app)

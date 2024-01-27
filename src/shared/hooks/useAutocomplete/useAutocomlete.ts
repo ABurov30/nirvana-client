@@ -1,5 +1,6 @@
-import { request } from '../../Request/Requets'
 import { useEffect, useState } from 'react'
+
+import { request } from '../../Request/Requets'
 
 export function useAutocomplete(path: string) {
 	const [options, setOptions] = useState<string[]>([])

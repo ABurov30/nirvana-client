@@ -1,18 +1,22 @@
+import React, { useLayoutEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import {
 	getAllRadiosThunk,
 	searchRadioThunk
 } from '../../entities/Radios/thunk'
-import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
-import React, { useLayoutEffect, useState } from 'react'
-import styles from './RadioPage.module.scss'
-import { useAutocomplete } from '../../shared/hooks/useAutocomplete/useAutocomlete'
-import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
-import { TracksRow } from '../../UI/TracksRow/TracksRow'
-import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
-import { useTranslation } from 'react-i18next'
-import { ActiveType } from '../../entities/User/types'
 import { SearchRadioForm } from '../../entities/Radios/types'
+import { ActiveType } from '../../entities/User/types'
+
+import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
+import { useAutocomplete } from '../../shared/hooks/useAutocomplete/useAutocomlete'
 import { useGetLoaders } from '../../shared/hooks/useGetLoaders/useGetLoaders'
+
+import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
+import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
+import { TracksRow } from '../../UI/TracksRow/TracksRow'
+
+import styles from './RadioPage.module.scss'
 
 export default function RadioPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
@@ -100,8 +104,6 @@ export default function RadioPage(): JSX.Element {
 			thunk: getAllRadiosThunk,
 			user: user as unknown as ActiveType
 		})
-
-	
 
 	return (
 		<div className={styles.radioPage}>

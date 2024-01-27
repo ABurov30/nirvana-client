@@ -1,5 +1,6 @@
-import { Route, Routes } from 'react-router-dom'
 import React, { lazy } from 'react'
+import { Route, Routes } from 'react-router-dom'
+
 const CodePage = lazy(() => import('../../../pages/CodePage/CodePage'))
 const EmailPage = lazy(() => import('../../../pages/EmailPage/EmailPage'))
 const SignupPage = lazy(() => import('../../../pages/SignupPage/SignupPage'))

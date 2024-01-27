@@ -1,8 +1,11 @@
+import React from 'react'
+
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
+
 import { setIsPlayMode } from '../../entities/App/slice'
 import { setCurTracks, setPosition } from '../../entities/CurTracks/slice'
 import { Track } from '../../entities/Track/types'
-import React from 'react'
+
 import { RootState } from 'shared/Redux/store'
 
 export const turnOnPlayMode = (

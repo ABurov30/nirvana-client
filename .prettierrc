@@ -4,8 +4,24 @@
 	"singleQuote": true,
 	"tabWidth": 4,
 	"semi": false,
+	"plugins": ["@trivago/prettier-plugin-sort-imports"],
 	"trailingComma": "none",
-	"importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+	"importOrder": [
+		"react",
+		"redux",
+		"nirvana-uikit",
+		"<THIRD_PARTY_MODULES>",
+		"pages/",
+		"entities/",
+		"types",
+		"shared/",
+		"config",
+		"utils/",
+		"hooks/",
+		".svg",
+		"^../(.*)$",
+		"(?=./*.module.scss)"
+	],
 	"importOrderSeparation": true,
-	"importOrderSortSpecifiers": true
+	"importOrderParserPlugins": ["jsx", "typescript"]
 }

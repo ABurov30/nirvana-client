@@ -1,19 +1,25 @@
+import React, { memo } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import {
 	LikeRoundButton,
 	PlayBlockButton,
 	ShareRoundButton,
 	Typography
 } from 'nirvana-uikit'
+
 import { Carousel } from 'antd'
-import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
-import { useAppDispatch } from '../../shared/Redux/hooks'
-import styles from './TrackSlider.module.scss'
-import React, { memo } from 'react'
-import { TrackSliderProps } from './types'
 import { debounce } from 'lodash'
+
 import { setNotification } from '../../entities/Notification/slice'
 import { Severity } from '../../entities/Notification/types'
-import { useTranslation } from 'react-i18next'
+
+import { TrackSliderProps } from './types'
+
+import { useAppDispatch } from '../../shared/Redux/hooks'
+import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
+
+import styles from './TrackSlider.module.scss'
 
 export const TrackSlider = memo(function TrackSlider({
 	tracks

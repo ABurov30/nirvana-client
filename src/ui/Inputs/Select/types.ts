@@ -3,6 +3,7 @@ import {
 	ThunkDispatch,
 	UnknownAction
 } from '@reduxjs/toolkit'
+
 import { Theme } from '../../../entities/App/types'
 
 export interface SelectProps {

@@ -1,16 +1,20 @@
-import { RootState } from '../../shared/Redux/store'
-import { setNotification } from '../Notification/slice'
-import { request } from '../../shared/Request/Requets'
+import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
+
+import { addLikeToCurTrack, removeLikeFromCurTrack } from './slice'
+
 import { Severity } from '../Notification/types'
 import { Track, TrackType } from '../Track/types'
+
+import { RootState } from '../../shared/Redux/store'
+import { request } from '../../shared/Request/Requets'
+
 import {
 	addFavoritesRadio,
 	addFavoritesTrack,
 	removeFavoritesRadio,
 	removeFavoritesTrack
 } from '../Favorite/slice'
-import { addLikeToCurTrack, removeLikeFromCurTrack } from './slice'
-import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
+import { setNotification } from '../Notification/slice'
 
 const URL = '/favorite'
 

@@ -1,4 +1,5 @@
 import { t } from 'i18next'
+
 import { Theme } from '../../../entities/App/types'
 
 export const themesOptions = () => [

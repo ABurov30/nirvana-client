@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
+
 import { Theme } from '../../../entities/App/types'
+
 import { useAppSelector } from '../../Redux/hooks'
 
 function useTheme() {

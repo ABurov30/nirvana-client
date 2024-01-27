@@ -5,14 +5,15 @@ import {
 	UnknownAction,
 	configureStore
 } from '@reduxjs/toolkit'
-import notificationReducer from '../../entities/Notification/slice'
+
+import appReducer from '../../entities/App/slice'
 import curTracksReducer from '../../entities/CurTracks/slice'
-import radiosReducer from '../../entities/Radios/slice'
+import favoriteReducer from '../../entities/Favorite/slice'
+import notificationReducer from '../../entities/Notification/slice'
 import promoReducer from '../../entities/Promo/slice'
+import radiosReducer from '../../entities/Radios/slice'
 import trackReducer from '../../entities/Track/slice'
 import userReducer from '../../entities/User/slice'
-import appReducer from '../../entities/App/slice'
-import favoriteReducer from '../../entities/Favorite/slice'
 
 export const store = configureStore({
 	reducer: {
@@ -30,7 +31,6 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>
 
 export type AppDispatch = typeof store.dispatch
-
 
 export type TypedThunk<ReturnType = void> = ThunkAction<
 	ReturnType,

@@ -1,5 +1,5 @@
-import { EmailForm } from "../../UI/Forms/AuthForms/EmailForm/types";
+import { EmailForm } from '../../UI/Forms/AuthForms/EmailForm/types'
 
 export interface UserInfoForm extends EmailForm {
-    nickname: string;
+	nickname: string
 }

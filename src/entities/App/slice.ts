@@ -1,5 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
+
 import { AppState, Theme } from './types'
 
 const initialState: AppState = {

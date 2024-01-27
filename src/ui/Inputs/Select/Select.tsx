@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+
+import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
-import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
-import { SelectProps } from './types'
+
 import { Theme } from '../../../entities/App/types'
+
+import { SelectProps } from './types'
 
 export default function SelectInput({
 	label,
@@ -26,8 +29,8 @@ export default function SelectInput({
 				defaultValue={defaultValue}
 				onChange={e =>
 					dispatch
-					//@ts-ignore
-						? dispatch(onChange(e.target.value))
+						? //@ts-ignore
+							dispatch(onChange(e.target.value))
 						: onChange(e.target.value as Theme)
 				}
 				label={label}

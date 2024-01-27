@@ -1,3 +1,7 @@
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useLocation, useNavigate } from 'react-router-dom'
+
 import {
 	FavoritesNavbarButton,
 	NavSection,
@@ -8,11 +12,10 @@ import {
 	TrackNavbarButton,
 	Typography
 } from 'nirvana-uikit'
-import { useLocation, useNavigate } from 'react-router-dom'
-import React, { useState } from 'react'
+
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher'
+
 import styles from './Navbar.module.scss'
-import { useTranslation } from 'react-i18next'
 
 export default function Navbar() {
 	const [isHovered, setIsHovered] = useState(false)

@@ -1,3 +1,3 @@
 export interface CodeForm {
-	confirmationCode: string;
+	confirmationCode: string
 }

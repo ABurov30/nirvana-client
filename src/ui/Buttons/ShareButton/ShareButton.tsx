@@ -1,3 +1,4 @@
+import React from 'react'
 import {
 	FacebookShareButton,
 	TelegramShareButton,
@@ -5,13 +6,15 @@ import {
 	VKShareButton,
 	WhatsappShareButton
 } from 'react-share'
-import styles from './ShareButton.module.scss'
+
 import debounce from 'lodash.debounce'
-import React from 'react'
+
+import { setNotification } from '../../../entities/Notification/slice'
+import { Severity } from '../../../entities/Notification/types'
 
 import { useAppDispatch } from '../../../shared/Redux/hooks'
-import { Severity } from '../../../entities/Notification/types'
-import { setNotification } from '../../../entities/Notification/slice'
+
+import styles from './ShareButton.module.scss'
 
 function ShareButton() {
 	const URL = `${window.location.protocol}//${window.location.host}${window.location.pathname}`

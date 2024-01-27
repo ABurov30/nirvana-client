@@ -1,6 +1,8 @@
-import styles from './PromoTitle.module.scss'
-import { PromoTitleProps } from './types'
 import React from 'react'
+
+import { PromoTitleProps } from './types'
+
+import styles from './PromoTitle.module.scss'
 
 export default function PromoTitle({
 	prePhrase,

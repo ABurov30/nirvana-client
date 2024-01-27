@@ -1,14 +1,18 @@
-import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
 import React, { useEffect, useState } from 'react'
-import { getTracksThunk, searchTracksThunk } from '../../entities/Track/thunk'
-import styles from './TrackPage.module.scss'
-import { useAutocomplete } from '../../shared/hooks/useAutocomplete/useAutocomlete'
-import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
-import { TracksRow } from '../../UI/TracksRow/TracksRow'
-import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
 import { useTranslation } from 'react-i18next'
+
+import { getTracksThunk, searchTracksThunk } from '../../entities/Track/thunk'
 import { ActiveType } from '../../entities/User/types'
+
+import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
+import { useAutocomplete } from '../../shared/hooks/useAutocomplete/useAutocomlete'
 import { useGetLoaders } from '../../shared/hooks/useGetLoaders/useGetLoaders'
+
+import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
+import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
+import { TracksRow } from '../../UI/TracksRow/TracksRow'
+
+import styles from './TrackPage.module.scss'
 
 export default function TrackPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
@@ -63,7 +67,6 @@ export default function TrackPage(): JSX.Element {
 			thunk: getTracksThunk,
 			user: user as unknown as ActiveType
 		})
-
 
 	const searchHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()

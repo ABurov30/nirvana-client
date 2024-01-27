@@ -1,6 +1,8 @@
 import React from 'react'
-import { IErrorWithCode, IProps, IState } from './types'
+
 import ErrorPage from '../../../pages/ErrorPage/ErrorPage'
+
+import { IErrorWithCode, IProps, IState } from './types'
 
 export class ErrorBoundary extends React.Component<IProps, IState> {
 	constructor(props: IProps) {

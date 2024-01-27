@@ -1,4 +1,13 @@
 import React, { lazy } from 'react'
+import { Route, Routes } from 'react-router-dom'
+
+import AZLayout from 'app/layout/AZLayout/AZLayout'
+import MainLayout from 'app/layout/MainLayout/MainLayout'
+
+import { UserStatus } from 'entities/User/types'
+
+import PrivateRouter from 'shared/HOC/PrivateRouter/PrivateRouter'
+import { useCheckUser } from 'shared/hooks/useCheckUser/useCheckUser'
 
 const RadioPage = lazy(() => import('../../../pages/RadioPage/RadioPage'))
 const TrackPage = lazy(() => import('../../../pages/TrackPage/TrackPage'))
@@ -10,12 +19,6 @@ const SettingsPage = lazy(
 	() => import('../../../pages/SettingsPage/SettingsPage')
 )
 const NAZRouter = lazy(() => import('../NAZRoutes/NAZRoutes'))
-import { Route, Routes } from 'react-router-dom'
-import PrivateRouter from 'shared/HOC/PrivateRouter/PrivateRouter'
-import MainLayout from 'app/layout/MainLayout/MainLayout'
-import { useCheckUser } from 'shared/hooks/useCheckUser/useCheckUser'
-import { UserStatus } from 'entities/User/types'
-import AZLayout from 'app/layout/AZLayout/AZLayout'
 
 export default function MainRoutes() {
 	const user = useCheckUser()

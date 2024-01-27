@@ -1,7 +1,10 @@
-import { Carousel } from 'antd'
-import styles from './PromoSlider.module.scss'
-import { PromoSliderProps } from './types'
 import React from 'react'
+
+import { Carousel } from 'antd'
+
+import { PromoSliderProps } from './types'
+
+import styles from './PromoSlider.module.scss'
 
 function PromoSlider({ promos }: PromoSliderProps) {
 	return (

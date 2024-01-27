@@ -1,9 +1,13 @@
+import React, { memo } from 'react'
+
 import { Autocomplete, Stack } from '@mui/material'
 import TextField from '@mui/material/TextField'
+
 import { AutoCompleteProps } from './types'
-import React, { memo } from 'react'
-import { request } from '../../../shared/Request/Requets'
+
 import { useAppDispatch } from '../../../shared/Redux/hooks'
+import { request } from '../../../shared/Request/Requets'
+
 import { useDebounce } from './hooks/useDebounce'
 
 export const AutoComplete = memo(function AutoComplete({

@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import styles from './ErrorPage.module.scss'
-import { BlockButton, Typography } from 'nirvana-uikit'
 import { useTranslation } from 'react-i18next'
+
+import { BlockButton, Typography } from 'nirvana-uikit'
+
+import styles from './ErrorPage.module.scss'
 
 function ErrorPage() {
 	const [isHover, setIsHover] = useState(false)

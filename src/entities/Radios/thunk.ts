@@ -1,8 +1,11 @@
 import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
+
+import { setRadio } from './slice'
+
+import { SearchRadioForm } from './types'
+
 import { RootState } from '../../shared/Redux/store'
 import { request } from '../../shared/Request/Requets'
-import { setRadio } from './slice'
-import { SearchRadioForm } from './types'
 
 const URL = '/radio'
 

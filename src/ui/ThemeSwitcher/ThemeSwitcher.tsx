@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import styles from './ThemeSwitcher.module.scss'
-import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
+
 import { changeTheme } from '../../entities/App/slice'
 import { Theme } from '../../entities/App/types'
+
+import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
+
+import styles from './ThemeSwitcher.module.scss'
 
 export default function ThemeSwitcher() {
 	const { theme } = useAppSelector(state => state.app)

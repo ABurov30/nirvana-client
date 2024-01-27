@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
+import { useTranslation } from 'react-i18next'
+
 import {
 	getFavoriteRadiosThunk,
 	getFavoriteTracksThunk
 } from '../../entities/Favorite/thunk'
-import styles from './FavoritesPage.module.scss'
-import { useTranslation } from 'react-i18next'
 import { ActiveType } from 'entities/User/types'
+
+import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
 import { useGetLoaders } from 'shared/hooks/useGetLoaders/useGetLoaders'
+
 import { TracksRow } from 'UI/TracksRow/TracksRow'
 
+import styles from './FavoritesPage.module.scss'
 
 function FavoritesPage() {
 	const user = useAppSelector(state => state.user)

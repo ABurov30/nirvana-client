@@ -1,6 +1,3 @@
-import { addLikeThunk, removeLikeThunk } from '../../entities/CurTracks/thunk'
-import SkipPreviousRoundedIcon from '@mui/icons-material/SkipPreviousRounded'
-
 import React, {
 	memo,
 	useEffect,
@@ -8,20 +5,27 @@ import React, {
 	useRef,
 	useState
 } from 'react'
-import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
-import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
-import VolumeOffIcon from '@mui/icons-material/VolumeOff'
+import { useDispatch } from 'react-redux'
+
 import { Typography, PlayButton } from 'nirvana-uikit'
 
-import ShareButton from '../Buttons/ShareButton/ShareButton'
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
-import { useAppSelector } from '../../shared/Redux/hooks'
+import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'
+import SkipPreviousRoundedIcon from '@mui/icons-material/SkipPreviousRounded'
+import VolumeOffIcon from '@mui/icons-material/VolumeOff'
+import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
 import debounce from 'lodash.debounce'
-import styles from './Player.module.scss'
-import { useDispatch } from 'react-redux'
-import { formatTime } from '../../shared/utils/formatTime'
+
+import { addLikeThunk, removeLikeThunk } from '../../entities/CurTracks/thunk'
+
+import { useAppSelector } from '../../shared/Redux/hooks'
 import { downloadResource } from '../../shared/utils/downloadResource'
+import { formatTime } from '../../shared/utils/formatTime'
+
 import LikeButton from '../Buttons/LikeButton/LikeButton'
+import ShareButton from '../Buttons/ShareButton/ShareButton'
+
+import styles from './Player.module.scss'
 
 export const Player = memo(function Player() {
 	const { curTracks: tracks, position } = useAppSelector(

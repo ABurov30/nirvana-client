@@ -1,6 +1,8 @@
-import { useAppDispatch, useAppSelector } from '../../Redux/hooks'
-import { checkUserThunk } from '../../../entities/User/thunk'
 import { useLayoutEffect } from 'react'
+
+import { checkUserThunk } from '../../../entities/User/thunk'
+
+import { useAppDispatch, useAppSelector } from '../../Redux/hooks'
 
 export function useCheckUser() {
 	const dispatch = useAppDispatch()

@@ -1,13 +1,18 @@
-import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
-import LoginForm from '../../UI/Forms/AuthForms/LoginForm/LoginForm'
-import PromoSlider from '../../UI/PromoSlider/PromoSlider'
+import React, { useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
+
+import { Typography } from 'nirvana-uikit'
+
 import { getPromoThunk } from '../../entities/Promo/thunk'
 import { loginUserThunk } from '../../entities/User/thunk'
-import React, { useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+
+import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
+
+import LoginForm from '../../UI/Forms/AuthForms/LoginForm/LoginForm'
+import PromoSlider from '../../UI/PromoSlider/PromoSlider'
+
 import styles from './LoginPage.module.scss'
-import { Typography } from 'nirvana-uikit'
-import { useTranslation } from 'react-i18next'
 
 export default function LoginPage(): JSX.Element {
 	const dispatch = useAppDispatch()

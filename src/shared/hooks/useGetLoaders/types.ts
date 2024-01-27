@@ -1,6 +1,8 @@
-import { ThunkAction, ThunkDispatch, UnknownAction } from "@reduxjs/toolkit"
-import { RootState } from "../../Redux/store"
-import { ActiveType } from "../../../entities/User/types"
+import { ThunkAction, ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
+
+import { ActiveType } from '../../../entities/User/types'
+
+import { RootState } from '../../Redux/store'
 
 type ThunkResult<R> = ThunkAction<R, RootState, undefined, UnknownAction>
 

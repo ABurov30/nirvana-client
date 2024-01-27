@@ -1,11 +1,15 @@
-import { ErrorBoundary } from '../shared/HOC/ErrorBoundary/ErrorBoundary'
-import MainRoutes from './routes/MainRoutes/MainRoutes'
-import { BrowserRouter } from 'react-router-dom'
-import { store } from '../shared/Redux/store'
-import Cursor from '../UI/Cursor/Cursor'
-import { Loader } from 'nirvana-uikit'
 import React, { Suspense } from 'react'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+
+import { Loader } from 'nirvana-uikit'
+
+import MainRoutes from './routes/MainRoutes/MainRoutes'
+
+import { ErrorBoundary } from '../shared/HOC/ErrorBoundary/ErrorBoundary'
+import { store } from '../shared/Redux/store'
+
+import Cursor from '../UI/Cursor/Cursor'
 
 function App(): JSX.Element {
 	return (

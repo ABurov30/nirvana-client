@@ -1,10 +1,13 @@
-import ResetPasswordForm from 'UI/Forms/AuthForms/ResetPasswordForm/ResetPasswordForm'
-import styles from './ResetPasswordPage.module.scss'
-import { Typography } from 'nirvana-uikit'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { Typography } from 'nirvana-uikit'
+
 import { useAppSelector } from 'shared/Redux/hooks'
 
+import ResetPasswordForm from 'UI/Forms/AuthForms/ResetPasswordForm/ResetPasswordForm'
+
+import styles from './ResetPasswordPage.module.scss'
 
 export default function ResetPasswordPage(): JSX.Element {
 	const [isVisible, setIsVisible] = useState(false)

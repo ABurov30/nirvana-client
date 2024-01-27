@@ -1,8 +1,12 @@
-import styles from './SearchForm.module.scss'
-import { BlockButton } from 'nirvana-uikit'
 import React, { memo } from 'react'
+
+import { BlockButton } from 'nirvana-uikit'
+
 import { FormProps } from './type'
+
 import { AutoComplete } from '../../Inputs/AutoComplete/AutoComplete'
+
+import styles from './SearchForm.module.scss'
 
 export const SearchForm = memo(function SearchForm({
 	fields,

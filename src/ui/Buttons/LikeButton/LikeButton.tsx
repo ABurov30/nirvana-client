@@ -1,6 +1,8 @@
-import styles from './LikeButton.module.scss'
-import { LikeButtonProps } from './types'
 import React from 'react'
+
+import { LikeButtonProps } from './types'
+
+import styles from './LikeButton.module.scss'
 
 export default function LikeButton({ isLiked, onClick }: LikeButtonProps) {
 	return (

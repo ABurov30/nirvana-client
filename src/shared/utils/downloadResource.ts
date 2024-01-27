@@ -1,5 +1,6 @@
-import { request } from '../Request/Requets'
 import { forceDownload } from './forceDownload'
+
+import { request } from '../Request/Requets'
 
 export function downloadResource(url: string, filename: string) {
 	request

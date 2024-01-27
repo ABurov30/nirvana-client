@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+
 import { RadiosState } from './types'
 
 const initialState: RadiosState = {

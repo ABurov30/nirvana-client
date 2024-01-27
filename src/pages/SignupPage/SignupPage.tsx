@@ -1,10 +1,14 @@
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { Typography } from 'nirvana-uikit'
+
+import { useAppSelector } from '../../shared/Redux/hooks'
+
 import SignUpForm from '../../UI/Forms/AuthForms/SigUpForm/SignUpForm'
 import PromoTitle from '../../UI/PromoTitle/PromoTitle'
-import { useAppSelector } from '../../shared/Redux/hooks'
+
 import styles from './SignupPage.module.scss'
-import { Typography } from 'nirvana-uikit'
-import React, { useState } from 'react'
 
 export default function SignupPage(): JSX.Element {
 	const [isVisible, setIsVisible] = useState(false)

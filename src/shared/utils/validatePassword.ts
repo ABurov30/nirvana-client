@@ -1,4 +1,5 @@
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
+
 import { setIsOpen, setNotification } from '../../entities/Notification/slice'
 import { Severity } from '../../entities/Notification/types'
 

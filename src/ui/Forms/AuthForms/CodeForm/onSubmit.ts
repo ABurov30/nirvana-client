@@ -1,11 +1,13 @@
+import { NavigateFunction } from 'react-router-dom'
+
+import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
+
 import {
 	setIsOpen,
 	setNotification
 } from '../../../../entities/Notification/slice'
-import { sendCodeThunk } from '../../../../entities/User/thunk'
-import { NavigateFunction } from 'react-router-dom'
-import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 import { Severity } from '../../../../entities/Notification/types'
+import { sendCodeThunk } from '../../../../entities/User/thunk'
 
 export async function onSubmit(
 	confirmationCode: string,

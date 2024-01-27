@@ -1,6 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { CurTracks } from './types'
 import { createSlice } from '@reduxjs/toolkit'
+
+import { CurTracks } from './types'
 
 const initialState: CurTracks = {
 	curTracks: [],

@@ -1,20 +1,27 @@
 import React, { useState } from 'react'
-import styles from './SettingsPage.module.scss'
-import Avatar from '@mui/material/Avatar'
-import { TextField } from '@mui/material'
-import { BlockButton, Typography } from 'nirvana-uikit'
-import { onSubmit } from './onSubmit'
 import { useTranslation } from 'react-i18next'
+
+import { BlockButton, Typography } from 'nirvana-uikit'
+
+import { onSubmit } from './onSubmit'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-import { langsOptions } from './config/langsOptions'
-import { themesOptions } from './config/themesOptions'
-import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
-import { ActiveType } from 'entities/User/types'
-import { onSubmitNewPassword } from 'shared/utils/onSubmitNewPassword'
-import SelectInput from 'UI/Inputs/Select/Select'
+import { TextField } from '@mui/material'
+import Avatar from '@mui/material/Avatar'
+
 import { changeTheme } from 'entities/App/slice'
 import { deleteUserThunk, logoutThunk } from 'entities/User/thunk'
+import { ActiveType } from 'entities/User/types'
+
+import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
+import { onSubmitNewPassword } from 'shared/utils/onSubmitNewPassword'
+
+import { langsOptions } from './config/langsOptions'
+import { themesOptions } from './config/themesOptions'
+
 import FilesUploadForm from 'UI/Forms/FilesUploadIForm/FilesUploadIForm'
+import SelectInput from 'UI/Inputs/Select/Select'
+
+import styles from './SettingsPage.module.scss'
 
 function SettingsPage() {
 	const user = useAppSelector(state => state.user)

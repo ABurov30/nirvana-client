@@ -1,7 +1,8 @@
 import { AxiosProgressEvent, AxiosRequestConfig, AxiosResponse } from 'axios'
-import MockAdapter from 'axios-mock-adapter'
-import { IRequestParams } from './types'
 import axios from 'axios'
+import MockAdapter from 'axios-mock-adapter'
+
+import { IRequestParams } from './types'
 
 const NewInstanse = axios.create({
 	//@ts-ignore
@@ -22,8 +23,8 @@ class Request {
 			useMock,
 			responseType = 'json'
 		}: IRequestParams,
-		options: AxiosRequestConfig & { mockData?: unknown } = {}
-	): Promise<unknown> {
+		options: AxiosRequestConfig & { mockData?: AxiosResponse } = {}
+	): Promise<AxiosResponse> {
 		if (useMock) {
 			this.useMock(options.mockData)
 		}
@@ -79,7 +80,7 @@ class Request {
 		return percentCompleted
 	}
 
-	useMock(mockData?: unknown) {
+	useMock(mockData?: AxiosResponse) {
 		this.mock.reset()
 		this.mock.onAny().reply((config: AxiosRequestConfig) => {
 			const { method, url } = config

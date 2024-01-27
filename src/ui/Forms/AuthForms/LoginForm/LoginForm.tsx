@@ -1,10 +1,13 @@
-import { useNavigate } from 'react-router-dom'
-import styles from './LoginForm.module.scss'
-import VisibilityIcon from '@mui/icons-material/Visibility'
 import React, { useState } from 'react'
-import { onSubmit } from './onSubmit'
-import { useAppDispatch } from '../../../../shared/Redux/hooks'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
+
+import { onSubmit } from './onSubmit'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+
+import { useAppDispatch } from '../../../../shared/Redux/hooks'
+
+import styles from './LoginForm.module.scss'
 
 function LoginForm() {
 	const navigate = useNavigate()

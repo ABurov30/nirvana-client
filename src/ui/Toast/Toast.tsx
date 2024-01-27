@@ -1,9 +1,13 @@
-import { clearNotification, setIsOpen } from '../../entities/Notification/slice'
 import React, { useEffect } from 'react'
-import Snackbar from '@mui/material/Snackbar'
+
 import MuiAlert, { AlertColor, AlertProps } from '@mui/material/Alert'
-import { ToastProps } from './types'
 import Fade from '@mui/material/Fade'
+import Snackbar from '@mui/material/Snackbar'
+
+import { clearNotification, setIsOpen } from '../../entities/Notification/slice'
+
+import { ToastProps } from './types'
+
 import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(

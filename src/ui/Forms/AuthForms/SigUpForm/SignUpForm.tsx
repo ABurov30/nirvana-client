@@ -1,11 +1,15 @@
-import { useNavigate } from 'react-router-dom'
-import styles from './SignUpForm.module.scss'
 import React from 'react'
-import VisibilityIcon from '@mui/icons-material/Visibility'
-import { onSubmit } from './onSubmit'
-import { useAppDispatch } from '../../../../shared/Redux/hooks'
-import { SignUpFormProps } from './types'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
+
+import { onSubmit } from './onSubmit'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+
+import { SignUpFormProps } from './types'
+
+import { useAppDispatch } from '../../../../shared/Redux/hooks'
+
+import styles from './SignUpForm.module.scss'
 
 function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 	const navigate = useNavigate()
