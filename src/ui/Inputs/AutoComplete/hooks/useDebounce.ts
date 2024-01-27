@@ -1,14 +1,13 @@
-import { useEffect, useLayoutEffect } from 'react'
+import { useLayoutEffect } from 'react'
 
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 
-import { setNotification } from '../../../../entities/Notification/slice'
-import { Severity } from '../../../../entities/Notification/types'
+import { setNotification } from 'entities/Notification/slice'
+import { Severity } from 'entities/Notification/types'
 
 import { AutoCompleteProps } from '../types'
 
-import { useAppDispatch } from '../../../../shared/Redux/hooks'
-import { request } from '../../../../shared/Request/Requets'
+import { request } from 'shared/Request/Requets'
 
 export function useDebounce(
 	field: AutoCompleteProps['field'],

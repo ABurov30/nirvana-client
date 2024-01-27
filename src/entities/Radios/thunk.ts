@@ -4,8 +4,8 @@ import { setRadio } from './slice'
 
 import { SearchRadioForm } from './types'
 
-import { RootState } from '../../shared/Redux/store'
-import { request } from '../../shared/Request/Requets'
+import { RootState } from 'shared/Redux/store'
+import { request } from 'shared/Request/Requets'
 
 const URL = '/radio'
 

@@ -1,20 +1,17 @@
 import React, { useLayoutEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import {
-	getAllRadiosThunk,
-	searchRadioThunk
-} from '../../entities/Radios/thunk'
-import { SearchRadioForm } from '../../entities/Radios/types'
-import { ActiveType } from '../../entities/User/types'
+import { getAllRadiosThunk, searchRadioThunk } from 'entities/Radios/thunk'
+import { SearchRadioForm } from 'entities/Radios/types'
+import { ActiveType } from 'entities/User/types'
 
-import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
-import { useAutocomplete } from '../../shared/hooks/useAutocomplete/useAutocomlete'
-import { useGetLoaders } from '../../shared/hooks/useGetLoaders/useGetLoaders'
+import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
+import { useAutocomplete } from 'shared/hooks/useAutocomplete/useAutocomlete'
+import { useGetLoaders } from 'shared/hooks/useGetLoaders/useGetLoaders'
 
-import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
-import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
-import { TracksRow } from '../../UI/TracksRow/TracksRow'
+import { SearchForm } from 'UI/Forms/SearchForm/SearchForm'
+import { TrackSlider } from 'UI/TrackSlider/TrackSlider'
+import { TracksRow } from 'UI/TracksRow/TracksRow'
 
 import styles from './RadioPage.module.scss'
 
@@ -41,7 +38,7 @@ export default function RadioPage(): JSX.Element {
 	const fields = [
 		{
 			label: t('RadioPage.station'),
-			name: 'name',
+			name: 'radio',
 			value: stationInput,
 			onChange: setStationsInput,
 			path: `${URL}/intualSearchName`,
@@ -80,7 +77,7 @@ export default function RadioPage(): JSX.Element {
 
 		const form = e.currentTarget
 		const formData = {
-			name: form.email.value,
+			name: form.radio.value,
 			tags: form.tags.value,
 			country: form.country.value
 		}

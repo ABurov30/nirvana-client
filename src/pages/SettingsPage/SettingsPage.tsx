@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { BlockButton, Typography } from 'nirvana-uikit'
@@ -145,7 +145,7 @@ function SettingsPage() {
 					/>
 				</form>
 			</div>
-			{/* <FilesUploadForm /> */}
+			<FilesUploadForm />
 			<button
 				className={styles.redButton}
 				onClick={() => dispatch(logoutThunk())}

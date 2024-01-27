@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import {
 	FavoritesNavbarButton,
+	LogoNavbarButton,
 	NavSection,
 	Navbar as RadioNavbar,
 	RadioNavbarButton,
 	SettingsNavbarButton,
-	LogoNavbarButton,
 	TrackNavbarButton,
 	Typography
 } from 'nirvana-uikit'
 
-import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher'
+import ThemeSwitcher from 'UI/ThemeSwitcher/ThemeSwitcher'
 
 import styles from './Navbar.module.scss'
 

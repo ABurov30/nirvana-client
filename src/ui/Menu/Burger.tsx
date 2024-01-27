@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
@@ -7,7 +7,7 @@ import { BlockButton } from 'nirvana-uikit'
 import MenuIcon from '@mui/icons-material/Menu'
 import { ClickAwayListener } from '@mui/material'
 
-import { useAppSelector } from '../../shared/Redux/hooks'
+import { useAppSelector } from 'shared/Redux/hooks'
 
 import styles from './Burger.module.scss'
 

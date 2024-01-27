@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
+import { changeTheme } from 'entities/App/slice'
+import { Theme } from 'entities/App/types'
 
-import { changeTheme } from '../../entities/App/slice'
-import { Theme } from '../../entities/App/types'
-
-import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
+import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
 
 import styles from './ThemeSwitcher.module.scss'
 

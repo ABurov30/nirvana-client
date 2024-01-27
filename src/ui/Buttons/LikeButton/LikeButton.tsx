@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { LikeButtonProps } from './types'
 
 import styles from './LikeButton.module.scss'

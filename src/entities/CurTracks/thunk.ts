@@ -2,11 +2,12 @@ import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
 
 import { addLikeToCurTrack, removeLikeFromCurTrack } from './slice'
 
-import { Severity } from '../Notification/types'
-import { Track, TrackType } from '../Track/types'
+import { setNotification } from 'entities/Notification/slice'
+import { Severity } from 'entities/Notification/types'
+import { Track, TrackType } from 'entities/Track/types'
 
-import { RootState } from '../../shared/Redux/store'
-import { request } from '../../shared/Request/Requets'
+import { RootState } from 'shared/Redux/store'
+import { request } from 'shared/Request/Requets'
 
 import {
 	addFavoritesRadio,
@@ -14,7 +15,6 @@ import {
 	removeFavoritesRadio,
 	removeFavoritesTrack
 } from '../Favorite/slice'
-import { setNotification } from '../Notification/slice'
 
 const URL = '/favorite'
 

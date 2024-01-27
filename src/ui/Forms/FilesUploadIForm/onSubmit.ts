@@ -1,6 +1,6 @@
 import { UnknownAction } from '@reduxjs/toolkit'
 
-import { uploadTrackThunk } from '../../../entities/Track/thunk'
+import { uploadTrackThunk } from 'entities/Track/thunk'
 
 import { onSumbitArgs } from './types'
 

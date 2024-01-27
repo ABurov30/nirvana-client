@@ -2,19 +2,19 @@ import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
 
 import { logoutUser, setUser } from './slice'
 
-import { UserInfoForm } from '../../pages/SettingsPage/types'
+import { UserInfoForm } from 'pages/SettingsPage/types'
 
-import { CodeForm } from '../../UI/Forms/AuthForms/CodeForm/types'
-import { EmailForm } from '../../UI/Forms/AuthForms/EmailForm/types'
-import { LoginForm } from '../../UI/Forms/AuthForms/LoginForm/types'
-import { ResetPasswordForm } from '../../UI/Forms/AuthForms/ResetPasswordForm/types'
-import { SignUpForm } from '../../UI/Forms/AuthForms/SigUpForm/types'
-import { Severity } from '../Notification/types'
+import { setNotification } from 'entities/Notification/slice'
+import { Severity } from 'entities/Notification/types'
 
-import { RootState } from '../../shared/Redux/store'
-import { request } from '../../shared/Request/Requets'
+import { CodeForm } from 'UI/Forms/AuthForms/CodeForm/types'
+import { EmailForm } from 'UI/Forms/AuthForms/EmailForm/types'
+import { LoginForm } from 'UI/Forms/AuthForms/LoginForm/types'
+import { ResetPasswordForm } from 'UI/Forms/AuthForms/ResetPasswordForm/types'
+import { SignUpForm } from 'UI/Forms/AuthForms/SigUpForm/types'
 
-import { setNotification } from '../Notification/slice'
+import { RootState } from 'shared/Redux/store'
+import { request } from 'shared/Request/Requets'
 
 export const signUpThunk =
 	(

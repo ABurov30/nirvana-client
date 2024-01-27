@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { PromoTitleProps } from './types'
 
 import styles from './PromoTitle.module.scss'

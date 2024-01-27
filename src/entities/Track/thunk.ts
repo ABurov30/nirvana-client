@@ -2,13 +2,13 @@ import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
 
 import { setTracks } from './slice'
 
-import { Severity } from '../Notification/types'
+import { setNotification } from 'entities/Notification/slice'
+import { Severity } from 'entities/Notification/types'
+
 import { SearchTrackForm, UploadTrackFrom } from './types'
 
-import { RootState } from '../../shared/Redux/store'
-import { request } from '../../shared/Request/Requets'
-
-import { setNotification } from '../Notification/slice'
+import { RootState } from 'shared/Redux/store'
+import { request } from 'shared/Request/Requets'
 
 const URL = '/track'
 

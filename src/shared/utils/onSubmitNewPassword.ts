@@ -5,9 +5,9 @@ import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 
 import { validatePassword } from './validatePassword'
 
-import { setIsOpen, setNotification } from '../../entities/Notification/slice'
-import { Severity } from '../../entities/Notification/types'
-import { newPasswordThunk } from '../../entities/User/thunk'
+import { setIsOpen, setNotification } from 'entities/Notification/slice'
+import { Severity } from 'entities/Notification/types'
+import { newPasswordThunk } from 'entities/User/thunk'
 
 export async function onSubmitNewPassword(
 	e: FormEvent<HTMLFormElement>,

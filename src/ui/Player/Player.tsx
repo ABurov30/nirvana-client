@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { Typography, PlayButton } from 'nirvana-uikit'
+import { PlayButton, Typography } from 'nirvana-uikit'
 
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded'

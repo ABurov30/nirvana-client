@@ -1,6 +1,6 @@
 import { t } from 'i18next'
 
-import { Language } from '../../../entities/App/types'
+import { Language } from 'entities/App/types'
 
 export const langsOptions = () => [
 	{

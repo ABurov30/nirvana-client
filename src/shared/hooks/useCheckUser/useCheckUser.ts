@@ -1,8 +1,8 @@
 import { useLayoutEffect } from 'react'
 
-import { checkUserThunk } from '../../../entities/User/thunk'
+import { checkUserThunk } from 'entities/User/thunk'
 
-import { useAppDispatch, useAppSelector } from '../../Redux/hooks'
+import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
 
 export function useCheckUser() {
 	const dispatch = useAppDispatch()

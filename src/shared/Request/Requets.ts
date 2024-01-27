@@ -1,5 +1,8 @@
-import { AxiosProgressEvent, AxiosRequestConfig, AxiosResponse } from 'axios'
-import axios from 'axios'
+import axios, {
+	AxiosProgressEvent,
+	AxiosRequestConfig,
+	AxiosResponse
+} from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
 import { IRequestParams } from './types'

@@ -1,11 +1,10 @@
-import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Typography } from 'nirvana-uikit'
 
-import { useAppSelector } from '../../shared/Redux/hooks'
+import { useAppSelector } from 'shared/Redux/hooks'
 
-import EmailForm from '../../UI/Forms/AuthForms/EmailForm/EmailForm'
+import EmailForm from 'UI/Forms/AuthForms/EmailForm/EmailForm'
 
 import styles from './EmailPage.module.scss'
 

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import {
 	getFavoriteRadiosThunk,
 	getFavoriteTracksThunk
-} from '../../entities/Favorite/thunk'
+} from 'entities/Favorite/thunk'
 import { ActiveType } from 'entities/User/types'
 
-import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
+import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
 import { useGetLoaders } from 'shared/hooks/useGetLoaders/useGetLoaders'
 
 import { TracksRow } from 'UI/TracksRow/TracksRow'

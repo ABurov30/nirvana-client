@@ -1,6 +1,6 @@
 import { forceDownload } from './forceDownload'
 
-import { request } from '../Request/Requets'
+import { request } from 'shared/Request/Requets'
 
 export function downloadResource(url: string, filename: string) {
 	request

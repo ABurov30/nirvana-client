@@ -1,4 +1,4 @@
-import { Track, TrackType } from '../Track/types'
+import { Track } from 'entities/Track/types'
 
 export type CurTracks = {
 	curTracks: Track[]

@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined'
 import Avatar from '@mui/material/Avatar'
 
-import { logoutThunk } from '../../../entities/User/thunk'
+import { logoutThunk } from 'entities/User/thunk'
 
 import { AvatarProps } from './types'
 
-import { useAppDispatch } from '../../../shared/Redux/hooks'
+import { useAppDispatch } from 'shared/Redux/hooks'
 
 import styles from './AvatarButton.module.scss'
 

@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom'
 
 import { Typography } from 'nirvana-uikit'
 
-import { getPromoThunk } from '../../entities/Promo/thunk'
-import { loginUserThunk } from '../../entities/User/thunk'
+import { getPromoThunk } from 'entities/Promo/thunk'
+import { loginUserThunk } from 'entities/User/thunk'
 
-import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
+import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
 
-import LoginForm from '../../UI/Forms/AuthForms/LoginForm/LoginForm'
-import PromoSlider from '../../UI/PromoSlider/PromoSlider'
+import LoginForm from 'UI/Forms/AuthForms/LoginForm/LoginForm'
+import PromoSlider from 'UI/PromoSlider/PromoSlider'
 
 import styles from './LoginPage.module.scss'
 

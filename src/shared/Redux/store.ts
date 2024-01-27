@@ -1,6 +1,5 @@
 import {
 	Action,
-	AnyAction,
 	ThunkDispatch,
 	UnknownAction,
 	configureStore
@@ -36,7 +35,7 @@ export type TypedThunk<ReturnType = void> = ThunkAction<
 	ReturnType,
 	RootState,
 	unknown,
-	AnyAction
+	UnknownAction
 >
 
 export type ThunkAction<

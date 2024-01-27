@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { getTracksThunk, searchTracksThunk } from '../../entities/Track/thunk'
-import { ActiveType } from '../../entities/User/types'
+import { getTracksThunk, searchTracksThunk } from 'entities/Track/thunk'
+import { ActiveType } from 'entities/User/types'
 
-import { useAppDispatch, useAppSelector } from '../../shared/Redux/hooks'
-import { useAutocomplete } from '../../shared/hooks/useAutocomplete/useAutocomlete'
-import { useGetLoaders } from '../../shared/hooks/useGetLoaders/useGetLoaders'
+import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
+import { useAutocomplete } from 'shared/hooks/useAutocomplete/useAutocomlete'
+import { useGetLoaders } from 'shared/hooks/useGetLoaders/useGetLoaders'
 
-import { SearchForm } from '../../UI/Forms/SearchForm/SearchForm'
-import { TrackSlider } from '../../UI/TrackSlider/TrackSlider'
-import { TracksRow } from '../../UI/TracksRow/TracksRow'
+import { SearchForm } from 'UI/Forms/SearchForm/SearchForm'
+import { TrackSlider } from 'UI/TrackSlider/TrackSlider'
+import { TracksRow } from 'UI/TracksRow/TracksRow'
 
 import styles from './TrackPage.module.scss'
 

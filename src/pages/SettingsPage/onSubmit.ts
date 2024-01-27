@@ -2,12 +2,12 @@ import { FormEvent } from 'react'
 
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 
-import { setIsOpen, setNotification } from '../../entities/Notification/slice'
-import { Severity } from '../../entities/Notification/types'
-import { changeUserInfoThunk } from '../../entities/User/thunk'
-import { ActiveType } from '../../entities/User/types'
+import { setIsOpen, setNotification } from 'entities/Notification/slice'
+import { Severity } from 'entities/Notification/types'
+import { changeUserInfoThunk } from 'entities/User/thunk'
+import { ActiveType } from 'entities/User/types'
 
-import { validateEmail } from '../../shared/utils/validateEmail'
+import { validateEmail } from 'shared/utils/validateEmail'
 
 export async function onSubmit(
 	e: FormEvent<HTMLFormElement>,

@@ -2,8 +2,8 @@ import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
 
 import { setFavoriteRadios, setFavoriteTracks } from './slice'
 
-import { RootState } from '../../shared/Redux/store'
-import { request } from '../../shared/Request/Requets'
+import { RootState } from 'shared/Redux/store'
+import { request } from 'shared/Request/Requets'
 
 const URL = '/favorite'
 

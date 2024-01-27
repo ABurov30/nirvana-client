@@ -1,10 +1,10 @@
-import React from 'react'
+import { Component, ErrorInfo, ReactNode } from 'react'
 
-import ErrorPage from '../../../pages/ErrorPage/ErrorPage'
+import ErrorPage from 'pages/ErrorPage/ErrorPage'
 
-import { IErrorWithCode, IProps, IState } from './types'
+import { IProps, IState } from './types'
 
-export class ErrorBoundary extends React.Component<IProps, IState> {
+export class ErrorBoundary extends Component<IProps, IState> {
 	constructor(props: IProps) {
 		super(props)
 		this.state = { hasError: false, error: null }
@@ -14,11 +14,11 @@ export class ErrorBoundary extends React.Component<IProps, IState> {
 		return { hasError: true, error: error }
 	}
 
-	componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+	componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
 		console.error({ Error: error, ErrorInfo: errorInfo })
 	}
 
-	render(): React.ReactNode {
+	render(): ReactNode {
 		if (this.state.hasError) {
 			return <ErrorPage />
 		}

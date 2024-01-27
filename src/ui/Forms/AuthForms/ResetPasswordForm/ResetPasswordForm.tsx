@@ -6,8 +6,8 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 
 import { ResetPasswordFormProps } from './types'
 
-import { useAppDispatch } from '../../../../shared/Redux/hooks'
-import { onSubmitNewPassword } from '../../../../shared/utils/onSubmitNewPassword'
+import { useAppDispatch } from 'shared/Redux/hooks'
+import { onSubmitNewPassword } from 'shared/utils/onSubmitNewPassword'
 
 import styles from './ResetPasswordForm.module.scss'
 

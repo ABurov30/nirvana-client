@@ -1,12 +1,11 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 
-import { Autocomplete, Stack } from '@mui/material'
+import { Autocomplete } from '@mui/material'
 import TextField from '@mui/material/TextField'
 
 import { AutoCompleteProps } from './types'
 
-import { useAppDispatch } from '../../../shared/Redux/hooks'
-import { request } from '../../../shared/Request/Requets'
+import { useAppDispatch } from 'shared/Redux/hooks'
 
 import { useDebounce } from './hooks/useDebounce'
 

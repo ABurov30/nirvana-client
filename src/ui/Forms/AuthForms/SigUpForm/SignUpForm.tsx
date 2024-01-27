@@ -7,7 +7,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 
 import { SignUpFormProps } from './types'
 
-import { useAppDispatch } from '../../../../shared/Redux/hooks'
+import { useAppDispatch } from 'shared/Redux/hooks'
 
 import styles from './SignUpForm.module.scss'
 

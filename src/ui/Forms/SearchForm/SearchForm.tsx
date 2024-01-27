@@ -1,10 +1,10 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 
 import { BlockButton } from 'nirvana-uikit'
 
 import { FormProps } from './type'
 
-import { AutoComplete } from '../../Inputs/AutoComplete/AutoComplete'
+import { AutoComplete } from 'UI/Inputs/AutoComplete/AutoComplete'
 
 import styles from './SearchForm.module.scss'
 

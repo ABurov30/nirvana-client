@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { Track } from '../Track/types'
+import { Track } from 'entities/Track/types'
+
 import { FavoriteState } from './types'
 
 const initialState: FavoriteState = {

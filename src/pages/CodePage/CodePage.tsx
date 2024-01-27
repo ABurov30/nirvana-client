@@ -1,11 +1,10 @@
-import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Typography } from 'nirvana-uikit'
 
-import { useAppSelector } from '../../shared/Redux/hooks'
+import { useAppSelector } from 'shared/Redux/hooks'
 
-import CodeForm from '../../UI/Forms/AuthForms/CodeForm/CodeForm'
+import CodeForm from 'UI/Forms/AuthForms/CodeForm/CodeForm'
 
 import styles from './CodePage.module.scss'
 

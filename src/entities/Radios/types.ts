@@ -1,4 +1,4 @@
-import { Track } from '../Track/types'
+import { Track } from 'entities/Track/types'
 
 export interface RadiosState {
 	radios: Track[]

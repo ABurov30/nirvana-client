@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import {
@@ -11,13 +11,13 @@ import {
 import { Carousel } from 'antd'
 import { debounce } from 'lodash'
 
-import { setNotification } from '../../entities/Notification/slice'
-import { Severity } from '../../entities/Notification/types'
+import { setNotification } from 'entities/Notification/slice'
+import { Severity } from 'entities/Notification/types'
 
 import { TrackSliderProps } from './types'
 
-import { useAppDispatch } from '../../shared/Redux/hooks'
-import { turnOnPlayMode } from '../../shared/utils/turnOnPlayMode'
+import { useAppDispatch } from 'shared/Redux/hooks'
+import { turnOnPlayMode } from 'shared/utils/turnOnPlayMode'
 
 import styles from './TrackSlider.module.scss'
 

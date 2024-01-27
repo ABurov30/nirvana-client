@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import { lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import AZLayout from 'app/layout/AZLayout/AZLayout'

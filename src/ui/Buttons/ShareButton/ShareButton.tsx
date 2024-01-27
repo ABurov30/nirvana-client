@@ -1,4 +1,3 @@
-import React from 'react'
 import {
 	FacebookShareButton,
 	TelegramShareButton,
@@ -9,10 +8,10 @@ import {
 
 import debounce from 'lodash.debounce'
 
-import { setNotification } from '../../../entities/Notification/slice'
-import { Severity } from '../../../entities/Notification/types'
+import { setNotification } from 'entities/Notification/slice'
+import { Severity } from 'entities/Notification/types'
 
-import { useAppDispatch } from '../../../shared/Redux/hooks'
+import { useAppDispatch } from 'shared/Redux/hooks'
 
 import styles from './ShareButton.module.scss'
 

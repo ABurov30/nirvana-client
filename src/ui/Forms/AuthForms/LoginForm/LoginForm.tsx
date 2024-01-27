@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { onSubmit } from './onSubmit'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 
-import { useAppDispatch } from '../../../../shared/Redux/hooks'
+import { useAppDispatch } from 'shared/Redux/hooks'
 
 import styles from './LoginForm.module.scss'
 
