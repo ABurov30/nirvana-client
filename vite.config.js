@@ -4,6 +4,8 @@ import { defineConfig } from 'vite'
 
 import viteTsconfigPaths from 'vite-tsconfig-paths'
 
+console.log(1)
+
 export default defineConfig({
 	base: '',
 	plugins: [react(), viteTsconfigPaths()],
