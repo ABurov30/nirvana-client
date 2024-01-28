@@ -22,7 +22,7 @@
 		"i18next-browser-languagedetector": "^7.2.0",
 		"i18next-http-backend": "^2.4.2",
 		"lodash.debounce": "^4.0.8",
-		"nirvana-uikit": "^1.0.21",
+		"nirvana-uikit": "^1.0.23",
 		"react": "^18.2.0",
 		"react-animated-cursor": "^2.11.2",
 		"react-bootstrap": "^2.9.2",

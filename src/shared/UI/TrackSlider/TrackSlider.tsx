@@ -81,6 +81,7 @@ export const TrackSlider = memo(function TrackSlider({
 							decoding="async"
 							alt={track.title}
 						/>
+						<div className={styles.bg}></div>
 					</div>
 				))}
 			</Carousel>
