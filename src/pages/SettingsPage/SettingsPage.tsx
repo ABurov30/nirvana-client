@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next'
 
 import { BlockButton, Typography } from 'nirvana-uikit'
 
-import { onSubmit } from './handlers/onSubmit'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import { TextField } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
+import { onSubmit } from './handlers/onSubmit'
 
 import { changeTheme } from 'entities/App/slice'
 import { deleteUserThunk, logoutThunk } from 'entities/User/thunk'
@@ -131,8 +131,7 @@ function SettingsPage() {
 					/>
 				</form>
 			</div>
-
-			{(user as unknown as ActiveType).isAdmin && <FilesUploadForm />}
+			<FilesUploadForm />
 			<button
 				className={styles.redButton}
 				onClick={() => dispatch(logoutThunk())}
