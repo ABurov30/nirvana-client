@@ -1,24 +1,24 @@
 import axios, {
-	AxiosProgressEvent,
-	AxiosRequestConfig,
-	AxiosResponse
+	type AxiosProgressEvent,
+	type AxiosRequestConfig,
+	type AxiosResponse
 } from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
-import { IRequestParams } from './types'
+import { type IRequestParams } from './types'
 
 const NewInstanse = axios.create({
-	//@ts-ignore
+	// @ts-ignore
 	baseURL: import.meta.env.VITE_BASE_URL,
 	timeout: 1000,
 	withCredentials: true
 })
 
 class Request {
-	private controller = new AbortController()
-	private mock = new MockAdapter(axios)
+	private readonly controller = new AbortController()
+	private readonly mock = new MockAdapter(axios)
 
-	sendRequest(
+	async sendRequest(
 		{
 			method = 'get',
 			url,
@@ -42,17 +42,12 @@ class Request {
 			onDownloadProgress: this.getDowloadProgress,
 			...options
 		}
-		//@ts-ignore
-		return NewInstanse(requestOptions)
+		// @ts-ignore
+		return await NewInstanse(requestOptions)
 			.then(function (response: AxiosResponse) {
 				return response
 			})
-			.catch(error => {
-				if (error.name === 'AbortError') {
-				} else {
-					return error.response
-				}
-			})
+			.catch(error => error.response)
 	}
 
 	cancelRequest() {

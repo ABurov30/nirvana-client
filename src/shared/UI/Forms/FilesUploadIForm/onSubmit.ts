@@ -1,7 +1,7 @@
 import { uploadTrackThunk } from 'entities/Track/thunk'
-import { UploadTrackFrom } from 'entities/Track/types'
+import { type UploadTrackFrom } from 'entities/Track/types'
 
-import { onSumbitArgs } from './types'
+import { type onSumbitArgs } from './types'
 
 export function onSubmit({
 	e,
@@ -15,9 +15,9 @@ export function onSubmit({
 
 	const formData = new FormData()
 
-	formData.append('cover', img as File)
+	formData.append('cover', img!)
 
-	formData.append('track', track as File)
+	formData.append('track', track!)
 
 	formData.append('trackName', trackName)
 	formData.append('artist', artist)

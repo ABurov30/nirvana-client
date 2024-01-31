@@ -1,8 +1,8 @@
-import { FormEvent } from 'react'
+import { type FormEvent } from 'react'
 
-import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
+import { type ThunkDispatch, type UnknownAction } from '@reduxjs/toolkit'
 
-import { RootState } from 'shared/Redux/store'
+import { type RootState } from 'shared/Redux/store'
 
 export interface onSumbitArgs {
 	e: FormEvent<HTMLFormElement>

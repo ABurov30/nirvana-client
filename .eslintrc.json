@@ -14,5 +14,16 @@
 		"sourceType": "module"
 	},
 	"plugins": ["react", "prettier"],
-	"rules": {}
+	"rules": {
+		"react/react-in-jsx-scope": "off",
+		"@typescript-eslint/strict-boolean-expressions": "off",
+		"@typescript-eslint/no-misused-promises": "off",
+		"@typescript-eslint/no-floating-promises": "off",
+		"@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+		"@typescript-eslint/no-non-null-assertion": "off",
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/prefer-ts-expect-error": "off",
+		"@typescript-eslint/ban-ts-comment": "off",
+		"@typescript-eslint/unbound-method": "off"
+	}
 }

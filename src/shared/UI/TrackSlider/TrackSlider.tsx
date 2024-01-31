@@ -8,13 +8,11 @@ import {
 	Typography
 } from 'nirvana-uikit'
 
+import { shareHandler } from './handlers/shareHandler'
 import { Carousel } from 'antd'
 import { debounce } from 'lodash'
 
-import { setNotification } from 'entities/Notification/slice'
-import { Severity } from 'entities/Notification/types'
-
-import { TrackSliderProps } from './types'
+import { type TrackSliderProps } from './types'
 
 import { useAppDispatch } from 'shared/Redux/hooks'
 import { turnOnPlayMode } from 'shared/utils/turnOnPlayMode'
@@ -24,19 +22,9 @@ import styles from './TrackSlider.module.scss'
 export const TrackSlider = memo(function TrackSlider({
 	tracks
 }: TrackSliderProps) {
-	const URL = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
-	const title = 'Check out best free music streaming app. Dive in Nirvana'
 	const dispatch = useAppDispatch()
 	const { t } = useTranslation()
-	function shareHandler() {
-		navigator.clipboard.writeText(title + ' ' + URL)
-		dispatch(
-			setNotification({
-				message: 'Link copied',
-				severity: Severity.success
-			})
-		)
-	}
+
 	return (
 		<div className={styles.carousel}>
 			<Carousel fade={true} autoplay autoplaySpeed={3000}>
@@ -68,14 +56,20 @@ export const TrackSlider = memo(function TrackSlider({
 							<div className={styles.roundButtons}>
 								<LikeRoundButton />
 								<ShareRoundButton
-									onClick={debounce(shareHandler, 1000, {
-										leading: true
-									})}
+									onClick={debounce(
+										() => {
+											shareHandler(dispatch)
+										},
+										1000,
+										{
+											leading: true
+										}
+									)}
 								/>
 							</div>
 						</div>
 						<img
-							src={track.img ? track.img : '/img/gradient.png'}
+							src={track.img ? track.img : '/icons/cover.svg'}
 							className={styles.img}
 							loading="lazy"
 							decoding="async"
