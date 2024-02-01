@@ -10,7 +10,6 @@ import { type IRequestParams } from './types'
 const NewInstanse = axios.create({
 	// @ts-ignore
 	baseURL: import.meta.env.VITE_BASE_URL,
-	timeout: 1000,
 	withCredentials: true
 })
 
