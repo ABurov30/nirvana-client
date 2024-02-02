@@ -36,8 +36,6 @@ class Request {
 			url,
 			data,
 			responseType,
-			signal: this.controller.signal,
-			onUploadProgress: this.getUploadProgress,
 			onDownloadProgress: this.getDowloadProgress,
 			...options
 		}
@@ -49,25 +47,8 @@ class Request {
 			.catch(error => error.response)
 	}
 
-	cancelRequest() {
-		this.controller.abort()
-	}
-
-	getUploadProgress(progressEvent: AxiosProgressEvent) {
-		let percentCompleted = 0
-
-		if (progressEvent.total !== undefined) {
-			percentCompleted = Math.round(
-				(progressEvent.loaded * 100) / progressEvent.total
-			)
-		}
-
-		return percentCompleted
-	}
-
 	getDowloadProgress(progressEvent: AxiosProgressEvent) {
 		let percentCompleted = 0
-
 		if (progressEvent.total !== undefined) {
 			percentCompleted = Math.round(
 				(progressEvent.loaded * 100) / progressEvent.total

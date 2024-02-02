@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { onSubmit } from './onSubmit'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 
-import { SignUpFormProps } from './types'
+import { type SignUpFormProps } from './types'
 
 import { useAppDispatch } from 'shared/Redux/hooks'
 
@@ -18,7 +18,9 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 	return (
 		<form
 			className={styles.form}
-			onSubmit={e => onSubmit(e, dispatch, navigate)}
+			onSubmit={async e => {
+				await onSubmit(e, dispatch, navigate)
+			}}
 		>
 			<ul className={styles.wrapper}>
 				<div
@@ -59,7 +61,9 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 						/>
 						<div
 							className={styles.visibilityButton}
-							onClick={() => setIsVisible(!isVisible)}
+							onClick={() => {
+								setIsVisible(!isVisible)
+							}}
 						>
 							<VisibilityIcon style={{ color: '#5EE9BF' }} />
 						</div>
@@ -78,7 +82,9 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 						/>
 						<div
 							className={styles.visibilityButton}
-							onClick={() => setIsVisible(!isVisible)}
+							onClick={() => {
+								setIsVisible(!isVisible)
+							}}
 						>
 							<VisibilityIcon style={{ color: '#5EE9BF' }} />
 						</div>
@@ -98,7 +104,9 @@ function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 					<button
 						style={{ '--i': 1 } as React.CSSProperties}
 						type={'button'}
-						onClick={() => navigate('/auth/login')}
+						onClick={() => {
+							navigate('/auth/login')
+						}}
 						aria-label="Navigate to login"
 					>
 						{t('LoginPage.logIn')}

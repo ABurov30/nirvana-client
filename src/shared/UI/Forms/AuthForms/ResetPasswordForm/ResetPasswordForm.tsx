@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import VisibilityIcon from '@mui/icons-material/Visibility'
 
-import { ResetPasswordFormProps } from './types'
+import { type ResetPasswordFormProps } from './types'
 
 import { useAppDispatch } from 'shared/Redux/hooks'
 import { onSubmitNewPassword } from 'shared/utils/onSubmitNewPassword'
@@ -22,7 +22,14 @@ function ResetPasswordForm({
 	return (
 		<form
 			className={styles.form}
-			onSubmit={e => onSubmitNewPassword(e, dispatch, navigate)}
+			onSubmit={async e => {
+				await onSubmitNewPassword({
+					e,
+					dispatch,
+					navigate,
+					userId: userId as string
+				})
+			}}
 		>
 			<ul className={styles.wrapper}>
 				<div
@@ -38,7 +45,9 @@ function ResetPasswordForm({
 						/>
 						<div
 							className={styles.visibilityButton}
-							onClick={() => setIsVisible(!isVisible)}
+							onClick={() => {
+								setIsVisible(!isVisible)
+							}}
 						>
 							<VisibilityIcon style={{ color: '#5EE9BF' }} />
 						</div>
@@ -57,7 +66,9 @@ function ResetPasswordForm({
 						/>
 						<div
 							className={styles.visibilityButton}
-							onClick={() => setIsVisible(!isVisible)}
+							onClick={() => {
+								setIsVisible(!isVisible)
+							}}
 						>
 							<VisibilityIcon style={{ color: '#5EE9BF' }} />
 						</div>

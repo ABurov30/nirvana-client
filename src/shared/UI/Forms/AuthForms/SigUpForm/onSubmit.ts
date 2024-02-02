@@ -1,7 +1,7 @@
-import { FormEvent } from 'react'
-import { NavigateFunction } from 'react-router-dom'
+import { type FormEvent } from 'react'
+import { type NavigateFunction } from 'react-router-dom'
 
-import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
+import { type ThunkDispatch, type UnknownAction } from '@reduxjs/toolkit'
 
 import {
 	setIsOpen,
@@ -10,7 +10,7 @@ import {
 import { Severity } from '../../../../../entities/Notification/types'
 import { signUpThunk } from '../../../../../entities/User/thunk'
 
-import { RootState } from 'shared/Redux/store'
+import { type RootState } from 'shared/Redux/store'
 
 import { validateEmail } from '../../../../utils/validateEmail'
 import { validatePassword } from '../../../../utils/validatePassword'
@@ -24,10 +24,10 @@ export async function onSubmit(
 
 	const form = e.currentTarget
 	const formData = {
-		email: form.email.value,
-		name: form.nickname.value,
-		password: form.password.value,
-		repeatPassword: form.repeatPassword.value
+		email: form.email.value as string,
+		name: form.nickname.value as string,
+		password: form.password.value as string,
+		repeatPassword: form.repeatPassword.value as string
 	}
 	if (!formData.name) {
 		dispatch(
@@ -77,10 +77,10 @@ export async function onSubmit(
 	) {
 		return
 	}
-	const isLogged = await dispatch(
+	const isSent = await dispatch(
 		signUpThunk(formData) as unknown as UnknownAction
 	)
-	if (isLogged as unknown as boolean) {
+	if (isSent as unknown as boolean) {
 		navigate('/')
 	}
 }

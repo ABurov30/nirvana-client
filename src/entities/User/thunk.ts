@@ -1,19 +1,20 @@
-import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
+import { type ThunkAction, type UnknownAction } from '@reduxjs/toolkit'
 
 import { logoutUser, setUser } from './slice'
 
-import { UserInfoForm } from 'pages/SettingsPage/types'
+import { type UserInfoForm } from 'pages/SettingsPage/types'
 
 import { setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 
-import { CodeForm } from 'shared/UI/Forms/AuthForms/CodeForm/types'
-import { EmailForm } from 'shared/UI/Forms/AuthForms/EmailForm/types'
-import { LoginForm } from 'shared/UI/Forms/AuthForms/LoginForm/types'
-import { ResetPasswordForm } from 'shared/UI/Forms/AuthForms/ResetPasswordForm/types'
-import { SignUpForm } from 'shared/UI/Forms/AuthForms/SigUpForm/types'
+import { UserStatus } from './types'
+import { type CodeForm } from 'shared/UI/Forms/AuthForms/CodeForm/types'
+import { type EmailForm } from 'shared/UI/Forms/AuthForms/EmailForm/types'
+import { type LoginForm } from 'shared/UI/Forms/AuthForms/LoginForm/types'
+import { type ResetPasswordForm } from 'shared/UI/Forms/AuthForms/ResetPasswordForm/types'
+import { type SignUpForm } from 'shared/UI/Forms/AuthForms/SigUpForm/types'
 
-import { RootState } from 'shared/Redux/store'
+import { type RootState } from 'shared/Redux/store'
 import { request } from 'shared/Request/Requets'
 
 export const signUpThunk =
@@ -31,7 +32,7 @@ export const signUpThunk =
 			}
 		})
 		if (res.status !== 200) {
-			dispatch(setUser({ ...res?.data, status: 'guest' }))
+			dispatch(setUser({ ...res?.data, status: UserStatus.guest }))
 			dispatch(
 				setNotification({
 					message: res.data,
@@ -43,7 +44,7 @@ export const signUpThunk =
 			dispatch(setUser({ status: 'non-active' }))
 			dispatch(
 				setNotification({
-					message: res.data,
+					message: 'Email sent successfully',
 					severity: Severity.success
 				})
 			)
@@ -62,7 +63,7 @@ export const loginUserThunk =
 			data: formData
 		})
 		if (res?.status !== 200) {
-			dispatch(setUser({ ...res?.data, status: 'guest' }))
+			dispatch(setUser({ ...res?.data, status: UserStatus.guest }))
 			dispatch(
 				setNotification({
 					message: res?.data,
@@ -90,7 +91,7 @@ export const checkUserThunk =
 			})
 			.then(res => {
 				if (res?.status !== 200) {
-					dispatch(setUser({ status: 'guest' }))
+					dispatch(setUser({ status: UserStatus.guest }))
 					dispatch(
 						setNotification({
 							message: res?.data,
@@ -169,38 +170,32 @@ export const findEmailThunk =
 		formData: EmailForm
 	): ThunkAction<void, RootState, unknown, UnknownAction> =>
 	async dispatch => {
-		request
-			.sendRequest({
-				method: 'post',
-				url: '/auth/findEmail',
-				data: formData
-			})
-			.then(res => {
-				if (res?.status !== 200) {
-					dispatch(
-						setNotification({
-							message: res.data,
-							severity: Severity.error
-						})
-					)
-					return false
-				} else {
-					dispatch(
-						setNotification({
-							message: res.data,
-							severity: Severity.success
-						})
-					)
-					return true
-				}
-			})
-			.catch(e => {
-				console.error(e)
+		const res = await request.sendRequest({
+			method: 'post',
+			url: '/auth/findEmail',
+			data: formData
+		})
+
+		if (res?.status !== 200) {
+			console.log(res.data)
+			dispatch(logoutUser({}))
+			dispatch(
 				setNotification({
-					message: e.message,
+					message: res.data.message,
 					severity: Severity.error
 				})
-			})
+			)
+			return false
+		} else {
+			dispatch(
+				setNotification({
+					message:
+						'E-mail sent successfully. Check it to reset password',
+					severity: Severity.success
+				})
+			)
+			return true
+		}
 	}
 
 export const newPasswordThunk =
@@ -215,10 +210,11 @@ export const newPasswordThunk =
 		})
 
 		if (res?.status !== 200) {
-			dispatch(setUser({ ...res?.data, status: 'guest' }))
+			console.log(res.data)
+			dispatch(setUser({ ...res?.data, status: UserStatus.guest }))
 			dispatch(
 				setNotification({
-					message: res?.data,
+					message: res?.data.message,
 					severity: Severity.error
 				})
 			)

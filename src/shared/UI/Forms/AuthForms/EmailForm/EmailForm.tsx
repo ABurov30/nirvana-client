@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react'
+import { type CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
@@ -15,7 +15,9 @@ function EmailForm() {
 	return (
 		<form
 			className={styles.form}
-			onSubmit={e => onSubmit(e, dispatch, navigate)}
+			onSubmit={async e => {
+				await onSubmit(e, dispatch, navigate)
+			}}
 		>
 			<ul className={styles.wrapper}>
 				<div

@@ -1,7 +1,7 @@
-import { FormEvent } from 'react'
-import { NavigateFunction } from 'react-router-dom'
+import { type FormEvent } from 'react'
+import { type NavigateFunction } from 'react-router-dom'
 
-import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
+import { type ThunkDispatch, type UnknownAction } from '@reduxjs/toolkit'
 
 import { validatePassword } from './validatePassword'
 
@@ -9,19 +9,28 @@ import { setIsOpen, setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 import { newPasswordThunk } from 'entities/User/thunk'
 
-import { RootState } from 'shared/Redux/store'
+import { type RootState } from 'shared/Redux/store'
 
-export async function onSubmitNewPassword(
-	e: FormEvent<HTMLFormElement>,
-	dispatch: ThunkDispatch<RootState, undefined, UnknownAction>,
+type onSubmitNewPasswordArgs = {
+	e: FormEvent<HTMLFormElement>
+	dispatch: ThunkDispatch<RootState, undefined, UnknownAction>
 	navigate?: NavigateFunction
-) {
+	userId: string
+}
+
+export async function onSubmitNewPassword({
+	e,
+	dispatch,
+	navigate,
+	userId
+}: onSubmitNewPasswordArgs) {
 	e.preventDefault()
 
 	const form = e.currentTarget
 	const formData = {
-		password: form.password.value,
-		repeatPassword: form.repeatPassword.value
+		password: form.password.value as string,
+		repeatPassword: form.repeatPassword.value as string,
+		userId: userId
 	}
 	if (!formData.password) {
 		dispatch(
