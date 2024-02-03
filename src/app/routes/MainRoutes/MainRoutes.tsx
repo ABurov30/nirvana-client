@@ -4,26 +4,20 @@ import { Route, Routes } from 'react-router-dom'
 import AZLayout from 'app/layout/AZLayout/AZLayout'
 import MainLayout from 'app/layout/MainLayout/MainLayout'
 
+import FavoritesPage from 'pages/FavoritesPage/FavoritesPage'
+import RadioPage from 'pages/RadioPage/RadioPage'
+import SettingsPage from 'pages/SettingsPage/SettingsPage'
+import TrackPage from 'pages/TrackPage/TrackPage'
+
 import { UserStatus } from 'entities/User/types'
 
 import PrivateRouter from 'shared/HOC/PrivateRouter/PrivateRouter'
 import { useCheckUser } from 'shared/hooks/useCheckUser/useCheckUser'
 
-const RadioPage = lazy(
-	async () => await import('../../../pages/RadioPage/RadioPage')
-)
-const TrackPage = lazy(
-	async () => await import('../../../pages/TrackPage/TrackPage')
-)
 const Error404 = lazy(
 	async () => await import('../../../pages/Error404/Error404')
 )
-const FavoritesPage = lazy(
-	async () => await import('../../../pages/FavoritesPage/FavoritesPage')
-)
-const SettingsPage = lazy(
-	async () => await import('../../../pages/SettingsPage/SettingsPage')
-)
+
 const NAZRouter = lazy(async () => await import('../NAZRoutes/NAZRoutes'))
 
 export default function MainRoutes() {
