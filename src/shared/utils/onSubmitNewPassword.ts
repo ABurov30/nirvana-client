@@ -11,7 +11,7 @@ import { newPasswordThunk } from 'entities/User/thunk'
 
 import { type RootState } from 'shared/Redux/store'
 
-type onSubmitNewPasswordArgs = {
+interface onSubmitNewPasswordArgs {
 	e: FormEvent<HTMLFormElement>
 	dispatch: ThunkDispatch<RootState, undefined, UnknownAction>
 	navigate?: NavigateFunction
@@ -30,7 +30,7 @@ export async function onSubmitNewPassword({
 	const formData = {
 		password: form.password.value as string,
 		repeatPassword: form.repeatPassword.value as string,
-		userId: userId
+		userId
 	}
 	if (!formData.password) {
 		dispatch(

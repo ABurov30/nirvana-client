@@ -3,14 +3,14 @@ import { useTranslation } from 'react-i18next'
 
 import { BlockButton, Typography } from 'nirvana-uikit'
 
+import { onSubmit } from './handlers/onSubmit'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import { TextField } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
-import { onSubmit } from './handlers/onSubmit'
 
 import { changeTheme } from 'entities/App/slice'
 import { deleteUserThunk, logoutThunk } from 'entities/User/thunk'
-import { ActiveType } from 'entities/User/types'
+import { type ActiveType } from 'entities/User/types'
 
 import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
 import FilesUploadForm from 'shared/UI/Forms/FilesUploadIForm/FilesUploadIForm'
@@ -42,9 +42,13 @@ function SettingsPage() {
 					weight="medium"
 				/>
 				<form
-					onSubmit={e =>
-						onSubmit(e, dispatch, user as unknown as ActiveType)
-					}
+					onSubmit={async e => {
+						await onSubmit(
+							e,
+							dispatch,
+							user as unknown as ActiveType
+						)
+					}}
 				>
 					<Avatar sx={avatarStyles}>
 						{(user as unknown as ActiveType).nickname[0]}
@@ -71,7 +75,15 @@ function SettingsPage() {
 					text={t('SettingsPage.changePassword')}
 					weight="medium"
 				/>
-				<form onSubmit={e => onSubmitNewPassword(e, dispatch)}>
+				<form
+					onSubmit={async e => {
+						await onSubmitNewPassword({
+							e,
+							dispatch,
+							userId: (user as unknown as ActiveType).id
+						})
+					}}
+				>
 					<div className={styles.inputContainer}>
 						<TextField
 							label={t('SettingsPage.password')}
@@ -86,7 +98,9 @@ function SettingsPage() {
 						/>
 						<div
 							className={styles.visibilityButton}
-							onClick={() => setIsVisible(!isVisible)}
+							onClick={() => {
+								setIsVisible(!isVisible)
+							}}
 						>
 							<VisibilityIcon style={{ color: '#434544' }} />
 						</div>
@@ -105,7 +119,9 @@ function SettingsPage() {
 						/>
 						<div
 							className={styles.visibilityButton}
-							onClick={() => setIsVisible(!isVisible)}
+							onClick={() => {
+								setIsVisible(!isVisible)
+							}}
 						>
 							<VisibilityIcon style={{ color: '#434544' }} />
 						</div>
@@ -134,17 +150,19 @@ function SettingsPage() {
 			<FilesUploadForm />
 			<button
 				className={styles.redButton}
-				onClick={() => dispatch(logoutThunk())}
+				onClick={() => {
+					dispatch(logoutThunk())
+				}}
 			>
 				{t('SettingsPage.logOut')}
 			</button>
 			<button
 				className={styles.redButton}
-				onClick={() =>
+				onClick={() => {
 					dispatch(
 						deleteUserThunk((user as unknown as ActiveType).id)
 					)
-				}
+				}}
 			>
 				{t('SettingsPage.deleteAccount')}
 			</button>
