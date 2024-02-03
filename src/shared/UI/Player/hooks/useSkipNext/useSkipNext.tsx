@@ -7,10 +7,18 @@ export function useSkipNext({
 	currentTrack,
 	skipNext,
 	setCurrentTrack,
-	tracks
+	tracks,
+	setIsPlaying
 }: useSkipNextArgs) {
 	useEffect(() => {
-		if (audioElem?.current?.currentTime === currentTrack?.length)
-			skipNext({ audioElem, setCurrentTrack, tracks, currentTrack })
+		if (audioElem?.current?.currentTime === currentTrack?.length) {
+			skipNext({
+				audioElem,
+				setCurrentTrack,
+				tracks,
+				currentTrack,
+				setIsPlaying
+			})
+		}
 	}, [audioElem?.current?.currentTime])
 }

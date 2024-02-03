@@ -1,10 +1,12 @@
-import { skipPreviousArgs } from './types'
+import { skipPreviousArgs } from './types';
+
 
 export async function skipPrevious({
 	tracks,
 	currentTrack,
 	setCurrentTrack,
-	audioElem
+	audioElem,
+	setIsPlaying
 }: skipPreviousArgs) {
 	const index = tracks.findIndex(track => track.id === currentTrack.id)
 	index === 0
@@ -13,4 +15,5 @@ export async function skipPrevious({
 	audioElem.current.currentTime = 0
 	await audioElem?.current?.load()
 	audioElem?.current?.play()
+	setIsPlaying(true)
 }

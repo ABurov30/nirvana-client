@@ -4,7 +4,8 @@ export async function skipNext({
 	tracks,
 	currentTrack,
 	setCurrentTrack,
-	audioElem
+	audioElem,
+	setIsPlaying
 }: skipNextArgs) {
 	const index = tracks.findIndex(track => track.id === currentTrack.id)
 	index === tracks.length - 1
@@ -13,4 +14,5 @@ export async function skipNext({
 	audioElem.current.currentTime = 0
 	await audioElem?.current?.load()
 	audioElem?.current?.play()
+	setIsPlaying(true)
 }

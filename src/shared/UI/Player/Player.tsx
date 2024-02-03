@@ -80,10 +80,9 @@ export const Player = memo(function Player() {
 		currentTrack,
 		skipNext,
 		setCurrentTrack,
+		setIsPlaying,
 		tracks
 	})
-
-	console.log(Boolean(currentTrack.img))
 
 	return (
 		<>
@@ -134,6 +133,7 @@ export const Player = memo(function Player() {
 									tracks,
 									currentTrack,
 									setCurrentTrack,
+									setIsPlaying,
 									audioElem:
 										audioElem as MutableRefObject<HTMLAudioElement>
 								})
@@ -160,6 +160,7 @@ export const Player = memo(function Player() {
 									tracks,
 									currentTrack,
 									setCurrentTrack,
+									setIsPlaying,
 									audioElem:
 										audioElem as MutableRefObject<HTMLAudioElement>
 								})
