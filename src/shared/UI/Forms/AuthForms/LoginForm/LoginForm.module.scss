@@ -14,10 +14,17 @@ $button-border: none;
 
 .form {
 	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
 	.wrapper {
 		position: relative;
-		transform: skewY(-14deg);
+		transform: skewY(-1deg);
 		width: 100%;
+
+		input {
+			padding-left: 3%;
+		}
 
 		li,
 		button,
@@ -41,13 +48,13 @@ $button-border: none;
 			content: '';
 			background: $button-background-color-box;
 			top: 0;
-			left: -40px;
-			width: 40px;
+			left: -30px;
+			width: 20px;
 			height: 40px;
 			transform-origin: right;
-			transform: skewY(45deg);
+			transform: skewY(25deg);
 			transition: 0.3s;
-			filter: blur(15px);
+			filter: blur(25px);
 		}
 
 		li::after,
@@ -57,12 +64,13 @@ $button-border: none;
 			background: $button-background-color-box;
 			width: $input-width;
 			height: 40px;
-			top: -40px;
+			top: -30px;
 			left: 0;
+			z-index: -1;
 			transform-origin: bottom;
 			transform: skewX(45deg);
 			transition: 0.3s;
-			filter: blur(15px);
+			filter: blur(25px);
 		}
 
 		@for $i from 1 through length($li-colors) {
@@ -120,6 +128,7 @@ $button-border: none;
 	.blurred {
 		background: $button-background-color;
 		border: $button-border;
+		width: 103%;
 	}
 
 	li .input,
@@ -139,3 +148,4 @@ $button-border: none;
 		right: 10%;
 	}
 }
+
