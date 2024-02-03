@@ -9,35 +9,36 @@ import { useAppDispatch } from 'shared/Redux/hooks'
 
 import { useDebounce } from './hooks/useDebounce'
 
+import styles from './AutoComplete.module.scss'
+
 export const AutoComplete = memo(function AutoComplete({
 	field
 }: AutoCompleteProps) {
 	const dispatch = useAppDispatch()
 	useDebounce(field, dispatch)
 	return (
-		<Autocomplete
-			freeSolo
-			disableClearable
-			sx={{
-				width: '25%'
-			}}
-			options={field?.options?.map(option => option)}
-			renderInput={params => (
-				<TextField
-					{...params}
-					label={field?.label}
-					name={field?.name}
-					required={field?.required}
-					value={field?.value}
-					key={`${field?.label}${field?.name}`}
-					onChange={e => field?.onChange(e.target.value)}
-					variant="standard"
-					InputProps={{
-						...params.InputProps,
-						type: 'search'
-					}}
-				/>
-			)}
-		/>
+		<div className={`${styles.container} ${styles[field.name]}`}>
+			<Autocomplete
+				freeSolo
+				disableClearable
+				options={field?.options?.map(option => option)}
+				renderInput={params => (
+					<TextField
+						{...params}
+						label={field?.label}
+						name={field?.name}
+						required={field?.required}
+						value={field?.value}
+						key={`${field?.label}${field?.name}`}
+						onChange={e => field?.onChange(e.target.value)}
+						variant="standard"
+						InputProps={{
+							...params.InputProps,
+							type: 'search'
+						}}
+					/>
+				)}
+			/>
+		</div>
 	)
 })

@@ -40,3 +40,9 @@
 	color: $primary-white;
 	opacity: 1;
 }
+
+@media screen and (max-width: 479px) {
+	.formContainer {
+		display: none;
+	}
+}

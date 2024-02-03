@@ -50,9 +50,11 @@ function SettingsPage() {
 						)
 					}}
 				>
-					<Avatar sx={avatarStyles}>
-						{(user as unknown as ActiveType).nickname[0]}
-					</Avatar>
+					<div className={styles.avatar}>
+						<Avatar sx={avatarStyles}>
+							{(user as unknown as ActiveType).nickname[0]}
+						</Avatar>
+					</div>
 					<TextField
 						label={t('SettingsPage.nickname')}
 						variant="standard"
@@ -148,24 +150,26 @@ function SettingsPage() {
 				</form>
 			</div>
 			<FilesUploadForm />
-			<button
-				className={styles.redButton}
-				onClick={() => {
-					dispatch(logoutThunk())
-				}}
-			>
-				{t('SettingsPage.logOut')}
-			</button>
-			<button
-				className={styles.redButton}
-				onClick={() => {
-					dispatch(
-						deleteUserThunk((user as unknown as ActiveType).id)
-					)
-				}}
-			>
-				{t('SettingsPage.deleteAccount')}
-			</button>
+			<div className={styles.buttonContainer}>
+				<button
+					className={styles.redButton}
+					onClick={() => {
+						dispatch(logoutThunk())
+					}}
+				>
+					{t('SettingsPage.logOut')}
+				</button>
+				<button
+					className={styles.redButton}
+					onClick={() => {
+						dispatch(
+							deleteUserThunk((user as unknown as ActiveType).id)
+						)
+					}}
+				>
+					{t('SettingsPage.deleteAccount')}
+				</button>
+			</div>
 		</div>
 	)
 }
