@@ -1,14 +1,16 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
-import { AppState, Theme } from './types';
+import { AppState, Theme } from './types'
 
-const currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? Theme.dark : Theme.light;
+const currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+	? Theme.dark
+	: Theme.light
 
-const savedTheme = localStorage.getItem('theme') as Theme;
+const savedTheme = localStorage.getItem('theme') as Theme
 
 const initialState: AppState = {
-	theme:  savedTheme || currentTheme ||Theme.light,
+	theme: savedTheme || currentTheme || Theme.light,
 	isPlayMode: false
 }
 

@@ -9,16 +9,22 @@ import { UserStatus } from 'entities/User/types'
 import PrivateRouter from 'shared/HOC/PrivateRouter/PrivateRouter'
 import { useCheckUser } from 'shared/hooks/useCheckUser/useCheckUser'
 
-const RadioPage = lazy(() => import('../../../pages/RadioPage/RadioPage'))
-const TrackPage = lazy(() => import('../../../pages/TrackPage/TrackPage'))
-const Error404 = lazy(() => import('../../../pages/Error404/Error404'))
+const RadioPage = lazy(
+	async () => await import('../../../pages/RadioPage/RadioPage')
+)
+const TrackPage = lazy(
+	async () => await import('../../../pages/TrackPage/TrackPage')
+)
+const Error404 = lazy(
+	async () => await import('../../../pages/Error404/Error404')
+)
 const FavoritesPage = lazy(
-	() => import('../../../pages/FavoritesPage/FavoritesPage')
+	async () => await import('../../../pages/FavoritesPage/FavoritesPage')
 )
 const SettingsPage = lazy(
-	() => import('../../../pages/SettingsPage/SettingsPage')
+	async () => await import('../../../pages/SettingsPage/SettingsPage')
 )
-const NAZRouter = lazy(() => import('../NAZRoutes/NAZRoutes'))
+const NAZRouter = lazy(async () => await import('../NAZRoutes/NAZRoutes'))
 
 export default function MainRoutes() {
 	const user = useCheckUser()

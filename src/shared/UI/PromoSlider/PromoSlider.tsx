@@ -14,6 +14,7 @@ function PromoSlider({ promos }: PromoSliderProps) {
 					loading="lazy"
 					decoding="async"
 					alt="promo"
+					key={promo.id}
 				/>
 			))}
 		</Carousel>

@@ -11,7 +11,7 @@ export async function checkWidth(
 ) {
 	if (!isDragingProgress) return
 	await audioElem?.current?.pause()
-	let width = clickRef?.current?.clientWidth
+	const width = clickRef?.current?.clientWidth
 		? clickRef?.current?.clientWidth
 		: 0
 	const offset = e.nativeEvent?.offsetX

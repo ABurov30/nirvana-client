@@ -1,10 +1,12 @@
-import { ActionCreatorWithPayload, ThunkDispatch, UnknownAction } from '@reduxjs/toolkit';
+import {
+	ActionCreatorWithPayload,
+	ThunkDispatch,
+	UnknownAction
+} from '@reduxjs/toolkit'
 
+import { Theme } from '../../../../entities/App/types'
 
-
-import { Theme } from '../../../../entities/App/types';
-import { RootState } from 'shared/Redux/store';
-
+import { RootState } from 'shared/Redux/store'
 
 export interface SelectProps {
 	label: string

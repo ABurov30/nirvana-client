@@ -1,4 +1,4 @@
-import { skipPreviousArgs } from "./types"
+import { skipPreviousArgs } from './types'
 
 export async function skipPrevious({
 	tracks,

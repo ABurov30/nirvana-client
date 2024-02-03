@@ -56,7 +56,7 @@ export const addLikeThunk =
 		track: Track,
 		userId: string,
 		type: TrackType
-	): ThunkAction<void, {}, unknown, UnknownAction> =>
+	): ThunkAction<void, RootState, unknown, UnknownAction> =>
 	async dispatch => {
 		const res = await request.sendRequest({
 			method: 'post',

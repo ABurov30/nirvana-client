@@ -1,5 +1,4 @@
-import { MutableRefObject, SetStateAction } from 'react';
-
+import { MutableRefObject, SetStateAction } from 'react'
 
 export function toggleVolumeControl(
 	audioElem: MutableRefObject<HTMLAudioElement | undefined>,

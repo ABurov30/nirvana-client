@@ -8,7 +8,7 @@ export const checkVolume = (
 	setVolume: Dispatch<React.SetStateAction<number>>
 ) => {
 	if (!isDragingVolume) return
-	let width = volumeRef?.current?.clientWidth
+	const width = volumeRef?.current?.clientWidth
 		? volumeRef?.current?.clientWidth
 		: 0
 	const offset = e.nativeEvent?.offsetX

@@ -7,8 +7,8 @@ import { Severity } from 'entities/Notification/types'
 import { changeUserInfoThunk } from 'entities/User/thunk'
 import { ActiveType } from 'entities/User/types'
 
-import { validateEmail } from 'shared/utils/validateEmail'
 import { RootState } from 'shared/Redux/store'
+import { validateEmail } from 'shared/utils/validateEmail'
 
 export async function onSubmit(
 	e: FormEvent<HTMLFormElement>,

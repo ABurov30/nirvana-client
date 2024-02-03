@@ -6,7 +6,6 @@ import { PromoTitle, Typography } from 'nirvana-uikit'
 import { useAppSelector } from 'shared/Redux/hooks'
 import SignUpForm from 'shared/UI/Forms/AuthForms/SigUpForm/SignUpForm'
 
-
 import { rotatedPhrases } from './configs/rotatedPhrases'
 
 import styles from './SignupPage.module.scss'

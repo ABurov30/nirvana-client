@@ -1,4 +1,5 @@
 import { addLikeThunk, removeLikeThunk } from 'entities/CurTracks/thunk'
+
 import { likeHandlerArgs } from './types'
 
 export async function likeHandler({

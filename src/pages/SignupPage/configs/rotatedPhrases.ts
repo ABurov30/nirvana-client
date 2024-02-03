@@ -1,4 +1,4 @@
-import { t } from "i18next";
+import { t } from 'i18next'
 
 export const rotatedPhrases = [
 	t('SignupPage.emotions'),

@@ -16,7 +16,6 @@ export default function SelectInput({
 	onChange,
 	dispatch
 }: SelectProps) {
-	const [defaultValue, _] = useState(value)
 	return (
 		<FormControl variant="standard" sx={{ minWidth: 100, width: '40%' }}>
 			<InputLabel id="demo-simple-select-standard-label">
@@ -26,7 +25,7 @@ export default function SelectInput({
 				labelId="demo-simple-select-standard-label"
 				id="demo-simple-select-standard"
 				value={value}
-				defaultValue={defaultValue}
+				defaultValue={value}
 				onChange={e =>
 					dispatch
 						? //@ts-ignore

@@ -18,19 +18,9 @@ class Request {
 	private readonly mock = new MockAdapter(axios)
 
 	async sendRequest(
-		{
-			method = 'get',
-			url,
-			data,
-			useMock,
-			responseType = 'json'
-		}: IRequestParams,
+		{ method = 'get', url, data, responseType = 'json' }: IRequestParams,
 		options: AxiosRequestConfig & { mockData?: AxiosResponse } = {}
 	): Promise<AxiosResponse> {
-		if (useMock) {
-			this.useMock(options.mockData)
-		}
-
 		const requestOptions = {
 			method,
 			url,
@@ -56,22 +46,6 @@ class Request {
 		}
 
 		return percentCompleted
-	}
-
-	useMock(mockData?: AxiosResponse) {
-		this.mock.reset()
-		this.mock.onAny().reply((config: AxiosRequestConfig) => {
-			const { method, url } = config
-			const key = `${method?.toLocaleUpperCase()} ${url}`
-
-			const data = (this.mock as any)._mocked[key]
-
-			if (data) {
-				return [200, data]
-			}
-
-			return [404, {}]
-		})
 	}
 }
 

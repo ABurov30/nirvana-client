@@ -16,7 +16,7 @@ export const userSlice = createSlice({
 			return action.payload
 		},
 		// @ts-ignore
-		logoutUser: (state, action: PayloadAction<{}>) => ({
+		logoutUser: () => ({
 			status: UserStatus.guest
 		})
 	}
