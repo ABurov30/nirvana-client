@@ -71,8 +71,8 @@ body {
 }
 
 #innerCircle {
-	width: 90%;
-	height: 90%;
+	width: 95%;
+	height: 95%;
 	z-index: 1;
 	border-radius: 50%;
 	background-color: var(--primary-white);
