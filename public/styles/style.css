@@ -70,6 +70,18 @@ body {
 	background-color: var(--primary-black);
 }
 
+#innerCircle {
+	width: 90%;
+	height: 90%;
+	z-index: 1;
+	border-radius: 50%;
+	background-color: var(--primary-white);
+}
+
+.dark #innerCircle {
+	background-color: var(--primary-black);
+}
+
 @media screen and (max-width: 479px) {
 	#customCursor {
 		display: none;
