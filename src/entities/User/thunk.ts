@@ -1,6 +1,7 @@
 import { type ThunkAction, type UnknownAction } from '@reduxjs/toolkit'
 
 import { logoutUser, setUser } from './slice'
+import { t } from 'i18next'
 
 import { type UserInfoForm } from 'pages/SettingsPage/types'
 
@@ -35,7 +36,7 @@ export const signUpThunk =
 			dispatch(setUser({ ...res?.data, status: UserStatus.guest }))
 			dispatch(
 				setNotification({
-					message: res.data,
+					message: res.data.message,
 					severity: Severity.error
 				})
 			)
@@ -44,7 +45,7 @@ export const signUpThunk =
 			dispatch(setUser({ status: 'non-active' }))
 			dispatch(
 				setNotification({
-					message: 'Email sent successfully',
+					message: t('Alert.emailSentSuccessfully'),
 					severity: Severity.success
 				})
 			)
@@ -66,7 +67,7 @@ export const loginUserThunk =
 			dispatch(setUser({ ...res?.data, status: UserStatus.guest }))
 			dispatch(
 				setNotification({
-					message: res?.data,
+					message: res.data.message,
 					severity: Severity.error
 				})
 			)
@@ -75,7 +76,7 @@ export const loginUserThunk =
 			dispatch(setUser({ ...res?.data, status: 'active' }))
 			dispatch(
 				setNotification({
-					message: 'It` nice to e-meet u',
+					message: t('Alert.loginSuccessfully'),
 					severity: Severity.success
 				})
 			)
@@ -94,18 +95,12 @@ export const checkUserThunk =
 					dispatch(setUser({ status: UserStatus.guest }))
 					dispatch(
 						setNotification({
-							message: res?.data,
+							message: t('Alert.unauthorized'),
 							severity: Severity.info
 						})
 					)
 				} else {
 					dispatch(setUser({ ...res?.data, status: 'active' }))
-					dispatch(
-						setNotification({
-							message: 'Glad that u still here',
-							severity: Severity.success
-						})
-					)
 				}
 			})
 			.catch(err => {
@@ -124,7 +119,7 @@ export const logoutThunk =
 				dispatch(logoutUser({}))
 				dispatch(
 					setNotification({
-						message: 'Let`hang out at next time',
+						message: t('Alert.logoutSuccessfully'),
 						severity: Severity.success
 					})
 				)
@@ -151,7 +146,7 @@ export const deleteUserThunk =
 				dispatch(logoutUser({}))
 				dispatch(
 					setNotification({
-						message: 'I was nice time with u',
+						message: t('Alert.deleteUserSuccessfully'),
 						severity: Severity.success
 					})
 				)
@@ -189,8 +184,7 @@ export const findEmailThunk =
 		} else {
 			dispatch(
 				setNotification({
-					message:
-						'E-mail sent successfully. Check it to reset password',
+					message: t('Alert.emailSentSuccessfully'),
 					severity: Severity.success
 				})
 			)
@@ -223,7 +217,7 @@ export const newPasswordThunk =
 			dispatch(setUser({ ...res?.data, status: 'active' }))
 			dispatch(
 				setNotification({
-					message: 'Password changed successfully',
+					message: t('Alert.passwordChangedSuccessfully'),
 					severity: Severity.success
 				})
 			)
@@ -244,7 +238,7 @@ export const sendCodeThunk =
 		if (res?.status !== 200) {
 			dispatch(
 				setNotification({
-					message: res.data,
+					message: t('Alert.wrongCode'),
 					severity: Severity.error
 				})
 			)
@@ -268,13 +262,17 @@ export const changeUserInfoThunk =
 		if (res?.status !== 200) {
 			dispatch(
 				setNotification({
-					message: res.data,
+					message: res.data.message,
 					severity: Severity.error
 				})
 			)
-			return false
 		} else {
 			dispatch(setUser({ ...res?.data, status: 'active' }))
-			return true
+			dispatch(
+				setNotification({
+					message: t('Alert.userInfoChangedSuccessfully'),
+					severity: Severity.success
+				})
+			)
 		}
 	}

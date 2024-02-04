@@ -3,6 +3,8 @@ import { NavigateFunction } from 'react-router-dom'
 
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 
+import { t } from 'i18next'
+
 import { setIsOpen, setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 import { loginUserThunk } from 'entities/User/thunk'
@@ -24,7 +26,7 @@ export async function onSubmit(
 	if (!formData.email) {
 		dispatch(
 			setNotification({
-				message: 'Enter your email',
+				message: t('Alert.enterEmail'),
 				severity: Severity.info
 			})
 		)
@@ -34,7 +36,7 @@ export async function onSubmit(
 	if (!formData.password) {
 		dispatch(
 			setNotification({
-				message: 'Enter password',
+				message: t('Alert.enterPassword'),
 				severity: Severity.info
 			})
 		)

@@ -4,6 +4,7 @@ import { type NavigateFunction } from 'react-router-dom'
 import { type ThunkDispatch, type UnknownAction } from '@reduxjs/toolkit'
 
 import { validatePassword } from './validatePassword'
+import { t } from 'i18next'
 
 import { setIsOpen, setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
@@ -35,7 +36,7 @@ export async function onSubmitNewPassword({
 	if (!formData.password) {
 		dispatch(
 			setNotification({
-				message: 'Enter password',
+				message: t('Alert.enterPassword'),
 				severity: Severity.info
 			})
 		)
@@ -45,7 +46,7 @@ export async function onSubmitNewPassword({
 	if (!formData.repeatPassword) {
 		dispatch(
 			setNotification({
-				message: 'Repeat password',
+				message: t('Alert.repeatPassword'),
 				severity: Severity.info
 			})
 		)

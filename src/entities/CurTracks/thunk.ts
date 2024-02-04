@@ -1,6 +1,7 @@
 import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
 
 import { addLikeToCurTrack, removeLikeFromCurTrack } from './slice'
+import { t } from 'i18next'
 
 import { setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
@@ -33,7 +34,7 @@ export const removeLikeThunk =
 		if (res.status !== 200) {
 			dispatch(
 				setNotification({
-					message: res?.data,
+					message: t('Alert.somethingWentWrong'),
 					severity: Severity.error
 				})
 			)
@@ -44,7 +45,7 @@ export const removeLikeThunk =
 			dispatch(removeLikeFromCurTrack(trackId))
 			dispatch(
 				setNotification({
-					message: 'Like removed',
+					message: t('Alert.removedFromFavorites'),
 					severity: Severity.success
 				})
 			)
@@ -66,7 +67,7 @@ export const addLikeThunk =
 		if (res.status !== 200) {
 			dispatch(
 				setNotification({
-					message: res?.data,
+					message: t('Alert.somethingWentWrong'),
 					severity: Severity.error
 				})
 			)
@@ -77,7 +78,7 @@ export const addLikeThunk =
 			dispatch(addLikeToCurTrack(track.id))
 			dispatch(
 				setNotification({
-					message: 'Liked',
+					message: t('Alert.removedFromFavorites'),
 					severity: Severity.success
 				})
 			)

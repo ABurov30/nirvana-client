@@ -2,6 +2,8 @@ import { FormEvent } from 'react'
 
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 
+import { t } from 'i18next'
+
 import { setIsOpen, setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 import { changeUserInfoThunk } from 'entities/User/thunk'
@@ -27,7 +29,7 @@ export async function onSubmit(
 	if (!formData.email) {
 		dispatch(
 			setNotification({
-				message: 'Enter new email',
+				message: t('Alert.enterEmail'),
 				severity: Severity.info
 			})
 		)
@@ -37,7 +39,7 @@ export async function onSubmit(
 	if (!formData.nickname) {
 		dispatch(
 			setNotification({
-				message: 'Enter new nickname',
+				message: t('Alert.enterNickname'),
 				severity: Severity.info
 			})
 		)
@@ -48,7 +50,7 @@ export async function onSubmit(
 	if (formData.nickname === user.nickname && formData.email === user.email) {
 		dispatch(
 			setNotification({
-				message: 'New values and old same',
+				message: t('Alert.enterNewNicknameOrEmail'),
 				severity: Severity.error
 			})
 		)
@@ -59,17 +61,5 @@ export async function onSubmit(
 		return
 	}
 	formData.userId = user.id
-	const isChanged = await dispatch(
-		changeUserInfoThunk(formData) as unknown as UnknownAction
-	)
-	if (isChanged as unknown as boolean) {
-		dispatch(
-			setNotification({
-				message: 'Successfully changed',
-				severity: Severity.success
-			})
-		)
-		dispatch(setIsOpen(true))
-		return
-	}
+	await dispatch(changeUserInfoThunk(formData) as unknown as UnknownAction)
 }

@@ -2,6 +2,8 @@ import { NavigateFunction } from 'react-router-dom'
 
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 
+import { t } from 'i18next'
+
 import { setIsOpen, setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 import { sendCodeThunk } from 'entities/User/thunk'
@@ -16,7 +18,7 @@ export async function onSubmit(
 	if (!confirmationCode || confirmationCode.length !== 6) {
 		dispatch(
 			setNotification({
-				message: 'Enter code',
+				message: t('Alert.enterCode'),
 				severity: Severity.info
 			})
 		)
@@ -31,7 +33,7 @@ export async function onSubmit(
 		navigate(`/auth/resetPassword/${userId}`)
 		dispatch(
 			setNotification({
-				message: 'Enter new password',
+				message: t('Alert.enterNewPassword'),
 				severity: Severity.info
 			})
 		)

@@ -3,6 +3,8 @@ import { type NavigateFunction } from 'react-router-dom'
 
 import { type ThunkDispatch, type UnknownAction } from '@reduxjs/toolkit'
 
+import { t } from 'i18next'
+
 import {
 	setIsOpen,
 	setNotification
@@ -32,7 +34,7 @@ export async function onSubmit(
 	if (!formData.name) {
 		dispatch(
 			setNotification({
-				message: 'Enter your name',
+				message: t('Alert.enterNickname'),
 				severity: Severity.info
 			})
 		)
@@ -42,7 +44,7 @@ export async function onSubmit(
 	if (!formData.email) {
 		dispatch(
 			setNotification({
-				message: 'Enter your email',
+				message: t('Alert.enterEmail'),
 				severity: Severity.info
 			})
 		)
@@ -55,7 +57,7 @@ export async function onSubmit(
 	if (!formData.password) {
 		dispatch(
 			setNotification({
-				message: 'Enter password',
+				message: t('Alert.enterPassword'),
 				severity: Severity.info
 			})
 		)
@@ -65,7 +67,7 @@ export async function onSubmit(
 	if (!formData.repeatPassword) {
 		dispatch(
 			setNotification({
-				message: 'Repeat password',
+				message: t('Alert.repeatPassword'),
 				severity: Severity.info
 			})
 		)

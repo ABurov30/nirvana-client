@@ -1,5 +1,7 @@
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 
+import { t } from 'i18next'
+
 import { setIsOpen, setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 
@@ -16,8 +18,7 @@ export function validatePassword(
 	if (!regex.test(password)) {
 		dispatch(
 			setNotification({
-				message:
-					'Enter a password that is at least eight characters long and contains at least one uppercase letter, one lowercase letter, one number, and one special character:',
+				message: t('Alert.passwordValidationError'),
 				severity: Severity.error
 			})
 		)
@@ -27,7 +28,7 @@ export function validatePassword(
 	if (password !== repeatPassword) {
 		dispatch(
 			setNotification({
-				message: 'Passwords do not match, try again',
+				message: t('Alert.passwordMatchError'),
 				severity: Severity.error
 			})
 		)

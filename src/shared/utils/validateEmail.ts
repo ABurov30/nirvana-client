@@ -1,5 +1,7 @@
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 
+import { t } from 'i18next'
+
 import { setIsOpen, setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 
@@ -14,7 +16,7 @@ export function validateEmail(
 	if (!regex.test(email)) {
 		dispatch(
 			setNotification({
-				message: 'It`s not a valid email address',
+				message: t('Alert.emailValidationUnsuccessfully'),
 				severity: Severity.error
 			})
 		)

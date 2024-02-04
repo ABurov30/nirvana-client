@@ -1,6 +1,8 @@
 import { UnknownAction } from 'redux'
 import { ThunkDispatch } from 'redux-thunk'
 
+import { t } from 'i18next'
+
 import { setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
 
@@ -13,7 +15,7 @@ export function shareHandler(
 	navigator.clipboard.writeText(title + ' ' + URL)
 	dispatch(
 		setNotification({
-			message: 'Link copied',
+			message: t('Alert.linkCopied'),
 			severity: Severity.success
 		})
 	)

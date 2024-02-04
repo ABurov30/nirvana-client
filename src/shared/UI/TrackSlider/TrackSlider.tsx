@@ -54,7 +54,6 @@ export const TrackSlider = memo(function TrackSlider({
 								/>
 							</div>
 							<div className={styles.roundButtons}>
-								<LikeRoundButton />
 								<ShareRoundButton
 									onClick={debounce(
 										() => {

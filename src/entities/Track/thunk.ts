@@ -1,6 +1,7 @@
 import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
 
 import { setTracks } from './slice'
+import { t } from 'i18next'
 
 import { setNotification } from 'entities/Notification/slice'
 import { Severity } from 'entities/Notification/types'
@@ -56,14 +57,14 @@ export const uploadTrackThunk =
 					dispatch(
 						setNotification({
 							severity: Severity.error,
-							message: res?.data
+							message: t('Alert.uploadTrackError')
 						})
 					)
 				}
 				dispatch(
 					setNotification({
 						severity: Severity.success,
-						message: 'Track uploaded'
+						message: t('Alert.trackUploaded')
 					})
 				)
 			})
