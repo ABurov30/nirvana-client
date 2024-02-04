@@ -76,6 +76,7 @@ body {
 	z-index: 1;
 	border-radius: 50%;
 	background-color: var(--primary-white);
+	filter: blur(5px);
 }
 
 .dark #innerCircle {
