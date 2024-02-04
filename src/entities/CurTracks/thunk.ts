@@ -1,21 +1,25 @@
-import { ThunkAction, UnknownAction } from '@reduxjs/toolkit'
+import { ThunkAction, UnknownAction } from '@reduxjs/toolkit';
 
-import { addLikeToCurTrack, removeLikeFromCurTrack } from './slice'
-import { t } from 'i18next'
 
-import { setNotification } from 'entities/Notification/slice'
-import { Severity } from 'entities/Notification/types'
-import { Track, TrackType } from 'entities/Track/types'
 
-import { RootState } from 'shared/Redux/store'
-import { request } from 'shared/Request/Requets'
+import { addLikeToCurTrack, removeLikeFromCurTrack } from './slice';
+import { t } from 'i18next';
 
-import {
-	addFavoritesRadio,
-	addFavoritesTrack,
-	removeFavoritesRadio,
-	removeFavoritesTrack
-} from '../Favorite/slice'
+
+
+import { setNotification } from 'entities/Notification/slice';
+import { Severity } from 'entities/Notification/types';
+import { Track, TrackType } from 'entities/Track/types';
+
+
+
+import { RootState } from 'shared/Redux/store';
+import { request } from 'shared/Request/Requets';
+
+
+
+import { addFavoritesRadio, addFavoritesTrack, removeFavoritesRadio, removeFavoritesTrack } from '../Favorite/slice';
+
 
 const URL = '/favorite'
 
@@ -78,7 +82,7 @@ export const addLikeThunk =
 			dispatch(addLikeToCurTrack(track.id))
 			dispatch(
 				setNotification({
-					message: t('Alert.removedFromFavorites'),
+					message: t('Alert.addToFavorites'),
 					severity: Severity.success
 				})
 			)
