@@ -211,8 +211,10 @@
 		bottom: 0%;
 		height: 10%;
 		margin: 0;
-		width: 100%;
+		width: 95%;
 		justify-content: center;
+		margin: 0 0.5em;
+		padding: 0;
 	}
 	.playerContainer span {
 		font-size: 0.7em;
@@ -232,9 +234,6 @@
 	}
 	.downloadButton {
 		display: none;
-	}
-	.controls {
-		margin-right: 0.5em;
 	}
 	.title {
 		height: 80%;
