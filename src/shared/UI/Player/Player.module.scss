@@ -82,6 +82,7 @@
 .title {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 }
 
 .title span {
@@ -228,5 +229,14 @@
 	}
 	.track {
 		margin-left: 0;
+	}
+	.downloadButton {
+		display: none;
+	}
+	.controls {
+		margin-right: 0.5em;
+	}
+	.title {
+		height: 80%;
 	}
 }

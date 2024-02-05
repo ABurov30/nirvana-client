@@ -200,7 +200,7 @@ export const Player = memo(function Player() {
 							onClick={debounce(() => {
 								downloadHandler(currentTrack)
 							}, 1000)}
-							className={styles.controlButton}
+							className={`${styles.controlButton} ${styles.downloadButton}`}
 						>
 							<FileDownloadOutlinedIcon />
 						</button>

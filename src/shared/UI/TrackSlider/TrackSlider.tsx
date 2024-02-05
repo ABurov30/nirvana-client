@@ -1,12 +1,7 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import {
-	LikeRoundButton,
-	PlayBlockButton,
-	ShareRoundButton,
-	Typography
-} from 'nirvana-uikit'
+import { PlayBlockButton, ShareRoundButton, Typography } from 'nirvana-uikit'
 
 import { shareHandler } from './handlers/shareHandler'
 import { Carousel } from 'antd'

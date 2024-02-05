@@ -21,7 +21,7 @@ function AvatarButton({ nickname }: AvatarProps) {
 			className={styles.avatarContainer}
 			onClick={() => dispatch(logoutThunk())}
 		>
-			<Avatar sx={{ bgcolor: '#6360FF', width: '100%', height: '100%' }}>
+			<Avatar sx={{ bgcolor: 'transparent' }}>
 				{isHovered ? (
 					<LogoutOutlinedIcon sx={{ fill: '#F3F3F3' }} />
 				) : (
