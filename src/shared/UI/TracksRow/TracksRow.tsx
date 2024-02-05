@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import { useSwipeable } from 'react-swipeable'
 
 import {
 	Card,
@@ -21,8 +22,15 @@ export const TracksRow = memo(function TracksRow({
 	loadNext
 }: TracksRowProps): JSX.Element | null {
 	const dispatch = useAppDispatch()
+	const handlers = useSwipeable({
+		onSwipedLeft: () => loadNext(),
+		onSwipedRight: () => loadPrev(),
+		swipeDuration: 500,
+		preventScrollOnSwipe: true,
+		trackMouse: true
+	})
 	return (
-		<div className={style.cardsFlowContainer}>
+		<div {...handlers} className={style.cardsFlowContainer}>
 			<div className={style.header}>
 				<Typography text={title} fontSize="1em" weight="medium" />
 				<div className={style.buttonsContainer}>
