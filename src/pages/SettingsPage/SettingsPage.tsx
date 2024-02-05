@@ -36,7 +36,7 @@ function SettingsPage() {
 	}
 	return (
 		<div className={styles.container}>
-			<div className={styles.formContainer}>
+			<div className={`${styles.formContainer} ${styles.userInfo}`}>
 				<Typography
 					text={t('SettingsPage.accountInfo')}
 					weight="medium"
