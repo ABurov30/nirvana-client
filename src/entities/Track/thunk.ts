@@ -46,34 +46,24 @@ export const uploadTrackThunk =
 		formData: UploadTrackFrom
 	): ThunkAction<void, RootState, unknown, UnknownAction> =>
 	async dispatch => {
-		request
-			.sendRequest({
-				method: 'post',
-				url: `${URL}/uploadTrack`,
-				data: formData
-			})
-			.then(res => {
-				if (res?.status !== 200) {
-					dispatch(
-						setNotification({
-							severity: Severity.error,
-							message: t('Alert.uploadTrackError')
-						})
-					)
-				}
-				dispatch(
-					setNotification({
-						severity: Severity.success,
-						message: t('Alert.trackUploaded')
-					})
-				)
-			})
-			.catch(err => {
-				dispatch(
-					setNotification({
-						severity: Severity.error,
-						message: err.message
-					})
-				)
-			})
+		const res = await request.sendRequest({
+			method: 'post',
+			url: `${URL}/uploadTrack`,
+			data: formData
+		})
+		if (res?.status !== 200) {
+			dispatch(
+				setNotification({
+					severity: Severity.error,
+					message: t('Alert.uploadTrackError')
+				})
+			)
+		} else {
+			dispatch(
+				setNotification({
+					severity: Severity.success,
+					message: t('Alert.trackUploaded')
+				})
+			)
+		}
 	}

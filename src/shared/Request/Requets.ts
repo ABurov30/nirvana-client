@@ -1,4 +1,4 @@
-import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios'
+import axios, { type AxiosResponse } from 'axios'
 
 import { type IRequestParams } from './types'
 
@@ -9,16 +9,17 @@ const NewInstanse = axios.create({
 })
 
 class Request {
-	async sendRequest(
-		{ method = 'get', url, data, responseType = 'json' }: IRequestParams,
-		options: AxiosRequestConfig
-	): Promise<AxiosResponse> {
+	async sendRequest({
+		method = 'get',
+		url,
+		data,
+		responseType = 'json'
+	}: IRequestParams): Promise<AxiosResponse> {
 		const requestOptions = {
 			method,
 			url,
 			data,
-			responseType,
-			...options
+			responseType
 		}
 		//@ts-ignore
 		return await NewInstanse(requestOptions)
