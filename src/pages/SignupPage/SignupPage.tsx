@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { PromoTitle, Typography } from 'nirvana-uikit'
+import { Typography } from 'nirvana-uikit'
 
 import { useAppSelector } from 'shared/Redux/hooks'
 import SignUpForm from 'shared/UI/Forms/AuthForms/SigUpForm/SignUpForm'
-
-import { rotatedPhrases } from './configs/rotatedPhrases'
 
 import styles from './SignupPage.module.scss'
 
@@ -22,9 +20,12 @@ export default function SignupPage(): JSX.Element {
 				) : (
 					<Typography text="🙈" fontSize="200px" />
 				)}
-				<PromoTitle
-					prePhrase={t('SignupPage.prePhrase')}
-					rotatedPhrases={rotatedPhrases}
+				<Typography
+					color="#f3f3f3"
+					weight="semibold"
+					fontSize="2em"
+					textAlign="center"
+					text={t('SignupPage.phrase')}
 				/>
 			</div>
 			<div
