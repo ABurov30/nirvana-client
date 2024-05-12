@@ -4,10 +4,11 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"preview": "vite preview",
+		"preview": "vite preview --port 5173 --strictPort",
 		"build": "tsc && vite build",
 		"start": "vite",
-		"ts": "tsc"
+		"ts": "tsc",
+		"start-mf": "npm run build && npm run preview"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.11.3",
@@ -34,6 +35,7 @@
 		"vite-tsconfig-paths": "^4.2.3"
 	},
 	"devDependencies": {
+		"@originjs/vite-plugin-federation": "^1.3.5",
 		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
 		"@types/lodash.debounce": "^4.0.9",
 		"@types/react": "^18.2.45",

@@ -61,6 +61,11 @@ export default function Navbar() {
 						isActive={location.pathname === '/settings'}
 						text={t('Navbar.settings')}
 					/>
+					<SettingsNavbarButton
+						onClick={() => navigate('/messenger')}
+						isActive={location.pathname === '/messenger'}
+						text={t('Navbar.messenger')}
+					/>
 				</NavSection>
 				<NavSection>
 					<div className={styles.themeSwitcherContainer}>
