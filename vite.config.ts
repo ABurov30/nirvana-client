@@ -1,14 +1,9 @@
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react'
 
+import federation from '@originjs/vite-plugin-federation'
+import { defineConfig } from 'vite'
 
-
-import federation from '@originjs/vite-plugin-federation';
-import { defineConfig } from 'vite';
-
-
-
-import viteTsconfigPaths from 'vite-tsconfig-paths';
-
+import viteTsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
 	base: '',
@@ -19,13 +14,25 @@ export default defineConfig({
 			name: 'musicApp',
 			filename: 'remoteEntry.js',
 			exposes: {
-				'./main': './src/entry.js'
-			}
+				'./MusicApp': './src/app/App.tsx'
+			},
+			shared: [
+				'react',
+				'react-dom',
+				'react-redux',
+				'react-router-dom',
+				'nirvana-uikit'
+			]
 		})
 	],
 	server: {
 		port: 5173,
-		open: true,
 		strictPort: true
+	},
+	build: {
+		modulePreload: false,
+		target: 'esnext',
+		minify: false,
+		cssCodeSplit: false
 	}
 })

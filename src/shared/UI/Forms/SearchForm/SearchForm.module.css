@@ -1,0 +1,26 @@
+.form {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin-top: 1.5em;
+  margin-bottom: 0.7em;
+  width: 100%;
+  justify-content: center;
+  min-height: 3.5em;
+  height: 5%;
+}
+
+.form button {
+  width: 10%;
+  height: 100%;
+}
+
+@media screen and (max-width: 479px) {
+  .form button {
+    width: 20%;
+    height: 3em;
+  }
+  .form {
+    width: 95%;
+  }
+}/*# sourceMappingURL=SearchForm.module.css.map */

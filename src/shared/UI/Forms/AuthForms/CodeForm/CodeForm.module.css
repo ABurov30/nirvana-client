@@ -1,0 +1,8 @@
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  gap: 20px;
+}/*# sourceMappingURL=CodeForm.module.css.map */

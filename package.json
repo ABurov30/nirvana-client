@@ -24,7 +24,7 @@
 		"i18next-http-backend": "^2.4.2",
 		"lodash.debounce": "^4.0.8",
 		"nirvana-uikit": "^1.0.30",
-		"react": "^18.2.0",
+		"react": "18.3.1",
 		"react-animated-cursor": "^2.11.2",
 		"react-bootstrap": "^2.9.2",
 		"react-code-input": "^3.10.1",

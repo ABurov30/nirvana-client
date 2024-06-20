@@ -1,0 +1,121 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.form .wrapper {
+  position: relative;
+  transform: skewY(-1deg);
+  width: 100%;
+}
+.form .wrapper input {
+  padding-left: 3%;
+}
+.form .wrapper li,
+.form .wrapper button,
+.form .wrapper .blurred {
+  position: relative;
+  list-style: none;
+  margin-bottom: 4px;
+  z-index: var(--i);
+  transition: 0.3s;
+  border-radius: 4px;
+  color: #f3f3f3;
+}
+.form .wrapper .blurred {
+  width: 100%;
+}
+.form .wrapper li::before,
+.form .wrapper button::before {
+  position: absolute;
+  content: "";
+  background: #6360ff;
+  top: 0;
+  left: -30px;
+  width: 20px;
+  height: 40px;
+  transform-origin: right;
+  transform: skewY(25deg);
+  transition: 0.3s;
+  filter: blur(25px);
+}
+.form .wrapper li::after,
+.form .wrapper button::after {
+  position: absolute;
+  content: "";
+  background: #6360ff;
+  width: 100%;
+  height: 40px;
+  top: -30px;
+  left: 0;
+  z-index: -1;
+  transform-origin: bottom;
+  transform: skewX(45deg);
+  transition: 0.3s;
+  filter: blur(25px);
+}
+.form .wrapper li:nth-child(1)::after,
+.form .wrapper li:nth-child(1)::before,
+.form .wrapper .blurred:nth-child(1)::after,
+.form .wrapper .blurred:nth-child(1)::before {
+  background-color: #5ee9bf;
+}
+.form .wrapper li:nth-child(1) .input {
+  background: #f3f3f3;
+}
+.form .wrapper li:nth-child(1) .input:focus {
+  outline: none;
+  border: 3.5px solid #5ee9bf;
+}
+.form .wrapper li:hover,
+.form .wrapper button:hover,
+.form .wrapper .blurred:hover {
+  transform: translateX(-20px);
+}
+.form .wrapper button:hover,
+.form .wrapper button:hover::before,
+.form .wrapper button:hover::after,
+.form .wrapper .blurred:hover,
+.form .wrapper .blurred:hover::before,
+.form .wrapper .blurred:hover::after {
+  background: #6360ff;
+}
+.form .wrapper button:active,
+.form .wrapper .blurred:active {
+  transform: translateX(0px);
+}
+.form .input,
+.form button,
+.form .blurred {
+  width: 100%;
+  height: 80px;
+  position: relative;
+  padding: 0px;
+  border: none;
+}
+.form button,
+.form .blurred {
+  background: #6360ff;
+  border: none;
+  width: 103%;
+}
+.form li .input,
+.form .blurred {
+  outline: none;
+  border: none;
+  color: #2a2630;
+  border-radius: 4px;
+}
+.form li .input::-moz-placeholder, .form .blurred::-moz-placeholder {
+  color: #2a2630;
+}
+.form li .input::placeholder,
+.form .blurred::placeholder {
+  color: #2a2630;
+}
+.form .visibilityButton {
+  position: absolute;
+  top: 40%;
+  right: 10%;
+}/*# sourceMappingURL=LoginForm.module.css.map */

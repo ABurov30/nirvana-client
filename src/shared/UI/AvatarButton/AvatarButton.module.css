@@ -1,0 +1,20 @@
+.avatarContainer {
+  position: fixed;
+  top: 2vh;
+  right: 2vh;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4em;
+  height: 4em;
+  background-color: transparent;
+  background-color: #6360ff;
+  transition: all 0.5s ease-out;
+  z-index: 2;
+}
+
+.avatarContainer:hover {
+  transform: scale(1.1);
+}/*# sourceMappingURL=AvatarButton.module.css.map */

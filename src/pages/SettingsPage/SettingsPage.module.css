@@ -1,0 +1,115 @@
+.container {
+  width: 90%;
+  height: 100%;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin: 20px;
+  gap: 20px;
+  background-color: transparent;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar {
+  display: none;
+}
+
+.container span {
+  text-transform: uppercase;
+}
+
+.container button span {
+  text-transform: none;
+}
+
+.formContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.formContainer form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  border: solid 1px #434544;
+  padding: 1em;
+  border-radius: 4px;
+}
+
+.accountFormContainer form {
+  display: flex;
+  align-items: center;
+}
+
+.redButton {
+  width: 10%;
+  min-height: 3em;
+  border: none;
+  background-color: transparent;
+  color: #bb0310;
+  text-align: center;
+  border: solid 1px #bb0310;
+  border-radius: 4px;
+  transition: ease-in-out;
+}
+
+.redButton:hover {
+  background-color: #bb0310;
+  color: #f3f3f3;
+  box-shadow: 0 0 5px #bb0310, 0 0 25px #bb0310, 0 0 50px #bb0310;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+
+.visibilityButton {
+  width: 2%;
+  height: 100%;
+}
+
+@media screen and (max-width: 479px) {
+  .formContainer {
+    padding: 0;
+    width: 90%;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  .formContainer form {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .formContainer div {
+    width: 100% !important;
+  }
+  .formContainer .visibilityButton {
+    width: 10% !important;
+  }
+  .buttonContainer {
+    display: none;
+  }
+  .userInfo {
+    display: none;
+  }
+  .container {
+    margin-top: 20%;
+    margin-bottom: 10%;
+    height: 100vh;
+    overflow-y: scroll;
+    gap: 5px;
+  }
+}/*# sourceMappingURL=SettingsPage.module.css.map */

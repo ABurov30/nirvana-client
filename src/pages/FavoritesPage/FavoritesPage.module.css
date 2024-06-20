@@ -1,0 +1,15 @@
+.favoritesPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 479px) {
+  .favoritesPage {
+    margin-top: 5em;
+    margin-left: 3em;
+  }
+}/*# sourceMappingURL=FavoritesPage.module.css.map */
