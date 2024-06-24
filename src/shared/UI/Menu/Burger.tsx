@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 import { BlockButton } from 'nirvana-uikit'
@@ -10,10 +9,11 @@ import { ClickAwayListener } from '@mui/material'
 import { useAppSelector } from 'shared/Redux/hooks'
 
 import styles from './Burger.module.scss'
+import { t } from 'i18next'
 
 export default function Burger() {
 	const [isCollapse, setIsCollapse] = useState(false)
-	const { t } = useTranslation()
+
 	const navigate = useNavigate()
 	const { theme } = useAppSelector(state => state.app)
 	return (

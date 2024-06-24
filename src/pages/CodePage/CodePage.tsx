@@ -1,15 +1,14 @@
-import { useTranslation } from 'react-i18next'
-
 import { Typography } from 'nirvana-uikit'
 
 import { useAppSelector } from 'shared/Redux/hooks'
 import CodeForm from 'shared/UI/Forms/AuthForms/CodeForm/CodeForm'
 
 import styles from './CodePage.module.scss'
+import { t } from 'i18next'
 
 export default function CodePage(): JSX.Element {
 	const { theme } = useAppSelector(state => state.app)
-	const { t } = useTranslation()
+
 	return (
 		<div className={styles.container}>
 			<div

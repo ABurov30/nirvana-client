@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+
 
 import {
 	getFavoriteRadiosThunk,
@@ -12,11 +12,12 @@ import { TracksRow } from 'shared/UI/TracksRow/TracksRow'
 import { useGetLoaders } from 'shared/hooks/useGetLoaders/useGetLoaders'
 
 import styles from './FavoritesPage.module.scss'
+import { t } from 'i18next'
 
 function FavoritesPage() {
 	const user = useAppSelector(state => state.user)
 
-	const { t } = useTranslation()
+
 	useEffect(() => {
 		dispatch(getFavoriteTracksThunk(0, (user as unknown as ActiveType).id))
 		dispatch(getFavoriteRadiosThunk(0, (user as unknown as ActiveType).id))

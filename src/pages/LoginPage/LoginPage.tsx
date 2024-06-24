@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
+
 import { useNavigate } from 'react-router-dom'
 
 import { Typography } from 'nirvana-uikit'
@@ -11,13 +11,14 @@ import LoginForm from 'shared/UI/Forms/AuthForms/LoginForm/LoginForm'
 import PromoSlider from 'shared/UI/PromoSlider/PromoSlider'
 
 import styles from './LoginPage.module.scss'
+import { t } from 'i18next'
 
 export default function LoginPage(): JSX.Element {
 	const dispatch = useAppDispatch()
 	const { promo } = useAppSelector(state => state.promo)
 	const navigate = useNavigate()
 
-	const { t } = useTranslation()
+	
 
 	useEffect(() => {
 		dispatch(getPromoThunk())

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { Typography } from 'nirvana-uikit'
 
@@ -7,10 +6,11 @@ import { useAppSelector } from 'shared/Redux/hooks'
 import ResetPasswordForm from 'shared/UI/Forms/AuthForms/ResetPasswordForm/ResetPasswordForm'
 
 import styles from './ResetPasswordPage.module.scss'
+import { t } from 'i18next'
 
 export default function ResetPasswordPage(): JSX.Element {
 	const [isVisible, setIsVisible] = useState(false)
-	const { t } = useTranslation()
+
 	const { theme } = useAppSelector(state => state.app)
 	return (
 		<div className={styles.container}>

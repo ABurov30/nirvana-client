@@ -1,5 +1,4 @@
 import { memo } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { PlayBlockButton, ShareRoundButton, Typography } from 'nirvana-uikit'
 
@@ -13,12 +12,12 @@ import { useAppDispatch } from 'shared/Redux/hooks'
 import { turnOnPlayMode } from 'shared/utils/turnOnPlayMode'
 
 import styles from './TrackSlider.module.scss'
+import { t } from 'i18next'
 
 export const TrackSlider = memo(function TrackSlider({
 	tracks
 }: TrackSliderProps) {
 	const dispatch = useAppDispatch()
-	const { t } = useTranslation()
 
 	return (
 		<div className={styles.carousel}>

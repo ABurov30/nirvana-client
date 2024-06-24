@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { BlockButton, Typography } from 'nirvana-uikit'
 
 import styles from './ErrorPage.module.scss'
+import { t } from 'i18next'
 
 function ErrorPage() {
 	const [isHover, setIsHover] = useState(false)
-	const { t } = useTranslation()
+
 	return (
 		<div className={styles.errorPage}>
 			<div className={styles.textContainer}>

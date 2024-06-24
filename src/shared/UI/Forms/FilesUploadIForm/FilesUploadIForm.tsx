@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { BlockButton, Typography } from 'nirvana-uikit'
 
@@ -10,6 +9,7 @@ import { AutoComplete } from 'shared/UI/Inputs/AutoComplete/AutoComplete'
 import { useAutocomplete } from 'shared/hooks/useAutocomplete/useAutocomlete'
 
 import styles from './FilesUploadForm.module.scss'
+import { t } from 'i18next'
 
 export default function FilesUploadForm() {
 	const [track, setTrack] = useState<File>()
@@ -25,7 +25,7 @@ export default function FilesUploadForm() {
 	)
 	const [artistsInput, setArtistsInput] = useState('')
 
-	const { t } = useTranslation()
+
 
 	const trackTitleField = {
 		label: t('Shared.track'),

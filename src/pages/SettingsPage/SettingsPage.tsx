@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { BlockButton, Typography } from 'nirvana-uikit'
 
@@ -22,17 +21,18 @@ import { langsOptions } from './config/langsOptions'
 import { themesOptions } from './config/themesOptions'
 
 import styles from './SettingsPage.module.scss'
+import i18next, { t } from 'i18next'
 
 function SettingsPage() {
 	const user = useAppSelector(state => state.user)
 	const { theme } = useAppSelector(state => state.app)
 	const dispatch = useAppDispatch()
-	const { t, i18n } = useTranslation()
-	const [lang, setLang] = useState(i18n.language)
+
+	const [lang, setLang] = useState(i18next.language)
 	const [isVisible, setIsVisible] = useState(false)
 	function changeLanguage(lang: string) {
-		i18n.changeLanguage(lang)
-		setLang(i18n.language)
+		i18next.changeLanguage(lang)
+		setLang(i18next.language)
 	}
 	return (
 		<div className={styles.container}>

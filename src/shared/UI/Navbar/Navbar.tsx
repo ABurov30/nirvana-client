@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import {
@@ -21,10 +20,11 @@ import { ActiveType } from 'entities/User/types'
 import { useAppDispatch, useAppSelector } from 'shared/Redux/hooks'
 
 import styles from './Navbar.module.scss'
+import { t } from 'i18next'
 
 export default function Navbar() {
 	const [isHovered, setIsHovered] = useState(false)
-	const { t } = useTranslation()
+
 	const navigate = useNavigate()
 	const location = useLocation()
 	const dispatch = useAppDispatch()

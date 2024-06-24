@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { searchHandler } from './handlers/searchHandler'
 
@@ -16,6 +15,7 @@ import { useGetLoaders } from 'shared/hooks/useGetLoaders/useGetLoaders'
 import { buttons } from './configs/buttons'
 
 import styles from './TrackPage.module.scss'
+import { t } from 'i18next'
 
 export default function TrackPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
@@ -31,7 +31,6 @@ export default function TrackPage(): JSX.Element {
 	const { options: artists, setOptions: setArtists } =
 		useAutocomplete('/track/uniqArtists')
 	const [artistsInput, setArtistsInput] = useState('')
-	const { t } = useTranslation()
 
 	const URL = '/track'
 	const fields = [

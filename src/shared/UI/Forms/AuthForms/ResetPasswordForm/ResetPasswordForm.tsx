@@ -1,5 +1,4 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import VisibilityIcon from '@mui/icons-material/Visibility'
@@ -10,6 +9,7 @@ import { useAppDispatch } from 'shared/Redux/hooks'
 import { onSubmitNewPassword } from 'shared/utils/onSubmitNewPassword'
 
 import styles from './ResetPasswordForm.module.scss'
+import { t } from 'i18next'
 
 function ResetPasswordForm({
 	isVisible,
@@ -18,7 +18,7 @@ function ResetPasswordForm({
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const { userId } = useParams()
-	const { t } = useTranslation()
+
 	return (
 		<form
 			className={styles.form}

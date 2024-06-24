@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 import { onSubmit } from './onSubmit'
@@ -8,11 +7,12 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import { useAppDispatch } from 'shared/Redux/hooks'
 
 import styles from './LoginForm.module.scss'
+import { t } from 'i18next'
 
 function LoginForm() {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
-	const { t } = useTranslation()
+
 	const [isVisible, setIsVisible] = useState(false)
 	return (
 		<form

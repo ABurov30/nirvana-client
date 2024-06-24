@@ -1,5 +1,4 @@
 import { useLayoutEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 
 import { searchHandler } from './handlers/searchHandler'
@@ -17,6 +16,7 @@ import { useGetLoaders } from 'shared/hooks/useGetLoaders/useGetLoaders'
 import { buttons } from './configs/buttons'
 
 import styles from './RadioPage.module.scss'
+import { t } from 'i18next'
 
 export default function RadioPage(): JSX.Element {
 	const user = useAppSelector(state => state.user)
@@ -32,7 +32,6 @@ export default function RadioPage(): JSX.Element {
 	const { options: stations, setOptions: setStations } =
 		useAutocomplete(`/radio/uniqNames`)
 	const [stationInput, setStationsInput] = useState('')
-	const { t } = useTranslation()
 
 	useLayoutEffect(() => {
 		dispatch(getAllRadiosThunk(0, (user as unknown as ActiveType).id))

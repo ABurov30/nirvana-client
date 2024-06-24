@@ -1,5 +1,4 @@
 import { type CSSProperties } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 import { onSubmit } from './onSubmit'
@@ -7,11 +6,12 @@ import { onSubmit } from './onSubmit'
 import { useAppDispatch } from 'shared/Redux/hooks'
 
 import styles from './EmailForm.module.scss'
+import { t } from 'i18next'
 
 function EmailForm() {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
-	const { t } = useTranslation()
+
 	return (
 		<form
 			className={styles.form}

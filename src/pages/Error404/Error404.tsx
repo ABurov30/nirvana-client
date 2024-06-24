@@ -1,13 +1,13 @@
-import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 import { BlockButton, Typography } from 'nirvana-uikit'
 
 import styles from './Error404.module.scss'
+import { t } from 'i18next'
 
 export default function Error404() {
 	const navigate = useNavigate()
-	const { t } = useTranslation()
+
 	return (
 		<div className={styles.error404}>
 			<div className={styles.textContainer}>

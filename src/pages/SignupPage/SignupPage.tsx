@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { Typography } from 'nirvana-uikit'
 
@@ -7,11 +6,12 @@ import { useAppSelector } from 'shared/Redux/hooks'
 import SignUpForm from 'shared/UI/Forms/AuthForms/SigUpForm/SignUpForm'
 
 import styles from './SignupPage.module.scss'
+import { t } from 'i18next'
 
 export default function SignupPage(): JSX.Element {
 	const [isVisible, setIsVisible] = useState(false)
 	const { theme } = useAppSelector(state => state.app)
-	const { t } = useTranslation()
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.promoContainer}>

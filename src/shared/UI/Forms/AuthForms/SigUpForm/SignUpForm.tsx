@@ -1,5 +1,4 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 import { onSubmit } from './onSubmit'
@@ -10,11 +9,12 @@ import { type SignUpFormProps } from './types'
 import { useAppDispatch } from 'shared/Redux/hooks'
 
 import styles from './SignUpForm.module.scss'
+import { t } from 'i18next'
 
 function SignUpForm({ isVisible, setIsVisible }: SignUpFormProps) {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
-	const { t } = useTranslation()
+
 	return (
 		<form
 			className={styles.form}
