@@ -1,0 +1,12 @@
+services:
+  app:
+    image: node:22-alpine
+    volumes:
+      - .:/app/
+    working_dir: /app
+    command:
+      - npm
+      - run
+      - start
+    ports:
+      - 5173:5173
