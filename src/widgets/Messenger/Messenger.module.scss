@@ -1,10 +1,52 @@
+@import '../../shared/constants/colors.scss';
+
 .messenger {
 	z-index: 999;
 	position: absolute;
-	bottom: 0;
-	right: 0;
-	width: 50%;
-	height: 50%;
-    border-radius: 14px;
-    overflow: hidden;
+	bottom: 5px;
+	right: 5px;
+	width: 75%;
+	height: 75%;
+	border-radius: 14px;
+	overflow: hidden;
+}
+
+.shadow {
+	z-index: 998;
+	width: 100vw;
+	height: 100vh;
+	background-color: $primary-black;
+	opacity: 0.5;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+	padding: 15px;
+	align-items: center;
+	z-index: 999;
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	border: 0;
+	background-color: $primary-grey;
+	opacity: 0.7;
+	transition: all 0.2s ease-in-out;
+	border-radius: 50%;
+}
+
+.button svg {
+	color: $primary-white;
+}
+
+.button:hover {
+	background-color: $primary-violet;
+	opacity: 1;
+	box-shadow:
+		0 0 5px $primary-violet,
+		0 0 25px $primary-violet,
+		0 0 50px $primary-violet;
 }
