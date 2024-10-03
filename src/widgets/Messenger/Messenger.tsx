@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { useState } from 'react'
 
 import { BlockButton } from 'nirvana-uikit'
@@ -19,14 +18,16 @@ export const Messenger = () => {
 						width="100%"
 						height="100%"
 						id="messenger"
-						src={`${import.meta.env.VITE_MESSENGER_IFRAME_URL}`}
+						src={import.meta.env.VITE_MESSENGER_IFRAME_URL}
 						onLoad={() => {
-							const messageWindow =
-								document.querySelector('#messenger')
-							messageWindow.contentWindow.postMessage(
-								{ message: 'init', user },
-								'*'
-							)
+							setInterval(() => {
+								const messageWindow =
+									document.querySelector('#messenger')
+								messageWindow.contentWindow.postMessage(
+									{ message: 'init', user },
+									'*'
+								)
+							}, 100)
 						}}
 					/>
 				</div>
