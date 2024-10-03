@@ -19,7 +19,7 @@ export const Messenger = () => {
 						width="100%"
 						height="100%"
 						id="messenger"
-						src="https://nirvana-messenger-client.onrender.com/"
+						src={`${import.meta.env.VITE_MESSENGER_IFRAME_URL}`}
 						onLoad={() => {
 							const messageWindow =
 								document.querySelector('#messenger')
