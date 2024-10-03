@@ -19,7 +19,7 @@ export const Messenger = () => {
 						width="100%"
 						height="100%"
 						id="messenger"
-						src="https://nirvana-messenger-client-a25d.vercel.app/"
+						src="https://nirvana-messenger-client.onrender.com/"
 						onLoad={() => {
 							const messageWindow =
 								document.querySelector('#messenger')
