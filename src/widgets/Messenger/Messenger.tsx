@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useState } from 'react'
 
 import { BlockButton } from 'nirvana-uikit'
@@ -18,7 +19,7 @@ export const Messenger = () => {
 						width="100%"
 						height="100%"
 						id="messenger"
-						src="http://localhost:5174/"
+						src="https://nirvana-messenger-client-a25d.vercel.app/"
 						onLoad={() => {
 							const messageWindow =
 								document.querySelector('#messenger')

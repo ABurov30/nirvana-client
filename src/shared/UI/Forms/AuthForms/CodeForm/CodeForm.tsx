@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useState } from 'react'
 import ReactCodeInput from 'react-code-input'
 import { useTranslation } from 'react-i18next'

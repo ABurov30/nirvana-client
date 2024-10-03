@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useLayoutEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'

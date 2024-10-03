@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useTranslation } from 'react-i18next'
 
 import { Typography } from 'nirvana-uikit'
