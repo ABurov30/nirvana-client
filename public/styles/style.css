@@ -19,6 +19,10 @@
 	--minor-black: #16141a;
 }
 
+iframe {
+	border: 0;
+}
+
 body {
 	background-color: var(--primary-white);
 	overflow: hidden;

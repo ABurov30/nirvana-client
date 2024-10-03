@@ -1,5 +1,7 @@
 import { Outlet } from 'react-router-dom'
 
+import { Messenger } from 'widgets/Messenger/Messenger'
+
 import { ActiveType } from 'entities/User/types'
 
 import { useAppSelector } from 'shared/Redux/hooks'
@@ -18,6 +20,7 @@ export default function AZLayout() {
 		<div className={styles.AZLayout}>
 			<Navbar />
 			<AvatarButton nickname={(user as unknown as ActiveType).nickname} />
+			<Messenger />
 			<Burger />
 			<Outlet />
 			{isPlayMode && <Player />}
