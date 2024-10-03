@@ -21,18 +21,21 @@ export const Messenger = () => {
 						id="messenger"
 						src={import.meta.env.VITE_MESSENGER_IFRAME_URL}
 						onLoad={() => {
-							setInterval(() => {
-								const messageWindow =
-									document.querySelector('#messenger')
-								messageWindow.contentWindow.postMessage(
-									{ message: 'init', user },
-									'*'
-								)
-							}, 100)
+							const messageWindow =
+								document.querySelector('#messenger')
+							messageWindow.contentWindow.postMessage(
+								{ message: 'init', user },
+								import.meta.env.VITE_MESSENGER_IFRAME_URL
+							)
+							console.log(
+								'🚀 ~ Messenger ~ messageWindow:',
+								messageWindow
+							)
 						}}
 					/>
 				</div>
 			)}
+
 			<BlockButton
 				text="Open messenger"
 				onClick={() => setIsOpen(prev => !prev)}
