@@ -50,3 +50,9 @@
 		0 0 25px $primary-violet,
 		0 0 50px $primary-violet;
 }
+
+@media screen and (max-width: 750px) {
+	.button {
+		display: none;
+	}
+}

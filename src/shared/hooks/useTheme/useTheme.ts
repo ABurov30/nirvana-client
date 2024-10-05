@@ -15,7 +15,7 @@ function useTheme() {
 		recolor(theme)
 		localStorage.setItem('theme', theme)
 	}, [theme])
-	return theme === 'light' ? 'dark' : 'light'
+	return theme === Theme.light ? Theme.dark : Theme.light
 }
 
 export default useTheme
@@ -23,11 +23,11 @@ export default useTheme
 function recolor(theme: Theme) {
 	const body = document.querySelector('body')
 	if (!body) return
-	if (theme === 'dark') {
-		body.classList.remove('light')
-		body.className += ' dark'
-	} else if (theme === 'light') {
-		body.classList.remove('dark')
-		body.className += ' light'
+	if (theme === Theme.dark) {
+		body.classList.remove(Theme.light)
+		body.className += ` ${Theme.dark}`
+	} else if (theme === Theme.light) {
+		body.classList.remove(Theme.dark)
+		body.className += ` ${Theme.light}`
 	}
 }

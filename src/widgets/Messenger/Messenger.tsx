@@ -10,6 +10,7 @@ import styles from './Messenger.module.scss'
 export const Messenger = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const user = useAppSelector(state => state.user)
+	const { theme } = useAppSelector(state => state.app)
 
 	return (
 		<>
@@ -29,7 +30,7 @@ export const Messenger = () => {
 								const messageWindow =
 									document.querySelector('#messenger')
 								messageWindow.contentWindow.postMessage(
-									{ message: 'init', user },
+									{ message: 'init', user, theme },
 									import.meta.env.VITE_MESSENGER_IFRAME_URL
 								)
 							}}
