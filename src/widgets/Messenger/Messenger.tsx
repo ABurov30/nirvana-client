@@ -2,6 +2,7 @@
 import { useState } from 'react'
 
 import ChatIcon from '@mui/icons-material/Chat'
+import i18next from 'i18next'
 
 import { useAppSelector } from 'shared/Redux/hooks'
 
@@ -30,7 +31,12 @@ export const Messenger = () => {
 								const messageWindow =
 									document.querySelector('#messenger')
 								messageWindow.contentWindow.postMessage(
-									{ message: 'init', user, theme },
+									{
+										message: 'init',
+										user,
+										theme,
+										language: i18next.language
+									},
 									import.meta.env.VITE_MESSENGER_IFRAME_URL
 								)
 							}}

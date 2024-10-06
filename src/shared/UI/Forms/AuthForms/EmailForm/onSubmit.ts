@@ -37,7 +37,7 @@ export async function onSubmit(
 	const isSent = await dispatch(
 		findEmailThunk(formData) as unknown as UnknownAction
 	)
-	console.log(isSent)
+
 	if (isSent as unknown as boolean) {
 		navigate('/auth/codePage')
 	}

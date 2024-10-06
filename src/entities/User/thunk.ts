@@ -172,7 +172,6 @@ export const findEmailThunk =
 		})
 
 		if (res?.status !== 200) {
-			console.log(res.data)
 			dispatch(logoutUser({}))
 			dispatch(
 				setNotification({
@@ -204,7 +203,6 @@ export const newPasswordThunk =
 		})
 
 		if (res?.status !== 200) {
-			console.log(res.data)
 			dispatch(setUser({ ...res?.data, status: UserStatus.guest }))
 			dispatch(
 				setNotification({

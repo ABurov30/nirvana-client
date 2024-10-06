@@ -10,7 +10,8 @@
 		"nickname": "Имя пользователя",
 		"email": "E-mail",
 		"password": "Пароль",
-		"repeatPassword": "Повторите пароль"
+		"repeatPassword": "Повторите пароль",
+		"playAll": "Возпроизвести"
 	},
 	"Alert": {
 		"somethingWentWrong": "Что-то пошло не так:(",
