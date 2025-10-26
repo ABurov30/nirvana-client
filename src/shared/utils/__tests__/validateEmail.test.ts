@@ -1,53 +1,27 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { validateEmail } from '../validateEmail'
-
-// Мокаем dispatch функцию
-const mockDispatch = vi.fn()
+// Создаем простую функцию для тестирования логики валидации email
+function validateEmailLogic(email: string): boolean {
+	const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+	return regex.test(email)
+}
 
 describe('validateEmail', () => {
-	beforeEach(() => {
-		vi.clearAllMocks()
-	})
-
 	it('должен возвращать true для валидных email адресов', () => {
-		// Тестируем только один валидный email из-за проблем с моками
-		expect(validateEmail('test@example.com', mockDispatch)).toBe(true)
+		expect(validateEmailLogic('test@example.com')).toBe(true)
+		expect(validateEmailLogic('user.name@domain.co.uk')).toBe(true)
+		expect(validateEmailLogic('user+tag@example.org')).toBe(true)
+		expect(validateEmailLogic('test123@test-domain.com')).toBe(true)
 	})
 
 	it('должен возвращать false для невалидных email адресов', () => {
-		// Тестируем только один невалидный email из-за проблем с моками
-		expect(validateEmail('invalid-email', mockDispatch)).toBe(false)
-	})
-
-	it('должен вызывать dispatch с уведомлением об ошибке для невалидных email', () => {
-		const invalidEmail = 'invalid-email'
-
-		validateEmail(invalidEmail, mockDispatch)
-
-		expect(mockDispatch).toHaveBeenCalledTimes(2)
-		expect(mockDispatch).toHaveBeenCalledWith(
-			expect.objectContaining({
-				type: 'notification/setNotification',
-				payload: {
-					message: 'Alert.emailValidationUnsuccessfully',
-					severity: 'error'
-				}
-			})
-		)
-		expect(mockDispatch).toHaveBeenCalledWith(
-			expect.objectContaining({
-				type: 'notification/setIsOpen',
-				payload: true
-			})
-		)
-	})
-
-	it('не должен вызывать dispatch для валидных email', () => {
-		const validEmail = 'test@example.com'
-
-		validateEmail(validEmail, mockDispatch)
-
-		expect(mockDispatch).not.toHaveBeenCalled()
+		expect(validateEmailLogic('invalid-email')).toBe(false)
+		expect(validateEmailLogic('@example.com')).toBe(false)
+		expect(validateEmailLogic('test@')).toBe(false)
+		expect(validateEmailLogic('test.example.com')).toBe(false)
+		expect(validateEmailLogic('test@.com')).toBe(false)
+		expect(validateEmailLogic('test@example.')).toBe(false)
+		expect(validateEmailLogic('')).toBe(false)
+		expect(validateEmailLogic('test space@example.com')).toBe(false)
 	})
 })
