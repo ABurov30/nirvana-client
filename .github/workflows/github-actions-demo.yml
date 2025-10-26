@@ -15,10 +15,6 @@ jobs:
                   node-version: ${{matrix.node-version}}
             - name: install modules
               run: npm install
-            - name: install prettier
-              run: npm install --global prettier
-            - name: formatting code
-              run: prettier . -w
             - name: testing code
               run: npm run test
             - name: build project
