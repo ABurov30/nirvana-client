@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+    client:
+        build: .
+        container_name: music-client
+        ports:
+            - '5173:5173'
+        restart: unless-stopped

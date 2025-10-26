@@ -1,0 +1,26 @@
+# Ignore node_modules directory, which can be large and is usually rebuilt inside the container
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore Git-related files and directories
+.git
+.gitignore
+
+# Ignore temporary files or build artifacts that are not needed in the final image
+tmp/
+ssl/
+build/
+dist/
+
+# Ignore editor/IDE specific files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Ignore Docker-related files that are not part of the application code
+Dockerfile
+docker-compose.yml
+.dockerignore
